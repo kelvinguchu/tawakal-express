@@ -1,0 +1,111 @@
+<nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <!-- Logo section -->
+      <div class="flex-shrink-0 flex items-center">
+        <a routerLink="/" class="flex items-center">
+          <img src="/images/logo.png" alt="Tawakal Express Logo" class="h-10 w-auto">
+        </a>
+      </div>
+
+      <!-- Desktop menu -->
+      <div class="hidden md:flex items-center space-x-1">
+        <a pRipple routerLink="/" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue">Home</a>
+        <a pRipple routerLink="/about" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue">About Us</a>
+        <div class="relative group">
+          <button pRipple class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue flex items-center group">
+            Services
+            <svg class="ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-1 w-56 bg-white rounded-md shadow-lg py-1 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform origin-top-left transition-all duration-300 ease-in-out scale-95 group-hover:scale-100 border border-gray-100">
+            <a routerLink="/services/money-transfer" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              Money Transfer
+            </a>
+            <a routerLink="/services/bulk-payment" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              Bulk Payment
+            </a>
+            <a routerLink="/services/cross-border" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              Cross Border Payments
+            </a>
+            <a routerLink="/services/partners" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              Partners
+            </a>
+            <a routerLink="/services/become-agent" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              Become an Agent
+            </a>
+            <a routerLink="/services/security" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              Security
+            </a>
+          </div>
+        </div>
+        <a pRipple routerLink="/demographic-report" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue">Agent Mapping</a>
+        <a pRipple routerLink="/careers" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue">Careers</a>
+        <a pRipple routerLink="/contact" class="ml-2 px-4 py-2 text-sm font-medium rounded-md bg-tawakal-blue text-white hover:bg-tawakal-blue/90 transition-all duration-200 shadow-sm hover:shadow transform hover:-translate-y-0.5">Contact</a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex md:hidden items-center">
+        <button pRipple (click)="toggleMenu()" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-tawakal-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tawakal-blue transition-colors duration-200" aria-controls="mobile-menu" [attr.aria-expanded]="isMenuOpen">
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed -->
+          <svg *ngIf="!isMenuOpen" class="block h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Icon when menu is open -->
+          <svg *ngIf="isMenuOpen" class="block h-6 w-6 transition-transform duration-300 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state -->
+  <div 
+    [ngClass]="{'opacity-100 translate-y-0': isMenuOpen, 'opacity-0 -translate-y-4 pointer-events-none': !isMenuOpen}" 
+    class="md:hidden absolute w-full bg-white shadow-lg transform transition-all duration-300 ease-in-out"
+    id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a pRipple routerLink="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200 transform hover:translate-x-1">Home</a>
+      <a pRipple routerLink="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200 transform hover:translate-x-1">About Us</a>
+      
+      <!-- Mobile Services Dropdown -->
+      <div class="relative">
+        <button pRipple (click)="servicesOpen = !servicesOpen" class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200">
+          Services
+          <svg 
+            [ngClass]="{'rotate-180': servicesOpen}"
+            class="ml-1 h-4 w-4 transition-transform duration-300" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div 
+          *ngIf="servicesOpen" 
+          class="px-4 py-2 space-y-1 overflow-hidden transition-all duration-300 ease-in-out max-h-96 animate-fadeIn">
+          <a pRipple routerLink="/services/money-transfer" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Money Transfer</a>
+          <a pRipple routerLink="/services/bulk-payment" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Bulk Payment</a>
+          <a pRipple routerLink="/services/cross-border" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Cross Border Payments</a>
+          <a pRipple routerLink="/services/partners" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Partners</a>
+          <a pRipple routerLink="/services/become-agent" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Become an Agent</a>
+          <a pRipple routerLink="/services/security" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Security</a>
+        </div>
+      </div>
+      
+      <a pRipple routerLink="/demographic-report" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200 transform hover:translate-x-1">Agent Mapping</a>
+      <a pRipple routerLink="/careers" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200 transform hover:translate-x-1">Careers</a>
+      <a pRipple routerLink="/contact" class="block px-3 py-2 rounded-md text-base font-medium bg-tawakal-blue text-white hover:bg-tawakal-blue/90 transition-all duration-200 mt-3 mx-2 transform hover:translate-y-[-2px] hover:shadow-md">Contact</a>
+    </div>
+  </div>
+</nav>

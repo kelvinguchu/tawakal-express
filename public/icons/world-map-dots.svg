@@ -1,0 +1,252 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .map-dot {
+      fill: rgba(255, 255, 255, 0.5);
+      r: 1.5;
+    }
+    .map-dot:nth-child(odd) {
+      fill: rgba(255, 255, 255, 0.3);
+    }
+    .map-dot:nth-child(3n) {
+      fill: rgba(255, 255, 255, 0.4);
+    }
+  </style>
+  
+  <!-- North America -->
+  <g class="continent north-america">
+    <!-- Canada and Northern US -->
+    <circle class="map-dot" cx="180" cy="90" />
+    <circle class="map-dot" cx="190" cy="85" />
+    <circle class="map-dot" cx="200" cy="80" />
+    <circle class="map-dot" cx="210" cy="75" />
+    <circle class="map-dot" cx="220" cy="70" />
+    <circle class="map-dot" cx="230" cy="75" />
+    <circle class="map-dot" cx="240" cy="80" />
+    <circle class="map-dot" cx="170" cy="95" />
+    <circle class="map-dot" cx="180" cy="100" />
+    <circle class="map-dot" cx="190" cy="105" />
+    <circle class="map-dot" cx="200" cy="100" />
+    <circle class="map-dot" cx="210" cy="95" />
+    <circle class="map-dot" cx="220" cy="90" />
+    <circle class="map-dot" cx="230" cy="95" />
+    <circle class="map-dot" cx="160" cy="105" />
+    <circle class="map-dot" cx="170" cy="110" />
+    <circle class="map-dot" cx="180" cy="115" />
+    <circle class="map-dot" cx="190" cy="120" />
+    <circle class="map-dot" cx="200" cy="115" />
+    <circle class="map-dot" cx="210" cy="110" />
+    <circle class="map-dot" cx="220" cy="105" />
+    
+    <!-- United States -->
+    <circle class="map-dot" cx="160" cy="120" />
+    <circle class="map-dot" cx="170" cy="125" />
+    <circle class="map-dot" cx="180" cy="130" />
+    <circle class="map-dot" cx="190" cy="135" />
+    <circle class="map-dot" cx="200" cy="130" />
+    <circle class="map-dot" cx="210" cy="125" />
+    <circle class="map-dot" cx="220" cy="120" />
+    <circle class="map-dot" cx="150" cy="135" />
+    <circle class="map-dot" cx="160" cy="140" />
+    <circle class="map-dot" cx="170" cy="145" />
+    <circle class="map-dot" cx="180" cy="150" />
+    <circle class="map-dot" cx="190" cy="145" />
+    <circle class="map-dot" cx="200" cy="140" />
+    <circle class="map-dot" cx="210" cy="135" />
+    
+    <!-- Mexico and Central America -->
+    <circle class="map-dot" cx="150" cy="150" />
+    <circle class="map-dot" cx="160" cy="155" />
+    <circle class="map-dot" cx="170" cy="160" />
+    <circle class="map-dot" cx="180" cy="165" />
+    <circle class="map-dot" cx="190" cy="160" />
+    <circle class="map-dot" cx="200" cy="155" />
+    <circle class="map-dot" cx="160" cy="170" />
+    <circle class="map-dot" cx="170" cy="175" />
+    <circle class="map-dot" cx="180" cy="180" />
+    <circle class="map-dot" cx="190" cy="175" />
+    <circle class="map-dot" cx="170" cy="185" />
+    <circle class="map-dot" cx="180" cy="190" />
+    <circle class="map-dot" cx="190" cy="185" />
+  </g>
+  
+  <!-- South America -->
+  <g class="continent south-america">
+    <circle class="map-dot" cx="210" cy="200" />
+    <circle class="map-dot" cx="220" cy="210" />
+    <circle class="map-dot" cx="230" cy="220" />
+    <circle class="map-dot" cx="240" cy="230" />
+    <circle class="map-dot" cx="230" cy="240" />
+    <circle class="map-dot" cx="220" cy="250" />
+    <circle class="map-dot" cx="210" cy="260" />
+    <circle class="map-dot" cx="200" cy="270" />
+    <circle class="map-dot" cx="210" cy="280" />
+    <circle class="map-dot" cx="220" cy="290" />
+    <circle class="map-dot" cx="230" cy="280" />
+    <circle class="map-dot" cx="240" cy="270" />
+    <circle class="map-dot" cx="250" cy="260" />
+    <circle class="map-dot" cx="260" cy="250" />
+    <circle class="map-dot" cx="250" cy="240" />
+    <circle class="map-dot" cx="240" cy="250" />
+    <circle class="map-dot" cx="230" cy="260" />
+    <circle class="map-dot" cx="220" cy="270" />
+    <circle class="map-dot" cx="210" cy="280" />
+    <circle class="map-dot" cx="200" cy="290" />
+    <circle class="map-dot" cx="210" cy="300" />
+    <circle class="map-dot" cx="220" cy="310" />
+    <circle class="map-dot" cx="230" cy="320" />
+  </g>
+  
+  <!-- Europe -->
+  <g class="continent europe">
+    <circle class="map-dot" cx="380" cy="90" />
+    <circle class="map-dot" cx="390" cy="85" />
+    <circle class="map-dot" cx="400" cy="80" />
+    <circle class="map-dot" cx="410" cy="85" />
+    <circle class="map-dot" cx="420" cy="90" />
+    <circle class="map-dot" cx="430" cy="95" />
+    <circle class="map-dot" cx="380" cy="100" />
+    <circle class="map-dot" cx="390" cy="105" />
+    <circle class="map-dot" cx="400" cy="110" />
+    <circle class="map-dot" cx="410" cy="105" />
+    <circle class="map-dot" cx="420" cy="100" />
+    <circle class="map-dot" cx="430" cy="105" />
+    <circle class="map-dot" cx="440" cy="110" />
+    <circle class="map-dot" cx="390" cy="115" />
+    <circle class="map-dot" cx="400" cy="120" />
+    <circle class="map-dot" cx="410" cy="125" />
+    <circle class="map-dot" cx="420" cy="120" />
+    <circle class="map-dot" cx="430" cy="115" />
+    <circle class="map-dot" cx="440" cy="120" />
+    <circle class="map-dot" cx="450" cy="125" />
+  </g>
+  
+  <!-- Africa -->
+  <g class="continent africa">
+    <circle class="map-dot" cx="400" cy="140" />
+    <circle class="map-dot" cx="410" cy="145" />
+    <circle class="map-dot" cx="420" cy="150" />
+    <circle class="map-dot" cx="430" cy="155" />
+    <circle class="map-dot" cx="440" cy="160" />
+    <circle class="map-dot" cx="400" cy="160" />
+    <circle class="map-dot" cx="410" cy="165" />
+    <circle class="map-dot" cx="420" cy="170" />
+    <circle class="map-dot" cx="430" cy="175" />
+    <circle class="map-dot" cx="440" cy="180" />
+    <circle class="map-dot" cx="400" cy="180" />
+    <circle class="map-dot" cx="410" cy="185" />
+    <circle class="map-dot" cx="420" cy="190" />
+    <circle class="map-dot" cx="430" cy="195" />
+    <circle class="map-dot" cx="440" cy="200" />
+    <circle class="map-dot" cx="400" cy="200" />
+    <circle class="map-dot" cx="410" cy="205" />
+    <circle class="map-dot" cx="420" cy="210" />
+    <circle class="map-dot" cx="430" cy="215" />
+    <circle class="map-dot" cx="440" cy="220" />
+    <circle class="map-dot" cx="400" cy="220" />
+    <circle class="map-dot" cx="410" cy="225" />
+    <circle class="map-dot" cx="420" cy="230" />
+    <circle class="map-dot" cx="430" cy="235" />
+    <circle class="map-dot" cx="440" cy="240" />
+    <circle class="map-dot" cx="410" cy="245" />
+    <circle class="map-dot" cx="420" cy="250" />
+    <circle class="map-dot" cx="430" cy="255" />
+    
+    <!-- Somalia (highlighted with more dots) -->
+    <circle class="map-dot" cx="460" cy="200" />
+    <circle class="map-dot" cx="465" cy="205" />
+    <circle class="map-dot" cx="470" cy="210" />
+    <circle class="map-dot" cx="465" cy="215" />
+    <circle class="map-dot" cx="460" cy="220" />
+    <circle class="map-dot" cx="455" cy="215" />
+    <circle class="map-dot" cx="450" cy="210" />
+    <circle class="map-dot" cx="455" cy="205" />
+  </g>
+  
+  <!-- Asia -->
+  <g class="continent asia">
+    <circle class="map-dot" cx="460" cy="90" />
+    <circle class="map-dot" cx="470" cy="95" />
+    <circle class="map-dot" cx="480" cy="100" />
+    <circle class="map-dot" cx="490" cy="105" />
+    <circle class="map-dot" cx="500" cy="110" />
+    <circle class="map-dot" cx="510" cy="115" />
+    <circle class="map-dot" cx="520" cy="120" />
+    <circle class="map-dot" cx="530" cy="125" />
+    <circle class="map-dot" cx="540" cy="130" />
+    <circle class="map-dot" cx="550" cy="135" />
+    <circle class="map-dot" cx="560" cy="140" />
+    <circle class="map-dot" cx="570" cy="145" />
+    <circle class="map-dot" cx="580" cy="150" />
+    <circle class="map-dot" cx="590" cy="155" />
+    <circle class="map-dot" cx="600" cy="160" />
+    <circle class="map-dot" cx="460" cy="110" />
+    <circle class="map-dot" cx="470" cy="115" />
+    <circle class="map-dot" cx="480" cy="120" />
+    <circle class="map-dot" cx="490" cy="125" />
+    <circle class="map-dot" cx="500" cy="130" />
+    <circle class="map-dot" cx="510" cy="135" />
+    <circle class="map-dot" cx="520" cy="140" />
+    <circle class="map-dot" cx="530" cy="145" />
+    <circle class="map-dot" cx="540" cy="150" />
+    <circle class="map-dot" cx="550" cy="155" />
+    <circle class="map-dot" cx="560" cy="160" />
+    <circle class="map-dot" cx="570" cy="165" />
+    <circle class="map-dot" cx="580" cy="170" />
+    <circle class="map-dot" cx="590" cy="175" />
+    <circle class="map-dot" cx="600" cy="180" />
+    <circle class="map-dot" cx="460" cy="130" />
+    <circle class="map-dot" cx="470" cy="135" />
+    <circle class="map-dot" cx="480" cy="140" />
+    <circle class="map-dot" cx="490" cy="145" />
+    <circle class="map-dot" cx="500" cy="150" />
+    <circle class="map-dot" cx="510" cy="155" />
+    <circle class="map-dot" cx="520" cy="160" />
+    <circle class="map-dot" cx="530" cy="165" />
+    <circle class="map-dot" cx="540" cy="170" />
+    <circle class="map-dot" cx="550" cy="175" />
+    <circle class="map-dot" cx="560" cy="180" />
+    <circle class="map-dot" cx="570" cy="185" />
+    <circle class="map-dot" cx="580" cy="190" />
+    <circle class="map-dot" cx="590" cy="195" />
+    <circle class="map-dot" cx="600" cy="200" />
+    
+    <!-- Middle East -->
+    <circle class="map-dot" cx="460" cy="150" />
+    <circle class="map-dot" cx="470" cy="155" />
+    <circle class="map-dot" cx="480" cy="160" />
+    <circle class="map-dot" cx="490" cy="165" />
+    <circle class="map-dot" cx="500" cy="170" />
+    <circle class="map-dot" cx="460" cy="170" />
+    <circle class="map-dot" cx="470" cy="175" />
+    <circle class="map-dot" cx="480" cy="180" />
+    <circle class="map-dot" cx="490" cy="185" />
+    <circle class="map-dot" cx="500" cy="190" />
+    
+    <!-- India -->
+    <circle class="map-dot" cx="520" cy="180" />
+    <circle class="map-dot" cx="530" cy="185" />
+    <circle class="map-dot" cx="540" cy="190" />
+    <circle class="map-dot" cx="520" cy="200" />
+    <circle class="map-dot" cx="530" cy="205" />
+    <circle class="map-dot" cx="540" cy="210" />
+  </g>
+  
+  <!-- Australia -->
+  <g class="continent australia">
+    <circle class="map-dot" cx="600" cy="250" />
+    <circle class="map-dot" cx="610" cy="255" />
+    <circle class="map-dot" cx="620" cy="260" />
+    <circle class="map-dot" cx="630" cy="265" />
+    <circle class="map-dot" cx="640" cy="270" />
+    <circle class="map-dot" cx="600" cy="270" />
+    <circle class="map-dot" cx="610" cy="275" />
+    <circle class="map-dot" cx="620" cy="280" />
+    <circle class="map-dot" cx="630" cy="285" />
+    <circle class="map-dot" cx="640" cy="290" />
+    <circle class="map-dot" cx="600" cy="290" />
+    <circle class="map-dot" cx="610" cy="295" />
+    <circle class="map-dot" cx="620" cy="300" />
+    <circle class="map-dot" cx="630" cy="305" />
+    <circle class="map-dot" cx="640" cy="310" />
+  </g>
+</svg> 

@@ -1,0 +1,473 @@
+/* All styling is handled by Tailwind CSS */
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* New animations for left side */
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleX {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-slow {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+}
+
+/* Animation classes */
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-ping {
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* New animation classes for left side */
+.animate-slideFromLeft {
+  animation: slideFromLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scaleX {
+  animation: scaleX 0.8s ease-out forwards;
+}
+
+.animate-width {
+  animation: width 1s ease-out forwards;
+  width: 0;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  animation: shimmer 3s infinite linear;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+/* Country tag hover effect */
+.country-tag {
+  transition: all 0.3s ease;
+}
+
+.country-tag:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: pingSlow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pingSlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-10%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* 3D Card Effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.card-3d-container {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.card-3d:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+}
+
+/* Holographic effect */
+.holographic-effect {
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  animation: holographic 5s linear infinite;
+}
+
+@keyframes holographic {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Animated particles */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: particleFloat 10s infinite linear;
+}
+
+.particle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation-duration: 18s;
+  animation-delay: 1s;
+}
+
+.particle:nth-child(3) {
+  top: 40%;
+  left: 40%;
+  animation-duration: 12s;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(4) {
+  top: 80%;
+  left: 10%;
+  animation-duration: 14s;
+  animation-delay: 3s;
+}
+
+.particle:nth-child(5) {
+  top: 10%;
+  left: 50%;
+  animation-duration: 16s;
+  animation-delay: 4s;
+}
+
+.particle:nth-child(6) {
+  top: 30%;
+  left: 70%;
+  animation-duration: 13s;
+  animation-delay: 5s;
+}
+
+.particle:nth-child(7) {
+  top: 70%;
+  left: 30%;
+  animation-duration: 17s;
+  animation-delay: 6s;
+}
+
+.particle:nth-child(8) {
+  top: 50%;
+  left: 60%;
+  animation-duration: 19s;
+  animation-delay: 7s;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx, 100px), var(--ty, -100px));
+    opacity: 0;
+  }
+}
+
+/* Chip glow effect */
+.chip-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), transparent 60%);
+  animation: chipGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes chipGlow {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Typewriter text effect */
+.typewriter-text {
+  overflow: hidden;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* Ripple effect */
+.animate-ripple {
+  animation: ripple 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Rotating element */
+.rotating-element {
+  transition: transform 0.3s ease;
+}
+
+.rotating-element:hover {
+  transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+}
+
+/* Progress animation */
+.animate-progress {
+  animation: progress 2s ease-out forwards;
+  animation-delay: 0.5s;
+  width: 0%;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Draw line animation */
+.animate-draw-line {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: drawLine 4s ease-in-out forwards infinite;
+}
+
+@keyframes drawLine {
+  0% {
+    stroke-dashoffset: 500;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  70% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* Draw chart animation */
+.animate-draw-chart {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawChart 3s ease-out forwards;
+}
+
+@keyframes drawChart {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Notification card hover effect */
+.notification-card {
+  transition: all 0.3s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
