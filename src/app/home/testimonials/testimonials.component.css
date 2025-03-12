@@ -1,0 +1,291 @@
+/* Animation for the pulse effect */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Animation for the spin effect */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Animation for fade in up effect */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Marquee Styling */
+.marquee-wrapper {
+  position: relative;
+  margin: 1rem 0 1.5rem;
+}
+
+/* Vignette effects */
+.vignette-left {
+  box-shadow: inset 10px 0 15px -8px rgba(248, 250, 248, 0.8);
+  width: 15% !important;
+}
+
+.vignette-right {
+  box-shadow: inset -10px 0 15px -8px rgba(248, 250, 248, 0.8);
+  width: 15% !important;
+}
+
+@media (min-width: 640px) {
+  .marquee-wrapper {
+    margin: 1.5rem 0 2rem;
+  }
+  
+  .vignette-left {
+    box-shadow: inset 15px 0 20px -10px rgba(248, 250, 248, 0.8);
+    width: 20% !important;
+  }
+  
+  .vignette-right {
+    box-shadow: inset -15px 0 20px -10px rgba(248, 250, 248, 0.8);
+    width: 20% !important;
+  }
+}
+
+/* Enhanced Glassmorphism card with better contrast */
+.glassmorphism-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 0.75rem;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+    0 0 30px rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-height: 160px;
+}
+
+@media (min-width: 640px) {
+  .glassmorphism-card {
+    min-height: 180px;
+  }
+}
+
+@media (min-width: 768px) {
+  .glassmorphism-card {
+    min-height: 200px;
+  }
+}
+
+.glassmorphism-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.15),
+    0 10px 10px -5px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+    0 0 35px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Accent top border with gradient */
+.glassmorphism-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #2fb457, #0075be);
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .glassmorphism-card::after {
+    height: 4px;
+  }
+}
+
+/* Subtle inner glow */
+.glassmorphism-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  z-index: -1;
+}
+
+/* Enhanced text contrast */
+.testimonial-content p {
+  color: rgba(30, 41, 59, 0.9) !important; /* slate-800 with high opacity for better contrast */
+  font-weight: 450;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+/* Enhanced quote icons */
+.testimonial-content .text-tawakal-blue\/20 {
+  color: rgba(0, 117, 190, 0.3) !important;
+}
+
+/* Location text with better contrast */
+.testimonial-content .text-gray-500 {
+  color: rgba(71, 85, 105, 0.9) !important; /* slate-600 with high opacity */
+  font-weight: 500;
+}
+
+/* Star rating with enhanced visibility */
+.testimonial-content .text-amber-400 {
+  color: #f59e0b !important; /* amber-500 for better contrast */
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+}
+
+/* Decorative corner accents with better visibility */
+.glassmorphism-card .absolute.border-t-2,
+.glassmorphism-card .absolute.border-b-2 {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Marquee animations */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .marquee-container {
+    padding: 0.75rem 0;
+  }
+}
+
+.marquee-content {
+  display: flex;
+  animation: marquee 45s linear infinite;
+  width: max-content;
+}
+
+@media (min-width: 640px) {
+  .marquee-content {
+    animation: marquee 50s linear infinite;
+  }
+}
+
+@media (min-width: 768px) {
+  .marquee-content {
+    animation: marquee 55s linear infinite;
+  }
+}
+
+.marquee-pause {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  padding: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .marquee-item {
+    padding: 0.375rem;
+  }
+}
+
+.marquee-item:hover {
+  z-index: 10;
+  position: relative;
+}
+
+.marquee-item:hover .glassmorphism-card {
+  box-shadow: 
+    0 25px 30px -5px rgba(0, 0, 0, 0.15),
+    0 10px 15px -5px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+    0 0 40px rgba(255, 255, 255, 0.35);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 2));
+  }
+}
+
+/* Custom scrollbar for testimonial cards */
+:host ::ng-deep .testimonial-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+:host ::ng-deep .testimonial-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+:host ::ng-deep .testimonial-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 117, 190, 0.2);
+  border-radius: 10px;
+}
+
+:host ::ng-deep .testimonial-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 117, 190, 0.4);
+}
+
+/* Line clamp for mobile */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-6 {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

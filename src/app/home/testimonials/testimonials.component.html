@@ -1,0 +1,101 @@
+<section class="py-10 relative overflow-hidden">
+  <!-- Animated background elements -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#f8faf8] via-white to-[#f8faf8]/50 -z-30"></div>
+  <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-gradient-to-br from-tawakal-green/10 to-tawakal-blue/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+  <div class="absolute left-1/4 bottom-1/3 w-64 h-64 bg-gradient-to-tr from-tawakal-blue/5 to-[#9e5a63]/10 rounded-full blur-2xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+  
+  <!-- Floating elements -->
+  <div class="absolute top-20 right-1/4 w-8 h-8 text-tawakal-green opacity-20 animate-spin-slow">
+    <fa-icon [icon]="faCircle" class="w-full h-full"></fa-icon>
+  </div>
+  <div class="absolute bottom-20 left-1/5 w-6 h-6 text-tawakal-blue opacity-20 animate-spin-slow" style="animation-direction: reverse; animation-duration: 15s;">
+    <fa-icon [icon]="faCircle" class="w-full h-full"></fa-icon>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section header with refined styling -->
+    <div class="text-center mb-8 sm:mb-12 md:mb-16">
+      <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-2 sm:mb-3 md:mb-4 backdrop-blur-sm border border-white/30">
+        <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
+          <fa-icon [icon]="faComments" class="mr-1.5 sm:mr-2 h-3 w-3 sm:h-3.5 sm:w-3.5 text-tawakal-green"></fa-icon>
+          Customer Stories
+        </p>
+      </div>
+      
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6 text-gray-800 relative">
+        What Our <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Customers</span> Say
+        <div class="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 md:w-24 h-1 bg-gradient-to-r from-tawakal-green/40 to-tawakal-blue/40 rounded-full"></div>
+      </h2>
+      
+      <p class="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
+        Real experiences from people around the world who trust Tawakal Express for their international money transfer needs.
+      </p>
+    </div>
+    
+    <!-- Enhanced single marquee with vignette effects -->
+    <div class="relative overflow-hidden py-4 sm:py-6 marquee-wrapper">
+      <!-- Vignette overlay left (entry point) -->
+      <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 z-10 bg-gradient-to-r from-[#f8faf8] via-[#f8faf8]/90 to-transparent pointer-events-none vignette-left"></div>
+      
+      <!-- Vignette overlay right (exit point) -->
+      <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 z-10 bg-gradient-to-l from-[#f8faf8] via-[#f8faf8]/90 to-transparent pointer-events-none vignette-right"></div>
+      
+      <!-- Single marquee row -->
+      <div class="marquee-container relative z-1">
+        <div class="marquee-content" [ngClass]="{'marquee-pause': isPaused}">
+          <div *ngFor="let testimonial of marqueeTestimonials" 
+               class="marquee-item px-1 sm:px-2 md:px-3"
+               (mouseenter)="pauseMarquee()" 
+               (mouseleave)="resumeMarquee()">
+            <div class="glassmorphism-card w-[220px] sm:w-[240px] md:w-[260px] h-full flex flex-col testimonial-card">
+              <!-- Quote content -->
+              <div class="p-2.5 sm:p-3 md:p-4 flex-grow flex flex-col testimonial-content">
+                <!-- Quote icon and rating in a row for better visual balance -->
+                <div class="flex justify-between items-start mb-1.5 sm:mb-2">
+                  <div class="text-tawakal-blue/20">
+                    <fa-icon [icon]="faQuoteLeft" class="text-base sm:text-lg md:text-xl"></fa-icon>
+                  </div>
+                  <div class="flex space-x-0.5 text-amber-400">
+                    <fa-icon *ngFor="let star of getStarArray(testimonial.rating)" [icon]="faStar" class="text-[8px] sm:text-[10px]"></fa-icon>
+                  </div>
+                </div>
+                
+                <!-- Quote text with enhanced styling -->
+                <p class="text-gray-700 text-[10px] sm:text-[11px] md:text-xs mb-2 sm:mb-3 flex-grow line-clamp-4 sm:line-clamp-5">
+                  {{ testimonial.quote }}
+                </p>
+                
+                <!-- Location with icon for better visual appeal -->
+                <div class="text-gray-500 text-[9px] sm:text-[10px] font-medium flex items-center">
+                  <fa-icon [icon]="faMapMarkerAlt" class="mr-1 text-tawakal-blue/50"></fa-icon>
+                  {{ testimonial.location }}
+                </div>
+              </div>
+              
+              <!-- Decorative elements -->
+              <div class="absolute bottom-1.5 sm:bottom-2 right-1.5 sm:right-2 text-tawakal-blue/10">
+                <fa-icon [icon]="faQuoteRight" class="text-sm sm:text-base md:text-lg"></fa-icon>
+              </div>
+              
+              <!-- Decorative corner accents -->
+              <div class="absolute top-0 left-0 w-1.5 h-1.5 sm:w-2 sm:h-2 border-t-2 border-l-2 border-white/50 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
+              <div class="absolute top-0 right-0 w-1.5 h-1.5 sm:w-2 sm:h-2 border-t-2 border-r-2 border-white/50 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
+              <div class="absolute bottom-0 left-0 w-1.5 h-1.5 sm:w-2 sm:h-2 border-b-2 border-l-2 border-white/50 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
+              <div class="absolute bottom-0 right-0 w-1.5 h-1.5 sm:w-2 sm:h-2 border-b-2 border-r-2 border-white/50 rounded-br-lg -mb-0.5 -mr-0.5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Call to action -->
+    <div class="mt-10 sm:mt-14 md:mt-16 lg:mt-20 text-center">
+      <div class="inline-block px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full backdrop-blur-sm border border-white/30">
+        <p class="text-gray-700 font-medium text-xs sm:text-sm md:text-base flex items-center justify-center">
+          <fa-icon [icon]="faUsers" class="mr-1.5 sm:mr-2 text-tawakal-blue"></fa-icon>
+          Join thousands of satisfied customers worldwide
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
