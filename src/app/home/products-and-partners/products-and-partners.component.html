@@ -1,0 +1,225 @@
+<section id="products" class="py-16 sm:py-24 relative overflow-hidden">
+  <!-- Background elements -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#f9f9f9] to-[#f0f9ff] -z-30"></div>
+  <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-tawakal-green/5 rounded-full blur-3xl -z-20"></div>
+  <div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-tawakal-blue/5 rounded-full blur-3xl -z-20"></div>
+
+  <div class="container mx-auto px-4">
+    <!-- Section header -->
+    <div class="text-center mb-12 sm:mb-16">
+      <div class="inline-block px-4 py-2 bg-tawakal-green/10 rounded-full mb-4">
+        <p class="text-tawakal-green font-medium text-sm">
+          Digital Solutions
+        </p>
+      </div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+        Our <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Products</span>
+        <span class="bg-gradient-to-r from-tawakal-blue to-tawakal-red text-transparent bg-clip-text">& Partners</span>
+      </h2>
+      <p class="text-zinc-600 text-base sm:text-lg max-w-3xl mx-auto">
+        Explore our digital product and trusted partners designed to make
+        international money transfers faster, easier, and more secure.
+      </p>
+    </div>
+
+    <!-- Tab selector -->
+    <div class="flex justify-center mb-8 sm:mb-12">
+      <div [class]="getTabContainerClasses()">
+        <button
+          (click)="handleTabChange('products')"
+          class="px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm font-medium transition-all duration-300"
+          [ngClass]="getTabClasses('products')">
+          Our Products
+        </button>
+        <button
+          (click)="handleTabChange('partners')"
+          class="px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm font-medium transition-all duration-300"
+          [ngClass]="getTabClasses('partners')">
+          Our Partners
+        </button>
+      </div>
+    </div>
+
+    <!-- Item selector - only show if there are multiple items in the active tab -->
+    <div *ngIf="items[activeTab].length > 1" class="flex justify-center mb-8 sm:mb-12">
+      <div [class]="getTabContainerClasses()">
+        <button
+          *ngFor="let item of items[activeTab]"
+          (click)="setActiveItem(item.id)"
+          class="px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm font-medium transition-all duration-300"
+          [ngClass]="getItemClasses(item.id)">
+          {{ item.name }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Product/Partner showcase - Unified Card Design -->
+    <div class="max-w-6xl mx-auto">
+      <div
+        [class]="getCardClasses()"
+        *ngIf="activeData">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+          <!-- Left side - Product/Partner info -->
+          <div class="lg:col-span-5 p-6 sm:p-8 relative z-10">
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-white flex items-center justify-center shadow-md mr-4 p-1 overflow-hidden border-2 border-white/50">
+                <img
+                  [src]="activeData.logo"
+                  [alt]="activeData.name"
+                  class="object-contain w-full h-full"
+                />
+              </div>
+              <div>
+                <h3 class="text-2xl sm:text-3xl font-bold text-zinc-800">
+                  {{ activeData.name }}
+                </h3>
+                <p [ngClass]="activeData.textColor + ' font-medium'">
+                  {{ activeData.tagline }}
+                </p>
+              </div>
+            </div>
+
+            <p class="text-zinc-700 text-base sm:text-lg mb-6">
+              {{ activeData.description }}
+            </p>
+
+            <!-- Features -->
+            <div class="space-y-3 mb-6">
+              <ng-container *ngFor="let feature of activeData.features; let i = index">
+                <div class="flex items-center bg-white/50 rounded-lg p-2 shadow-sm">
+                  <div
+                    class="w-6 h-6 rounded-full flex items-center justify-center mr-3 shadow-sm bg-gradient-to-r"
+                    [ngClass]="activeData.color">
+                    <fa-icon [icon]="faCheck" class="text-white text-xs"></fa-icon>
+                  </div>
+                  <p class="text-zinc-800 font-medium">{{ feature }}</p>
+                </div>
+              </ng-container>
+            </div>
+
+            <!-- CTA buttons -->
+            <div class="flex flex-col gap-4 pt-2">
+              <ng-container *ngIf="activeData.downloadable">
+                <div class="flex flex-row gap-3 w-full">
+                  <a
+                    href="#"
+                    [class]="getDownloadButtonClasses(true)">
+                    <div class="w-6 h-6 mr-2 flex-shrink-0">
+                      <fa-icon [icon]="faApple" class="w-full h-full"></fa-icon>
+                    </div>
+                    <div class="flex flex-col items-start whitespace-nowrap">
+                      <p class="text-[10px] leading-tight opacity-80">
+                        App Store
+                      </p>
+                      <p class="text-sm font-semibold leading-tight">
+                        Download
+                      </p>
+                    </div>
+                  </a>
+                  <a
+                    href="#"
+                    [class]="getDownloadButtonClasses(false)">
+                    <div class="w-6 h-6 mr-2 flex-shrink-0">
+                      <fa-icon [icon]="faGooglePlay" class="w-full h-full"></fa-icon>
+                    </div>
+                    <div class="flex flex-col items-start whitespace-nowrap">
+                      <p class="text-[10px] leading-tight opacity-80">
+                        Google Play
+                      </p>
+                      <p class="text-sm font-semibold leading-tight">
+                        Download
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!activeData.downloadable">
+                <button class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white rounded-full px-4 py-2 sm:px-6 sm:py-6 text-sm shadow-md hover:shadow-lg transition-all duration-300">
+                  Access Online
+                </button>
+              </ng-container>
+            </div>
+          </div>
+
+          <!-- Right side - Product/Partner visualization -->
+          <div class="lg:col-span-7 relative">
+            <div
+              class="h-[350px] sm:h-[400px] lg:h-[450px] relative overflow-hidden rounded-l-none lg:rounded-l-2xl"
+              [ngClass]="'bg-gradient-to-br ' + activeData.color">
+              <!-- Decorative elements -->
+              <div class="absolute top-1/4 right-1/4 w-32 h-32 rounded-full bg-white/10 blur-xl"></div>
+              <div class="absolute bottom-1/4 left-1/4 w-40 h-40 rounded-full bg-white/10 blur-xl"></div>
+
+              <!-- Device mockup -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="relative max-w-[80%] max-h-[80%]">
+                  <img
+                    [src]="activeData.deviceImage"
+                    [alt]="activeData.name + ' device'"
+                    class="object-contain z-10 relative"
+                  />
+
+                  <!-- Platform badge -->
+                  <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md rounded-xl p-3 shadow-md border border-white/50 z-30">
+                    <div class="flex items-center space-x-2">
+                      <div
+                        class="w-8 h-8 rounded-full flex items-center justify-center shadow-sm"
+                        [ngClass]="'bg-gradient-to-r ' + activeData.color">
+                        <ng-container *ngIf="activeData.downloadable">
+                          <fa-icon [icon]="faCirclePlay" class="text-white text-sm"></fa-icon>
+                        </ng-container>
+                        <ng-container *ngIf="!activeData.downloadable">
+                          <fa-icon [icon]="faGlobe" class="text-white text-sm"></fa-icon>
+                        </ng-container>
+                      </div>
+                      <p class="text-sm font-bold text-zinc-800">
+                        {{ activeData.downloadable ? "Mobile App" : "Web Platform" }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Static notification elements -->
+                  <!-- Transfer Complete notification -->
+                  <div [ngClass]="['absolute -top-4 -left-4', getNotificationClasses()]">
+                    <div class="flex items-center space-x-2">
+                      <div [class]="getNotificationIconClasses('green-500')">
+                        <fa-icon [icon]="faCheck" class="text-white text-xs"></fa-icon>
+                      </div>
+                      <p class="text-xs font-medium text-zinc-800">
+                        Transfer Complete
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Money Received notification -->
+                  <div [ngClass]="['absolute -bottom-2 -right-2', getNotificationClasses()]">
+                    <div class="flex items-center space-x-2">
+                      <div [class]="getNotificationIconClasses('blue-500')">
+                        <fa-icon [icon]="faDollarSign" class="text-white text-xs"></fa-icon>
+                      </div>
+                      <p class="text-xs font-medium text-zinc-800">
+                        $250 Received
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product/Partner comparison dots - only show if there are multiple items in the active tab -->
+    <div *ngIf="items[activeTab].length > 1" class="flex justify-center mt-8 sm:mt-12 space-x-3">
+      <button
+        *ngFor="let item of items[activeTab]"
+        (click)="setActiveItem(item.id)"
+        class="w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300"
+        [ngClass]="getItemDotClasses(item.id)"
+        [attr.aria-label]="'Switch to ' + item.name">
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,8 +1,16 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-hero',
@@ -26,6 +34,8 @@ export class HeroComponent implements AfterViewInit {
 
   // Mock transfer data
   transferAmount = 'KES 5,000';
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngAfterViewInit() {
     this.initCard3DEffect();
@@ -75,16 +85,20 @@ export class HeroComponent implements AfterViewInit {
 
   // Initialize particle effects with random movement
   private initParticleEffects() {
-    const particles = document.querySelectorAll('.particle');
+    // Only run document-dependent code in the browser
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
-    particles.forEach((particle: Element) => {
-      // Set random translation values for each particle
-      const tx = Math.random() * 200 - 100 + 'px';
-      const ty = Math.random() * 200 - 100 + 'px';
-
-      // Apply as CSS variables
-      (particle as HTMLElement).style.setProperty('--tx', tx);
-      (particle as HTMLElement).style.setProperty('--ty', ty);
-    });
+    const particlesContainer = document.getElementById('particles-container');
+    if (particlesContainer) {
+      const particles = particlesContainer.querySelectorAll('.particle');
+      particles.forEach((particle: Element) => {
+        const tx = Math.random() * 200 - 100 + 'px';
+        const ty = Math.random() * 200 - 100 + 'px';
+        (particle as HTMLElement).style.setProperty('--tx', tx);
+        (particle as HTMLElement).style.setProperty('--ty', ty);
+      });
+    }
   }
 }
