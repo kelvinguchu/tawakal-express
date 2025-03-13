@@ -1,0 +1,58 @@
+<section class="py-8 sm:py-10 relative overflow-hidden bg-[#f8faf8]">
+  <!-- Floating elements -->
+  <div class="absolute top-20 right-1/4 w-8 h-8 text-tawakal-blue opacity-20 animate-spin-slow">
+    <fa-icon [icon]="faHandshake" class="w-full h-full"></fa-icon>
+  </div>
+  <div class="absolute bottom-20 left-1/5 w-6 h-6 text-tawakal-green opacity-20 animate-spin-slow" style="animation-direction: reverse; animation-duration: 15s;">
+    <fa-icon [icon]="faHandshake" class="w-full h-full"></fa-icon>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section header with refined styling -->
+    <div class="text-center mb-4 sm:mb-10 md:mb-12">
+      <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-2 sm:mb-3 md:mb-4 backdrop-blur-sm border border-white/30">
+        <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
+          <fa-icon [icon]="faHandshake" class="mr-1.5 sm:mr-2 h-3 w-3 sm:h-3.5 sm:w-3.5 text-tawakal-green"></fa-icon>
+          Strategic Alliances
+        </p>
+      </div>
+      
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6 text-gray-800 relative">
+        Our <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Trusted</span> Partners
+        <div class="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 md:w-24 h-1 bg-gradient-to-r from-tawakal-green/40 to-tawakal-blue/40 rounded-full"></div>
+      </h2>
+      
+
+    </div>
+    
+    <!-- Partners marquee with vignette effects -->
+    <div class="relative overflow-hidden py-4 sm:py-6 partners-marquee-wrapper">
+      <!-- Vignette overlay left -->
+      <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 z-10 pointer-events-none" 
+           style="background: linear-gradient(to right, #f8faf8 0%, #f8faf8 40%, rgba(248, 250, 248, 0.8) 70%, rgba(248, 250, 248, 0.4) 85%, transparent 100%);"></div>
+      
+      <!-- Vignette overlay right -->
+      <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 z-10 pointer-events-none" 
+           style="background: linear-gradient(to left, #f8faf8 0%, #f8faf8 40%, rgba(248, 250, 248, 0.8) 70%, rgba(248, 250, 248, 0.4) 85%, transparent 100%);"></div>
+      
+      <!-- Marquee container -->
+      <div class="partners-marquee-container relative z-1">
+        <div class="partners-marquee-content" [ngClass]="{'partners-marquee-pause': isPaused}">
+          <div *ngFor="let partner of marqueePartners" 
+               class="partners-marquee-item"
+               (mouseenter)="pauseMarquee()" 
+               (mouseleave)="resumeMarquee()">
+            <div class="partner-logo-container">
+              <img 
+                [src]="partner.logo" 
+                [alt]="partner.alt" 
+                class="partner-logo h-12 sm:h-12 md:h-14 object-contain mx-auto grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

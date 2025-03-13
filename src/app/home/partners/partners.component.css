@@ -1,0 +1,124 @@
+/* Animation for the pulse effect */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Animation for the spin effect */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Partners marquee wrapper */
+.partners-marquee-wrapper {
+  position: relative;
+  margin: 0.5rem 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .partners-marquee-wrapper {
+    margin: 0.75rem 0 1.5rem;
+  }
+}
+
+/* Marquee container */
+.partners-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.75rem 0;
+}
+
+/* Marquee content */
+.partners-marquee-content {
+  display: flex;
+  animation: partners-marquee 35s linear infinite;
+  width: max-content;
+}
+
+@media (min-width: 640px) {
+  .partners-marquee-content {
+    animation: partners-marquee 40s linear infinite;
+  }
+}
+
+@media (min-width: 768px) {
+  .partners-marquee-content {
+    animation: partners-marquee 45s linear infinite;
+  }
+}
+
+/* Pause animation on hover */
+.partners-marquee-pause {
+  animation-play-state: paused;
+}
+
+/* Individual marquee items */
+.partners-marquee-item {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .partners-marquee-item {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .partners-marquee-item {
+    padding: 0 2rem;
+  }
+}
+
+/* Partner logo container */
+.partner-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Partner logo styling */
+.partner-logo {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.partner-logo:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* Marquee animation */
+@keyframes partners-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}

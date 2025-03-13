@@ -4,18 +4,28 @@ import { HeroComponent } from '../../home/hero/hero.component';
 import { AboutComponent } from '../../home/about/about.component';
 import { ProductsAndPartnersComponent } from '../../home/products-and-partners/products-and-partners.component';
 import { TestimonialsComponent } from '../../home/testimonials/testimonials.component';
+import { PartnersComponent } from '../../home/partners/partners.component';
+import { FeaturesAndServicesComponent } from '../../home/features-and-services/features-and-services.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeroComponent, AboutComponent, ProductsAndPartnersComponent, TestimonialsComponent],
+  imports: [
+    CommonModule,
+    HeroComponent,
+    AboutComponent,
+    ProductsAndPartnersComponent,
+    TestimonialsComponent,
+    PartnersComponent,
+    FeaturesAndServicesComponent,
+  ],
   template: `
     <app-hero></app-hero>
+    <app-features-and-services></app-features-and-services>
     <app-about></app-about>
     <app-products-and-partners></app-products-and-partners>
     <app-testimonials></app-testimonials>
+    <app-partners></app-partners>
   `,
   styles: ``,
 })
-export class HomeComponent {
-
-}
+export class HomeComponent {}

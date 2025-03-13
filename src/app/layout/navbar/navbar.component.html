@@ -1,111 +1,116 @@
-<nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300">
+<nav class="bg-white/70 backdrop-blur-lg shadow-sm fixed w-full z-50 transition-all duration-300 border-b border-white/20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
-      <!-- Logo section -->
+      <!-- Brand logo with hover effect -->
       <div class="flex-shrink-0 flex items-center">
-        <a routerLink="/" class="flex items-center">
-          <img src="/images/logo.png" alt="Tawakal Express Logo" class="h-10 w-auto">
+        <a routerLink="/" class="flex items-center relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
+          <img src="/images/logo.png" alt="Tawakal Express Logo" class="h-10 w-auto relative z-10">
         </a>
       </div>
 
-      <!-- Desktop menu -->
+      <!-- Desktop navigation -->
       <div class="hidden md:flex items-center space-x-1">
-        <a pRipple routerLink="/" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue">Home</a>
-        <a pRipple routerLink="/about" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue">About Us</a>
+        <!-- Main navigation items -->
+        <ng-container *ngFor="let item of navItems">
+          <a pRipple [routerLink]="item.routerLink" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-white/40 text-gray-700 hover:text-tawakal-blue relative overflow-hidden group">
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-tawakal-green to-tawakal-blue group-hover:w-full transition-all duration-300"></span>
+            {{item.label}}
+          </a>
+        </ng-container>
+
+        <!-- Services dropdown -->
         <div class="relative group">
-          <button pRipple class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue flex items-center group">
+          <button pRipple class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-white/40 text-gray-700 hover:text-tawakal-blue flex items-center group relative overflow-hidden">
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-tawakal-green to-tawakal-blue group-hover:w-full transition-all duration-300"></span>
             Services
-            <svg class="ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
+            <fa-icon [icon]="faChevronDown" class="ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180"></fa-icon>
           </button>
-          <div class="absolute left-0 mt-1 w-56 bg-white rounded-md shadow-lg py-1 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform origin-top-left transition-all duration-300 ease-in-out scale-95 group-hover:scale-100 border border-gray-100">
-            <a routerLink="/services/money-transfer" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
-              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              Money Transfer
-            </a>
-            <a routerLink="/services/bulk-payment" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
-              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              Bulk Payment
-            </a>
-            <a routerLink="/services/cross-border" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
-              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              Cross Border Payments
-            </a>
-            <a routerLink="/services/partners" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
-              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              Partners
-            </a>
-            <a routerLink="/services/become-agent" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
-              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              Become an Agent
-            </a>
-            <a routerLink="/services/security" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full">
-              <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              Security
-            </a>
+          <!-- Services dropdown menu -->
+          <div class="absolute left-0 mt-1 w-56 bg-white/80 backdrop-blur-xl rounded-md shadow-lg py-1 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform origin-top-left transition-all duration-300 ease-in-out scale-95 group-hover:scale-100 border border-white/50">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 rounded-md"></div>
+            <ng-container *ngFor="let service of serviceItems">
+              <a [routerLink]="service.routerLink" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full relative z-10">
+                <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                {{service.label}}
+              </a>
+            </ng-container>
           </div>
         </div>
-        <a pRipple routerLink="/demographic-report" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue">Agents</a>
-        <a pRipple routerLink="/careers" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-gray-50 text-gray-700 hover:text-tawakal-blue">Careers</a>
-        <a pRipple routerLink="/contact" class="ml-2 px-4 py-2 text-sm font-medium rounded-md bg-tawakal-blue text-white hover:bg-tawakal-blue/90 transition-all duration-200 shadow-sm hover:shadow transform hover:-translate-y-0.5">Contact</a>
+
+        <!-- Contact button -->
+        <a pRipple routerLink="/contact" class="ml-2 px-4 py-2 text-sm font-medium rounded-md bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 relative group">
+          <span class="absolute inset-0 rounded-md bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span class="relative z-10">Contact</span>
+        </a>
       </div>
 
-      <!-- Mobile menu button -->
+      <!-- Mobile menu toggle button with properly sized icon -->
       <div class="flex md:hidden items-center">
-        <button pRipple (click)="toggleMenu()" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-tawakal-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tawakal-blue transition-colors duration-200" aria-controls="mobile-menu" [attr.aria-expanded]="isMenuOpen">
-          <span class="sr-only">Open main menu</span>
-          <!-- Icon when menu is closed -->
-          <svg *ngIf="!isMenuOpen" class="block h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <!-- Icon when menu is open -->
-          <svg *ngIf="isMenuOpen" class="block h-6 w-6 transition-transform duration-300 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+        <button pRipple (click)="toggleMenu()" type="button" class="inline-flex items-center justify-center p-1.5 rounded-md text-gray-700 hover:text-tawakal-blue hover:bg-white/40 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tawakal-blue transition-colors duration-200 relative overflow-hidden group" aria-controls="mobile-menu" [attr.aria-expanded]="isMenuOpen">
+          <span class="absolute inset-0 bg-gradient-to-r from-tawakal-green/5 to-tawakal-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span class="sr-only">Toggle navigation menu</span>
+          <!-- Menu icon states with increased size -->
+          <fa-icon *ngIf="!isMenuOpen" [icon]="faBars" [size]="mobileIconSize" class="transition-transform duration-300 relative z-10"></fa-icon>
+          <fa-icon *ngIf="isMenuOpen" [icon]="faTimes" [size]="mobileIconSize" class="transition-transform duration-300 relative z-10"></fa-icon>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Mobile menu, show/hide based on menu state -->
+  <!-- Mobile navigation panel -->
   <div 
     [ngClass]="{'opacity-100 translate-y-0': isMenuOpen, 'opacity-0 -translate-y-4 pointer-events-none': !isMenuOpen}" 
-    class="md:hidden absolute w-full bg-white shadow-lg transform transition-all duration-300 ease-in-out"
+    class="md:hidden absolute w-full bg-white/95 backdrop-blur-[30px] shadow-lg transform transition-all duration-300 ease-in-out border-t border-white/20"
     id="mobile-menu">
-    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-      <a pRipple routerLink="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200 transform hover:translate-x-1">Home</a>
-      <a pRipple routerLink="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200 transform hover:translate-x-1">About Us</a>
+    <!-- Blur overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 pointer-events-none"></div>
+    
+    <!-- Mobile menu items -->
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 relative z-10">
+      <!-- Main navigation items -->
+      <ng-container *ngFor="let item of navItems">
+        <a pRipple [routerLink]="item.routerLink" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 transform hover:translate-x-1 relative overflow-hidden group">
+          <span class="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-tawakal-green to-tawakal-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          {{item.label}}
+        </a>
+      </ng-container>
       
-      <!-- Mobile Services Dropdown -->
+      <!-- Services dropdown -->
       <div class="relative">
-        <button pRipple (click)="servicesOpen = !servicesOpen" class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200">
+        <button pRipple (click)="servicesOpen = !servicesOpen" class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 relative overflow-hidden group">
+          <span class="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-tawakal-green to-tawakal-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           Services
-          <svg 
+          <fa-icon 
+            [icon]="faChevronDown"
             [ngClass]="{'rotate-180': servicesOpen}"
-            class="ml-1 h-4 w-4 transition-transform duration-300" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24" 
-            xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
+            class="ml-1 h-4 w-4 transition-transform duration-300">
+          </fa-icon>
         </button>
+        <!-- Services dropdown content -->
         <div 
-          *ngIf="servicesOpen" 
-          class="px-4 py-2 space-y-1 overflow-hidden transition-all duration-300 ease-in-out max-h-96 animate-fadeIn">
-          <a pRipple routerLink="/services/money-transfer" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Money Transfer</a>
-          <a pRipple routerLink="/services/bulk-payment" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Bulk Payment</a>
-          <a pRipple routerLink="/services/cross-border" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Cross Border Payments</a>
-          <a pRipple routerLink="/services/partners" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Partners</a>
-          <a pRipple routerLink="/services/become-agent" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Become an Agent</a>
-          <a pRipple routerLink="/services/security" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1">Security</a>
+          [ngClass]="{
+            'max-h-0 opacity-0 py-0': !servicesOpen,
+            'max-h-[500px] opacity-100 py-2': servicesOpen
+          }"
+          class="overflow-hidden bg-white/90 backdrop-blur-[30px] rounded-md mx-2 my-1 relative transition-all duration-300 ease-in-out">
+          <!-- Blur overlay for dropdown -->
+          <div class="absolute inset-0 bg-gradient-to-br from-white/90 to-white/80 rounded-md pointer-events-none"></div>
+          <div class="px-4 space-y-1 relative z-10">
+            <ng-container *ngFor="let service of serviceItems">
+              <a pRipple [routerLink]="service.routerLink" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1 relative z-10">
+                {{service.label}}
+              </a>
+            </ng-container>
+          </div>
         </div>
       </div>
       
-      <a pRipple routerLink="/demographic-report" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200 transform hover:translate-x-1">Agents</a>
-      <a pRipple routerLink="/careers" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-gray-50 transition-all duration-200 transform hover:translate-x-1">Careers</a>
-      <a pRipple routerLink="/contact" class="block px-3 py-2 rounded-md text-base font-medium bg-tawakal-blue text-white hover:bg-tawakal-blue/90 transition-all duration-200 mt-3 mx-2 transform hover:translate-y-[-2px] hover:shadow-md">Contact</a>
+      <!-- Contact button -->
+      <a pRipple routerLink="/contact" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 mt-3 mx-2 transform hover:-translate-y-0.5 relative group">
+        <span class="absolute inset-0 rounded-md bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="relative z-10">Contact</span>
+      </a>
     </div>
   </div>
 </nav>

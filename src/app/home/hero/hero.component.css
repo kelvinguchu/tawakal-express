@@ -45,6 +45,18 @@
   }
 }
 
+/* Animation for right side elements */
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes scaleX {
   from {
     transform: scaleX(0);
@@ -116,6 +128,12 @@
 /* New animation classes for left side */
 .animate-slideFromLeft {
   animation: slideFromLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Animation class for right side elements */
+.animate-slideFromRight {
+  animation: slideFromRight 0.8s ease-out forwards;
   opacity: 0;
 }
 

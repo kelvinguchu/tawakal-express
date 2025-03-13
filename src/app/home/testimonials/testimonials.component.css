@@ -46,30 +46,9 @@
   margin: 1rem 0 1.5rem;
 }
 
-/* Vignette effects */
-.vignette-left {
-  box-shadow: inset 10px 0 15px -8px rgba(248, 250, 248, 0.8);
-  width: 15% !important;
-}
-
-.vignette-right {
-  box-shadow: inset -10px 0 15px -8px rgba(248, 250, 248, 0.8);
-  width: 15% !important;
-}
-
 @media (min-width: 640px) {
   .marquee-wrapper {
     margin: 1.5rem 0 2rem;
-  }
-  
-  .vignette-left {
-    box-shadow: inset 15px 0 20px -10px rgba(248, 250, 248, 0.8);
-    width: 20% !important;
-  }
-  
-  .vignette-right {
-    box-shadow: inset -15px 0 20px -10px rgba(248, 250, 248, 0.8);
-    width: 20% !important;
   }
 }
 

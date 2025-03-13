@@ -15,6 +15,7 @@ import {
   faMoneyBill,
   faLock,
   faMapMarkerAlt,
+  faCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -38,6 +39,7 @@ export class AboutComponent {
   faMoneyBill = faMoneyBill;
   faLock = faLock;
   faMapMarkerAlt = faMapMarkerAlt;
+  faCircle = faCircle;
 
   // Countries with direct branches
   branchCountries = [

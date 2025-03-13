@@ -11,26 +11,102 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { isPlatformBrowser } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  faCheck,
+  faDownload,
+  faMapMarkerAlt,
+  faArrowRight,
+  faLock,
+  faGlobe,
+  faDollarSign,
+  faPoundSign,
+  faEuroSign,
+  faStar,
+  faArrowUp,
+  faChartLine,
+  faShield,
+  faCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonModule, RippleModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ButtonModule,
+    RippleModule,
+    FontAwesomeModule,
+  ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css',
 })
 export class HeroComponent implements AfterViewInit {
+  // Font Awesome icons
+  faCheck = faCheck;
+  faDownload = faDownload;
+  faMapMarkerAlt = faMapMarkerAlt;
+  faArrowRight = faArrowRight;
+  faLock = faLock;
+  faGlobe = faGlobe;
+  faDollarSign = faDollarSign;
+  faPoundSign = faPoundSign;
+  faEuroSign = faEuroSign;
+  faStar = faStar;
+  faArrowUp = faArrowUp;
+  faChartLine = faChartLine;
+  faShield = faShield;
+  faCircle = faCircle;
+
   // ViewChild to get reference to the 3D card container
   @ViewChild('card3dContainer') card3dContainer?: ElementRef;
 
   // Currency exchange rates for display
   exchangeRates = [
-    { from: 'USD', to: 'KES', rate: 128.45, change: 0.2, trend: 'up' },
-    { from: 'GBP', to: 'SOS', rate: 72.45, change: 1.5, trend: 'up' },
+    {
+      from: 'USD',
+      to: 'KES',
+      rate: 128.45,
+      change: 0.2,
+      trend: 'up',
+      icon: faDollarSign,
+      color: 'green',
+      duration: '8s',
+    },
+    {
+      from: 'GBP',
+      to: 'SOS',
+      rate: 72.45,
+      change: 1.5,
+      trend: 'up',
+      icon: faPoundSign,
+      color: 'blue',
+      duration: '7s',
+      delay: '0.5s',
+    },
   ];
 
   // Countries available for money transfer
-  countries = ['Somalia', 'Kenya', 'UAE', 'UK', 'USA'];
+  countries = [
+    { name: 'Somalia', highlight: false },
+    { name: 'Kenya', highlight: false },
+    { name: 'UAE', highlight: true },
+    { name: 'UK', highlight: false },
+    { name: 'USA', highlight: false },
+  ];
+
+  // Stars for rating
+  stars = Array(5).fill(0);
+
+  // Trust indicators for display
+  trustIndicators = [
+    { icon: faStar, text: '4.9/5 (2.3k reviews)', color: 'text-yellow-400' },
+    { icon: faLock, text: 'Secure Transactions', color: 'text-tawakal-green' },
+  ];
+
+  // Number of particles to display
+  particles = Array(8).fill(0);
 
   // Mock transfer data
   transferAmount = 'KES 5,000';

@@ -1,0 +1,98 @@
+/* Card hover effects */
+.bg-white {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-white:hover {
+  transform: translateY(-5px);
+}
+
+/* Icon transitions */
+fa-icon {
+  transition: transform 0.3s ease;
+}
+
+.bg-white:hover fa-icon {
+  transform: scale(1.1);
+}
+
+/* Feature list animations */
+ul li {
+  transition: transform 0.2s ease;
+}
+
+ul li:hover {
+  transform: translateX(5px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Service card border effect */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--tawakal-green), var(--tawakal-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* Glassmorphism effects */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Floating elements animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+/* Corner decorations */
+.border-t-2, .border-r-2, .border-b-2, .border-l-2 {
+  transition: opacity 0.3s ease;
+}
+
+.bg-white:hover .border-t-2,
+.bg-white:hover .border-r-2,
+.bg-white:hover .border-b-2,
+.bg-white:hover .border-l-2 {
+  opacity: 0.8;
+}
+
+/* Card transition for all hover effects */
+.card-transition {
+  transition: all 0.3s ease;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .bg-white:hover {
+    transform: translateY(-3px);
+  }
+}
