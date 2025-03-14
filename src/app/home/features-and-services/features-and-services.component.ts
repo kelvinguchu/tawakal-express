@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faMobileScreen,
   faMoneyBillTransfer,
@@ -47,6 +48,11 @@ export class FeaturesAndServicesComponent {
   faMapMarkerAlt = faMapMarkerAlt;
   faDownload = faDownload;
   faCircle = faCircle;
+
+  // Icon sizes
+  smallIconSize: SizeProp = 'sm';
+  mediumIconSize: SizeProp = 'lg';
+  valueIconSize: SizeProp = '1x';
 
   // Main services offered
   services = [

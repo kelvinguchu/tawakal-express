@@ -44,6 +44,10 @@ Thumbs.db
 # Tawakal Structure
 /tawakalstructure
 /oldtawakal 
+agents.csv
 
 #cursor
 /.cursor
+
+# .env
+.env

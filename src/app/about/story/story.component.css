@@ -1,0 +1,289 @@
+/* Timeline styles */
+@media (min-width: 768px) {
+  .timeline-item:nth-child(even) {
+    transform: translateY(100px);
+  }
+}
+
+/* Mobile timeline adjustments */
+@media (max-width: 767px) {
+  .timeline-item:nth-child(even) {
+    transform: translateY(0);
+  }
+}
+
+/* Animation for timeline items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pure white card style (replacing glassmorphism) */
+.glass-card {
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Hover effect for cards */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Timeline dot pulse animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 128, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 128, 0, 0);
+  }
+}
+
+.timeline-dot {
+  animation: pulse 2s infinite;
+}
+
+/* Timeline animations */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive timeline adjustments */
+@media (max-width: 768px) {
+  .timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .timeline-year, .timeline-content {
+    padding: 0;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .timeline-dot {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .timeline-item {
+    margin-bottom: 3rem;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .timeline-dot {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .partners-marquee-item {
+    padding: 0 10px;
+  }
+  
+  .partner-logo-container {
+    width: 90px;
+    height: 60px;
+  }
+}
+
+/* Service card animations */
+.service-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Spinning animation for decorative elements */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Partners marquee styles */
+.partners-marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.partners-marquee-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.partners-marquee-content {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.partners-marquee-pause {
+  animation-play-state: paused;
+}
+
+.partners-marquee-item {
+  flex: 0 0 auto;
+  padding: 0 20px;
+}
+
+.partner-logo-container {
+  width: 120px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive marquee adjustments */
+@media (max-width: 768px) {
+  .partners-marquee-item {
+    padding: 0 15px;
+  }
+  
+  .partner-logo-container {
+    width: 100px;
+    height: 70px;
+  }
+  
+  .partners-marquee-content {
+    animation-duration: 25s;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Card transition effect */
+.card-transition {
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Image hover effects */
+.image-hover {
+  overflow: hidden;
+}
+
+.image-hover img {
+  transition: transform 0.5s ease;
+}
+
+.image-hover:hover img {
+  transform: scale(1.05);
+}
+
+/* Digital product card styles */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Global presence card styles */
+.location-card {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+}
+
+@media (max-width: 768px) {
+  .location-card {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-card {
+    height: 180px;
+  }
+}
+
+.location-card img {
+  transition: transform 0.5s ease;
+}
+
+.location-card:hover img {
+  transform: scale(1.1);
+}
+
+.location-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  padding: 20px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .location-overlay {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-overlay {
+    padding: 10px;
+  }
+}
+
+.location-card:hover .location-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+}

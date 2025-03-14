@@ -1,0 +1,184 @@
+<section class="bg-[#f8faf8] min-h-[90vh] pt-16 sm:pt-20 relative overflow-hidden flex items-center">
+  <!-- Simplified background decorative elements -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+    <!-- Reduced number of large gradient blobs -->
+    <div class="absolute -top-20 -left-20 w-96 h-96 bg-gradient-to-br from-tawakal-green/10 to-tawakal-blue/5 rounded-full blur-3xl"></div>
+    
+    <!-- Single static decorative element -->
+    <div class="absolute top-1/4 right-1/4 w-4 h-4 bg-tawakal-green/20 rounded-full"></div>
+  
+  </div>
+
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-8 sm:py-12 md:py-16">
+    <!-- Main content container -->
+    <div class="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-16 items-center">
+      
+      <!-- Left column - Text content -->
+      <div class="w-full lg:w-1/2 relative">
+        <!-- Company badge with animation -->
+        <div class="inline-flex items-center px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-green-50 to-blue-50 text-tawakal-green text-xs sm:text-sm mb-5 sm:mb-6 shadow-sm border border-green-100">
+          <div class="relative">
+            <fa-icon [icon]="faGlobe" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
+          </div>
+          <span class="relative">A pioneer in <span class="font-medium">International Money Transfer</span></span>
+        </div>
+        
+        <!-- Main headline with gradient text -->
+        <div class="mb-6 sm:mb-8 relative">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+            About <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Tawakal Express</span>
+          </h1>
+          <div class="absolute -bottom-2 sm:-bottom-3 left-0 w-16 sm:w-20 h-1 bg-gradient-to-r from-tawakal-green to-tawakal-blue rounded-full"></div>
+        </div>
+        
+        <!-- Mission statement -->
+        <div class="relative mb-8 sm:mb-10 p-4 sm:p-6 bg-white/70 rounded-xl border border-white/50 shadow-md">
+          <!-- Simplified decorative elements - only keep corners -->
+          <div class="absolute top-0 left-0 w-3 sm:w-4 h-3 sm:h-4 border-t-2 border-l-2 border-tawakal-green/30 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
+          <div class="absolute bottom-0 right-0 w-3 sm:w-4 h-3 sm:h-4 border-b-2 border-r-2 border-tawakal-blue/30 rounded-br-lg -mb-0.5 -mr-0.5"></div>
+          
+          <h3 class="text-lg sm:text-xl font-bold text-tawakal-blue mb-2 sm:mb-3">Our Mission</h3>
+          <p class="text-base sm:text-lg text-gray-700 italic">
+            "To make our customers lives a whole lot brighter"
+          </p>
+        </div>
+        
+        <!-- Experience badge and service highlights -->
+        <div class="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-4 mb-8">
+          <!-- Experience badge -->
+          <div class="bg-white/70 p-4 sm:p-5 rounded-xl shadow-md border border-white/50 flex items-center">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-tawakal-green to-tawakal-blue mr-3 sm:mr-4">
+              <span class="text-lg sm:text-xl font-bold text-white">{{yearsOfExperience}}+</span>
+            </div>
+            <div class="text-gray-700">
+              <div class="text-sm sm:text-base font-bold">Years of Experience</div>
+              <div class="text-xs sm:text-sm">in Money Transfer</div>
+            </div>
+          </div>
+          
+          <!-- Global Network -->
+          <div class="bg-white/70 p-4 sm:p-5 rounded-xl shadow-md border border-white/50 flex items-center">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-tawakal-blue to-tawakal-red mr-3 sm:mr-4">
+              <fa-icon [icon]="faGlobe" [size]="smallIconSize" class="text-white sm:hidden"></fa-icon>
+              <fa-icon [icon]="faGlobe" [size]="mediumIconSize" class="text-white hidden sm:block"></fa-icon>
+            </div>
+            <div class="text-gray-700">
+              <div class="text-sm sm:text-base font-bold">Global Network</div>
+              <div class="text-xs sm:text-sm">Serving 50+ countries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right column - Values cards - Heavily optimized -->
+      <div class="w-full lg:w-1/2 relative">
+        <div class="relative bg-white/80 p-5 sm:p-7 rounded-2xl shadow-lg border border-white/50">
+          <!-- Header with decorative line -->
+          <div class="relative mb-6 sm:mb-8">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800 inline-block">Our Core Values</h2>
+            <div class="absolute -bottom-2 sm:-bottom-3 left-0 w-12 sm:w-16 h-1 bg-gradient-to-r from-tawakal-green to-tawakal-blue rounded-full"></div>
+          </div>
+          
+          <!-- Values grid - Simplified -->
+          <div class="grid grid-cols-2 gap-3 sm:gap-4">
+            <ng-container *ngFor="let value of companyValues">
+              <div class="relative bg-white/90 rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <!-- Simplified color indicator -->
+                <div class="h-1" 
+                     [ngClass]="{
+                       'bg-tawakal-blue': value.color === 'blue',
+                       'bg-tawakal-green': value.color === 'green',
+                       'bg-[#f59e0b]': value.color === 'gold',
+                       'bg-[#d24935]': value.color === 'red'
+                     }"></div>
+
+                <div class="p-3 sm:p-4">
+                  <div class="flex flex-col items-center text-center">
+                    <div class="mb-2 sm:mb-3">
+                      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center" 
+                           [ngClass]="{
+                             'bg-tawakal-blue/10': value.color === 'blue',
+                             'bg-tawakal-green/10': value.color === 'green',
+                             'bg-[#f59e0b]/10': value.color === 'gold',
+                             'bg-[#d24935]/10': value.color === 'red'
+                           }">
+                        <fa-icon [icon]="value.icon" 
+                                [size]="smallIconSize" 
+                                class="block sm:hidden"
+                                [ngClass]="{
+                                  'text-tawakal-blue': value.color === 'blue',
+                                  'text-tawakal-green': value.color === 'green',
+                                  'text-[#f59e0b]': value.color === 'gold',
+                                  'text-[#d24935]': value.color === 'red'
+                                }"></fa-icon>
+                        <fa-icon [icon]="value.icon" 
+                                [size]="valueIconSize"
+                                class="hidden sm:block"
+                                [ngClass]="{
+                                  'text-tawakal-blue': value.color === 'blue',
+                                  'text-tawakal-green': value.color === 'green',
+                                  'text-[#f59e0b]': value.color === 'gold',
+                                  'text-[#d24935]': value.color === 'red'
+                                }"></fa-icon>
+                      </div>
+                    </div>
+                    <h3 class="text-xs sm:text-sm font-bold"
+                        [ngClass]="{
+                          'text-tawakal-blue': value.color === 'blue',
+                          'text-tawakal-green': value.color === 'green',
+                          'text-[#f59e0b]': value.color === 'gold',
+                          'text-[#d24935]': value.color === 'red',
+                          'text-gray-800': !value.color
+                        }">
+                      {{ value.title }}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          
+          <!-- Global presence indicator - Simplified -->
+          <div class="mt-5 sm:mt-6 p-4 sm:p-5 bg-white/90 rounded-xl border border-gray-100">
+            <div class="flex items-start sm:items-center">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-gradient-to-r from-tawakal-blue/20 to-tawakal-green/20 mr-3 sm:mr-4 mt-1 sm:mt-0">
+                <fa-icon [icon]="faGlobe" [size]="smallIconSize" class="text-tawakal-blue sm:hidden"></fa-icon>
+                <fa-icon [icon]="faGlobe" [size]="mediumIconSize" class="text-tawakal-blue hidden sm:block"></fa-icon>
+              </div>
+              <div>
+                <h4 class="text-sm sm:text-base font-bold text-gray-800 mb-1">Global Presence</h4>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  Serving customers across Australia, Canada, Djibouti, Ethiopia, Kenya, Norway, Somalia, 
+                  South Sudan, Sudan, Sweden, UAE, Uganda, UK, USA and many more countries.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Optimized CSS for animations - reduced number and slowed down -->
+<style>
+  @keyframes slow-pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 0.7; }
+  }
+  
+  .animate-slow-pulse {
+    animation: slow-pulse 5s infinite;
+  }
+  
+  @keyframes slow-float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .animate-slow-float {
+    animation: slow-float 8s ease-in-out infinite;
+  }
+</style>

@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { MenuItem } from 'primeng/api';
@@ -11,6 +11,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { filter } from 'rxjs/operators';
 
 interface NavItem {
   label: string;
@@ -36,7 +37,7 @@ export class NavbarComponent {
   faBars = faBars;
   faTimes = faTimes;
 
-  // Icon size for mobile menu toggle 
+  // Icon size for mobile menu toggle
   mobileIconSize: SizeProp = 'lg';
 
   isMenuOpen = false;
@@ -60,6 +61,15 @@ export class NavbarComponent {
     { label: 'Security', routerLink: '/services/security' },
   ];
 
+  constructor(private router: Router) {
+    // Subscribe to router events to close menu on navigation
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.closeMenu();
+      });
+  }
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
     // Close services dropdown when closing the menu
@@ -68,11 +78,15 @@ export class NavbarComponent {
     }
   }
 
+  closeMenu() {
+    this.isMenuOpen = false;
+    this.servicesOpen = false;
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     if (window.innerWidth > 768 && this.isMenuOpen) {
-      this.isMenuOpen = false;
-      this.servicesOpen = false;
+      this.closeMenu();
     }
   }
 }

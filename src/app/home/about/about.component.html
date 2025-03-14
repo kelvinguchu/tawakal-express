@@ -1,10 +1,10 @@
 <section class="py-10 bg-[#f8faf8] relative overflow-hidden">
   <!-- Floating elements -->
   <div class="absolute top-20 right-1/4 w-8 h-8 text-tawakal-green opacity-20 animate-spin-slow">
-    <fa-icon [icon]="faCircle" class="w-full h-full"></fa-icon>
+    <fa-icon [icon]="faCircle" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
   </div>
   <div class="absolute bottom-20 left-1/5 w-6 h-6 text-tawakal-blue opacity-20 animate-spin-slow" style="animation-direction: reverse; animation-duration: 15s;">
-    <fa-icon [icon]="faCircle" class="w-full h-full"></fa-icon>
+    <fa-icon [icon]="faCircle" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
   </div>
   
   <div class="container mx-auto px-4">
@@ -12,7 +12,7 @@
     <div class="text-center mb-10 sm:mb-16">
       <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-white/30">
         <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-          <fa-icon [icon]="faGlobe" class="mr-1.5 sm:mr-2 h-3 w-3 sm:h-3.5 sm:w-3.5 text-tawakal-green"></fa-icon>
+          <fa-icon [icon]="faGlobe" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
           International Money Transfer
         </p>
       </div>
@@ -41,7 +41,7 @@
           <div>
             <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center">
               <div class="w-8 sm:w-10 h-8 sm:h-10 rounded-lg bg-tawakal-blue/10 flex items-center justify-center mr-2 sm:mr-3">
-                <fa-icon [icon]="faArrowRight" class="text-tawakal-blue text-sm sm:text-base"></fa-icon>
+                <fa-icon [icon]="faArrowRight" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
               </div>
               Our Journey
             </h3>
@@ -89,7 +89,7 @@
       <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
         <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-white/30">
           <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-            <fa-icon [icon]="faHeart" class="mr-1.5 sm:mr-2 h-3 w-3 sm:h-3.5 sm:w-3.5 text-tawakal-green"></fa-icon>
+            <fa-icon [icon]="faHeart" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
             What Drives Us
           </p>
         </div>
@@ -139,7 +139,7 @@
                    '-rotate-3': i % 2 !== 0
                  }">
               <fa-icon [icon]="value.icon" 
-                      class="h-6 w-6 sm:h-7 sm:w-7"
+                      [size]="valueIconSize"
                       [ngClass]="{
                         'text-tawakal-blue': value.color === 'blue',
                         'text-tawakal-green': value.color === 'green',
@@ -198,7 +198,7 @@
       <div class="text-center mb-6 sm:mb-8">
         <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-blue/10 to-tawakal-green/10 rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-white/30">
           <p class="bg-gradient-to-r from-tawakal-blue to-tawakal-green text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-            <fa-icon [icon]="faMapMarkerAlt" class="mr-1.5 sm:mr-2 h-3 w-3 sm:h-3.5 sm:w-3.5 text-tawakal-blue"></fa-icon>
+            <fa-icon [icon]="faMapMarkerAlt" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-blue"></fa-icon>
             Worldwide Network
           </p>
         </div>
@@ -218,7 +218,7 @@
           <div class="relative z-10">
             <h4 class="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4 flex items-center">
               <div class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-tawakal-green/10 flex items-center justify-center mr-2 sm:mr-3 group-hover:scale-110 transition-transform duration-300">
-                <fa-icon [icon]="faMapMarkerAlt" class="text-tawakal-green text-xs sm:text-sm"></fa-icon>
+                <fa-icon [icon]="faMapMarkerAlt" [size]="smallIconSize" class="text-tawakal-green"></fa-icon>
               </div>
               Branches & Agents
             </h4>
@@ -242,7 +242,7 @@
           <div class="relative z-10">
             <h4 class="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4 flex items-center">
               <div class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-tawakal-blue/10 flex items-center justify-center mr-2 sm:mr-3 group-hover:scale-110 transition-transform duration-300">
-                <fa-icon [icon]="faGlobe" class="text-tawakal-blue text-xs sm:text-sm"></fa-icon>
+                <fa-icon [icon]="faGlobe" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
               </div>
               Partner Countries
             </h4>
@@ -269,10 +269,8 @@
         
         <div class="relative z-10">
           <div class="flex justify-center mb-4 sm:mb-6">
-            <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-tawakal-green/20 to-tawakal-blue/20 flex items-center justify-center">
-              <div class="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-tawakal-green to-tawakal-blue flex items-center justify-center">
-                <fa-icon [icon]="faCheck" class="text-white text-sm sm:text-xl"></fa-icon>
-              </div>
+            <div class="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-tawakal-green to-tawakal-blue flex items-center justify-center">
+              <fa-icon [icon]="faCheck" [size]="mediumIconSize" class="text-white"></fa-icon>
             </div>
           </div>
           
@@ -285,16 +283,16 @@
           
           <a routerLink="/about" class="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group text-sm sm:text-base">
             Discover Our Full Story
-            <fa-icon [icon]="faArrowRight" class="ml-2 group-hover:translate-x-1 transition-transform duration-300"></fa-icon>
+            <fa-icon [icon]="faArrowRight" [size]="smallIconSize" class="ml-2 group-hover:translate-x-1 transition-transform duration-300"></fa-icon>
           </a>
           
           <div class="mt-4 sm:mt-6 flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-2 sm:space-y-0">
             <div class="flex items-center text-xs sm:text-sm text-gray-500">
-              <fa-icon [icon]="faLock" class="mr-1.5 text-tawakal-green"></fa-icon>
+              <fa-icon [icon]="faLock" [size]="smallIconSize" class="mr-1.5 text-tawakal-green"></fa-icon>
               Secure & Reliable
             </div>
             <div class="flex items-center text-xs sm:text-sm text-gray-500">
-              <fa-icon [icon]="faClock" class="mr-1.5 text-tawakal-blue"></fa-icon>
+              <fa-icon [icon]="faClock" [size]="smallIconSize" class="mr-1.5 text-tawakal-blue"></fa-icon>
               24/7 Support
             </div>
           </div>

@@ -70,7 +70,7 @@
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 relative z-10">
       <!-- Main navigation items -->
       <ng-container *ngFor="let item of navItems">
-        <a pRipple [routerLink]="item.routerLink" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 transform hover:translate-x-1 relative overflow-hidden group">
+        <a pRipple [routerLink]="item.routerLink" (click)="closeMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 transform hover:translate-x-1 relative overflow-hidden group">
           <span class="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-tawakal-green to-tawakal-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           {{item.label}}
         </a>
@@ -98,7 +98,7 @@
           <div class="absolute inset-0 bg-gradient-to-br from-white/90 to-white/80 rounded-md pointer-events-none"></div>
           <div class="px-4 space-y-1 relative z-10">
             <ng-container *ngFor="let service of serviceItems">
-              <a pRipple [routerLink]="service.routerLink" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1 relative z-10">
+              <a pRipple [routerLink]="service.routerLink" (click)="closeMenu()" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1 relative z-10">
                 {{service.label}}
               </a>
             </ng-container>
@@ -107,7 +107,7 @@
       </div>
       
       <!-- Contact button -->
-      <a pRipple routerLink="/contact" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 mt-3 mx-2 transform hover:-translate-y-0.5 relative group">
+      <a pRipple routerLink="/contact" (click)="closeMenu()" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 mt-3 mx-2 transform hover:-translate-y-0.5 relative group">
         <span class="absolute inset-0 rounded-md bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="relative z-10">Contact</span>
       </a>

@@ -1,116 +1,53 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
-  faHandshake,
-  faShieldHalved,
-  faBolt,
-  faUsers,
   faGlobe,
+  faHandshake,
   faHeart,
+  faShieldHalved,
+  faUsers,
   faArrowRight,
-  faCheck,
-  faClock,
-  faMoneyBill,
-  faLock,
-  faMapMarkerAlt,
-  faCircle,
+  faBolt,
 } from '@fortawesome/free-solid-svg-icons';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
-  selector: 'app-about',
+  selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, RouterLink, FontAwesomeModule],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.css',
+  imports: [
+    CommonModule,
+    RouterModule,
+    ButtonModule,
+    RippleModule,
+    FontAwesomeModule,
+  ],
+  templateUrl: './hero.component.html',
+  styleUrl: './hero.component.css',
 })
-export class AboutComponent {
+export class HeroComponent {
   // Font Awesome icons
-  faHandshake = faHandshake;
-  faShieldHalved = faShieldHalved;
-  faBolt = faBolt;
-  faUsers = faUsers;
   faGlobe = faGlobe;
+  faHandshake = faHandshake;
   faHeart = faHeart;
+  faShieldHalved = faShieldHalved;
+  faUsers = faUsers;
   faArrowRight = faArrowRight;
-  faCheck = faCheck;
-  faClock = faClock;
-  faMoneyBill = faMoneyBill;
-  faLock = faLock;
-  faMapMarkerAlt = faMapMarkerAlt;
-  faCircle = faCircle;
+  faBolt = faBolt;
 
   // Icon sizes
   smallIconSize: SizeProp = 'sm';
   mediumIconSize: SizeProp = 'lg';
   valueIconSize: SizeProp = '1x';
 
-  // Countries with direct branches
-  branchCountries = [
-    'Australia',
-    'Canada',
-    'Djibouti',
-    'Ethiopia',
-    'Kenya',
-    'Norway',
-    'Somalia',
-    'South Sudan',
-    'Sudan',
-    'Sweden',
-    'UAE',
-    'Uganda',
-    'UK',
-    'USA',
-  ];
+  // Years of experience
+  yearsOfExperience = 40;
 
-  // Partner countries
-  partnerCountries = [
-    'Bangladesh',
-    'Egypt',
-    'India',
-    'Indonesia',
-    'Jordan',
-    'Kuwait',
-    'Lebanon',
-    'Morocco',
-    'Nepal',
-    'Pakistan',
-    'Philippines',
-    'Sri Lanka',
-  ];
-
-  features = [
-    {
-      title: 'Global Reach',
-      description:
-        'Send money to over 50 countries worldwide with competitive exchange rates',
-      icon: 'globe',
-      color: 'tawakal-blue',
-    },
-    {
-      title: 'Fast Transfers',
-      description: 'Most transfers arrive within minutes, not days',
-      icon: 'clock',
-      color: 'tawakal-green',
-    },
-    {
-      title: 'Secure & Reliable',
-      description: 'Bank-level security with 24/7 transaction monitoring',
-      icon: 'shield-check',
-      color: 'tawakal-red',
-    },
-    {
-      title: 'Low Fees',
-      description: 'Transparent pricing with no hidden charges',
-      icon: 'cash',
-      color: 'emerald-500',
-    },
-  ];
-
-  // Core values data
-  coreValues = [
+  // Company values for display - copied from about.component.ts
+  companyValues = [
     {
       icon: faHandshake,
       title: 'Trust & Reliability',

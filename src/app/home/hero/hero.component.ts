@@ -28,6 +28,7 @@ import {
   faShield,
   faCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-hero',
@@ -58,6 +59,11 @@ export class HeroComponent implements AfterViewInit {
   faChartLine = faChartLine;
   faShield = faShield;
   faCircle = faCircle;
+
+  // Icon sizes
+  smallIconSize: SizeProp = 'sm';
+  mediumIconSize: SizeProp = 'lg';
+  rateIconSize: SizeProp = '1x';
 
   // ViewChild to get reference to the 3D card container
   @ViewChild('card3dContainer') card3dContainer?: ElementRef;
