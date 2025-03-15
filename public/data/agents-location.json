@@ -1,0 +1,584 @@
+[
+  {
+    "locationName": "Afgooye - Soafgc",
+    "phone": "+252615827455",
+    "city": "Afgooye",
+    "note": "Afgooye Market"
+  },
+  {
+    "locationName": "Afgooye - Sofgyl",
+    "phone": "+252615827455",
+    "city": "Afgooye",
+    "note": "Area Gobka, Dhagaxtuur District"
+  },
+  {
+    "locationName": "Tawakal Afmadow Soafmd",
+    "phone": "+252617558411",
+    "city": "Afmadow",
+    "note": "Main Road Near Meat Suaq"
+  },
+  {
+    "locationName": "Awrboogays - Soawrg",
+    "phone": "+252634916614",
+    "city": "Awrboogays",
+    "note": "City Main Market"
+  },
+  {
+    "locationName": "Bacadweyn - Sobacx",
+    "phone": "+252907722388",
+    "city": "Bacadweyn",
+    "note": "Opposite Hotel Salaama"
+  },
+  {
+    "locationName": "Tawakal Baran",
+    "phone": "+252907658555",
+    "city": "Badhan",
+    "note": "Sanaag"
+  },
+  {
+    "locationName": "Balanbal - Soblbg",
+    "phone": "+252615519576",
+    "city": "Balanbal",
+    "note": "Main Road"
+  },
+  {
+    "locationName": "Balcad - Soblcl",
+    "phone": "+252615553055",
+    "city": "Balcad",
+    "note": "City Central Opposite Masjid Jama"
+  },
+  {
+    "locationName": "Bandiiradley - Sobndr",
+    "phone": "+252615821319",
+    "city": "Bandiiradley",
+    "note": "City Entry"
+  },
+  {
+    "locationName": "Baraawe - Sobrwl",
+    "phone": "+252615551416",
+    "city": "Baraawe",
+    "note": "Near Bus Stop Kuunya Baron"
+  },
+  {
+    "locationName": "Bardhere - SobarB",
+    "phone": "+252615812712",
+    "city": "Bardhere",
+    "note": "Intersection to Main Market"
+  },
+  {
+    "locationName": "Baxdo - Sobaxa",
+    "phone": "+252615572460",
+    "city": "Baxdo",
+    "note": "Opposite Masjid Jamac"
+  },
+  {
+    "locationName": "Baydhabo - Sobayd",
+    "phone": "+252615338333",
+    "city": "Baydhabo",
+    "note": "Near Central Bank"
+  },
+  {
+    "locationName": "Sombank/Tawakal Baydhabo",
+    "phone": "+252615338333",
+    "city": "Baydhabo",
+    "note": "Near Central Bank"
+  },
+  {
+    "locationName": "Balad-Xaawo - Soblulc",
+    "phone": "+252615554956",
+    "city": "Beled Hawo",
+    "note": "Opposite Baledxawo Police Station"
+  },
+  {
+    "locationName": "Beledweyne - Soblwl",
+    "phone": "+252615597921",
+    "city": "Beledweyne",
+    "note": "Jayga Road Near Carwo Hufan"
+  },
+  {
+    "locationName": "Berbera - Soberq",
+    "phone": "+252634446212",
+    "city": "Berbera",
+    "note": "3 Geed Area, Near Dahabshil Express"
+  },
+  {
+    "locationName": "Boocame - Soboca",
+    "phone": "+252907665888",
+    "city": "Bocame",
+    "note": "Boocame-Area Golis"
+  },
+  {
+    "locationName": "Bosaso - Sobosc",
+    "phone": "+252907797682",
+    "city": "Bosaso",
+    "note": "Near Hotel Safari Behind Carwo City Gate"
+  },
+  {
+    "locationName": "Tawakal Bosaso Suuq",
+    "phone": "+252906414343",
+    "city": "Bosaso",
+    "note": "Near Hotel Safari Behind Carwo City Gate"
+  },
+  {
+    "locationName": "Tawakal Bosaso Airport Rd",
+    "phone": "+252906414343",
+    "city": "Bosaso",
+    "note": "Airport Road, Opposite Juba Hotel"
+  },
+  {
+    "locationName": "Buaale - Sobuaa",
+    "phone": "+252615943352",
+    "city": "Buaale",
+    "note": "Main Road Inside Tawakal Shop"
+  },
+  {
+    "locationName": "Buhodle - Sobuhm",
+    "phone": "+252634492058",
+    "city": "Buhodle",
+    "note": "Main Road, Abdi Gurey Plaza"
+  },
+  {
+    "locationName": "Bulomareer - Sobblmc",
+    "phone": "+252615582200",
+    "city": "Bulomareer",
+    "note": "Opposite Masjid Beder"
+  },
+  {
+    "locationName": "Burco City Center - Soburm",
+    "phone": "+252634436006",
+    "city": "Burco",
+    "note": "Downtown, Next Masjidu Rahma"
+  },
+  {
+    "locationName": "Burco East - Soburb",
+    "phone": "+252634945363",
+    "city": "Burco",
+    "note": "October Village, Adan Ade Area"
+  },
+  {
+    "locationName": "Bursaalax - Sobslg",
+    "phone": "+252907799913",
+    "city": "Bursaalax",
+    "note": "Inside Sheikh Muse Shop"
+  },
+  {
+    "locationName": "Burtinle - Soburt",
+    "phone": "+252907731918",
+    "city": "Burtinle",
+    "note": "Next to Salama Bank"
+  },
+  {
+    "locationName": "Buula Burte - Sobblbt",
+    "phone": "+25261885374",
+    "city": "Buula Burte",
+    "note": "City Centerka, Hiiran"
+  },
+  {
+    "locationName": "Buurhakaba - Sobhak",
+    "phone": "+252615519547",
+    "city": "Buurhakaba",
+    "note": "Opposite Bandoola Mall"
+  },
+  {
+    "locationName": "Cabudwaaq - Socwqd",
+    "phone": "+252615519576",
+    "city": "Cabudwaaq",
+    "note": "Opposite Al Furqaan Building Material Company"
+  },
+  {
+    "locationName": "Cadaado - Socdol",
+    "phone": "+252615996004",
+    "city": "Cadaado",
+    "note": "Opposite Carwo Jewelry"
+  },
+  {
+    "locationName": "Ceeldheer - Soceel",
+    "phone": "+252615966027",
+    "city": "Ceeldheer",
+    "note": "Near Barxada-El Dher"
+  },
+  {
+    "locationName": "Ceelwaaq - Socwqc",
+    "phone": "+252615185414",
+    "city": "Ceelwaaq",
+    "note": "Inside Suuq Busaar"
+  },
+  {
+    "locationName": "Ceerigaabo - Socerk",
+    "phone": "+252634202292",
+    "city": "Ceerigaabo",
+    "note": "Near Jamie Mosque, Erigabo"
+  },
+  {
+    "locationName": "Ceerigaabo - Socerb",
+    "phone": "+252634202292",
+    "city": "Ceerigaabo",
+    "note": "Ceerigaabo-Main Road"
+  },
+  {
+    "locationName": "Tawakal Dangoray",
+    "phone": "+252907797682",
+    "city": "Dangoroyo",
+    "note": "Dangoray"
+  },
+  {
+    "locationName": "Dhabad - Somdhc",
+    "phone": "+252615225112",
+    "city": "Dhabad",
+    "note": "City Entry, Mudug"
+  },
+  {
+    "locationName": "Tawakal Dhahar",
+    "phone": "+252907792201",
+    "city": "Dhahar",
+    "note": "Main Market"
+  },
+  {
+    "locationName": "Dharkeyn Geenyo",
+    "phone": "+252634498872",
+    "city": "Dharkeyn",
+    "note": "Dharkeyn Geenyo"
+  },
+  {
+    "locationName": "Tawakal Dhoobley Sodhoc",
+    "phone": "+252618299991",
+    "city": "Dhoobley",
+    "note": "Near Police Station"
+  },
+  {
+    "locationName": "Dhusamareb - Sodhml",
+    "phone": "+252615535255",
+    "city": "Dhusamareb",
+    "note": "City Center, Galgaduud"
+  },
+  {
+    "locationName": "Diinsoor - Sodinl",
+    "phone": "+252615519613",
+    "city": "Diinsoor",
+    "note": "Waaberi Near Masaaidja Jaamaca"
+  },
+  {
+    "locationName": "Doolow - Sodlc",
+    "phone": "+252616011797",
+    "city": "Doolow",
+    "note": "Breach Road"
+  },
+  {
+    "locationName": "Gabiley - Sogabm",
+    "phone": "+25224463594",
+    "city": "Gabiley",
+    "note": "Seed Pharmacy, Opp Milk Market"
+  },
+  {
+    "locationName": "Galdogob - Sogald",
+    "phone": "+252907759610",
+    "city": "Galdogob",
+    "note": "Opposite Masjid Jama, Tawakal Plaza Building"
+  },
+  {
+    "locationName": "Galinsor - Soglsr",
+    "phone": "+252615821247",
+    "city": "Galinsor",
+    "note": "City Entry"
+  },
+  {
+    "locationName": "Galkayo - Sogka",
+    "phone": "+252907795701",
+    "city": "Galkayo",
+    "note": "Galkayo, Mudug, Sombank Building"
+  },
+  {
+    "locationName": "Galkayo Galmudug - Sobrxg",
+    "phone": "+252907750550",
+    "city": "Galkayo",
+    "note": "Opposite Masjidka Suna, Galmudug"
+  },
+  {
+    "locationName": "Garbahaarey - Soghrc",
+    "phone": "+252615847199",
+    "city": "Garbahaarey",
+    "note": "Baledxawo Bus Station, Gedo"
+  },
+  {
+    "locationName": "Garowe - Sogorc",
+    "phone": "+252907794941",
+    "city": "Garowe",
+    "note": "Next to Nabad Mall, Nugaal"
+  },
+  {
+    "locationName": "God'aalo- Sogdal",
+    "phone": "+252907790825",
+    "city": "God'aalo",
+    "note": "Near City Souq, Sool"
+  },
+  {
+    "locationName": "Godinlabe - Sogodl",
+    "phone": "+252615844014",
+    "city": "Godinlabe",
+    "note": "City Center, Galgaduud"
+  },
+  {
+    "locationName": "Guriceel - Sodhsl",
+    "phone": "+252615983010",
+    "city": "Guriceel",
+    "note": "Opposite University of Savanna, Galgaduud"
+  },
+  {
+    "locationName": "Hargeysa HQ - Soharq",
+    "phone": "+252634022228",
+    "city": "Hargeisa",
+    "note": "Downtown, Opp. Oriental Hotel"
+  },
+  {
+    "locationName": "Hargeysa HQMOB",
+    "phone": "+252634427777",
+    "city": "Hargeisa",
+    "note": "New Hargeisa"
+  },
+  {
+    "locationName": "Hargaysa Xaafada Calaamada - Soharg",
+    "phone": "+252634861360",
+    "city": "Hargeysa",
+    "note": "Gacanta"
+  },
+  {
+    "locationName": "Hargeysa Laanta Koodbuur - Sohark",
+    "phone": "+252633395061",
+    "city": "Hargeysa",
+    "note": "Xaafada Koodbuur, Hargeysa"
+  },
+  {
+    "locationName": "Hargeysa Xero Awr - Soharx",
+    "phone": "+25224007948",
+    "city": "Hargeysa",
+    "note": "Opp. Ali Mawel Market, Next Qofal Garage"
+  },
+  {
+    "locationName": "Jalalaqsi - Sojalj",
+    "phone": "+252615542469",
+    "city": "Jalalaqsi",
+    "note": "C DA Road, Hiraan"
+  },
+  {
+    "locationName": "Jalam - Sojamc",
+    "phone": "+252907830337",
+    "city": "Jalam",
+    "note": "City Entry, Mudug"
+  },
+  {
+    "locationName": "Jamaame - Sojaml",
+    "phone": "+252615590623",
+    "city": "Jamaame",
+    "note": "City Central, Lower Jubba"
+  },
+  {
+    "locationName": "Jariiban - Sojrbg",
+    "phone": "+252907790591",
+    "city": "Jariiban",
+    "note": "Next to Amal Express, Mudug"
+  },
+  {
+    "locationName": "Jawhar - Sojawh",
+    "phone": "+252615561020",
+    "city": "Jawhar",
+    "note": "District Hant Wadaag, Middle Shebelle"
+  },
+  {
+    "locationName": "Tawakal Kamsuuma - Sokmsu",
+    "phone": "+252615563536",
+    "city": "Kamsuuma",
+    "note": "Opp Meat Market, Lower Juba"
+  },
+  {
+    "locationName": "Mogadishu - Kaxda - Sokaxa",
+    "phone": "+252615503665",
+    "city": "Kaxda",
+    "note": "Carwo Shaaris Area, Mogadishu"
+  },
+  {
+    "locationName": "Tawakal Express/ Sombank Kismaayo",
+    "phone": "+252619723660",
+    "city": "Kismaayo",
+    "note": "Lower Jubba"
+  },
+  {
+    "locationName": "Lascanod - Solasd",
+    "phone": "+252634916614",
+    "city": "Lascanod",
+    "note": "East Masjid Ali Barre"
+  },
+  {
+    "locationName": "Luuq - Soluqc",
+    "phone": "+252615339000",
+    "city": "Luuq",
+    "note": "Next to Masjid Raxma, Maid Road"
+  },
+  {
+    "locationName": "Marka - Somarl",
+    "phone": "+252615573157",
+    "city": "Marka",
+    "note": "Near Bus Stop, Lower Shbelle"
+  },
+  {
+    "locationName": "Mobile - Mobile",
+    "phone": "+2526157053333",
+    "city": "Mogadisho",
+    "note": "Sahal EKaafi, Taaj"
+  },
+  {
+    "locationName": "Tawakal Mogadisho",
+    "phone": "+252615546198",
+    "city": "Mogadisho",
+    "note": "Airport Office"
+  },
+  {
+    "locationName": "Mogadisho Ceelasha Biyaha - Soclby",
+    "phone": "+252616131590",
+    "city": "Mogadisho",
+    "note": "Souq Safa, Opposite Water Company, Ceelasha Biyaha"
+  },
+  {
+    "locationName": "Mogadishu Gubta/Barwaaqo - Sobwql",
+    "phone": "+252615562586",
+    "city": "Mogadisho",
+    "note": "Gubta District Near Masjid Ciise Cabdi"
+  },
+  {
+    "locationName": "Mogadishu KM4 - Sotrec",
+    "phone": "+252615546198",
+    "city": "Mogadisho",
+    "note": "Triano Makka Al Mukarama Highway"
+  },
+  {
+    "locationName": "Mogadishu KM4 - Sokm4",
+    "phone": "+252615546198",
+    "city": "Mogadisho",
+    "note": "Triano Makka Al Mukarama Highway"
+  },
+  {
+    "locationName": "Mogadishu Madina - Somadl",
+    "phone": "+252615572203",
+    "city": "Mogadisho",
+    "note": "Madina District"
+  },
+  {
+    "locationName": "Mogadishu Suqbacaad - Sosbac",
+    "phone": "+252615509125",
+    "city": "Mogadisho",
+    "note": "Masjid Abuukar Cumar Cadaan, Suqbacaad"
+  },
+  {
+    "locationName": "Mogadishu Suuqa Xoolaha - Sohurl",
+    "phone": "+252615555454",
+    "city": "Mogadisho",
+    "note": "Meat Market Road, Suuqa Xoolaha"
+  },
+  {
+    "locationName": "Mogadishu Xamarweyne Citymall",
+    "phone": "+25250862020",
+    "city": "Mogadisho",
+    "note": "Afar-Irdood Street, City Mall Hamarweyne"
+  },
+  {
+    "locationName": "Mogadishu Bakaaro HQ - Somuqs",
+    "phone": "+252611007793",
+    "city": "Mogadisho",
+    "note": "Near Masjidka Abuu Hureyda Area"
+  },
+  {
+    "locationName": "Mogadishu Kaaran - Sokrat",
+    "phone": "+252619998891",
+    "city": "Mogadisho",
+    "note": "Karaan District Zone Faanoole"
+  },
+  {
+    "locationName": "Mugadisho Gubta - Sogubs",
+    "phone": "+252615562586",
+    "city": "Mogadisho",
+    "note": "Xaafada Gubta"
+  },
+  {
+    "locationName": "Tawakale Express/ Sombank Qardho",
+    "phone": "+252907797815",
+    "city": "Qardho",
+    "note": "Near Jamie Mosque"
+  },
+  {
+    "locationName": "Tawakal Qardho",
+    "phone": "+252907797815",
+    "city": "Qarxis",
+    "note": "Near Jamie Mosque"
+  },
+  {
+    "locationName": "Qoryooley - Soqras",
+    "phone": "+252615585899",
+    "city": "Qoryooley",
+    "note": "Near Main Market Inside Sholley Pharmacy"
+  },
+  {
+    "locationName": "Saakow - Sosakw",
+    "phone": "+252615828800",
+    "city": "Saakow",
+    "note": "Near Masjid Huda, Middle Juba"
+  },
+  {
+    "locationName": "Saaxo - Sosaxc",
+    "phone": "+252907759004",
+    "city": "Saaxo",
+    "note": "City Entry, Mudug"
+  },
+  {
+    "locationName": "Sarmaanyo",
+    "phone": "+252907790849",
+    "city": "Sarmaanyo",
+    "note": "City Center- Adan Ali Artan Store"
+  },
+  {
+    "locationName": "Taleex",
+    "phone": "+252907790854",
+    "city": "Taleex",
+    "note": "Taleex-Main Road-Caweer Store"
+  },
+  {
+    "locationName": "Turdibi - Etglka",
+    "phone": "+251907795701",
+    "city": "Turdibi",
+    "note": "Turdibi, Doollo, Kilil 5, Ethiopia"
+  },
+  {
+    "locationName": "Wajaale - Sowamb",
+    "phone": "+252633089934",
+    "city": "Wajaale",
+    "note": "Wajaale Somalia"
+  },
+  {
+    "locationName": "Xarardheere - Soxdhl",
+    "phone": "+252619307766",
+    "city": "Xarardheere",
+    "note": "Milk Souq Near Dukaan Mohamud"
+  },
+  {
+    "locationName": "Xarfo - Soxarx",
+    "phone": "+25290769783",
+    "city": "Xarfo",
+    "note": "Next to Abdi Gane Restaurant"
+  },
+  {
+    "locationName": "Xeraale - Soxerc",
+    "phone": "+252615136200",
+    "city": "Xeraale",
+    "note": "City Central, Galgaduud"
+  },
+  {
+    "locationName": "Tawakal Express Xudun",
+    "phone": "+252634951255",
+    "city": "Xudun",
+    "note": "Opposite Cell Maqo, Sool"
+  },
+  {
+    "locationName": "Xudur - Soxdra",
+    "phone": "+252615176395",
+    "city": "Xudun",
+    "note": "Opposite Orientation, Bakool"
+  }
+]

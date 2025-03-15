@@ -47,7 +47,7 @@ export class NavbarComponent {
   navItems: NavItem[] = [
     { label: 'Home', routerLink: '/' },
     { label: 'About Us', routerLink: '/about' },
-    { label: 'Agents', routerLink: '/demographic-report' },
+    { label: 'Agents', routerLink: '/agents' },
     { label: 'Careers', routerLink: '/careers' },
   ];
 
