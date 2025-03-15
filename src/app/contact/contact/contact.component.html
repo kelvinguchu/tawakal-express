@@ -1,0 +1,247 @@
+<section class="bg-[#f8faf8] min-h-screen py-6 sm:py-8 md:py-12">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <!-- Header -->
+    <div class="text-center my-12 sm:my-8 md:my-8">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-2 sm:mb-3">
+        Contact <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Us</span>
+      </h1>
+      <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
+        Our team is ready to assist you with any questions or concerns.
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+        <!-- Contact Information -->
+        <div class="md:col-span-1 order-2 md:order-1">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 h-full">
+            <h2 class="text-base sm:text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-100">Contact Details</h2>
+            
+            <div class="space-y-4 sm:space-y-5">
+              <div class="flex items-start">
+                <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green flex-shrink-0">
+                  <fa-icon [icon]="faEnvelope" class="text-sm sm:text-base"></fa-icon>
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-xs sm:text-sm font-medium text-gray-700">Email</h3>
+                  <p class="text-xs sm:text-sm text-tawakal-blue">customercare&#64;tawakal.net</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green flex-shrink-0">
+                  <fa-icon [icon]="faPhone" class="text-sm sm:text-base"></fa-icon>
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-xs sm:text-sm font-medium text-gray-700">Phone</h3>
+                  <p class="text-xs sm:text-sm">+252 907 828 689</p>
+                  <p class="text-xs text-gray-500 flex items-center mt-1">
+                    <fa-icon [icon]="faMessage" class="mr-1 text-xs"></fa-icon>
+                    WhatsApp/Local Call
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green flex-shrink-0">
+                  <fa-icon [icon]="faLocationDot" class="text-sm sm:text-base"></fa-icon>
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-xs sm:text-sm font-medium text-gray-700">Address</h3>
+                  <p class="text-xs sm:text-sm">123 Main Street<br>Minneapolis, MN 55454<br>United States</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green flex-shrink-0">
+                  <fa-icon [icon]="faClock" class="text-sm sm:text-base"></fa-icon>
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-xs sm:text-sm font-medium text-gray-700">Hours</h3>
+                  <p class="text-xs sm:text-sm">Monday - Friday: 9am - 5pm<br>Saturday: 10am - 2pm<br>Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Support Team Contact Button -->
+            <div class="mt-5 pt-4 border-t border-gray-100">
+              <a 
+                href="https://wa.me/252907828689" 
+                target="_blank" 
+                class="flex items-center justify-center w-full px-4 py-2.5 sm:py-3 bg-green-500 text-white text-sm font-medium rounded-lg shadow-sm hover:bg-green-600 transition-colors duration-200"
+              >
+                <fa-icon [icon]="faMessage" class="mr-2"></fa-icon>
+                WhatsApp Support
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="md:col-span-2 order-1 md:order-2 mb-5 md:mb-0">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6">
+            <h2 class="text-base sm:text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-100">Send a Message</h2>
+            
+            <form (ngSubmit)="submitForm()" #contactForm="ngForm">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+                <!-- Name Field -->
+                <div>
+                  <label for="name" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    [(ngModel)]="contactData.name"
+                    required
+                    #nameInput="ngModel"
+                    class="w-full px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-tawakal-green focus:border-tawakal-green"
+                    [ngClass]="{'border-red-500': nameInput.invalid && (nameInput.dirty || nameInput.touched || isSubmitted)}"
+                    placeholder="Your full name"
+                  />
+                  <p *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched || isSubmitted)" class="mt-1 text-red-500 text-xs">
+                    Please enter your name
+                  </p>
+                </div>
+                
+                <!-- Email Field -->
+                <div>
+                  <label for="email" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    [(ngModel)]="contactData.email"
+                    required
+                    email
+                    #emailInput="ngModel"
+                    class="w-full px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-tawakal-green focus:border-tawakal-green"
+                    [ngClass]="{'border-red-500': emailInput.invalid && (emailInput.dirty || emailInput.touched || isSubmitted)}"
+                    placeholder="Your email address"
+                  />
+                  <p *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched || isSubmitted)" class="mt-1 text-red-500 text-xs">
+                    Please enter a valid email address
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Subject Field -->
+              <div class="mb-3 sm:mb-4">
+                <label for="subject" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  [(ngModel)]="contactData.subject"
+                  required
+                  #subjectInput="ngModel"
+                  class="w-full px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-tawakal-green focus:border-tawakal-green"
+                  [ngClass]="{'border-red-500': subjectInput.invalid && (subjectInput.dirty || subjectInput.touched || isSubmitted)}"
+                  placeholder="What is this regarding?"
+                />
+                <p *ngIf="subjectInput.invalid && (subjectInput.dirty || subjectInput.touched || isSubmitted)" class="mt-1 text-red-500 text-xs">
+                  Please enter a subject
+                </p>
+              </div>
+              
+              <!-- Message Field -->
+              <div class="mb-4 sm:mb-5">
+                <label for="message" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  [(ngModel)]="contactData.message"
+                  required
+                  #messageInput="ngModel"
+                  rows="4"
+                  class="w-full px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-tawakal-green focus:border-tawakal-green"
+                  [ngClass]="{'border-red-500': messageInput.invalid && (messageInput.dirty || messageInput.touched || isSubmitted)}"
+                  placeholder="How can we help you?"
+                ></textarea>
+                <p *ngIf="messageInput.invalid && (messageInput.dirty || messageInput.touched || isSubmitted)" class="mt-1 text-red-500 text-xs">
+                  Please enter your message
+                </p>
+              </div>
+              
+              <!-- Submit Button -->
+              <div class="flex justify-end">
+                <button
+                  type="submit"
+                  [disabled]="isLoading"
+                  class="px-5 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white text-sm font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 flex items-center"
+                >
+                  <span *ngIf="!isLoading">Send Message</span>
+                  <span *ngIf="isLoading">Sending...</span>
+                </button>
+              </div>
+            </form>
+            
+            <!-- Success Message -->
+            <div *ngIf="isSuccess" class="mt-4 bg-green-50 border border-green-100 rounded-lg p-3 sm:p-4">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-sm font-medium text-green-800">Message Sent!</h3>
+                  <p class="text-xs sm:text-sm text-green-700">Thank you for contacting us.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Error Message -->
+            <div *ngIf="isError" class="mt-4 bg-red-50 border border-red-100 rounded-lg p-3 sm:p-4">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-sm font-medium text-red-800">Error</h3>
+                  <p class="text-xs sm:text-sm text-red-700">Please try again later.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- FAQs Section -->
+      <div class="mt-8 sm:mt-12 md:mt-16">
+        <div class="text-center mb-6 sm:mb-8">
+          <h2 class="text-lg sm:text-xl md:text-3xl font-bold text-gray-800 mb-2 sm:mb-3">
+            Frequently Asked <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Questions</span>
+          </h2>
+          <div class="w-16 sm:w-20 h-1 bg-gradient-to-r from-tawakal-green to-tawakal-blue rounded-full mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+          <div *ngFor="let faq of faqItems" class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-5 hover:shadow-md transition-shadow duration-300 group">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green group-hover:bg-tawakal-green/20 transition-colors duration-300">
+                  <fa-icon [icon]="faq.icon" class="text-sm sm:text-base"></fa-icon>
+                </div>
+              </div>
+              <div class="ml-3 sm:ml-4">
+                <h3 class="text-sm sm:text-base font-semibold text-gray-800 mb-1 sm:mb-2 group-hover:text-tawakal-green transition-colors duration-300">{{ faq.question }}</h3>
+                <p class="text-xs sm:text-sm text-gray-600">{{ faq.answer }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-6 sm:mt-8">
+          <a routerLink="/contact" class="inline-flex items-center text-tawakal-blue hover:text-tawakal-green transition-colors duration-200 text-sm">
+            <span>Need more help?</span>
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
