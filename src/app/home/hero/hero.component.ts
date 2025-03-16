@@ -6,29 +6,39 @@ import {
   Inject,
   PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { isPlatformBrowser } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faCheck,
-  faDownload,
-  faMapMarkerAlt,
-  faArrowRight,
-  faLock,
-  faGlobe,
-  faDollarSign,
-  faPoundSign,
-  faEuroSign,
-  faStar,
-  faArrowUp,
-  faChartLine,
-  faShield,
-  faCircle,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+
+// Interface for exchange rate data
+interface ExchangeRate {
+  from: string;
+  to: string;
+  rate: number;
+  change: number;
+  trend: string;
+  icon: string;
+  color: string;
+  duration: string;
+  delay?: string;
+}
+
+// Interface for country data
+interface Country {
+  name: string;
+  highlight: boolean;
+}
+
+// Interface for trust indicator data
+interface TrustIndicator {
+  icon: string;
+  text: string;
+  color: string;
+}
 
 @Component({
   selector: 'app-hero',
@@ -39,28 +49,13 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
     ButtonModule,
     RippleModule,
     FontAwesomeModule,
+    FontAwesomeIconsModule,
   ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css',
 })
 export class HeroComponent implements AfterViewInit {
-  // Font Awesome icons
-  faCheck = faCheck;
-  faDownload = faDownload;
-  faMapMarkerAlt = faMapMarkerAlt;
-  faArrowRight = faArrowRight;
-  faLock = faLock;
-  faGlobe = faGlobe;
-  faDollarSign = faDollarSign;
-  faPoundSign = faPoundSign;
-  faEuroSign = faEuroSign;
-  faStar = faStar;
-  faArrowUp = faArrowUp;
-  faChartLine = faChartLine;
-  faShield = faShield;
-  faCircle = faCircle;
-
-  // Icon sizes
+  // Icon sizes configuration
   smallIconSize: SizeProp = 'sm';
   mediumIconSize: SizeProp = 'lg';
   rateIconSize: SizeProp = '1x';
@@ -68,15 +63,23 @@ export class HeroComponent implements AfterViewInit {
   // ViewChild to get reference to the 3D card container
   @ViewChild('card3dContainer') card3dContainer?: ElementRef;
 
+  // Helper method to convert icon names to kebab case
+  getIconName(iconName: string): string {
+    const nameWithoutPrefix = iconName.substring(2);
+    return nameWithoutPrefix
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase();
+  }
+
   // Currency exchange rates for display
-  exchangeRates = [
+  exchangeRates: ExchangeRate[] = [
     {
       from: 'USD',
       to: 'KES',
       rate: 128.45,
       change: 0.2,
       trend: 'up',
-      icon: faDollarSign,
+      icon: 'faDollarSign',
       color: 'green',
       duration: '8s',
     },
@@ -86,7 +89,7 @@ export class HeroComponent implements AfterViewInit {
       rate: 72.45,
       change: 1.5,
       trend: 'up',
-      icon: faPoundSign,
+      icon: 'faPoundSign',
       color: 'blue',
       duration: '7s',
       delay: '0.5s',
@@ -94,7 +97,7 @@ export class HeroComponent implements AfterViewInit {
   ];
 
   // Countries available for money transfer
-  countries = [
+  countries: Country[] = [
     { name: 'Somalia', highlight: false },
     { name: 'Kenya', highlight: false },
     { name: 'UAE', highlight: true },
@@ -106,9 +109,13 @@ export class HeroComponent implements AfterViewInit {
   stars = Array(5).fill(0);
 
   // Trust indicators for display
-  trustIndicators = [
-    { icon: faStar, text: '4.9/5 (2.3k reviews)', color: 'text-yellow-400' },
-    { icon: faLock, text: 'Secure Transactions', color: 'text-tawakal-green' },
+  trustIndicators: TrustIndicator[] = [
+    { icon: 'faStar', text: '4.9/5 (2.3k reviews)', color: 'text-yellow-400' },
+    {
+      icon: 'faLock',
+      text: 'Secure Transactions',
+      color: 'text-tawakal-green',
+    },
   ];
 
   // Number of particles to display
@@ -126,7 +133,7 @@ export class HeroComponent implements AfterViewInit {
 
   // Initialize 3D card effect that follows mouse movement
   private initCard3DEffect() {
-    if (!this.card3dContainer) return;
+    if (!this.card3dContainer || !isPlatformBrowser(this.platformId)) return;
 
     const card = this.card3dContainer.nativeElement.querySelector('.card-3d');
     if (!card) return;
@@ -140,7 +147,6 @@ export class HeroComponent implements AfterViewInit {
       const y = e.clientY - rect.top; // y position within the element
 
       // Calculate rotation based on mouse position
-      // Convert to percentage of container width/height
       const xPercent = (x / rect.width - 0.5) * 2; // -1 to 1
       const yPercent = (y / rect.height - 0.5) * 2; // -1 to 1
 
@@ -167,10 +173,7 @@ export class HeroComponent implements AfterViewInit {
 
   // Initialize particle effects with random movement
   private initParticleEffects() {
-    // Only run document-dependent code in the browser
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
+    if (!isPlatformBrowser(this.platformId)) return;
 
     const particlesContainer = document.getElementById('particles-container');
     if (particlesContainer) {

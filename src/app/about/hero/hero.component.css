@@ -1,13 +1,4 @@
-/* Additional styles for the hero component */
-
-/* Gradient text effect */
-.gradient-text {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-/* Glassmorphism effect */
+/* Card effects */
 .glass-card {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
@@ -16,7 +7,6 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
-/* Hover effect for value cards */
 .value-card {
   transition: all 0.3s ease;
 }
@@ -26,13 +16,41 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* Animation for the globe icon */
+/* Text effects */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Animations */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
 
+@keyframes slow-pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+@keyframes slow-float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Animation classes */
 .pulse-icon {
   animation: pulse 3s infinite ease-in-out;
+}
+
+.animate-slow-pulse {
+  animation: slow-pulse 5s infinite;
+}
+
+.animate-slow-float {
+  animation: slow-float 8s ease-in-out infinite;
 }

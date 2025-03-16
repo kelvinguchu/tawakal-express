@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
-import {
-  faCheck,
-  faCirclePlay,
-  faGlobe,
-  faDollarSign,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 
+// Interface for product/partner item
 interface Item {
   id: string;
   name: string;
@@ -23,6 +18,7 @@ interface Item {
   deviceImage: string;
 }
 
+// Interface for products and partners data
 interface ItemsData {
   products: Item[];
   partners: Item[];
@@ -32,21 +28,14 @@ interface ItemsData {
 @Component({
   selector: 'app-products-and-partners',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
   templateUrl: './products-and-partners.component.html',
   styleUrl: './products-and-partners.component.css',
 })
 export class ProductsAndPartnersComponent {
+  // Active tab and item state
   activeTab: string = 'products';
   activeItem: string = 'tplus';
-
-  // Font Awesome icons
-  faCheck = faCheck;
-  faApple = faApple;
-  faGooglePlay = faGooglePlay;
-  faCirclePlay = faCirclePlay;
-  faGlobe = faGlobe;
-  faDollarSign = faDollarSign;
 
   // Products and partners data
   items: ItemsData = {
@@ -95,12 +84,13 @@ export class ProductsAndPartnersComponent {
     );
   }
 
-  // Set default active item when switching tabs
+  // Set active tab and default item
   handleTabChange(tab: string): void {
     this.activeTab = tab;
     this.activeItem = this.items[tab][0].id;
   }
 
+  // Set active item within current tab
   setActiveItem(itemId: string): void {
     this.activeItem = itemId;
   }

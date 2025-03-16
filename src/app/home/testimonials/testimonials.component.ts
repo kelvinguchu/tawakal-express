@@ -7,18 +7,9 @@ import {
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faQuoteLeft,
-  faQuoteRight,
-  faChevronLeft,
-  faChevronRight,
-  faStar,
-  faCircle,
-  faUsers,
-  faComments,
-  faMapMarkerAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 
+// Interface for testimonial data
 interface Testimonial {
   id: number;
   quote: string;
@@ -31,21 +22,23 @@ interface Testimonial {
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
   templateUrl: './testimonials.component.html',
   styleUrl: './testimonials.component.css',
 })
 export class TestimonialsComponent implements OnInit {
-  // Font Awesome icons
-  faQuoteLeft = faQuoteLeft;
-  faQuoteRight = faQuoteRight;
-  faChevronLeft = faChevronLeft;
-  faChevronRight = faChevronRight;
-  faStar = faStar;
-  faCircle = faCircle;
-  faUsers = faUsers;
-  faComments = faComments;
-  faMapMarkerAlt = faMapMarkerAlt;
+  // Active testimonial index
+  activeIndex: number = 0;
+  visibleTestimonials: Testimonial[] = [];
+  itemsPerPage: number = 3;
+  totalPages: number = 0;
+  currentPage: number = 0;
+
+  // Marquee properties
+  firstRowTestimonials: Testimonial[] = [];
+  secondRowTestimonials: Testimonial[] = [];
+  marqueeTestimonials: Testimonial[] = [];
+  isPaused: boolean = false;
 
   // Testimonials data
   testimonials: Testimonial[] = [
@@ -141,20 +134,6 @@ export class TestimonialsComponent implements OnInit {
     },
   ];
 
-  // Active testimonial index
-  activeIndex: number = 0;
-  visibleTestimonials: Testimonial[] = [];
-  itemsPerPage: number = 3;
-  totalPages: number = 0;
-  currentPage: number = 0;
-
-  // Marquee properties
-  firstRowTestimonials: Testimonial[] = [];
-  secondRowTestimonials: Testimonial[] = [];
-  marqueeTestimonials: Testimonial[] = [];
-  isPaused: boolean = false;
-
-  // Add platform ID to check if we're in browser
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
@@ -189,6 +168,7 @@ export class TestimonialsComponent implements OnInit {
     }
   }
 
+  // Adjust items per page based on screen width
   adjustItemsPerPage(width: number): void {
     if (width < 768) {
       this.itemsPerPage = 1;
@@ -199,6 +179,7 @@ export class TestimonialsComponent implements OnInit {
     }
   }
 
+  // Update visible testimonials based on current page
   updateVisibleTestimonials(): void {
     const startIndex = this.currentPage * this.itemsPerPage;
     this.visibleTestimonials = this.testimonials.slice(
@@ -207,6 +188,7 @@ export class TestimonialsComponent implements OnInit {
     );
   }
 
+  // Navigation methods
   nextPage(): void {
     if (this.currentPage < this.totalPages - 1) {
       this.currentPage++;
@@ -238,12 +220,11 @@ export class TestimonialsComponent implements OnInit {
     ];
   }
 
-  // Pause the marquee animation on hover
+  // Marquee control methods
   pauseMarquee(): void {
     this.isPaused = true;
   }
 
-  // Resume the marquee animation when mouse leaves
   resumeMarquee(): void {
     this.isPaused = false;
   }

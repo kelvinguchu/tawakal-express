@@ -5,18 +5,16 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { MenuItem } from 'primeng/api';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faChevronDown,
-  faBars,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { filter } from 'rxjs/operators';
 
+// Navigation item interface
 interface NavItem {
   label: string;
   routerLink: string;
   isExternal?: boolean;
+  fragment?: string;
 }
 
 @Component({
@@ -28,41 +26,29 @@ interface NavItem {
     ButtonModule,
     RippleModule,
     FontAwesomeModule,
+    FontAwesomeIconsModule,
   ],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  // Font Awesome icons
-  faChevronDown = faChevronDown;
-  faBars = faBars;
-  faTimes = faTimes;
+  // Icon sizes
+  smallIconSize: SizeProp = 'sm';
+  mediumIconSize: SizeProp = 'lg';
 
-  // Icon size for mobile menu toggle
-  mobileIconSize: SizeProp = 'lg';
-
+  // Navigation state
   isMenuOpen = false;
-  servicesOpen = false;
 
   // Main navigation items
   navItems: NavItem[] = [
     { label: 'Home', routerLink: '/' },
+    { label: 'Services', routerLink: '/', fragment: 'features-and-services' },
     { label: 'About Us', routerLink: '/about' },
     { label: 'Agents', routerLink: '/agents' },
     { label: 'Careers', routerLink: '/careers' },
   ];
 
-  // Services dropdown items
-  serviceItems: NavItem[] = [
-    { label: 'Money Transfer', routerLink: '/services/money-transfer' },
-    { label: 'Bulk Payment', routerLink: '/services/bulk-payment' },
-    { label: 'Cross Border Payments', routerLink: '/services/cross-border' },
-    { label: 'Partners', routerLink: '/services/partners' },
-    { label: 'Become an Agent', routerLink: '/services/become-agent' },
-    { label: 'Security', routerLink: '/services/security' },
-  ];
-
   constructor(private router: Router) {
-    // Subscribe to router events to close menu on navigation
+    // Close menu on navigation
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -72,15 +58,10 @@ export class NavbarComponent {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-    // Close services dropdown when closing the menu
-    if (!this.isMenuOpen) {
-      this.servicesOpen = false;
-    }
   }
 
   closeMenu() {
     this.isMenuOpen = false;
-    this.servicesOpen = false;
   }
 
   @HostListener('window:resize', ['$event'])

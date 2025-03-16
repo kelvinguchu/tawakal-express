@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHandshake } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 
+// Interface for partner data
 interface Partner {
   name: string;
   logo: string;
@@ -12,13 +13,11 @@ interface Partner {
 @Component({
   selector: 'app-partners',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
   templateUrl: './partners.component.html',
   styleUrl: './partners.component.css',
 })
 export class PartnersComponent {
-  faHandshake = faHandshake;
-
   // Partner logos
   partners: Partner[] = [
     {
@@ -48,7 +47,7 @@ export class PartnersComponent {
     },
   ];
 
-  // For marquee effect
+  // Marquee animation state
   isPaused = false;
 
   // Duplicate partners for continuous scrolling
@@ -56,10 +55,12 @@ export class PartnersComponent {
     return [...this.partners, ...this.partners, ...this.partners];
   }
 
+  // Pause marquee on hover
   pauseMarquee(): void {
     this.isPaused = true;
   }
 
+  // Resume marquee when not hovering
   resumeMarquee(): void {
     this.isPaused = false;
   }

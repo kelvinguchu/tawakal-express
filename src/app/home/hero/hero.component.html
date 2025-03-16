@@ -1,23 +1,21 @@
 <section class="bg-[#f8faf8] min-h-screen pt-16 relative overflow-hidden flex items-center">
-
-  
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full py-4">
     <div class="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
-      <!-- Left column - Text content -->
+      <!-- Left column content -->
       <div class="relative mt-6 lg:mt-0">
-        <!-- Animated background elements for left side -->
+        <!-- Background gradients -->
         <div class="absolute -left-20 -top-20 w-64 h-64 bg-gradient-to-br from-tawakal-green/10 to-tawakal-blue/5 rounded-full blur-3xl"></div>
         <div class="absolute -left-10 bottom-10 w-40 h-40 bg-gradient-to-tr from-tawakal-blue/5 to-[#9e5a63]/10 rounded-full blur-2xl"></div>
         
-        <!-- Safe badge with animation -->
+        <!-- Trust badge -->
         <div class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-tawakal-green text-xs sm:text-sm mb-4 sm:mb-6 shadow-sm hover:shadow transition-transform duration-300 animate-slideFromLeft">
           <div class="relative">
-            <fa-icon [icon]="faCheck" [size]="smallIconSize" class="mr-1 sm:mr-2"></fa-icon>
+            <fa-icon [icon]="['fas', 'check']" [size]="smallIconSize" class="mr-1 sm:mr-2"></fa-icon>
           </div>
           <span class="relative">Safe, Secure & <span class="font-medium">Reliable</span></span>
         </div>
         
-        <!-- Main headline with slide-in animation -->
+        <!-- Headline -->
         <div class="mb-4 sm:mb-8 relative animate-slideFromLeft" style="animation-delay: 0.2s;">
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight">International</h1>
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-tawakal-green leading-tight">money transfers</h1>
@@ -27,7 +25,7 @@
           </h1>
         </div>
         
-        <!-- Subheading with slide-in animation -->
+        <!-- Description -->
         <div class="relative mb-4 sm:mb-8 animate-slideFromLeft" style="animation-delay: 0.3s;">
           <p class="text-gray-600 text-sm sm:text-base md:text-lg">
             Send money to family and friends across 
@@ -39,35 +37,34 @@
           </p>
         </div>
         
-        <!-- CTA buttons with slide-in from right animation -->
+        <!-- CTA buttons -->
         <div class="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 animate-slideFromLeft" style="animation-delay: 0.4s;">
           <a pRipple routerLink="/about" class="group relative inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white rounded-md text-sm sm:text-base font-medium shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
             <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div class="relative flex items-center">
               <span>Get Started</span>
-              <fa-icon [icon]="faArrowRight" [size]="smallIconSize" class="ml-1 sm:ml-2 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
+              <fa-icon [icon]="['fas', 'arrow-right']" [size]="smallIconSize" class="ml-1 sm:ml-2 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
             </div>
           </a>
           
           <a pRipple routerLink="/agents" class="group relative inline-flex items-center px-3 sm:px-6 py-2 sm:py-3 bg-white/80 backdrop-blur-sm text-gray-700 rounded-md text-sm sm:text-base font-medium border border-tawakal-blue/20 hover:bg-tawakal-blue/5 hover:border-tawakal-blue/30 transition-all duration-300 overflow-hidden whitespace-nowrap shadow-sm hover:shadow-md">
             <div class="relative flex items-center">
-              <fa-icon [icon]="faMapMarkerAlt" [size]="smallIconSize" class="mr-1 sm:mr-2 text-tawakal-blue"></fa-icon>
+              <fa-icon [icon]="['fas', 'location-dot']" [size]="smallIconSize" class="mr-1 sm:mr-2 text-tawakal-blue"></fa-icon>
               Find agents
-              <fa-icon [icon]="faArrowRight" [size]="smallIconSize" class="ml-1 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
+              <fa-icon [icon]="['fas', 'arrow-right']" [size]="smallIconSize" class="ml-1 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
             </div>
           </a>
         </div>
         
-        <!-- Countries list with slide-in from right animation -->
+        <!-- Countries list -->
         <div class="animate-slideFromRight" style="animation-delay: 0.5s;">
           <div class="flex items-center text-xs sm:text-sm text-gray-500 mb-2">
             <div class="relative">
-              <fa-icon [icon]="faGlobe" class="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 text-tawakal-blue/70"></fa-icon>
+              <fa-icon [icon]="['fas', 'globe']" class="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 text-tawakal-blue/70"></fa-icon>
             </div>
             Available in over 50 countries including:
           </div>
           <div class="flex flex-wrap gap-1 sm:gap-2">
-            <!-- Using ngFor for DRY code with country tags -->
             <ng-container *ngFor="let country of countries">
               <span class="country-tag px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm rounded-full transition-colors duration-300 hover:shadow-sm cursor-pointer"
                     [ngClass]="country.highlight ? 
@@ -82,29 +79,27 @@
           </div>
         </div>
         
-        <!-- Trust indicators with slide-in from right animation -->
+        <!-- Trust indicators -->
         <div class="mt-4 sm:mt-8 flex items-center space-x-2 sm:space-x-4 animate-slideFromRight" style="animation-delay: 0.6s;">
-          <!-- Using ngFor for DRY code with trust indicators -->
           <ng-container *ngFor="let indicator of trustIndicators; let i = index">
             <div class="flex items-center text-xs text-gray-500">
-              <fa-icon [icon]="indicator.icon" [size]="smallIconSize" [ngClass]="[indicator.color]" class="mr-0.5 sm:mr-1"></fa-icon>
+              <fa-icon [icon]="['fas', getIconName(indicator.icon)]" [size]="smallIconSize" [ngClass]="[indicator.color]" class="mr-0.5 sm:mr-1"></fa-icon>
               <span class="ml-1">{{ indicator.text }}</span>
             </div>
-            <!-- Add divider except after the last item -->
+            <!-- Divider -->
             <div *ngIf="i < trustIndicators.length - 1" class="h-3 sm:h-4 w-px bg-gray-300"></div>
           </ng-container>
         </div>
       </div>
       
-      <!-- Right column - Creative interactive visualization -->
+      <!-- Right column visualization -->
       <div class="relative block h-[250px] xs:h-[300px] sm:h-[350px] md:h-[400px] lg:h-full min-h-[250px] w-full">
-        <!-- 3D-like floating elements -->
         <div class="absolute w-full h-full perspective-1000">
-          <!-- Animated world map with connection lines -->
+          <!-- World map with connection points -->
           <div class="absolute inset-0 z-0 animate-float" style="animation-duration: 15s;">
             <div class="relative w-full h-full">
               <img src="/icons/world-map-dots.svg" alt="" class="w-full h-full object-contain opacity-10">
-              <!-- Dynamic connection lines -->
+              <!-- Connection points -->
               <div class="absolute top-1/4 left-1/4 w-1 h-1 bg-tawakal-green rounded-full animate-ping-slow"></div>
               <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-tawakal-blue rounded-full animate-ping-slow" style="animation-delay: 0.5s;"></div>
               <div class="absolute bottom-1/4 right-1/4 w-1 h-1 bg-[#9e5a63] rounded-full animate-ping-slow" style="animation-delay: 1s;"></div>
@@ -136,9 +131,9 @@
             </div>
           </div>
           
-          <!-- Interactive 3D-like card that follows cursor -->
+          <!-- 3D card with mouse tracking -->
           <div #card3dContainer class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 card-3d-container">
-            <!-- Main card with 3D effect -->
+            <!-- Card with 3D effect -->
             <div class="card-3d w-80 h-48 rounded-2xl shadow-2xl bg-gradient-to-br from-tawakal-green to-tawakal-blue p-6 text-white relative overflow-hidden transform transition-transform duration-700 hover:scale-105">
               <!-- Holographic overlay -->
               <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-white/20 holographic-effect"></div>
@@ -160,7 +155,7 @@
                   </div>
                 </div>
                 
-                <!-- Animated chip with glow effect -->
+                <!-- Card chip -->
                 <div class="mt-4 flex items-center">
                   <div class="relative">
                     <img src="/icons/card-chip.svg" alt="Chip" class="w-10 h-8 object-contain">
@@ -187,11 +182,11 @@
               </div>
             </div>
             
-            <!-- Card reflection/shadow -->
+            <!-- Card shadow -->
             <div class="card-reflection w-80 h-12 mt-2 rounded-2xl bg-gradient-to-b from-black/20 to-transparent blur-md transform scale-90"></div>
           </div>
           
-          <!-- Floating data visualization elements -->
+          <!-- Exchange rate cards -->
           <ng-container *ngFor="let rate of exchangeRates; let i = index">
             <div [ngClass]="i === 0 ? 'absolute top-10 -left-10 z-10 transform rotate-3' : 'absolute bottom-20 -right-5 z-10 transform -rotate-3'" 
                  class="animate-float" 
@@ -200,7 +195,7 @@
               <div class="bg-white/70 backdrop-blur-lg rounded-xl shadow-lg p-3 border border-white/50 hover:shadow-xl transition-all duration-300 group">
                 <div class="flex items-center space-x-3">
                   <div [ngClass]="'w-10 h-10 rounded-full bg-gradient-to-br from-' + rate.color + '-100 to-' + rate.color + '-200 flex items-center justify-center text-' + rate.color + '-500 relative group-hover:shadow-md transition-all duration-300'">
-                    <fa-icon [icon]="rate.icon" [size]="rateIconSize" class="font-bold"></fa-icon>
+                    <fa-icon [icon]="['fas', getIconName(rate.icon)]" [size]="rateIconSize" class="font-bold"></fa-icon>
                     <!-- Ripple effect -->
                     <div [ngClass]="'absolute inset-0 rounded-full bg-' + rate.color + '-400/30 animate-ripple'" [style.animation-delay]="rate.delay || '0s'"></div>
                   </div>
@@ -209,7 +204,7 @@
                     <div class="flex items-center">
                       <div class="text-base font-bold">{{ rate.rate }}</div>
                       <div class="ml-2 px-1.5 py-0.5 bg-green-100/80 backdrop-blur-sm text-green-600 text-xs rounded-md flex items-center">
-                        <fa-icon [icon]="faArrowUp" class="w-3 h-3 mr-0.5"></fa-icon>
+                        <fa-icon [icon]="['fas', 'arrow-up']" class="w-3 h-3 mr-0.5"></fa-icon>
                         {{ rate.change }}%
                       </div>
                     </div>
@@ -230,12 +225,12 @@
             </div>
           </ng-container>
           
-          <!-- Floating notification with live animation -->
+          <!-- Transfer notification -->
           <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 z-30 animate-float" style="animation-duration: 6s; animation-delay: 1s;">
             <div class="bg-white/70 backdrop-blur-lg rounded-xl shadow-xl p-4 border border-white/50 w-64 notification-card hover:shadow-2xl transition-all duration-300 group">
               <div class="flex items-start">
                 <div class="w-8 h-8 rounded-full bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center text-red-500 mr-3 relative group-hover:shadow-md transition-all duration-300">
-                  <fa-icon [icon]="faCheck" class="w-4 h-4"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="w-4 h-4"></fa-icon>
                   <div class="absolute top-0 right-0 w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
                 </div>
                 <div>

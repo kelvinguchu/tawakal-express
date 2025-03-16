@@ -2,45 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faEnvelope,
-  faPhone,
-  faLocationDot,
-  faClock,
-  faGlobe,
-  faArrowRight,
-  faCheck,
-  faShieldHalved,
-  faMoneyBillTransfer,
-  faHandshake,
-  faPaperPlane,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FontAwesomeModule,
+    FontAwesomeIconsModule,
+  ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  // Font Awesome icons
-  faEnvelope = faEnvelope;
-  faPhone = faPhone;
-  faLocationDot = faLocationDot;
-  faClock = faClock;
-  faGlobe = faGlobe;
-  faArrowRight = faArrowRight;
-  faCheck = faCheck;
-  faShieldHalved = faShieldHalved;
-  faMoneyBillTransfer = faMoneyBillTransfer;
-  faHandshake = faHandshake;
-  faPaperPlane = faPaperPlane;
-
   // Icon sizes
   smallIconSize: SizeProp = 'sm';
   mediumIconSize: SizeProp = 'lg';
+
+  // Helper method to convert icon names from the format 'faIconName' to 'icon-name'
+  getIconName(iconName: string): string {
+    const nameWithoutPrefix = iconName.substring(2);
+    return nameWithoutPrefix
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase();
+  }
 
   currentYear: number = new Date().getFullYear();
 

@@ -1,3 +1,4 @@
+/* ===== Animations ===== */
 /* Animation for the pulse effect */
 @keyframes pulse-slow {
   0%, 100% {
@@ -40,7 +41,8 @@
   }
 }
 
-/* Enhanced Marquee Styling */
+/* ===== Marquee Styling ===== */
+/* Container and wrapper */
 .marquee-wrapper {
   position: relative;
   margin: 1rem 0 1.5rem;
@@ -52,7 +54,79 @@
   }
 }
 
-/* Enhanced Glassmorphism card with better contrast */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .marquee-container {
+    padding: 0.75rem 0;
+  }
+}
+
+/* Marquee content and animation */
+.marquee-content {
+  display: flex;
+  animation: marquee 45s linear infinite;
+  width: max-content;
+}
+
+@media (min-width: 640px) {
+  .marquee-content {
+    animation: marquee 50s linear infinite;
+  }
+}
+
+@media (min-width: 768px) {
+  .marquee-content {
+    animation: marquee 55s linear infinite;
+  }
+}
+
+.marquee-pause {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 2));
+  }
+}
+
+/* Marquee items */
+.marquee-item {
+  flex-shrink: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  padding: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .marquee-item {
+    padding: 0.375rem;
+  }
+}
+
+.marquee-item:hover {
+  z-index: 10;
+  position: relative;
+}
+
+.marquee-item:hover .glassmorphism-card {
+  box-shadow: 
+    0 25px 30px -5px rgba(0, 0, 0, 0.15),
+    0 10px 15px -5px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+    0 0 40px rgba(255, 255, 255, 0.35);
+}
+
+/* ===== Glassmorphism Card Styling ===== */
+/* Base card style */
 .glassmorphism-card {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
@@ -70,6 +144,7 @@
   min-height: 160px;
 }
 
+/* Responsive card heights */
 @media (min-width: 640px) {
   .glassmorphism-card {
     min-height: 180px;
@@ -82,6 +157,7 @@
   }
 }
 
+/* Card hover effect */
 .glassmorphism-card:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 
@@ -92,6 +168,7 @@
   border-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Card decorative elements */
 /* Accent top border with gradient */
 .glassmorphism-card::after {
   content: '';
@@ -126,6 +203,14 @@
   z-index: -1;
 }
 
+/* Decorative corner accents with better visibility */
+.glassmorphism-card .absolute.border-t-2,
+.glassmorphism-card .absolute.border-b-2 {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Testimonial Content Styling ===== */
 /* Enhanced text contrast */
 .testimonial-content p {
   color: rgba(30, 41, 59, 0.9) !important; /* slate-800 with high opacity for better contrast */
@@ -151,83 +236,7 @@
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
 }
 
-/* Decorative corner accents with better visibility */
-.glassmorphism-card .absolute.border-t-2,
-.glassmorphism-card .absolute.border-b-2 {
-  border-color: rgba(255, 255, 255, 0.7) !important;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-/* Marquee animations */
-.marquee-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 0.5rem 0;
-}
-
-@media (min-width: 640px) {
-  .marquee-container {
-    padding: 0.75rem 0;
-  }
-}
-
-.marquee-content {
-  display: flex;
-  animation: marquee 45s linear infinite;
-  width: max-content;
-}
-
-@media (min-width: 640px) {
-  .marquee-content {
-    animation: marquee 50s linear infinite;
-  }
-}
-
-@media (min-width: 768px) {
-  .marquee-content {
-    animation: marquee 55s linear infinite;
-  }
-}
-
-.marquee-pause {
-  animation-play-state: paused;
-}
-
-.marquee-item {
-  flex-shrink: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  padding: 0.25rem;
-}
-
-@media (min-width: 640px) {
-  .marquee-item {
-    padding: 0.375rem;
-  }
-}
-
-.marquee-item:hover {
-  z-index: 10;
-  position: relative;
-}
-
-.marquee-item:hover .glassmorphism-card {
-  box-shadow: 
-    0 25px 30px -5px rgba(0, 0, 0, 0.15),
-    0 10px 15px -5px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.7) inset,
-    0 0 40px rgba(255, 255, 255, 0.35);
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-100% / 2));
-  }
-}
-
+/* ===== Accessibility & Utilities ===== */
 /* Custom scrollbar for testimonial cards */
 :host ::ng-deep .testimonial-content::-webkit-scrollbar {
   width: 4px;
@@ -247,7 +256,7 @@
   background: rgba(0, 117, 190, 0.4);
 }
 
-/* Line clamp for mobile */
+/* Line clamp utilities for text truncation */
 .line-clamp-4 {
   display: -webkit-box;
   -webkit-line-clamp: 4;

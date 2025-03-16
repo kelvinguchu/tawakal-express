@@ -1,18 +1,16 @@
 <section class="py-6 sm:py-10 md:py-10 lg:py-10 bg-[#f8faf8] relative overflow-hidden">
-
-  
-  <!-- Decorative elements -->
+  <!-- Background decorative elements -->
   <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
     <div class="absolute -top-20 -left-20 w-72 sm:w-96 h-72 sm:h-96 bg-gradient-to-br from-tawakal-green/5 to-tawakal-blue/3 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 right-0 w-64 sm:w-80 h-64 sm:h-80 bg-gradient-to-tl from-tawakal-blue/5 to-tawakal-green/3 rounded-full blur-3xl"></div>
   </div>
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-    <!-- Section header with enhanced styling - Updated to match image -->
+    <!-- Section header -->
     <div class="text-center mb-12 sm:mb-16 md:mb-20">
       <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-white/30">
         <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-          <fa-icon [icon]="faCompass" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
+          <fa-icon [icon]="['fas', 'compass']" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
           Our Guiding Principles
         </p>
       </div>
@@ -21,7 +19,6 @@
         Our <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Purpose</span>
       </h2>
       
-      <!-- Decorative underline similar to story component -->
       <div class="w-16 sm:w-24 h-1 bg-gradient-to-r from-tawakal-green/40 to-tawakal-blue/40 rounded-full mx-auto mb-4 sm:mb-6"></div>
       
       <p class="max-w-3xl mx-auto text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
@@ -30,11 +27,10 @@
       </p>
     </div>
 
-    <!-- Enhanced Mission and Vision Cards -->
+    <!-- Mission and Vision cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16">
-      <!-- Mission Card - Enhanced -->
+      <!-- Mission Card -->
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 relative">
-        <!-- Decorative corner elements -->
         <div class="absolute top-0 left-0 w-4 sm:w-5 h-4 sm:h-5 border-t-2 border-l-2 border-tawakal-blue/30 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
         <div class="absolute top-0 right-0 w-4 sm:w-5 h-4 sm:h-5 border-t-2 border-r-2 border-tawakal-blue/30 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
         <div class="absolute bottom-0 left-0 w-4 sm:w-5 h-4 sm:h-5 border-b-2 border-l-2 border-tawakal-blue/30 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
@@ -44,7 +40,7 @@
         <div class="p-6 sm:p-8 md:p-10">
           <div class="flex items-center mb-4 sm:mb-6">
             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-tawakal-blue/10 flex items-center justify-center mr-4 sm:mr-5 flex-shrink-0">
-              <fa-icon [icon]="mission.icon" [size]="largeIconSize" class="text-tawakal-blue"></fa-icon>
+              <fa-icon [icon]="['fas', getIconName(mission.icon)]" [size]="largeIconSize" class="text-tawakal-blue"></fa-icon>
             </div>
             <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">{{ mission.title }}</h3>
           </div>
@@ -52,23 +48,23 @@
             {{ mission.description }}
           </p>
           
-          <!-- Key points -->
+          <!-- Mission key points -->
           <div class="mt-6 sm:mt-8 space-y-2 sm:space-y-3">
             <div class="flex items-start">
               <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-tawakal-blue/10 flex items-center justify-center mr-2 sm:mr-3 mt-0.5 flex-shrink-0">
-                <fa-icon [icon]="faCompass" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
+                <fa-icon [icon]="['fas', 'compass']" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
               </div>
               <p class="text-gray-700 text-sm sm:text-base">Reliable and secure money transfer services</p>
             </div>
             <div class="flex items-start">
               <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-tawakal-blue/10 flex items-center justify-center mr-2 sm:mr-3 mt-0.5 flex-shrink-0">
-                <fa-icon [icon]="faCompass" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
+                <fa-icon [icon]="['fas', 'compass']" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
               </div>
               <p class="text-gray-700 text-sm sm:text-base">Connecting families across the globe</p>
             </div>
             <div class="flex items-start">
               <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-tawakal-blue/10 flex items-center justify-center mr-2 sm:mr-3 mt-0.5 flex-shrink-0">
-                <fa-icon [icon]="faCompass" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
+                <fa-icon [icon]="['fas', 'compass']" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
               </div>
               <p class="text-gray-700 text-sm sm:text-base">Making customers' lives brighter</p>
             </div>
@@ -76,9 +72,8 @@
         </div>
       </div>
 
-      <!-- Vision Card - Enhanced -->
+      <!-- Vision Card -->
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 relative">
-        <!-- Decorative corner elements -->
         <div class="absolute top-0 left-0 w-4 sm:w-5 h-4 sm:h-5 border-t-2 border-l-2 border-tawakal-green/30 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
         <div class="absolute top-0 right-0 w-4 sm:w-5 h-4 sm:h-5 border-t-2 border-r-2 border-tawakal-green/30 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
         <div class="absolute bottom-0 left-0 w-4 sm:w-5 h-4 sm:h-5 border-b-2 border-l-2 border-tawakal-green/30 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
@@ -88,7 +83,7 @@
         <div class="p-6 sm:p-8 md:p-10">
           <div class="flex items-center mb-4 sm:mb-6">
             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-tawakal-green/10 flex items-center justify-center mr-4 sm:mr-5 flex-shrink-0">
-              <fa-icon [icon]="vision.icon" [size]="largeIconSize" class="text-tawakal-green"></fa-icon>
+              <fa-icon [icon]="['fas', getIconName(vision.icon)]" [size]="largeIconSize" class="text-tawakal-green"></fa-icon>
             </div>
             <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">{{ vision.title }}</h3>
           </div>
@@ -96,23 +91,23 @@
             {{ vision.description }}
           </p>
           
-          <!-- Key points -->
+          <!-- Vision key points -->
           <div class="mt-6 sm:mt-8 space-y-2 sm:space-y-3">
             <div class="flex items-start">
               <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-tawakal-green/10 flex items-center justify-center mr-2 sm:mr-3 mt-0.5 flex-shrink-0">
-                <fa-icon [icon]="faLightbulb" [size]="smallIconSize" class="text-tawakal-green"></fa-icon>
+                <fa-icon [icon]="['fas', 'lightbulb']" [size]="smallIconSize" class="text-tawakal-green"></fa-icon>
               </div>
               <p class="text-gray-700 text-sm sm:text-base">Leading financial services provider</p>
             </div>
             <div class="flex items-start">
               <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-tawakal-green/10 flex items-center justify-center mr-2 sm:mr-3 mt-0.5 flex-shrink-0">
-                <fa-icon [icon]="faLightbulb" [size]="smallIconSize" class="text-tawakal-green"></fa-icon>
+                <fa-icon [icon]="['fas', 'lightbulb']" [size]="smallIconSize" class="text-tawakal-green"></fa-icon>
               </div>
               <p class="text-gray-700 text-sm sm:text-base">Recognized for innovation and reliability</p>
             </div>
             <div class="flex items-start">
               <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-tawakal-green/10 flex items-center justify-center mr-2 sm:mr-3 mt-0.5 flex-shrink-0">
-                <fa-icon [icon]="faLightbulb" [size]="smallIconSize" class="text-tawakal-green"></fa-icon>
+                <fa-icon [icon]="['fas', 'lightbulb']" [size]="smallIconSize" class="text-tawakal-green"></fa-icon>
               </div>
               <p class="text-gray-700 text-sm sm:text-base">Committed to customer satisfaction</p>
             </div>
@@ -121,11 +116,11 @@
       </div>
     </div>
 
-    <!-- Enhanced Call to Action -->
+    <!-- Call to action -->
     <div class="mt-12 sm:mt-16 md:mt-20 text-center">
       <a href="#services" class="inline-flex items-center px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white text-sm sm:text-base md:text-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
         <span>Learn more about our services</span>
-        <fa-icon [icon]="faChartLine" [size]="smallIconSize" class="ml-2 group-hover:translate-x-1 transition-transform duration-300"></fa-icon>
+        <fa-icon [icon]="['fas', 'chart-line']" [size]="smallIconSize" class="ml-2 group-hover:translate-x-1 transition-transform duration-300"></fa-icon>
       </a>
     </div>
   </div>

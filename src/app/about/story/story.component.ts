@@ -1,27 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faHistory,
-  faGlobe,
-  faHandshake,
-  faMobileScreen,
-  faBuilding,
-  faCircle,
-  faAward,
-  faCheck,
-  faArrowRight,
-  faQuoteLeft,
-  faImage,
-  faMapMarkerAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 interface TimelineEvent {
   year: string;
   title: string;
   description: string;
-  icon: any;
+  icon: string;
   color: string;
   image?: string;
   imageAlt?: string;
@@ -36,34 +23,26 @@ interface Partner {
 @Component({
   selector: 'app-story',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
   templateUrl: './story.component.html',
   styleUrl: './story.component.css',
 })
 export class StoryComponent {
-  // Font Awesome icons
-  faHistory = faHistory;
-  faGlobe = faGlobe;
-  faHandshake = faHandshake;
-  faMobileScreen = faMobileScreen;
-  faBuilding = faBuilding;
-  faCircle = faCircle;
-  faAward = faAward;
-  faCheck = faCheck;
-  faArrowRight = faArrowRight;
-  faQuoteLeft = faQuoteLeft;
-  faImage = faImage;
-  faMapMarkerAlt = faMapMarkerAlt;
-
-  // Icon sizes
   smallIconSize: SizeProp = 'sm';
   mediumIconSize: SizeProp = 'lg';
   timelineIconSize: SizeProp = '1x';
 
-  // For marquee effect
+  // Converts Font Awesome icon names to kebab-case
+  getIconName(iconName: string): string {
+    return iconName
+      .substring(2)
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase();
+  }
+
+  // Controls marquee animation pause state
   isPaused = false;
 
-  // Partners for marquee
   partners: Partner[] = [
     {
       name: 'M-Pesa',
@@ -102,7 +81,7 @@ export class StoryComponent {
     },
   ];
 
-  // Duplicate partners for continuous scrolling
+  // Duplicates partners array for continuous scrolling effect
   get marqueePartners(): Partner[] {
     return [...this.partners, ...this.partners];
   }
@@ -115,14 +94,14 @@ export class StoryComponent {
     this.isPaused = false;
   }
 
-  // Company timeline events with images
+  // Company history timeline with key milestones
   timelineEvents: TimelineEvent[] = [
     {
       year: '2006',
       title: 'Foundation of Tawakal Express',
       description:
         'Tawakal Express was founded with a mission to provide reliable money transfer services to the East African community, starting with our first office in Somalia.',
-      icon: faBuilding,
+      icon: 'faBuilding',
       color: 'from-tawakal-green to-tawakal-green',
       image: '/images/somalia.webp',
       imageAlt: 'Somalia office opening',
@@ -132,7 +111,7 @@ export class StoryComponent {
       title: 'International Expansion',
       description:
         'Expanded operations to multiple countries, establishing a global network of agents and partners with key locations in the UK, USA, and Sweden.',
-      icon: faGlobe,
+      icon: 'faGlobe',
       color: 'from-tawakal-blue to-tawakal-blue',
       image: '/images/globe.webp',
       imageAlt: 'Global expansion map',
@@ -142,7 +121,7 @@ export class StoryComponent {
       title: 'Digital Transformation',
       description:
         'Launched our first mobile app and digital platforms including E-Tawakal, Banana Pay, and T-Plus, marking the beginning of our digital transformation journey.',
-      icon: faMobileScreen,
+      icon: 'faMobileScreen',
       color: 'from-tawakal-blue to-tawakal-green',
       image: '/images/iphone-macbook.webp',
       imageAlt: 'Digital platforms launch',
@@ -152,14 +131,14 @@ export class StoryComponent {
       title: 'Award-Winning Services',
       description:
         'Recognized for excellence in financial services with multiple industry awards for innovation and customer satisfaction, cementing our position as a leader in the market.',
-      icon: faAward,
+      icon: 'faAward',
       color: 'from-tawakal-green to-tawakal-blue',
       image: '/images/dollars.webp',
       imageAlt: 'Award ceremony',
     },
   ];
 
-  // Global presence
+  // Key markets where Tawakal Express operates
   globalPresence = [
     {
       country: 'United Kingdom',

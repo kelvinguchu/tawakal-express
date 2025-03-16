@@ -1,10 +1,10 @@
 <section class="py-10 relative overflow-hidden bg-[#f8faf8]">
   <!-- Floating elements -->
   <div class="absolute top-20 right-1/4 w-8 h-8 text-tawakal-green opacity-20 animate-spin-slow">
-    <fa-icon [icon]="faCircle" class="w-full h-full"></fa-icon>
+    <fa-icon [icon]="['fas', 'circle']" class="w-full h-full"></fa-icon>
   </div>
   <div class="absolute bottom-20 left-1/5 w-6 h-6 text-tawakal-blue opacity-20 animate-spin-slow" style="animation-direction: reverse; animation-duration: 15s;">
-    <fa-icon [icon]="faCircle" class="w-full h-full"></fa-icon>
+    <fa-icon [icon]="['fas', 'circle']" class="w-full h-full"></fa-icon>
   </div>
   
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -12,7 +12,7 @@
     <div class="text-center mb-4 sm:mb-8 md:mb-8">
       <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-2 sm:mb-3 md:mb-4 backdrop-blur-sm border border-white/30">
         <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-          <fa-icon [icon]="faComments" class="mr-1.5 sm:mr-2 h-3 w-3 sm:h-3.5 sm:w-3.5 text-tawakal-green"></fa-icon>
+          <fa-icon [icon]="['fas', 'comments']" class="mr-1.5 sm:mr-2 h-3 w-3 sm:h-3.5 sm:w-3.5 text-tawakal-green"></fa-icon>
           Customer Stories
         </p>
       </div>
@@ -50,10 +50,10 @@
                 <!-- Quote icon and rating in a row for better visual balance -->
                 <div class="flex justify-between items-start mb-1.5 sm:mb-2">
                   <div class="text-tawakal-blue/20">
-                    <fa-icon [icon]="faQuoteLeft" class="text-base sm:text-lg md:text-xl"></fa-icon>
+                    <fa-icon [icon]="['fas', 'quote-left']" class="text-base sm:text-lg md:text-xl"></fa-icon>
                   </div>
                   <div class="flex space-x-0.5 text-amber-400">
-                    <fa-icon *ngFor="let star of getStarArray(testimonial.rating)" [icon]="faStar" class="text-[8px] sm:text-[10px]"></fa-icon>
+                    <fa-icon *ngFor="let star of getStarArray(testimonial.rating)" [icon]="['fas', 'star']" class="text-[8px] sm:text-[10px]"></fa-icon>
                   </div>
                 </div>
                 
@@ -64,14 +64,14 @@
                 
                 <!-- Location with icon for better visual appeal -->
                 <div class="text-gray-500 text-[9px] sm:text-[10px] font-medium flex items-center">
-                  <fa-icon [icon]="faMapMarkerAlt" class="mr-1 text-tawakal-blue/50"></fa-icon>
+                  <fa-icon [icon]="['fas', 'location-dot']" class="mr-1 text-tawakal-blue/50"></fa-icon>
                   {{ testimonial.location }}
                 </div>
               </div>
               
               <!-- Decorative elements -->
               <div class="absolute bottom-1.5 sm:bottom-2 right-1.5 sm:right-2 text-tawakal-blue/10">
-                <fa-icon [icon]="faQuoteRight" class="text-sm sm:text-base md:text-lg"></fa-icon>
+                <fa-icon [icon]="['fas', 'quote-right']" class="text-sm sm:text-base md:text-lg"></fa-icon>
               </div>
               
               <!-- Decorative corner accents -->
@@ -89,7 +89,7 @@
     <div class="mt-10 sm:mt-14 md:mt-16 lg:mt-20 text-center">
       <div class="inline-block px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full backdrop-blur-sm border border-white/30">
         <p class="text-gray-700 font-medium text-xs sm:text-sm md:text-base flex items-center justify-center">
-          <fa-icon [icon]="faUsers" class="mr-1.5 sm:mr-2 text-tawakal-blue"></fa-icon>
+          <fa-icon [icon]="['fas', 'users']" class="mr-1.5 sm:mr-2 text-tawakal-blue"></fa-icon>
           Join thousands of satisfied customers worldwide
         </p>
       </div>

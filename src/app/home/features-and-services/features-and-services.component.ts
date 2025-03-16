@@ -1,67 +1,38 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
-import {
-  faMobileScreen,
-  faMoneyBillTransfer,
-  faMoneyBillWave,
-  faHandHoldingDollar,
-  faBuilding,
-  faArrowRight,
-  faGlobe,
-  faHandHoldingHeart,
-  faCreditCard,
-  faShieldAlt,
-  faChartLine,
-  faUsers,
-  faUniversity,
-  faCheck,
-  faMapMarkerAlt,
-  faDownload,
-  faCircle,
-} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-features-and-services',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
   templateUrl: './features-and-services.component.html',
   styleUrl: './features-and-services.component.css',
 })
 export class FeaturesAndServicesComponent {
-  // Font Awesome icons
-  faMobileScreen = faMobileScreen;
-  faMoneyBillTransfer = faMoneyBillTransfer;
-  faMoneyBillWave = faMoneyBillWave;
-  faHandHoldingDollar = faHandHoldingDollar;
-  faBuilding = faBuilding;
-  faArrowRight = faArrowRight;
-  faGlobe = faGlobe;
-  faHandHoldingHeart = faHandHoldingHeart;
-  faCreditCard = faCreditCard;
-  faShieldAlt = faShieldAlt;
-  faChartLine = faChartLine;
-  faUsers = faUsers;
-  faUniversity = faUniversity;
-  faCheck = faCheck;
-  faMapMarkerAlt = faMapMarkerAlt;
-  faDownload = faDownload;
-  faCircle = faCircle;
-
-  // Icon sizes
+  // Icon size configuration
   smallIconSize: SizeProp = 'sm';
   mediumIconSize: SizeProp = 'lg';
   valueIconSize: SizeProp = '1x';
 
-  // Main services offered
+  // Converts icon names from camelCase to kebab-case
+  getIconName(iconName: string): string {
+    const nameWithoutPrefix = iconName.substring(2);
+    return nameWithoutPrefix
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase();
+  }
+
+  // Financial services
   services = [
     {
       id: 'mobile-money',
       title: 'Mobile Money Transfer',
       description:
         'Send money directly to mobile wallets across East Africa with instant delivery and low fees.',
-      icon: this.faMobileScreen,
+      icon: 'faMobileScreen',
       color: 'bg-blue-100 text-blue-600',
       features: [
         'Instant transfers to mobile wallets',
@@ -75,7 +46,7 @@ export class FeaturesAndServicesComponent {
       title: 'Individual Payment',
       description:
         'Person-to-person money transfers with flexible pickup options including cash, bank deposit, and mobile wallet.',
-      icon: this.faMoneyBillTransfer,
+      icon: 'faMoneyBillTransfer',
       color: 'bg-green-100 text-green-600',
       features: [
         'Multiple pickup options',
@@ -89,7 +60,7 @@ export class FeaturesAndServicesComponent {
       title: 'Foreign Currency Exchange',
       description:
         'Exchange between multiple currencies with competitive rates and transparent fees.',
-      icon: this.faMoneyBillWave,
+      icon: 'faMoneyBillWave',
       color: 'bg-yellow-100 text-yellow-600',
       features: [
         'Competitive exchange rates',
@@ -103,7 +74,7 @@ export class FeaturesAndServicesComponent {
       title: 'Humanitarian Money Transfer (HMT)',
       description:
         'Specialized services for NGOs and humanitarian organizations to distribute funds efficiently in crisis regions.',
-      icon: this.faHandHoldingHeart,
+      icon: 'faHandHoldingHeart',
       color: 'bg-red-100 text-red-600',
       features: [
         'Bulk payment processing',
@@ -117,7 +88,7 @@ export class FeaturesAndServicesComponent {
       title: 'Mpesa Services',
       description:
         'Direct integration with Mpesa for seamless money transfers to and from Kenya.',
-      icon: this.faHandHoldingDollar,
+      icon: 'faHandHoldingDollar',
       color: 'bg-purple-100 text-purple-600',
       features: [
         'Direct Mpesa wallet deposits',
@@ -131,7 +102,7 @@ export class FeaturesAndServicesComponent {
       title: 'Business Payment Solutions',
       description:
         'Comprehensive payment solutions for businesses of all sizes operating in East Africa.',
-      icon: this.faBuilding,
+      icon: 'faBuilding',
       color: 'bg-indigo-100 text-indigo-600',
       features: [
         'Bulk payment processing',
@@ -142,13 +113,13 @@ export class FeaturesAndServicesComponent {
     },
   ];
 
-  // Partner banks in East Africa
+  // Banking partners
   partnerBanks = [
     {
       name: 'Equity Bank',
       countries: ['Kenya', 'Uganda', 'Tanzania', 'Rwanda', 'South Sudan'],
       logo: 'equity.png',
-      icon: this.faUniversity,
+      icon: 'faUniversity',
     },
     {
       name: 'KCB Bank Group',
@@ -161,77 +132,98 @@ export class FeaturesAndServicesComponent {
         'Burundi',
       ],
       logo: 'kcb.svg',
-      icon: this.faUniversity,
+      icon: 'faUniversity',
     },
     {
       name: 'Commercial Bank of Ethiopia',
       countries: ['Ethiopia'],
       logo: 'bank-of-ethiopia.jpg',
-      icon: this.faUniversity,
+      icon: 'faUniversity',
     },
     {
       name: 'Cooperative Bank',
       countries: ['Kenya', 'South Sudan'],
       logo: 'coop.jpeg',
-      icon: this.faUniversity,
+      icon: 'faUniversity',
     },
     {
       name: 'CRDB Bank',
       countries: ['Tanzania', 'Burundi'],
       logo: 'crdb.svg',
-      icon: this.faUniversity,
+      icon: 'faUniversity',
     },
     {
       name: 'Sombank',
       countries: ['Somalia'],
       logo: 'sombank.webp',
-      icon: this.faUniversity,
+      icon: 'faUniversity',
     },
   ];
 
-  // Mobile money services in the region
+  // Mobile money providers
   mobileMoneyServices = [
     {
       name: 'M-Pesa',
       countries: ['Kenya', 'Tanzania'],
       provider: 'Safaricom/Vodacom',
       logo: 'mpesa.png',
-      icon: this.faMobileScreen,
+      icon: 'faMobileScreen',
     },
     {
       name: 'Airtel Money',
       countries: ['Kenya', 'Uganda', 'Tanzania', 'Rwanda', 'Somalia'],
       provider: 'Airtel',
       logo: 'airtel.svg',
-      icon: this.faMobileScreen,
+      icon: 'faMobileScreen',
     },
     {
       name: 'MTN Mobile Money',
       countries: ['Uganda', 'Rwanda', 'South Sudan'],
       provider: 'MTN',
       logo: 'mtn.svg',
-      icon: this.faMobileScreen,
+      icon: 'faMobileScreen',
     },
     {
       name: 'Tigo Pesa',
       countries: ['Tanzania'],
       provider: 'Tigo',
       logo: 'tigo.avif',
-      icon: this.faMobileScreen,
-    },
-    {
-      name: 'Halopesa',
-      countries: ['Tanzania'],
-      provider: 'Halotel',
-      logo: 'halopesa.png',
-      icon: this.faMobileScreen,
+      icon: 'faMobileScreen',
     },
     {
       name: 'EVC Plus',
       countries: ['Somalia'],
       provider: 'Hormuud Telecom',
       logo: 'evc.svg',
-      icon: this.faMobileScreen,
+      icon: 'faMobileScreen',
+    },
+  ];
+
+  // Partner ecosystem
+  partnerEcosystem = [
+    {
+      name: 'Financial Networks',
+      partners: ['T-Plus', 'Sombank', 'Major Banking Alliances'],
+      icon: 'faHandshake',
+    },
+    {
+      name: 'Mobile Money Platforms',
+      partners: ['TerraPay', 'BananaPay', 'Urimt', 'SOM-MMT'],
+      icon: 'faMobileScreen',
+    },
+    {
+      name: 'Payment Processors',
+      partners: ['Visa', 'Mastercard', 'Local Payment Networks'],
+      icon: 'faCreditCard',
+    },
+    {
+      name: 'Technology Partners',
+      partners: [
+        'Cloud Service Providers',
+        'Security Solutions',
+        'API Integrators',
+      ],
+      icon: 'faCode',
     },
   ];
 }

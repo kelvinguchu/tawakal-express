@@ -1,10 +1,10 @@
 <section class="py-6 sm:py-10 md:py-10 lg:py-10 bg-[#f8faf8] relative overflow-hidden">
-  <!-- Floating decorative elements -->
+  <!-- Decorative floating elements -->
   <div class="absolute top-16 sm:top-20 right-1/3 sm:right-1/4 w-6 sm:w-8 h-6 sm:h-8 text-tawakal-green opacity-20 animate-spin-slow">
-    <fa-icon [icon]="faCircle" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
+    <fa-icon [icon]="['fas', 'circle']" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
   </div>
   <div class="absolute bottom-16 sm:bottom-20 left-1/6 sm:left-1/5 w-5 sm:w-6 h-5 sm:h-6 text-tawakal-blue opacity-20 animate-spin-slow" style="animation-direction: reverse; animation-duration: 15s;">
-    <fa-icon [icon]="faCircle" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
+    <fa-icon [icon]="['fas', 'circle']" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
   </div>
   <div class="absolute top-1/3 -left-16 sm:-left-20 w-64 sm:w-80 h-64 sm:h-80 bg-gradient-to-br from-tawakal-green/5 to-tawakal-blue/10 rounded-full blur-3xl"></div>
   <div class="absolute bottom-1/3 -right-16 sm:-right-20 w-60 sm:w-72 h-60 sm:h-72 bg-gradient-to-tl from-tawakal-blue/5 to-tawakal-red/10 rounded-full blur-3xl"></div>
@@ -12,11 +12,10 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
     <!-- Partners marquee section -->
     <div class="mb-10 sm:mb-16">
-      <!-- Section header with refined styling -->
       <div class="text-center mb-8 sm:mb-10">
         <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full mb-3 sm:mb-4 border border-gray-100 shadow-sm glass-card">
           <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-            <fa-icon [icon]="faHandshake" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
+            <fa-icon [icon]="['fas', 'handshake']" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
             Strategic Alliances
           </p>
         </div>
@@ -27,17 +26,14 @@
         </h2>
       </div>
       
-      <!-- Partners marquee with vignette effects -->
+      <!-- Scrolling partners marquee with vignette edges -->
       <div class="relative overflow-hidden py-3 sm:py-4 md:py-6 partners-marquee-wrapper">
-        <!-- Vignette overlay left -->
         <div class="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-32 z-10 pointer-events-none" 
              style="background: linear-gradient(to right, #f8faf8 0%, #f8faf8 40%, rgba(248, 250, 248, 0.8) 70%, rgba(248, 250, 248, 0.4) 85%, transparent 100%);"></div>
         
-        <!-- Vignette overlay right -->
         <div class="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-32 z-10 pointer-events-none" 
              style="background: linear-gradient(to left, #f8faf8 0%, #f8faf8 40%, rgba(248, 250, 248, 0.8) 70%, rgba(248, 250, 248, 0.4) 85%, transparent 100%);"></div>
         
-        <!-- Marquee container -->
         <div class="partners-marquee-container relative z-1">
           <div class="partners-marquee-content" [ngClass]="{'partners-marquee-pause': isPaused}">
             <div *ngFor="let partner of marqueePartners" 
@@ -63,7 +59,7 @@
       <div class="text-center mb-8 sm:mb-10">
         <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full mb-3 sm:mb-4 border border-gray-100 shadow-sm glass-card">
           <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-            <fa-icon [icon]="faMapMarkerAlt" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
+            <fa-icon [icon]="['fas', 'map-marker-alt']" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
             Global Footprint
           </p>
         </div>
@@ -74,17 +70,15 @@
         </h2>
       </div>
       
+      <!-- Location cards grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div *ngFor="let location of globalPresence; let i = index" 
              class="relative rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-48 sm:h-56 md:h-64"
              [ngStyle]="{'animation-delay': (i * 0.1) + 's'}">
-          <!-- Background image -->
           <img [src]="location.image" [alt]="location.country" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
           
-          <!-- Gradient overlay -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
           
-          <!-- Content -->
           <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white z-10">
             <h3 class="text-lg sm:text-xl font-bold mb-1">{{ location.country }}</h3>
           </div>
@@ -92,11 +86,11 @@
       </div>
     </div>
 
-    <!-- Section header with refined styling -->
+    <!-- Company history section header -->
     <div class="text-center mb-10 sm:mb-16">
       <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full mb-3 sm:mb-4 border border-gray-100 shadow-sm glass-card">
         <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-          <fa-icon [icon]="faHistory" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
+          <fa-icon [icon]="['fas', 'history']" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
           Our History
         </p>
       </div>
@@ -112,28 +106,25 @@
       </p>
     </div>
 
-    <!-- Vertical Timeline with enhanced styling and images -->
+    <!-- Vertical timeline with milestones -->
     <div class="relative max-w-5xl mx-auto">
-      <!-- Timeline center line with gradient -->
+      <!-- Center timeline line with gradient -->
       <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-tawakal-green via-tawakal-blue to-tawakal-red"></div>
       
-      <!-- Timeline events with enhanced styling -->
       <div class="space-y-20 sm:space-y-28 md:space-y-32 lg:space-y-40">
         <ng-container *ngFor="let event of timelineEvents; let i = index; let isEven = even">
           <div class="relative timeline-item" [ngStyle]="{'animation-delay': (i * 0.2) + 's'}">
-            <!-- Timeline dot with pulse animation -->
+            <!-- Timeline milestone icon -->
             <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
               <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center bg-gradient-to-r shadow-md border-2 border-white timeline-dot" [ngClass]="event.color">
-                <fa-icon [icon]="event.icon" [size]="timelineIconSize" class="text-white"></fa-icon>
+                <fa-icon [icon]="['fas', getIconName(event.icon)]" [size]="timelineIconSize" class="text-white"></fa-icon>
               </div>
             </div>
             
-            <!-- Timeline content with enhanced styling -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 timeline-grid">
-              <!-- Year on left side with enhanced styling for desktop -->
+              <!-- Year and image (alternates sides on desktop) -->
               <div class="text-center md:text-right md:pr-6 lg:pr-10 timeline-year order-2 md:order-1" [ngClass]="{'md:order-3': isEven}">
                 <div class="inline-block bg-white px-4 sm:px-5 py-2 sm:py-3 rounded-lg shadow-sm border border-gray-100 mb-2 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md relative glass-card">
-                  <!-- Decorative corner accents -->
                   <div class="absolute top-0 left-0 w-2 sm:w-3 h-2 sm:h-3 border-t-2 border-l-2 border-gray-100 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
                   <div class="absolute top-0 right-0 w-2 sm:w-3 h-2 sm:h-3 border-t-2 border-r-2 border-gray-100 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
                   <div class="absolute bottom-0 left-0 w-2 sm:w-3 h-2 sm:h-3 border-b-2 border-l-2 border-gray-100 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
@@ -142,17 +133,16 @@
                   <h3 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-tawakal-blue to-tawakal-green text-transparent bg-clip-text">{{event.year}}</h3>
                 </div>
                 
-                <!-- Image for desktop view on left side -->
+                <!-- Desktop image (hidden on mobile) -->
                 <div class="hidden md:block rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative">
                   <img [src]="event.image" [alt]="event.imageAlt" class="w-full h-36 sm:h-40 md:h-48 object-cover">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               </div>
               
-              <!-- Content on right side with enhanced styling -->
+              <!-- Event content (alternates sides on desktop) -->
               <div class="md:pl-6 lg:pl-10 timeline-content order-3 md:order-2" [ngClass]="{'md:order-1 md:pr-6 lg:pr-10 md:pl-0': isEven}">
                 <div class="bg-white p-4 sm:p-5 md:p-6 rounded-xl shadow-md border border-gray-100 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg relative glass-card">
-                  <!-- Decorative corner accents -->
                   <div class="absolute top-0 left-0 w-3 sm:w-4 h-3 sm:h-4 border-t-2 border-l-2 border-gray-100 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
                   <div class="absolute top-0 right-0 w-3 sm:w-4 h-3 sm:h-4 border-t-2 border-r-2 border-gray-100 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
                   <div class="absolute bottom-0 left-0 w-3 sm:w-4 h-3 sm:h-4 border-b-2 border-l-2 border-gray-100 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
@@ -164,7 +154,7 @@
                   </div>
                 </div>
                 
-                <!-- Image for mobile view -->
+                <!-- Mobile image (hidden on desktop) -->
                 <div class="md:hidden mt-3 sm:mt-4 rounded-xl overflow-hidden shadow-lg">
                   <img [src]="event.image" [alt]="event.imageAlt" class="w-full h-36 sm:h-40 object-cover">
                 </div>
@@ -175,10 +165,9 @@
       </div>
     </div>
     
-    <!-- Quote section -->
+    <!-- Mission quote section -->
     <div class="mt-16 sm:mt-20 md:mt-24 mb-10 sm:mb-16">
       <div class="bg-white rounded-2xl p-6 sm:p-8 md:p-10 shadow-md border border-gray-100 relative overflow-hidden glass-card">
-        <!-- Decorative corner accents -->
         <div class="absolute top-0 left-0 w-4 sm:w-6 md:w-8 h-4 sm:h-6 md:h-8 border-t-2 border-l-2 border-gray-100 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
         <div class="absolute top-0 right-0 w-4 sm:w-6 md:w-8 h-4 sm:h-6 md:h-8 border-t-2 border-r-2 border-gray-100 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
         <div class="absolute bottom-0 left-0 w-4 sm:w-6 md:w-8 h-4 sm:h-6 md:h-8 border-b-2 border-l-2 border-gray-100 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
@@ -186,7 +175,7 @@
         
         <div class="relative z-10 text-center">
           <div class="text-3xl sm:text-4xl md:text-5xl text-tawakal-green/20 mb-3 sm:mb-4">
-            <fa-icon [icon]="faQuoteLeft"></fa-icon>
+            <fa-icon [icon]="['fas', 'quote-left']"></fa-icon>
           </div>
           
           <p class="text-lg sm:text-xl md:text-2xl font-medium text-gray-700 italic mb-4 sm:mb-6 max-w-3xl mx-auto">

@@ -1,13 +1,7 @@
-/* All styling is handled by Tailwind CSS */
-
-/* Animation keyframes */
+/* Basic animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
@@ -22,18 +16,12 @@
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-/* New animations for left side */
+/* Directional animations */
 @keyframes slideFromLeft {
   from {
     opacity: 0;
@@ -45,7 +33,6 @@
   }
 }
 
-/* Animation for right side elements */
 @keyframes slideFromRight {
   from {
     opacity: 0;
@@ -57,40 +44,25 @@
   }
 }
 
+/* Transform animations */
 @keyframes scaleX {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @keyframes width {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -100% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
 }
 
 @keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes pulse-slow {
@@ -109,66 +81,35 @@
 }
 
 /* Animation classes */
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease-in-out forwards;
-}
-
-.animate-slideUp {
-  animation: slideUp 0.8s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-ping {
-  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-/* New animation classes for left side */
+.animate-fadeIn { animation: fadeIn 0.8s ease-in-out forwards; }
+.animate-slideUp { animation: slideUp 0.8s ease-out forwards; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-ping { animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; }
 .animate-slideFromLeft {
   animation: slideFromLeft 0.8s ease-out forwards;
   opacity: 0;
 }
-
-/* Animation class for right side elements */
 .animate-slideFromRight {
   animation: slideFromRight 0.8s ease-out forwards;
   opacity: 0;
 }
-
-.animate-scaleX {
-  animation: scaleX 0.8s ease-out forwards;
-}
-
-.animate-width {
-  animation: width 1s ease-out forwards;
-  width: 0;
-}
-
+.animate-scaleX { animation: scaleX 0.8s ease-out forwards; }
+.animate-width { animation: width 1s ease-out forwards; width: 0; }
 .animate-shimmer {
   background-size: 200% 100%;
   background-position: -100% 0;
   animation: shimmer 3s infinite linear;
 }
-
-.animate-spin-slow {
-  animation: spin-slow 12s linear infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 6s ease-in-out infinite;
-}
+.animate-spin-slow { animation: spin-slow 12s linear infinite; }
+.animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
 
 /* Country tag hover effect */
-.country-tag {
-  transition: all 0.3s ease;
-}
-
+.country-tag { transition: all 0.3s ease; }
 .country-tag:hover {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+/* Ping animations */
 @keyframes ping {
   75%, 100% {
     transform: scale(2);
@@ -195,22 +136,15 @@
   }
 }
 
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
+/* Pulse and bounce animations */
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
-.animate-bounce {
-  animation: bounce 1s infinite;
-}
+.animate-bounce { animation: bounce 1s infinite; }
 
 @keyframes bounce {
   0%, 100% {
@@ -224,9 +158,7 @@
 }
 
 /* 3D Card Effects */
-.perspective-1000 {
-  perspective: 1000px;
-}
+.perspective-1000 { perspective: 1000px; }
 
 .card-3d-container {
   transform-style: preserve-3d;
@@ -257,15 +189,11 @@
 }
 
 @keyframes holographic {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 100%;
-  }
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
 
-/* Animated particles */
+/* Particle animations */
 .particles-container {
   position: absolute;
   top: 0;
@@ -344,31 +272,23 @@
     transform: translate(0, 0);
     opacity: 0;
   }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
   100% {
     transform: translate(var(--tx, 100px), var(--ty, -100px));
     opacity: 0;
   }
 }
 
-/* Chip glow effect */
+/* Card element effects */
 .chip-glow {
   background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), transparent 60%);
   animation: chipGlow 2s ease-in-out infinite alternate;
 }
 
 @keyframes chipGlow {
-  0% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 0.7;
-  }
+  0% { opacity: 0.3; }
+  100% { opacity: 0.7; }
 }
 
 /* Typewriter text effect */
@@ -383,25 +303,16 @@
 }
 
 @keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: rgba(255, 255, 255, 0.75);
-  }
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(255, 255, 255, 0.75); }
 }
 
-/* Ripple effect */
+/* UI element animations */
 .animate-ripple {
   animation: ripple 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
@@ -417,11 +328,7 @@
   }
 }
 
-/* Rotating element */
-.rotating-element {
-  transition: transform 0.3s ease;
-}
-
+.rotating-element { transition: transform 0.3s ease; }
 .rotating-element:hover {
   transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
 }
@@ -434,15 +341,11 @@
 }
 
 @keyframes progress {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
+  0% { width: 0%; }
+  100% { width: 100%; }
 }
 
-/* Draw line animation */
+/* Line drawing animations */
 .animate-draw-line {
   stroke-dasharray: 500;
   stroke-dashoffset: 500;
@@ -454,9 +357,7 @@
     stroke-dashoffset: 500;
     opacity: 0;
   }
-  20% {
-    opacity: 1;
-  }
+  20% { opacity: 1; }
   70% {
     stroke-dashoffset: 0;
     opacity: 1;
@@ -467,7 +368,6 @@
   }
 }
 
-/* Draw chart animation */
 .animate-draw-chart {
   stroke-dasharray: 200;
   stroke-dashoffset: 200;
@@ -475,16 +375,11 @@
 }
 
 @keyframes drawChart {
-  to {
-    stroke-dashoffset: 0;
-  }
+  to { stroke-dashoffset: 0; }
 }
 
-/* Notification card hover effect */
-.notification-card {
-  transition: all 0.3s ease;
-}
-
+/* Card hover effects */
+.notification-card { transition: all 0.3s ease; }
 .notification-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);

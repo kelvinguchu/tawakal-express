@@ -1,4 +1,4 @@
-/* Animation for the pulse effect */
+/* Animation effects */
 @keyframes pulse-slow {
   0%, 100% {
     opacity: 0.7;
@@ -14,21 +14,16 @@
   animation: pulse-slow 8s ease-in-out infinite;
 }
 
-/* Animation for the spin effect */
 @keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
 }
 
-/* Partners marquee wrapper */
+/* Marquee layout */
 .partners-marquee-wrapper {
   position: relative;
   margin: 0.5rem 0 1rem;
@@ -40,7 +35,6 @@
   }
 }
 
-/* Marquee container */
 .partners-marquee-container {
   width: 100%;
   overflow: hidden;
@@ -48,7 +42,7 @@
   padding: 0.75rem 0;
 }
 
-/* Marquee content */
+/* Marquee animation */
 .partners-marquee-content {
   display: flex;
   animation: partners-marquee 35s linear infinite;
@@ -67,12 +61,11 @@
   }
 }
 
-/* Pause animation on hover */
 .partners-marquee-pause {
   animation-play-state: paused;
 }
 
-/* Individual marquee items */
+/* Partner items */
 .partners-marquee-item {
   flex-shrink: 0;
   transition: transform 0.3s ease;
@@ -91,7 +84,6 @@
   }
 }
 
-/* Partner logo container */
 .partner-logo-container {
   display: flex;
   align-items: center;
@@ -101,7 +93,6 @@
   transition: all 0.3s ease;
 }
 
-/* Partner logo styling */
 .partner-logo {
   filter: grayscale(100%);
   opacity: 0.7;
@@ -113,12 +104,8 @@
   opacity: 1;
 }
 
-/* Marquee animation */
+/* Marquee animation keyframes */
 @keyframes partners-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-100% / 3));
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 3)); }
 }

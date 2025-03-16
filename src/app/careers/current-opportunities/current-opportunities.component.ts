@@ -2,24 +2,16 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faEnvelope,
-  faBriefcase,
-  faBuilding,
-  faLocationDot,
-  faBell,
-  faCheckCircle,
-  faExclamationCircle,
-  faArrowRight,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { TooltipModule } from 'primeng/tooltip';
 
+// Job category data structure
 interface JobCategory {
   name: string;
-  icon: any;
+  icon: string;
   description: string;
   comingSoon: boolean;
 }
@@ -32,6 +24,7 @@ interface JobCategory {
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    FontAwesomeIconsModule,
     ButtonModule,
     InputTextModule,
     RippleModule,
@@ -41,16 +34,6 @@ interface JobCategory {
   styleUrl: './current-opportunities.component.css',
 })
 export class CurrentOpportunitiesComponent {
-  // Font Awesome icons
-  faEnvelope = faEnvelope;
-  faBriefcase = faBriefcase;
-  faBuilding = faBuilding;
-  faLocationDot = faLocationDot;
-  faBell = faBell;
-  faCheckCircle = faCheckCircle;
-  faExclamationCircle = faExclamationCircle;
-  faArrowRight = faArrowRight;
-
   // Form state
   email: string = '';
   selectedCategories: string[] = [];
@@ -61,34 +44,34 @@ export class CurrentOpportunitiesComponent {
   jobCategories: JobCategory[] = [
     {
       name: 'Customer Service',
-      icon: faBriefcase,
+      icon: 'briefcase',
       description:
         'Support roles helping our customers with their money transfer needs',
       comingSoon: true,
     },
     {
       name: 'Technology',
-      icon: faBriefcase,
+      icon: 'briefcase',
       description:
         'Software development, IT infrastructure, and digital innovation',
       comingSoon: true,
     },
     {
       name: 'Operations',
-      icon: faBriefcase,
+      icon: 'briefcase',
       description:
         'Ensuring smooth day-to-day functioning of our transfer services',
       comingSoon: true,
     },
     {
       name: 'Finance',
-      icon: faBriefcase,
+      icon: 'briefcase',
       description: 'Accounting, financial analysis, and compliance roles',
       comingSoon: true,
     },
     {
       name: 'Marketing',
-      icon: faBriefcase,
+      icon: 'briefcase',
       description:
         'Promoting our services and building our brand in Somalia and beyond',
       comingSoon: true,
@@ -105,6 +88,7 @@ export class CurrentOpportunitiesComponent {
     'Remote',
   ];
 
+  // Toggle job category selection
   toggleCategory(category: string): void {
     const index = this.selectedCategories.indexOf(category);
     if (index === -1) {
@@ -114,6 +98,7 @@ export class CurrentOpportunitiesComponent {
     }
   }
 
+  // Submit job alert form
   submitJobAlert(): void {
     if (!this.email || this.selectedCategories.length === 0) {
       this.isError = true;

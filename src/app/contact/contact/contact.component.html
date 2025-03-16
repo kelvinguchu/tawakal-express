@@ -20,7 +20,7 @@
             <div class="space-y-4 sm:space-y-5">
               <div class="flex items-start">
                 <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green flex-shrink-0">
-                  <fa-icon [icon]="faEnvelope" class="text-sm sm:text-base"></fa-icon>
+                  <fa-icon [icon]="['fas', 'envelope']" [size]="smallIconSize" class="text-sm sm:text-base"></fa-icon>
                 </div>
                 <div class="ml-3">
                   <h3 class="text-xs sm:text-sm font-medium text-gray-700">Email</h3>
@@ -30,13 +30,13 @@
               
               <div class="flex items-start">
                 <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green flex-shrink-0">
-                  <fa-icon [icon]="faPhone" class="text-sm sm:text-base"></fa-icon>
+                  <fa-icon [icon]="['fas', 'phone']" [size]="smallIconSize" class="text-sm sm:text-base"></fa-icon>
                 </div>
                 <div class="ml-3">
                   <h3 class="text-xs sm:text-sm font-medium text-gray-700">Phone</h3>
                   <p class="text-xs sm:text-sm">+252 907 828 689</p>
                   <p class="text-xs text-gray-500 flex items-center mt-1">
-                    <fa-icon [icon]="faMessage" class="mr-1 text-xs"></fa-icon>
+                    <fa-icon [icon]="['fas', 'message']" [size]="smallIconSize" class="mr-1 text-xs"></fa-icon>
                     WhatsApp/Local Call
                   </p>
                 </div>
@@ -44,7 +44,7 @@
               
               <div class="flex items-start">
                 <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green flex-shrink-0">
-                  <fa-icon [icon]="faLocationDot" class="text-sm sm:text-base"></fa-icon>
+                  <fa-icon [icon]="['fas', 'location-dot']" [size]="smallIconSize" class="text-sm sm:text-base"></fa-icon>
                 </div>
                 <div class="ml-3">
                   <h3 class="text-xs sm:text-sm font-medium text-gray-700">Address</h3>
@@ -54,7 +54,7 @@
               
               <div class="flex items-start">
                 <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green flex-shrink-0">
-                  <fa-icon [icon]="faClock" class="text-sm sm:text-base"></fa-icon>
+                  <fa-icon [icon]="['fas', 'clock']" [size]="smallIconSize" class="text-sm sm:text-base"></fa-icon>
                 </div>
                 <div class="ml-3">
                   <h3 class="text-xs sm:text-sm font-medium text-gray-700">Hours</h3>
@@ -70,7 +70,7 @@
                 target="_blank" 
                 class="flex items-center justify-center w-full px-4 py-2.5 sm:py-3 bg-green-500 text-white text-sm font-medium rounded-lg shadow-sm hover:bg-green-600 transition-colors duration-200"
               >
-                <fa-icon [icon]="faMessage" class="mr-2"></fa-icon>
+                <fa-icon [icon]="['fas', 'message']" [size]="smallIconSize" class="mr-2"></fa-icon>
                 WhatsApp Support
               </a>
             </div>
@@ -222,7 +222,7 @@
             <div class="flex items-start">
               <div class="flex-shrink-0 mt-1">
                 <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green group-hover:bg-tawakal-green/20 transition-colors duration-300">
-                  <fa-icon [icon]="faq.icon" class="text-sm sm:text-base"></fa-icon>
+                  <fa-icon [icon]="['fas', getIconName(faq.icon)]" [size]="smallIconSize" class="text-sm sm:text-base"></fa-icon>
                 </div>
               </div>
               <div class="ml-3 sm:ml-4">

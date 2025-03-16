@@ -18,7 +18,7 @@
           <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search Agents</label>
           <div class="relative">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
-              <fa-icon [icon]="faSearch"></fa-icon>
+              <fa-icon [icon]="['fas', 'search']"></fa-icon>
             </span>
             <input
               id="search"
@@ -36,7 +36,7 @@
           <label for="city-filter" class="block text-sm font-medium text-gray-700 mb-1">Filter by City</label>
           <div class="relative">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
-              <fa-icon [icon]="faBuilding"></fa-icon>
+              <fa-icon [icon]="['fas', 'building']"></fa-icon>
             </span>
             <select
               id="city-filter"
@@ -48,7 +48,7 @@
               <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
             </select>
             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <fa-icon [icon]="faFilter" class="text-gray-400"></fa-icon>
+              <fa-icon [icon]="['fas', 'filter']"></fa-icon>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
           >
             <span>Name</span>
             <fa-icon 
-              [icon]="sortField === 'locationName' && sortDirection === 'asc' ? faSortAlphaDown : faSortAlphaUp" 
+              [icon]="sortField === 'locationName' && sortDirection === 'asc' ? ['fas', 'sort-alpha-down'] : ['fas', 'sort-alpha-up']" 
               class="ml-2"
             ></fa-icon>
           </button>
@@ -76,7 +76,7 @@
           >
             <span>City</span>
             <fa-icon 
-              [icon]="sortField === 'city' && sortDirection === 'asc' ? faSortAlphaDown : faSortAlphaUp" 
+              [icon]="sortField === 'city' && sortDirection === 'asc' ? ['fas', 'sort-alpha-down'] : ['fas', 'sort-alpha-up']" 
               class="ml-2"
             ></fa-icon>
           </button>
@@ -124,7 +124,7 @@
         <!-- Card header with city -->
         <div class="bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 px-3 sm:px-4 py-2 sm:py-3 border-b border-gray-100">
           <div class="flex items-center">
-            <fa-icon [icon]="faMapMarkerAlt" class="text-tawakal-green mr-2 text-sm sm:text-base"></fa-icon>
+            <fa-icon [icon]="['fas', 'map-marker-alt']" class="text-tawakal-green mr-2 text-sm sm:text-base"></fa-icon>
             <h3 class="font-medium text-gray-800 text-sm sm:text-base">{{ agent.city }}</h3>
           </div>
         </div>
@@ -140,7 +140,7 @@
           <div class="space-y-2 text-xs sm:text-sm">
             <!-- Phone -->
             <div class="flex items-start">
-              <fa-icon [icon]="faPhone" class="text-tawakal-green mt-1 mr-2 sm:mr-3 w-3 sm:w-4"></fa-icon>
+              <fa-icon [icon]="['fas', 'phone']" class="text-tawakal-green mt-1 mr-2 sm:mr-3 w-3 sm:w-4"></fa-icon>
               <div>
                 <div class="text-gray-700">{{ formatPhone(agent.phone) }}</div>
               </div>
@@ -148,7 +148,7 @@
             
             <!-- Location note -->
             <div class="flex items-start">
-              <fa-icon [icon]="faInfoCircle" class="text-tawakal-blue mt-1 mr-2 sm:mr-3 w-3 sm:w-4"></fa-icon>
+              <fa-icon [icon]="['fas', 'info-circle']" class="text-tawakal-blue mt-1 mr-2 sm:mr-3 w-3 sm:w-4"></fa-icon>
               <div class="text-gray-600 line-clamp-2">{{ agent.note }}</div>
             </div>
           </div>
@@ -158,7 +158,7 @@
             [href]="'tel:' + agent.phone" 
             class="mt-3 sm:mt-4 inline-flex items-center justify-center w-full px-3 sm:px-4 py-2 text-sm sm:text-base bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5"
           >
-            <fa-icon [icon]="faPhone" class="mr-2"></fa-icon>
+            <fa-icon [icon]="['fas', 'phone']" class="mr-2"></fa-icon>
             Call Agent
           </a>
         </div>
@@ -168,7 +168,7 @@
     <!-- Empty state (when no search results) -->
     <div *ngIf="filteredAgents().length === 0 && agents().length > 0" class="text-center py-8 sm:py-12">
       <div class="text-gray-400 mb-3 sm:mb-4">
-        <fa-icon [icon]="faSearch" class="text-2xl sm:text-4xl"></fa-icon>
+        <fa-icon [icon]="['fas', 'search']" class="text-2xl sm:text-4xl"></fa-icon>
       </div>
       <h3 class="text-lg sm:text-xl font-medium text-gray-700 mb-1 sm:mb-2">No agents found</h3>
       <p class="text-gray-500 text-sm sm:text-base mb-3 sm:mb-4">Try adjusting your search or filter criteria</p>

@@ -13,30 +13,14 @@
       <div class="hidden md:flex items-center space-x-1">
         <!-- Main navigation items -->
         <ng-container *ngFor="let item of navItems">
-          <a pRipple [routerLink]="item.routerLink" class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-white/40 text-gray-700 hover:text-tawakal-blue relative overflow-hidden group">
+          <a pRipple 
+             [routerLink]="item.routerLink" 
+             [fragment]="item.fragment" 
+             class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-white/40 text-gray-700 hover:text-tawakal-blue relative overflow-hidden group">
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-tawakal-green to-tawakal-blue group-hover:w-full transition-all duration-300"></span>
             {{item.label}}
           </a>
         </ng-container>
-
-        <!-- Services dropdown -->
-        <div class="relative group">
-          <button pRipple class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-white/40 text-gray-700 hover:text-tawakal-blue flex items-center group relative overflow-hidden">
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-tawakal-green to-tawakal-blue group-hover:w-full transition-all duration-300"></span>
-            Services
-            <fa-icon [icon]="faChevronDown" class="ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180"></fa-icon>
-          </button>
-          <!-- Services dropdown menu -->
-          <div class="absolute left-0 mt-1 w-56 bg-white/80 backdrop-blur-xl rounded-md shadow-lg py-1 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform origin-top-left transition-all duration-300 ease-in-out scale-95 group-hover:scale-100 border border-white/50">
-            <div class="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 rounded-md"></div>
-            <ng-container *ngFor="let service of serviceItems">
-              <a [routerLink]="service.routerLink" class="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-tawakal-green/10 hover:text-tawakal-green transition-all duration-200 items-center translate-x-0 hover:translate-x-1 w-full relative z-10">
-                <span class="w-1.5 h-1.5 rounded-full bg-tawakal-green mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                {{service.label}}
-              </a>
-            </ng-container>
-          </div>
-        </div>
 
         <!-- Contact button -->
         <a pRipple routerLink="/contact" class="ml-2 px-4 py-2 text-sm font-medium rounded-md bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 relative group">
@@ -51,8 +35,8 @@
           <span class="absolute inset-0 bg-gradient-to-r from-tawakal-green/5 to-tawakal-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           <span class="sr-only">Toggle navigation menu</span>
           <!-- Menu icon states with increased size -->
-          <fa-icon *ngIf="!isMenuOpen" [icon]="faBars" [size]="mobileIconSize" class="transition-transform duration-300 relative z-10"></fa-icon>
-          <fa-icon *ngIf="isMenuOpen" [icon]="faTimes" [size]="mobileIconSize" class="transition-transform duration-300 relative z-10"></fa-icon>
+          <fa-icon *ngIf="!isMenuOpen" [icon]="['fas', 'bars']" [size]="mediumIconSize" class="transition-transform duration-300 relative z-10"></fa-icon>
+          <fa-icon *ngIf="isMenuOpen" [icon]="['fas', 'times']" [size]="mediumIconSize" class="transition-transform duration-300 relative z-10"></fa-icon>
         </button>
       </div>
     </div>
@@ -70,41 +54,15 @@
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 relative z-10">
       <!-- Main navigation items -->
       <ng-container *ngFor="let item of navItems">
-        <a pRipple [routerLink]="item.routerLink" (click)="closeMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 transform hover:translate-x-1 relative overflow-hidden group">
+        <a pRipple 
+           [routerLink]="item.routerLink" 
+           [fragment]="item.fragment" 
+           (click)="closeMenu()" 
+           class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 transform hover:translate-x-1 relative overflow-hidden group">
           <span class="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-tawakal-green to-tawakal-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           {{item.label}}
         </a>
       </ng-container>
-      
-      <!-- Services dropdown -->
-      <div class="relative">
-        <button pRipple (click)="servicesOpen = !servicesOpen" class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 relative overflow-hidden group">
-          <span class="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-tawakal-green to-tawakal-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-          Services
-          <fa-icon 
-            [icon]="faChevronDown"
-            [ngClass]="{'rotate-180': servicesOpen}"
-            class="ml-1 h-4 w-4 transition-transform duration-300">
-          </fa-icon>
-        </button>
-        <!-- Services dropdown content -->
-        <div 
-          [ngClass]="{
-            'max-h-0 opacity-0 py-0': !servicesOpen,
-            'max-h-[500px] opacity-100 py-2': servicesOpen
-          }"
-          class="overflow-hidden bg-white/90 backdrop-blur-[30px] rounded-md mx-2 my-1 relative transition-all duration-300 ease-in-out">
-          <!-- Blur overlay for dropdown -->
-          <div class="absolute inset-0 bg-gradient-to-br from-white/90 to-white/80 rounded-md pointer-events-none"></div>
-          <div class="px-4 space-y-1 relative z-10">
-            <ng-container *ngFor="let service of serviceItems">
-              <a pRipple [routerLink]="service.routerLink" (click)="closeMenu()" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-tawakal-green hover:bg-tawakal-green/10 transition-all duration-200 border-l-2 border-transparent hover:border-tawakal-green pl-4 transform hover:translate-x-1 relative z-10">
-                {{service.label}}
-              </a>
-            </ng-container>
-          </div>
-        </div>
-      </div>
       
       <!-- Contact button -->
       <a pRipple routerLink="/contact" (click)="closeMenu()" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 mt-3 mx-2 transform hover:-translate-y-0.5 relative group">

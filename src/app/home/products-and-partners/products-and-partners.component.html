@@ -87,7 +87,7 @@
                   <div
                     class="w-6 h-6 rounded-full flex items-center justify-center mr-3 shadow-sm bg-gradient-to-r"
                     [ngClass]="activeData.color">
-                    <fa-icon [icon]="faCheck" class="text-white text-xs"></fa-icon>
+                    <fa-icon [icon]="['fas', 'check']" class="text-white text-xs"></fa-icon>
                   </div>
                   <p class="text-zinc-800 font-medium">{{ feature }}</p>
                 </div>
@@ -102,7 +102,7 @@
                     href="#"
                     [class]="getDownloadButtonClasses(true)">
                     <div class="w-6 h-6 mr-2 flex-shrink-0">
-                      <fa-icon [icon]="faApple" class="w-full h-full"></fa-icon>
+                      <fa-icon [icon]="['fab', 'apple']" class="w-full h-full"></fa-icon>
                     </div>
                     <div class="flex flex-col items-start whitespace-nowrap">
                       <p class="text-[10px] leading-tight opacity-80">
@@ -117,7 +117,7 @@
                     href="#"
                     [class]="getDownloadButtonClasses(false)">
                     <div class="w-6 h-6 mr-2 flex-shrink-0">
-                      <fa-icon [icon]="faGooglePlay" class="w-full h-full"></fa-icon>
+                      <fa-icon [icon]="['fab', 'google-play']" class="w-full h-full"></fa-icon>
                     </div>
                     <div class="flex flex-col items-start whitespace-nowrap">
                       <p class="text-[10px] leading-tight opacity-80">
@@ -163,10 +163,10 @@
                         class="w-8 h-8 rounded-full flex items-center justify-center shadow-sm"
                         [ngClass]="'bg-gradient-to-r ' + activeData.color">
                         <ng-container *ngIf="activeData.downloadable">
-                          <fa-icon [icon]="faCirclePlay" class="text-white text-sm"></fa-icon>
+                          <fa-icon [icon]="['fas', 'circle-play']" class="text-white text-sm"></fa-icon>
                         </ng-container>
                         <ng-container *ngIf="!activeData.downloadable">
-                          <fa-icon [icon]="faGlobe" class="text-white text-sm"></fa-icon>
+                          <fa-icon [icon]="['fas', 'globe']" class="text-white text-sm"></fa-icon>
                         </ng-container>
                       </div>
                       <p class="text-sm font-bold text-zinc-800">
@@ -180,7 +180,7 @@
                   <div [ngClass]="['absolute -top-4 -left-4', getNotificationClasses()]">
                     <div class="flex items-center space-x-2">
                       <div [class]="getNotificationIconClasses('green-500')">
-                        <fa-icon [icon]="faCheck" class="text-white text-xs"></fa-icon>
+                        <fa-icon [icon]="['fas', 'check']" class="text-white text-xs"></fa-icon>
                       </div>
                       <p class="text-xs font-medium text-zinc-800">
                         Transfer Complete
@@ -192,7 +192,7 @@
                   <div [ngClass]="['absolute -bottom-2 -right-2', getNotificationClasses()]">
                     <div class="flex items-center space-x-2">
                       <div [class]="getNotificationIconClasses('blue-500')">
-                        <fa-icon [icon]="faDollarSign" class="text-white text-xs"></fa-icon>
+                        <fa-icon [icon]="['fas', 'dollar-sign']" class="text-white text-xs"></fa-icon>
                       </div>
                       <p class="text-xs font-medium text-zinc-800">
                         $250 Received

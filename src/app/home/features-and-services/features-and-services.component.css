@@ -1,4 +1,4 @@
-/* Card hover effects */
+/* Card hover animation */
 .bg-white {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -7,7 +7,7 @@
   transform: translateY(-5px);
 }
 
-/* Icon transitions */
+/* Icon animation on hover */
 fa-icon {
   transition: transform 0.3s ease;
 }
@@ -16,7 +16,7 @@ fa-icon {
   transform: scale(1.1);
 }
 
-/* Feature list animations */
+/* Feature list hover effect */
 ul li {
   transition: transform 0.2s ease;
 }
@@ -25,12 +25,12 @@ ul li:hover {
   transform: translateX(5px);
 }
 
-/* Smooth scrolling */
+/* Enable smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Service card border effect */
+/* Gradient border effect on hover */
 .service-card {
   position: relative;
   overflow: hidden;
@@ -53,13 +53,13 @@ html {
   transform: scaleX(1);
 }
 
-/* Glassmorphism effects */
+/* Glass effect styling */
 .backdrop-blur-md {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Floating elements animation */
+/* Rotation animation for decorative elements */
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
@@ -73,7 +73,7 @@ html {
   animation: spin-slow 15s linear infinite;
 }
 
-/* Corner decorations */
+/* Corner decoration transitions */
 .border-t-2, .border-r-2, .border-b-2, .border-l-2 {
   transition: opacity 0.3s ease;
 }
@@ -85,12 +85,12 @@ html {
   opacity: 0.8;
 }
 
-/* Card transition for all hover effects */
+/* Shared transition properties */
 .card-transition {
   transition: all 0.3s ease;
 }
 
-/* Mobile optimization */
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .bg-white:hover {
     transform: translateY(-3px);

@@ -44,7 +44,7 @@
       <div>
         <h3 class="text-lg font-semibold mb-5 flex items-center">
           <div class="w-8 h-8 rounded-full bg-tawakal-green/10 flex items-center justify-center text-tawakal-green mr-2">
-            <fa-icon [icon]="faCheck" [size]="smallIconSize"></fa-icon>
+            <fa-icon [icon]="['fas', 'check']" [size]="smallIconSize"></fa-icon>
           </div>
           <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Quick Links</span>
         </h3>
@@ -62,7 +62,7 @@
       <div>
         <h3 class="text-lg font-semibold mb-5 flex items-center">
           <div class="w-8 h-8 rounded-full bg-tawakal-blue/10 flex items-center justify-center text-tawakal-blue mr-2">
-            <fa-icon [icon]="faMoneyBillTransfer" [size]="smallIconSize"></fa-icon>
+            <fa-icon [icon]="['fas', 'money-bill-transfer']" [size]="smallIconSize"></fa-icon>
           </div>
           <span class="bg-gradient-to-r from-tawakal-blue to-tawakal-green text-transparent bg-clip-text">Our Services</span>
         </h3>
@@ -80,32 +80,26 @@
       <div>
         <h3 class="text-lg font-semibold mb-5 flex items-center">
           <div class="w-8 h-8 rounded-full bg-[#9e5a63]/10 flex items-center justify-center text-[#9e5a63] mr-2">
-            <fa-icon [icon]="faEnvelope" [size]="smallIconSize"></fa-icon>
+            <fa-icon [icon]="['fas', 'envelope']" [size]="smallIconSize"></fa-icon>
           </div>
           <span class="bg-gradient-to-r from-[#9e5a63] to-tawakal-blue text-transparent bg-clip-text">Contact Us</span>
         </h3>
         <ul class="space-y-4">
           <li class="flex items-start group">
             <div class="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-gray-500 group-hover:text-tawakal-green transition-colors duration-300 mr-3 flex-shrink-0 shadow-sm">
-              <fa-icon [icon]="faLocationDot" [size]="smallIconSize"></fa-icon>
-            </div>
-            <span class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors duration-300">123 Main Street, Minneapolis, MN 55454, United States</span>
-          </li>
-          <li class="flex items-start group">
-            <div class="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-gray-500 group-hover:text-tawakal-green transition-colors duration-300 mr-3 flex-shrink-0 shadow-sm">
-              <fa-icon [icon]="faEnvelope" [size]="smallIconSize"></fa-icon>
+              <fa-icon [icon]="['fas', 'envelope']" [size]="smallIconSize"></fa-icon>
             </div>
             <span class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors duration-300">customercare&#64;tawakal.net</span>
           </li>
           <li class="flex items-start group">
             <div class="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-gray-500 group-hover:text-tawakal-green transition-colors duration-300 mr-3 flex-shrink-0 shadow-sm">
-              <fa-icon [icon]="faPhone" [size]="smallIconSize"></fa-icon>
+              <fa-icon [icon]="['fas', 'phone']" [size]="smallIconSize"></fa-icon>
             </div>
             <span class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors duration-300">+252 907 828 689</span>
           </li>
           <li class="flex items-start group">
             <div class="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-gray-500 group-hover:text-tawakal-green transition-colors duration-300 mr-3 flex-shrink-0 shadow-sm">
-              <fa-icon [icon]="faClock" [size]="smallIconSize"></fa-icon>
+              <fa-icon [icon]="['fas', 'clock']" [size]="smallIconSize"></fa-icon>
             </div>
             <span class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors duration-300">Monday - Friday: 9am - 5pm<br>Saturday: 10am - 2pm<br>Sunday: Closed</span>
           </li>
@@ -128,7 +122,7 @@
         <div class="relative z-10">
           <div class="flex justify-center mb-4">
             <div class="w-10 h-10 rounded-full bg-gradient-to-r from-tawakal-green/20 to-tawakal-blue/20 flex items-center justify-center">
-              <fa-icon [icon]="faPaperPlane" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
+              <fa-icon [icon]="['fas', 'paper-plane']" [size]="smallIconSize" class="text-tawakal-blue"></fa-icon>
             </div>
           </div>
           
@@ -150,7 +144,7 @@
               <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div class="relative flex items-center justify-center">
                 <span class="text-sm">Subscribe</span>
-                <fa-icon [icon]="faArrowRight" [size]="smallIconSize" class="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></fa-icon>
+                <fa-icon [icon]="['fas', 'arrow-right']" [size]="smallIconSize" class="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></fa-icon>
               </div>
             </button>
           </form>

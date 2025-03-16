@@ -1,18 +1,18 @@
-<section class="py-10 bg-[#f8faf8] relative overflow-hidden">
-  <!-- Floating elements -->
+<section id="features-and-services" class="py-10 bg-[#f8faf8] relative overflow-hidden">
+  <!-- Background decorative elements -->
   <div class="absolute top-20 right-1/4 w-8 h-8 text-tawakal-green opacity-20 animate-spin-slow">
-    <fa-icon [icon]="faCircle" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
+    <fa-icon [icon]="['fas', 'circle']" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
   </div>
   <div class="absolute bottom-20 left-1/5 w-6 h-6 text-tawakal-blue opacity-20 animate-spin-slow" style="animation-direction: reverse; animation-duration: 15s;">
-    <fa-icon [icon]="faCircle" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
+    <fa-icon [icon]="['fas', 'circle']" [size]="mediumIconSize" class="w-full h-full"></fa-icon>
   </div>
   
   <div class="container mx-auto px-4">
-    <!-- Section header with refined styling -->
+    <!-- Section header -->
     <div class="text-center mb-10 sm:mb-16">
       <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-white/30">
         <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-          <fa-icon [icon]="faGlobe" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
+          <fa-icon [icon]="['fas', 'globe']" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
           Financial Services
         </p>
       </div>
@@ -21,39 +21,33 @@
         Our <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Services</span>
         <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 sm:w-24 h-1 bg-gradient-to-r from-tawakal-green/40 to-tawakal-blue/40 rounded-full"></div>
       </h2>
-      
-      <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        Tawakal Express offers a comprehensive range of financial services to connect people across East Africa and beyond.
-      </p>
     </div>
 
-    <!-- Main services grid -->
+    <!-- Services grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
       <ng-container *ngFor="let service of services; let i = index">
         <div class="bg-white/70 backdrop-blur-md rounded-xl shadow-md hover:shadow-lg overflow-hidden group service-card border border-white/50 relative card-transition" 
              [ngStyle]="{'animation-delay': (i * 0.1) + 's'}">
-          <!-- Decorative corner accents -->
+          <!-- Decorative corners -->
           <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/50 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
           <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/50 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
           <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/50 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
           <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/50 rounded-br-lg -mb-0.5 -mr-0.5"></div>
           
           <div class="p-6 relative z-10">
-            <!-- Service icon and title -->
+            <!-- Service header -->
             <div class="flex items-center mb-4">
               <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" [ngClass]="service.color">
-                <fa-icon [icon]="service.icon" class="text-xl"></fa-icon>
+                <fa-icon [icon]="['fas', getIconName(service.icon)]" class="text-xl"></fa-icon>
               </div>
               <h3 class="text-xl font-semibold text-gray-900">{{ service.title }}</h3>
             </div>
             
-            <!-- Service description -->
             <p class="text-gray-600 mb-6">{{ service.description }}</p>
             
-            <!-- Service features -->
             <ul class="space-y-2">
               <li *ngFor="let feature of service.features" class="flex items-start">
-                <fa-icon [icon]="faCheck" class="text-tawakal-green mt-1 mr-2 flex-shrink-0"></fa-icon>
+                <fa-icon [icon]="['fas', 'check']" class="text-tawakal-green mt-1 mr-2 flex-shrink-0"></fa-icon>
                 <span class="text-gray-700">{{ feature }}</span>
               </li>
             </ul>
@@ -62,12 +56,12 @@
       </ng-container>
     </div>
 
-    <!-- Mobile money services section -->
+    <!-- Mobile money services -->
     <div class="mb-16">
       <div class="text-center mb-10">
         <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-white/30">
           <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-            <fa-icon [icon]="faMobileScreen" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
+            <fa-icon [icon]="['fas', 'mobile-screen']" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
             Mobile Solutions
           </p>
         </div>
@@ -75,41 +69,35 @@
           Mobile <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Money Services</span>
           <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 h-1 bg-gradient-to-r from-tawakal-green/40 to-tawakal-blue/40 rounded-full"></div>
         </h2>
-        <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mt-6">
-          Send money directly to mobile wallets across multiple providers in East Africa.
-        </p>
       </div>
       
-      <!-- Creative mobile money services showcase -->
       <div class="flex flex-wrap justify-center gap-6 md:gap-8">
         <div *ngFor="let service of mobileMoneyServices; let i = index" 
              class="w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1.5rem)] bg-white/80 backdrop-blur-md rounded-xl shadow-md overflow-hidden relative border border-white/50 group hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
              [ngStyle]="{'animation-delay': (i * 0.1) + 's'}">
           
-          <!-- Top gradient bar - Visual indicator of service type -->
+          <!-- Service indicator -->
           <div class="h-1.5 w-full bg-gradient-to-r from-tawakal-green to-tawakal-blue"></div>
           
-          <!-- Subtle decorative corner accents for glassmorphism effect -->
+          <!-- Decorative corners -->
           <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/50 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
           <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/50 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
           <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/50 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
           <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/50 rounded-br-lg -mb-0.5 -mr-0.5"></div>
           
-          <!-- Service header with logo and details -->
+          <!-- Service info -->
           <div class="flex items-center p-5">
-            <!-- Logo in circle -->
             <div class="w-14 h-14 flex-shrink-0 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 overflow-hidden mr-4 group-hover:shadow-md transition-all duration-300">
               <img [src]="'/features-and-services/' + service.logo" [alt]="service.name + ' logo'" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300">
             </div>
             
-            <!-- Service details with title and countries -->
             <div class="flex-grow">
               <h3 class="text-lg font-semibold text-gray-900 mb-1 group-hover:text-tawakal-green transition-colors duration-300">
                 {{ service.name }}
               </h3>
               <p class="text-xs text-gray-600 mb-1.5">{{ service.provider }}</p>
               
-              <!-- Countries with color-coded indicators -->
+              <!-- Country indicators -->
               <div class="flex flex-wrap gap-1.5">
                 <span *ngFor="let country of service.countries" 
                       class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-700 border-l-2" 
@@ -119,7 +107,8 @@
                         'border-red-500': country === 'Uganda',
                         'border-yellow-500': country === 'Rwanda',
                         'border-blue-700': country === 'Somalia',
-                        'border-purple-500': country === 'South Sudan'
+                        'border-purple-500': country === 'South Sudan',
+                        'border-teal-500': country === 'Global'
                       }">
                   {{ country }}
                 </span>
@@ -127,7 +116,7 @@
             </div>
           </div>
           
-          <!-- Features section with light background for contrast -->
+          <!-- Service features -->
           <div class="bg-gray-50/90 p-4 border-t border-gray-100">
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs font-medium text-gray-500 tracking-wider">FEATURES</span>
@@ -136,25 +125,25 @@
             <div class="grid grid-cols-2 gap-2">
               <div class="flex items-center">
                 <div class="w-4 h-4 rounded-full bg-tawakal-green/10 flex items-center justify-center mr-1.5">
-                  <fa-icon [icon]="faCheck" class="text-tawakal-green text-xs"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="text-tawakal-green text-xs"></fa-icon>
                 </div>
                 <span class="text-xs text-gray-700">Instant transfers</span>
               </div>
               <div class="flex items-center">
                 <div class="w-4 h-4 rounded-full bg-tawakal-green/10 flex items-center justify-center mr-1.5">
-                  <fa-icon [icon]="faCheck" class="text-tawakal-green text-xs"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="text-tawakal-green text-xs"></fa-icon>
                 </div>
                 <span class="text-xs text-gray-700">Low fees</span>
               </div>
               <div class="flex items-center">
                 <div class="w-4 h-4 rounded-full bg-tawakal-green/10 flex items-center justify-center mr-1.5">
-                  <fa-icon [icon]="faCheck" class="text-tawakal-green text-xs"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="text-tawakal-green text-xs"></fa-icon>
                 </div>
                 <span class="text-xs text-gray-700">Secure</span>
               </div>
               <div class="flex items-center">
                 <div class="w-4 h-4 rounded-full bg-tawakal-green/10 flex items-center justify-center mr-1.5">
-                  <fa-icon [icon]="faCheck" class="text-tawakal-green text-xs"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="text-tawakal-green text-xs"></fa-icon>
                 </div>
                 <span class="text-xs text-gray-700">24/7 Support</span>
               </div>
@@ -164,12 +153,12 @@
       </div>
     </div>
     
-    <!-- Partner banks section with similar optimized design -->
+    <!-- Partner banks -->
     <div class="mb-16">
       <div class="text-center mb-10">
         <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-blue/10 to-tawakal-green/10 rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-white/30">
           <p class="bg-gradient-to-r from-tawakal-blue to-tawakal-green text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
-            <fa-icon [icon]="faUniversity" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-blue"></fa-icon>
+            <fa-icon [icon]="['fas', 'university']" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-blue"></fa-icon>
             Banking Partners
           </p>
         </div>
@@ -177,40 +166,34 @@
           Our <span class="bg-gradient-to-r from-tawakal-blue to-tawakal-green text-transparent bg-clip-text">Partner Banks</span>
           <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 h-1 bg-gradient-to-r from-tawakal-blue/40 to-tawakal-green/40 rounded-full"></div>
         </h2>
-        <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mt-6">
-          We work with leading financial institutions across East Africa to ensure reliable and secure money transfers.
-        </p>
       </div>
       
-      <!-- Bank partners showcase with performance-optimized design -->
       <div class="flex flex-wrap justify-center gap-6 md:gap-8">
         <div *ngFor="let bank of partnerBanks; let i = index" 
              class="w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1.5rem)] bg-white/80 backdrop-blur-md rounded-xl shadow-md overflow-hidden relative border border-white/50 group hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
              [ngStyle]="{'animation-delay': (i * 0.1) + 's'}">
           
-          <!-- Top gradient bar - Visual indicator of bank partnership -->
+          <!-- Bank indicator -->
           <div class="h-1.5 w-full bg-gradient-to-r from-tawakal-blue to-tawakal-green"></div>
           
-          <!-- Subtle decorative corner accents for glassmorphism effect -->
+          <!-- Decorative corners -->
           <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/50 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
           <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/50 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
           <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/50 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
           <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/50 rounded-br-lg -mb-0.5 -mr-0.5"></div>
           
-          <!-- Bank header with logo and details -->
+          <!-- Bank info -->
           <div class="flex items-center p-5">
-            <!-- Logo in circle -->
             <div class="w-14 h-14 flex-shrink-0 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 overflow-hidden mr-4 group-hover:shadow-md transition-all duration-300">
               <img [src]="'/features-and-services/' + bank.logo" [alt]="bank.name + ' logo'" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300">
             </div>
             
-            <!-- Bank details with title and countries -->
             <div class="flex-grow">
               <h3 class="text-lg font-semibold text-gray-900 mb-1 group-hover:text-tawakal-blue transition-colors duration-300">
                 {{ bank.name }}
               </h3>
               
-              <!-- Countries with color-coded indicators -->
+              <!-- Country indicators -->
               <div class="flex flex-wrap gap-1.5">
                 <span *ngFor="let country of bank.countries" 
                       class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-700 border-l-2" 
@@ -230,7 +213,7 @@
             </div>
           </div>
           
-          <!-- Services section with light background for contrast -->
+          <!-- Bank services -->
           <div class="bg-gray-50/90 p-4 border-t border-gray-100">
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs font-medium text-gray-500 tracking-wider">SERVICES</span>
@@ -239,28 +222,80 @@
             <div class="grid grid-cols-2 gap-2">
               <div class="flex items-center">
                 <div class="w-4 h-4 rounded-full bg-tawakal-blue/10 flex items-center justify-center mr-1.5">
-                  <fa-icon [icon]="faCheck" class="text-tawakal-blue text-xs"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="text-tawakal-blue text-xs"></fa-icon>
                 </div>
                 <span class="text-xs text-gray-700">Bank Deposits</span>
               </div>
               <div class="flex items-center">
                 <div class="w-4 h-4 rounded-full bg-tawakal-blue/10 flex items-center justify-center mr-1.5">
-                  <fa-icon [icon]="faCheck" class="text-tawakal-blue text-xs"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="text-tawakal-blue text-xs"></fa-icon>
                 </div>
                 <span class="text-xs text-gray-700">Cash Pickup</span>
               </div>
               <div class="flex items-center">
                 <div class="w-4 h-4 rounded-full bg-tawakal-blue/10 flex items-center justify-center mr-1.5">
-                  <fa-icon [icon]="faCheck" class="text-tawakal-blue text-xs"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="text-tawakal-blue text-xs"></fa-icon>
                 </div>
                 <span class="text-xs text-gray-700">Account Transfer</span>
               </div>
               <div class="flex items-center">
                 <div class="w-4 h-4 rounded-full bg-tawakal-blue/10 flex items-center justify-center mr-1.5">
-                  <fa-icon [icon]="faCheck" class="text-tawakal-blue text-xs"></fa-icon>
+                  <fa-icon [icon]="['fas', 'check']" class="text-tawakal-blue text-xs"></fa-icon>
                 </div>
                 <span class="text-xs text-gray-700">Business Payments</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Partner Ecosystem -->
+    <div class="mb-16">
+      <div class="text-center mb-10">
+        <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-white/30">
+          <p class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
+            <fa-icon [icon]="['fas', 'handshake']" [size]="smallIconSize" class="mr-1.5 sm:mr-2 text-tawakal-green"></fa-icon>
+            Global Network
+          </p>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 relative">
+          Partner <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Ecosystem</span>
+          <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 h-1 bg-gradient-to-r from-tawakal-green/40 to-tawakal-blue/40 rounded-full"></div>
+        </h2>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-6 md:gap-8">
+        <div *ngFor="let ecosystem of partnerEcosystem; let i = index" 
+             class="w-full sm:w-[calc(50%-1rem)] md:w-[calc(50%-1.5rem)] bg-white/80 backdrop-blur-md rounded-xl shadow-md overflow-hidden relative border border-white/50 group hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+             [ngStyle]="{'animation-delay': (i * 0.1) + 's'}">
+          
+          <!-- Ecosystem indicator -->
+          <div class="h-1.5 w-full bg-gradient-to-r from-tawakal-green to-tawakal-blue"></div>
+          
+          <!-- Decorative corners -->
+          <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/50 rounded-tl-lg -mt-0.5 -ml-0.5"></div>
+          <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/50 rounded-tr-lg -mt-0.5 -mr-0.5"></div>
+          <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/50 rounded-bl-lg -mb-0.5 -ml-0.5"></div>
+          <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/50 rounded-br-lg -mb-0.5 -mr-0.5"></div>
+          
+          <!-- Ecosystem info -->
+          <div class="p-5">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4 bg-gradient-to-br from-tawakal-green/10 to-tawakal-blue/10 text-tawakal-green">
+                <fa-icon [icon]="['fas', getIconName(ecosystem.icon)]" class="text-xl"></fa-icon>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-tawakal-green transition-colors duration-300">
+                {{ ecosystem.name }}
+              </h3>
+            </div>
+            
+            <!-- Partners list -->
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span *ngFor="let partner of ecosystem.partners" 
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-700 border border-gray-200">
+                {{ partner }}
+              </span>
             </div>
           </div>
         </div>
