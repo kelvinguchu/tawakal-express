@@ -101,7 +101,9 @@
               <ng-container *ngIf="activeData.downloadable">
                 <div class="flex flex-row gap-3 w-full">
                   <a
-                    href="#"
+                    [href]="activeData.id === 'tplus' ? 'https://apps.apple.com/ke/app/t-plus/id1300716879' : 'https://apps.apple.com/us/app/banana-pay/id1634610654'"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     [class]="getDownloadButtonClasses(true)">
                     <div class="w-6 h-6 mr-2 flex-shrink-0">
                       <fa-icon [icon]="['fab', 'apple']" class="w-full h-full"></fa-icon>
@@ -116,7 +118,9 @@
                     </div>
                   </a>
                   <a
-                    href="#"
+                    [href]="activeData.id === 'tplus' ? 'https://play.google.com/store/apps/details?id=com.etawakal.tplusnew&hl=en' : 'https://play.google.com/store/apps/details?id=com.bananapays&hl=en'"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     [class]="getDownloadButtonClasses(false)">
                     <div class="w-6 h-6 mr-2 flex-shrink-0">
                       <fa-icon [icon]="['fab', 'google-play']" class="w-full h-full"></fa-icon>
