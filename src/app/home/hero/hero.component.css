@@ -293,23 +293,8 @@
 
 /* Typewriter text effect */
 .typewriter-text {
-  overflow: hidden;
-  border-right: 2px solid rgba(255, 255, 255, 0.75);
   white-space: nowrap;
-  margin: 0 auto;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-  animation-delay: 1s;
-  animation-fill-mode: both;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: rgba(255, 255, 255, 0.75); }
+  width: 100%;
 }
 
 /* UI element animations */
