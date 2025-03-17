@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 
@@ -13,9 +13,14 @@ interface Partner {
 @Component({
   selector: 'app-partners',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FontAwesomeIconsModule,
+    NgOptimizedImage,
+  ],
   templateUrl: './partners.component.html',
-  styleUrl: './partners.component.css',
+  styleUrls: ['./partners.component.css'],
 })
 export class PartnersComponent {
   // Partner logos

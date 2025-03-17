@@ -1,6 +1,4 @@
-/**
- * Centralizes Font Awesome icon imports to reduce bundle size
- */
+//font awesome icons, centralised
 import { NgModule } from '@angular/core';
 import {
   FontAwesomeModule,

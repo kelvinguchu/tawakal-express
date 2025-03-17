@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
@@ -13,8 +11,6 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
   imports: [
     CommonModule,
     RouterModule,
-    ButtonModule,
-    RippleModule,
     FontAwesomeModule,
     FontAwesomeIconsModule,
   ],

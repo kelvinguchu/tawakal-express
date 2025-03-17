@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { NgOptimizedImage } from '@angular/common';
 
 interface TimelineEvent {
   year: string;
@@ -10,8 +11,8 @@ interface TimelineEvent {
   description: string;
   icon: string;
   color: string;
-  image?: string;
-  imageAlt?: string;
+  image: string;
+  imageAlt: string;
 }
 
 interface Partner {
@@ -23,9 +24,14 @@ interface Partner {
 @Component({
   selector: 'app-story',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FontAwesomeIconsModule,
+    NgOptimizedImage,
+  ],
   templateUrl: './story.component.html',
-  styleUrl: './story.component.css',
+  styleUrls: ['./story.component.css'],
 })
 export class StoryComponent {
   smallIconSize: SizeProp = 'sm';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
@@ -13,6 +13,7 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
     RouterModule,
     FontAwesomeModule,
     FontAwesomeIconsModule,
+    NgOptimizedImage,
   ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],

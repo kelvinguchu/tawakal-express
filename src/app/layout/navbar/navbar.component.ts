@@ -1,9 +1,7 @@
 import { Component, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
-import { MenuItem } from 'primeng/api';
+import { Ripple } from 'primeng/ripple';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
@@ -23,10 +21,10 @@ interface NavItem {
   imports: [
     CommonModule,
     RouterModule,
-    ButtonModule,
-    RippleModule,
+    Ripple,
     FontAwesomeModule,
     FontAwesomeIconsModule,
+    NgOptimizedImage,
   ],
   templateUrl: './navbar.component.html',
 })
@@ -62,6 +60,12 @@ export class NavbarComponent {
 
   closeMenu() {
     this.isMenuOpen = false;
+  }
+
+  // Navigate to a specific route
+  navigateTo(route: string, fragment?: string) {
+    this.router.navigate([route], { fragment: fragment });
+    this.closeMenu();
   }
 
   @HostListener('window:resize', ['$event'])

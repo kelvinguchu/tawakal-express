@@ -42,10 +42,12 @@
                (mouseleave)="resumeMarquee()">
             <div class="partner-logo-container">
               <img 
-                [src]="partner.logo" 
+                [ngSrc]="partner.logo" 
                 [alt]="partner.alt" 
                 class="partner-logo h-12 sm:h-12 md:h-14 object-contain mx-auto grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110"
                 loading="lazy"
+                width="120"
+                height="56"
               />
             </div>
           </div>

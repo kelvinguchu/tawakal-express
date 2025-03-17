@@ -4,11 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { DropdownModule } from 'primeng/dropdown';
-import { RippleModule } from 'primeng/ripple';
-import { TooltipModule } from 'primeng/tooltip';
+import { Ripple } from 'primeng/ripple';
+import { Tooltip } from 'primeng/tooltip';
 
 // Agent data structure
 interface Agent {
@@ -26,11 +23,8 @@ interface Agent {
     FormsModule,
     FontAwesomeModule,
     FontAwesomeIconsModule,
-    ButtonModule,
-    InputTextModule,
-    DropdownModule,
-    RippleModule,
-    TooltipModule,
+    Ripple,
+    Tooltip,
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',

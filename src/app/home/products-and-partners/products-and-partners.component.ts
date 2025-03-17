@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 
@@ -28,9 +28,14 @@ interface ItemsData {
 @Component({
   selector: 'app-products-and-partners',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FontAwesomeIconsModule,
+    NgOptimizedImage,
+  ],
   templateUrl: './products-and-partners.component.html',
-  styleUrl: './products-and-partners.component.css',
+  styleUrls: ['./products-and-partners.component.css'],
 })
 export class ProductsAndPartnersComponent {
   // Active tab and item state

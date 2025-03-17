@@ -6,10 +6,13 @@ import {
   Inject,
   PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import {
+  CommonModule,
+  isPlatformBrowser,
+  NgOptimizedImage,
+} from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
+import { Ripple } from 'primeng/ripple';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
@@ -46,13 +49,13 @@ interface TrustIndicator {
   imports: [
     CommonModule,
     RouterModule,
-    ButtonModule,
-    RippleModule,
+    Ripple,
     FontAwesomeModule,
     FontAwesomeIconsModule,
+    NgOptimizedImage,
   ],
   templateUrl: './hero.component.html',
-  styleUrl: './hero.component.css',
+  styleUrls: ['./hero.component.css'],
 })
 export class HeroComponent implements AfterViewInit {
   // Icon sizes configuration

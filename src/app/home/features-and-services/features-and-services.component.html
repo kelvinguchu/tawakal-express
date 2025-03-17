@@ -88,7 +88,7 @@
           <!-- Service info -->
           <div class="flex items-center p-5">
             <div class="w-14 h-14 flex-shrink-0 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 overflow-hidden mr-4 group-hover:shadow-md transition-all duration-300">
-              <img [src]="'/features-and-services/' + service.logo" [alt]="service.name + ' logo'" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300">
+              <img [ngSrc]="'/features-and-services/' + service.logo" [alt]="service.name + ' logo'" width="40" height="40" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300">
             </div>
             
             <div class="flex-grow">
@@ -185,7 +185,7 @@
           <!-- Bank info -->
           <div class="flex items-center p-5">
             <div class="w-14 h-14 flex-shrink-0 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 overflow-hidden mr-4 group-hover:shadow-md transition-all duration-300">
-              <img [src]="'/features-and-services/' + bank.logo" [alt]="bank.name + ' logo'" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300">
+              <img [ngSrc]="'/features-and-services/' + bank.logo" [alt]="bank.name + ' logo'" width="40" height="40" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300">
             </div>
             
             <div class="flex-grow">

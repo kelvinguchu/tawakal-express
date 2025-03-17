@@ -36,16 +36,18 @@
         
         <div class="partners-marquee-container relative z-1">
           <div class="partners-marquee-content" [ngClass]="{'partners-marquee-pause': isPaused}">
-            <div *ngFor="let partner of marqueePartners" 
+            <div *ngFor="let partner of marqueePartners; let i = index" 
                  class="partners-marquee-item"
                  (mouseenter)="pauseMarquee()" 
                  (mouseleave)="resumeMarquee()">
               <div class="partner-logo-container">
                 <img 
-                  [src]="partner.logo" 
+                  [ngSrc]="partner.logo!" 
                   [alt]="partner.alt" 
                   class="partner-logo h-10 sm:h-12 md:h-14 object-contain mx-auto grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110"
-                  loading="lazy"
+                  width="56"
+                  height="56"
+                  [priority]="i < 4"
                 />
               </div>
             </div>
@@ -75,7 +77,12 @@
         <div *ngFor="let location of globalPresence; let i = index" 
              class="relative rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-48 sm:h-56 md:h-64"
              [ngStyle]="{'animation-delay': (i * 0.1) + 's'}">
-          <img [src]="location.image" [alt]="location.country" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <img [ngSrc]="location.image!" [alt]="location.country" 
+               class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+               width="400"
+               height="300"
+               [priority]="i < 2"
+          >
           
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
           
@@ -135,7 +142,12 @@
                 
                 <!-- Desktop image (hidden on mobile) -->
                 <div class="hidden md:block rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative">
-                  <img [src]="event.image" [alt]="event.imageAlt" class="w-full h-36 sm:h-40 md:h-48 object-cover">
+                  <img [ngSrc]="event.image!" [alt]="event.imageAlt" 
+                       class="w-full h-36 sm:h-40 md:h-48 object-cover"
+                       width="400"
+                       height="200"
+                       [priority]="i === 0"
+                  >
                   <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               </div>
@@ -156,7 +168,11 @@
                 
                 <!-- Mobile image (hidden on desktop) -->
                 <div class="md:hidden mt-3 sm:mt-4 rounded-xl overflow-hidden shadow-lg">
-                  <img [src]="event.image" [alt]="event.imageAlt" class="w-full h-36 sm:h-40 object-cover">
+                  <img [ngSrc]="event.image!" [alt]="event.imageAlt" 
+                       class="w-full h-36 sm:h-40 object-cover"
+                       width="300"
+                       height="150"
+                  >
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@
       <div class="flex-shrink-0 flex items-center">
         <a routerLink="/" class="flex items-center relative group">
           <div class="absolute inset-0 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
-          <img src="/images/logo.png" alt="Tawakal Express Logo" class="h-10 w-auto relative z-10">
+          <img ngSrc="/images/logo.png" alt="Tawakal Express Logo" class="h-10 w-auto relative z-10" width="100" height="40">
         </a>
       </div>
 
@@ -14,16 +14,17 @@
         <!-- Main navigation items -->
         <ng-container *ngFor="let item of navItems">
           <a pRipple 
-             [routerLink]="item.routerLink" 
-             [fragment]="item.fragment" 
-             class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-white/40 text-gray-700 hover:text-tawakal-blue relative overflow-hidden group">
+             (click)="navigateTo(item.routerLink, item.fragment)"
+             routerLinkActive="text-tawakal-blue"
+             [routerLinkActiveOptions]="{exact: item.routerLink === '/'}"
+             class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:bg-white/40 text-gray-700 hover:text-tawakal-blue relative overflow-hidden group cursor-pointer">
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-tawakal-green to-tawakal-blue group-hover:w-full transition-all duration-300"></span>
             {{item.label}}
           </a>
         </ng-container>
 
         <!-- Contact button -->
-        <a pRipple routerLink="/contact" class="ml-2 px-4 py-2 text-sm font-medium rounded-md bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 relative group">
+        <a pRipple (click)="navigateTo('/contact')" routerLinkActive="bg-opacity-90" class="ml-2 px-4 py-2 text-sm font-medium rounded-md bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 relative group cursor-pointer">
           <span class="absolute inset-0 rounded-md bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           <span class="relative z-10">Contact</span>
         </a>
@@ -55,17 +56,17 @@
       <!-- Main navigation items -->
       <ng-container *ngFor="let item of navItems">
         <a pRipple 
-           [routerLink]="item.routerLink" 
-           [fragment]="item.fragment" 
-           (click)="closeMenu()" 
-           class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 transform hover:translate-x-1 relative overflow-hidden group">
+           (click)="navigateTo(item.routerLink, item.fragment)"
+           routerLinkActive="text-tawakal-blue"
+           [routerLinkActiveOptions]="{exact: item.routerLink === '/'}"
+           class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 transform hover:translate-x-1 relative overflow-hidden group cursor-pointer">
           <span class="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-tawakal-green to-tawakal-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           {{item.label}}
         </a>
       </ng-container>
       
       <!-- Contact button -->
-      <a pRipple routerLink="/contact" (click)="closeMenu()" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 mt-3 mx-2 transform hover:-translate-y-0.5 relative group">
+      <a pRipple (click)="navigateTo('/contact')" routerLinkActive="bg-opacity-90" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white hover:shadow-md transition-all duration-200 mt-3 mx-2 transform hover:-translate-y-0.5 relative group cursor-pointer">
         <span class="absolute inset-0 rounded-md bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="relative z-10">Contact</span>
       </a>

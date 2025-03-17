@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-features-and-services',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FontAwesomeIconsModule,
+    NgOptimizedImage,
+  ],
   templateUrl: './features-and-services.component.html',
   styleUrl: './features-and-services.component.css',
 })

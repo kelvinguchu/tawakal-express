@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { RippleModule } from 'primeng/ripple';
-import { TooltipModule } from 'primeng/tooltip';
+import { Ripple } from 'primeng/ripple';
 
 // Job category data structure
 interface JobCategory {
@@ -25,10 +22,7 @@ interface JobCategory {
     ReactiveFormsModule,
     FontAwesomeModule,
     FontAwesomeIconsModule,
-    ButtonModule,
-    InputTextModule,
-    RippleModule,
-    TooltipModule,
+    Ripple,
   ],
   templateUrl: './current-opportunities.component.html',
   styleUrl: './current-opportunities.component.css',

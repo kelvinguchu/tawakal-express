@@ -1,28 +1,32 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
-import { AgentsComponent } from './pages/agents/agents.component';
-import { CareersComponent } from './pages/careers/careers.component';
-import { ContactPageComponent } from './pages/contactpage/contactpage.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', redirectTo: '', pathMatch: 'full' },
   {
     path: 'about',
-    component: AboutComponent,
+    loadComponent: () =>
+      import('./pages/about/about.component').then((m) => m.AboutComponent),
   },
   {
     path: 'agents',
-    component: AgentsComponent,
+    loadComponent: () =>
+      import('./pages/agents/agents.component').then((m) => m.AgentsComponent),
   },
   {
     path: 'careers',
-    component: CareersComponent,
+    loadComponent: () =>
+      import('./pages/careers/careers.component').then(
+        (m) => m.CareersComponent
+      ),
   },
   {
     path: 'contact',
-    component: ContactPageComponent,
+    loadComponent: () =>
+      import('./pages/contactpage/contactpage.component').then(
+        (m) => m.ContactPageComponent
+      ),
   },
   { path: '**', redirectTo: '' },
 ];
