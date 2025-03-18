@@ -1,0 +1,92 @@
+@import 'leaflet/dist/leaflet.css';
+
+/* Ensure the map container has proper display */
+:host ::ng-deep .leaflet-container {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.h-[450px], .h-[600px] {
+  position: relative;
+}
+
+/* Fix Leaflet panes/layers z-index */
+:host ::ng-deep .leaflet-map-pane {
+  z-index: 2;
+}
+
+:host ::ng-deep .leaflet-tile-pane {
+  z-index: 20;
+}
+
+:host ::ng-deep .leaflet-overlay-pane {
+  z-index: 40;
+}
+
+:host ::ng-deep .leaflet-shadow-pane {
+  z-index: 50;
+}
+
+:host ::ng-deep .leaflet-marker-pane {
+  z-index: 60;
+}
+
+:host ::ng-deep .leaflet-popup-pane {
+  z-index: 70;
+}
+
+:host ::ng-deep .leaflet-control {
+  z-index: 80;
+}
+
+/* Popup styles */
+.leaflet-popup-content {
+  min-width: 200px;
+}
+
+.popup-content h3 {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.popup-content p {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Custom marker styles */
+.custom-marker-icon {
+  color: #3b82f6;
+  text-align: center;
+}
+
+/* Make location name clickable */
+h4 {
+  cursor: pointer;
+}
+
+/* Make list scrollbar look nicer */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}

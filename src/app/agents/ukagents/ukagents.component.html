@@ -1,0 +1,275 @@
+<section class="bg-[#f8faf8] min-h-screen py-6 sm:py-8 md:py-12">
+  <div class="container mx-auto px-3 sm:px-4 mt-12 sm:mt-6 md:px-6 lg:px-8">
+    <!-- Page header -->
+    <div class="text-center mb-5 sm:mb-8">
+      <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2 sm:mb-3">
+        Our <span class="bg-gradient-to-r from-tawakal-blue to-[#9e5a63] text-transparent bg-clip-text">United Kingdom Agents</span>
+      </h1>
+      <p class="text-gray-600 max-w-3xl mx-auto text-xs sm:text-sm px-2">
+        Find Tawakal Express agents across the United Kingdom.
+      </p>
+    </div>
+
+    <!-- Search and filter section -->
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-3 sm:p-4 md:p-5 mb-4 sm:mb-6">
+      <div class="flex flex-col space-y-3 sm:space-y-4 md:space-y-0 md:flex-row md:gap-3 md:items-end">
+        <!-- Search input -->
+        <div class="flex-1">
+          <label for="search" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Search Agents</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2 sm:pl-3 text-gray-500">
+              <fa-icon [icon]="['fas', 'search']" class="text-xs sm:text-sm"></fa-icon>
+            </span>
+            <input
+              id="search"
+              type="text"
+              [(ngModel)]="searchTerm"
+              (input)="searchAgents()"
+              placeholder="Search by location, city, or postcode..."
+              class="w-full pl-7 sm:pl-10 pr-3 sm:pr-4 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-tawakal-blue focus:border-tawakal-blue"
+            />
+          </div>
+        </div>
+
+        <!-- City filter -->
+        <div class="w-full md:w-64">
+          <label for="city-filter" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Filter by City</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2 sm:pl-3 text-gray-500">
+              <fa-icon [icon]="['fas', 'building']" class="text-xs sm:text-sm"></fa-icon>
+            </span>
+            <select
+              id="city-filter"
+              [(ngModel)]="selectedCity"
+              (change)="searchAgents()"
+              class="w-full pl-7 sm:pl-10 pr-3 sm:pr-4 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-tawakal-blue focus:border-tawakal-blue appearance-none"
+            >
+              <option value="">All Cities</option>
+              <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:pr-3 pointer-events-none">
+              <fa-icon [icon]="['fas', 'filter']" class="text-xs sm:text-sm"></fa-icon>
+            </div>
+          </div>
+        </div>
+
+        <!-- View toggle and sort buttons -->
+        <div class="flex flex-wrap gap-1.5 sm:gap-2 sort-buttons">
+          <button 
+            pRipple
+            (click)="toggleMapView()" 
+            class="flex items-center px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            [ngClass]="{'bg-tawakal-blue/10 border-tawakal-blue/30 text-tawakal-blue': showMap}"
+          >
+            <fa-icon 
+              [icon]="showMap ? ['fas', 'list'] : ['fas', 'map-marker-alt']" 
+              class="mr-1 sm:mr-2 text-xs sm:text-sm"
+            ></fa-icon>
+            <span>{{ showMap ? 'List View' : 'Map View' }}</span>
+          </button>
+          
+          <button 
+            pRipple
+            (click)="toggleSort('LocationName')" 
+            class="flex items-center px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            [ngClass]="{'bg-tawakal-blue/10 border-tawakal-blue/30 text-tawakal-blue': sortField === 'LocationName'}"
+          >
+            <span>Name</span>
+            <fa-icon 
+              [icon]="sortField === 'LocationName' && sortDirection === 'asc' ? ['fas', 'sort-alpha-down'] : ['fas', 'sort-alpha-up']" 
+              class="ml-1 sm:ml-2 text-xs sm:text-sm"
+            ></fa-icon>
+          </button>
+          
+          <button 
+            pRipple
+            (click)="toggleSort('City')" 
+            class="flex items-center px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            [ngClass]="{'bg-tawakal-blue/10 border-tawakal-blue/30 text-tawakal-blue': sortField === 'City'}"
+          >
+            <span>City</span>
+            <fa-icon 
+              [icon]="sortField === 'City' && sortDirection === 'asc' ? ['fas', 'sort-alpha-down'] : ['fas', 'sort-alpha-up']" 
+              class="ml-1 sm:ml-2 text-xs sm:text-sm"
+            ></fa-icon>
+          </button>
+          
+          <button 
+            pRipple
+            (click)="clearFilters()" 
+            class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-gray-700"
+            pTooltip="Clear all filters"
+            tooltipPosition="top"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results count -->
+    <div class="mb-2 sm:mb-3 text-2xs sm:text-xs text-gray-600 flex flex-wrap justify-between items-center">
+      <div>
+        Showing {{ filteredAgents().length }} of {{ agents().length }} agents
+      </div>
+      <div *ngIf="agents().length === 0" class="text-tawakal-blue animate-pulse">
+        Loading agents...
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    <div *ngIf="agents().length === 0" class="flex justify-center items-center py-8 sm:py-12">
+      <div class="animate-pulse flex flex-col items-center">
+        <div class="rounded-full bg-tawakal-blue/20 h-10 w-10 sm:h-12 sm:w-12 mb-3 sm:mb-4 flex items-center justify-center">
+          <div class="rounded-full bg-tawakal-blue/40 h-6 w-6 sm:h-8 sm:w-8"></div>
+        </div>
+        <div class="h-2 sm:h-3 bg-tawakal-blue/20 rounded w-24 sm:w-32 mb-2"></div>
+        <div class="h-1.5 sm:h-2 bg-tawakal-blue/10 rounded w-16 sm:w-24"></div>
+      </div>
+    </div>
+
+    <!-- Map View Container -->
+    <div *ngIf="showMap && agents().length > 0" class="mb-4 sm:mb-6">
+      <div class="bg-white rounded-xl shadow-md border border-gray-100 p-3 sm:p-4 overflow-hidden">
+        <!-- Leaflet Map (full width) -->
+        <div class="relative h-[350px] sm:h-[400px] md:h-[500px] rounded-lg overflow-hidden">
+          <div 
+            id="leaflet-map"
+            leaflet
+            [leafletOptions]="options"
+            (leafletMapReady)="onMapReady($event)"
+            style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; z-index: 0;"
+          ></div>
+          
+          <!-- Selected agent info overlay (shown when an agent is clicked) -->
+          <div *ngIf="selectedAgent" class="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 p-3 sm:p-4 max-w-[90%] sm:max-w-md bg-white/95 backdrop-blur-sm rounded-lg shadow-lg">
+            <button 
+              (click)="selectedAgent = null" 
+              class="absolute top-1 right-1 sm:top-2 sm:right-2 text-gray-500 hover:text-gray-700 text-xs sm:text-sm"
+            >
+              <fa-icon [icon]="['fas', 'times']"></fa-icon>
+            </button>
+            <h3 class="font-bold text-sm sm:text-base mb-1.5 sm:mb-2 pr-4">{{ selectedAgent.LocationName }}</h3>
+            <p class="mb-1.5 sm:mb-2 text-xs sm:text-sm text-gray-700">{{ formatAddress(selectedAgent) }}</p>
+            <div class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">
+              <div class="flex items-start">
+                <fa-icon [icon]="['fas', 'phone']" class="text-tawakal-blue mt-0.5 mr-1.5 sm:mr-2 w-3 sm:w-4"></fa-icon>
+                <span>{{ selectedAgent.PhoneNumber }}</span>
+              </div>
+              <div *ngIf="selectedAgent.Email" class="flex items-start mt-1">
+                <fa-icon [icon]="['fas', 'envelope']" class="text-tawakal-green mt-0.5 mr-1.5 sm:mr-2 w-3 sm:w-4"></fa-icon>
+                <span class="break-all">{{ selectedAgent.Email }}</span>
+              </div>
+            </div>
+            <div class="flex gap-1.5 sm:gap-2">
+              <a 
+                [href]="'tel:' + selectedAgent.PhoneNumber" 
+                class="flex-1 inline-flex items-center justify-center px-2 sm:px-3 py-1.5 sm:py-2 text-2xs sm:text-xs bg-tawakal-blue text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <fa-icon [icon]="['fas', 'phone']" class="mr-1 sm:mr-2"></fa-icon>
+                Call
+              </a>
+              <a 
+                [href]="getGoogleMapsUrl(selectedAgent)" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 inline-flex items-center justify-center px-2 sm:px-3 py-1.5 sm:py-2 text-2xs sm:text-xs bg-gradient-to-r from-tawakal-blue to-[#9e5a63] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <fa-icon [icon]="['fas', 'map-marker-alt']" class="mr-1 sm:mr-2"></fa-icon>
+                Directions
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agents list view -->
+    <div *ngIf="!showMap && agents().length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+      <div 
+        *ngFor="let agent of filteredAgents(); let i = index" 
+        class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300 group"
+      >
+        <!-- Card header with city and postcode -->
+        <div class="bg-gradient-to-r from-tawakal-blue/10 to-[#9e5a63]/10 px-3 sm:px-4 py-2 sm:py-3 border-b border-gray-100 flex items-center justify-between">
+          <div class="flex items-center">
+            <fa-icon [icon]="['fas', 'map-marker-alt']" class="text-tawakal-blue mr-1.5 sm:mr-2 text-xs sm:text-sm"></fa-icon>
+            <h3 class="font-medium text-xs sm:text-sm text-gray-800">{{ agent.City }}</h3>
+          </div>
+          <div class="text-2xs sm:text-xs text-gray-600 bg-white/70 px-1.5 sm:px-2 py-0.5 rounded-md">
+            {{ agent.PostalCode }}
+          </div>
+        </div>
+        
+        <!-- Card content -->
+        <div class="p-3 sm:p-4">
+          <!-- Location name -->
+          <h4 class="text-sm sm:text-base font-semibold text-gray-800 mb-2 sm:mb-3 group-hover:text-tawakal-blue transition-colors line-clamp-2">
+            {{ agent.LocationName }}
+          </h4>
+          
+          <!-- Agent details -->
+          <div class="space-y-1.5 sm:space-y-2 text-2xs sm:text-xs">
+            <!-- Address -->
+            <div class="flex items-start">
+              <fa-icon [icon]="['fas', 'location-dot']" class="text-[#9e5a63] mt-0.5 mr-2 sm:mr-3 w-3 sm:w-4 flex-shrink-0"></fa-icon>
+              <div class="text-gray-700">
+                <div>{{ agent['Apt,Unit'] ? agent['Apt,Unit'] + ', ' : '' }}{{ agent.Street }}</div>
+                <div>{{ agent.City }}, {{ agent.PostalCode }}</div>
+              </div>
+            </div>
+            
+            <!-- Phone -->
+            <div class="flex items-start">
+              <fa-icon [icon]="['fas', 'phone']" class="text-tawakal-blue mt-0.5 mr-2 sm:mr-3 w-3 sm:w-4 flex-shrink-0"></fa-icon>
+              <div class="text-gray-700 break-all">{{ agent.PhoneNumber }}</div>
+            </div>
+            
+            <!-- Email -->
+            <div *ngIf="agent.Email" class="flex items-start">
+              <fa-icon [icon]="['fas', 'envelope']" class="text-tawakal-green mt-0.5 mr-2 sm:mr-3 w-3 sm:w-4 flex-shrink-0"></fa-icon>
+              <div class="text-gray-700 break-all">{{ agent.Email }}</div>
+            </div>
+          </div>
+          
+          <!-- Action buttons -->
+          <div class="flex gap-1.5 sm:gap-2 mt-3 sm:mt-4">
+            <a 
+              [href]="'tel:' + agent.PhoneNumber" 
+              class="flex-1 inline-flex items-center justify-center px-2 sm:px-3 py-1.5 sm:py-2 text-2xs sm:text-xs bg-tawakal-blue text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+            >
+              <fa-icon [icon]="['fas', 'phone']" class="mr-1 sm:mr-2"></fa-icon>
+              Call
+            </a>
+            
+            <a 
+              [href]="getGoogleMapsUrl(agent)" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 inline-flex items-center justify-center px-2 sm:px-3 py-1.5 sm:py-2 text-2xs sm:text-xs bg-gradient-to-r from-tawakal-blue to-[#9e5a63] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+            >
+              <fa-icon [icon]="['fas', 'map-marker-alt']" class="mr-1 sm:mr-2"></fa-icon>
+              Directions
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Empty state (when no search results) -->
+    <div *ngIf="filteredAgents().length === 0 && agents().length > 0" class="text-center py-6 sm:py-8">
+      <div class="text-gray-400 mb-2 sm:mb-3">
+        <fa-icon [icon]="['fas', 'search']" class="text-xl sm:text-2xl"></fa-icon>
+      </div>
+      <h3 class="text-base sm:text-lg font-medium text-gray-700 mb-1 sm:mb-2">No agents found</h3>
+      <p class="text-gray-500 text-xs sm:text-sm mb-2 sm:mb-3">Try adjusting your search or filter criteria</p>
+      <button 
+        pRipple
+        (click)="clearFilters()" 
+        class="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-tawakal-blue text-white rounded-lg hover:bg-tawakal-blue/90 transition-colors"
+      >
+        Clear Filters
+      </button>
+    </div>
+  </div>
+</section>

@@ -13,6 +13,32 @@ export const routes: Routes = [
     path: 'agents',
     loadComponent: () =>
       import('./pages/agents/agents.component').then((m) => m.AgentsComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./agents/list/list.component').then((m) => m.ListComponent),
+      },
+      {
+        path: 'somalia',
+        loadComponent: () =>
+          import('./agents/somaliaagents/somaliaagents.component').then(
+            (m) => m.SomaliaagentsComponent
+          ),
+      },
+      {
+        path: 'uk',
+        loadComponent: () =>
+          import('./agents/ukagents/ukagents.component').then(
+            (m) => m.UkagentsComponent
+          ),
+      },
+      {
+        path: 'apply',
+        loadComponent: () =>
+          import('./agents/apply/apply.component').then((m) => m.ApplyComponent),
+      },
+    ],
   },
   {
     path: 'careers',

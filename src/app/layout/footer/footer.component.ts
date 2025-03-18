@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
@@ -33,26 +33,41 @@ export class FooterComponent implements OnInit {
 
   currentYear: number = new Date().getFullYear();
 
-  // Services for footer
+  // Services for footer - updated to match the services in features-and-services component
   serviceItems = [
-    { label: 'Money Transfer', routerLink: '/services/money-transfer' },
-    { label: 'Bill Payment', routerLink: '/services/bill-payment' },
-    { label: 'Mobile Top-up', routerLink: '/services/mobile-top-up' },
-    { label: 'Business Solutions', routerLink: '/services/business' },
-    { label: 'Currency Exchange', routerLink: '/services/currency-exchange' },
+    { label: 'Mobile Money Transfer', id: 'mobile-money' },
+    { label: 'Individual Payment', id: 'individual-payment' },
+    { label: 'Foreign Currency Exchange', id: 'currency-exchange' },
+    { label: 'Humanitarian Money Transfer', id: 'humanitarian' },
+    { label: 'Mpesa Services', id: 'mpesa' },
+    { label: 'Business Payment Solutions', id: 'business-payments' },
   ];
 
   // Quick links for footer
   quickLinks = [
     { label: 'Home', routerLink: '/' },
     { label: 'About Us', routerLink: '/about' },
-    { label: 'Services', routerLink: '/services' },
+    { label: 'Services', routerLink: '/', fragment: 'features-and-services' },
     { label: 'Agents', routerLink: '/agents' },
     { label: 'Careers', routerLink: '/careers' },
     { label: 'Contact', routerLink: '/contact' },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  // Method to navigate to the features-and-services section
+  navigateToService(serviceId: string): void {
+    this.router
+      .navigate(['/'], { fragment: 'features-and-services' })
+      .then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(serviceId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 300);
+      });
+  }
 }

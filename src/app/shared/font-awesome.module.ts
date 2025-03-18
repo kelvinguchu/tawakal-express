@@ -64,6 +64,8 @@ import {
   faComments,
   faCreditCard,
   faCode,
+  faDirections,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 
@@ -135,6 +137,8 @@ export class FontAwesomeIconsModule {
       faComments,
       faCreditCard,
       faCode,
+      faDirections,
+      faUser,
       faApple,
       faGooglePlay
     );

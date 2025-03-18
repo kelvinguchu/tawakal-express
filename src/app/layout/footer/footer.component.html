@@ -63,7 +63,7 @@
         </h3>
         <ul class="space-y-3">
           <li *ngFor="let service of serviceItems">
-            <a [routerLink]="service.routerLink" class="text-gray-600 hover:text-tawakal-blue transition-colors duration-200 text-sm flex items-center group">
+            <a (click)="navigateToService(service.id)" class="text-gray-600 hover:text-tawakal-blue transition-colors duration-200 text-sm flex items-center group cursor-pointer">
               <div class="w-1.5 h-1.5 rounded-full bg-tawakal-blue/50 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span class="transform group-hover:translate-x-1 transition-transform duration-300">{{ service.label }}</span>
             </a>
