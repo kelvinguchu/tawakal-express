@@ -1,6 +1,6 @@
 @import 'leaflet/dist/leaflet.css';
 
-/* Ensure the map container has proper display */
+/* map container  */
 :host ::ng-deep .leaflet-container {
   height: 100%;
   width: 100%;
@@ -12,11 +12,12 @@
   bottom: 0;
 }
 
-.h-[450px], .h-[600px] {
+/* dynamic height classes */
+[class*='h-['] {
   position: relative;
 }
 
-/* Fix Leaflet panes/layers z-index */
+/* Leaflet panes/layers z-index */
 :host ::ng-deep .leaflet-map-pane {
   z-index: 2;
 }
@@ -67,12 +68,12 @@
   text-align: center;
 }
 
-/* Make location name clickable */
+/* location name clickable */
 h4 {
   cursor: pointer;
 }
 
-/* Make list scrollbar look nicer */
+/* list scrollbar */
 .overflow-y-auto::-webkit-scrollbar {
   width: 6px;
 }

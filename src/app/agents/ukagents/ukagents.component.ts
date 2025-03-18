@@ -4,8 +4,10 @@ import {
   signal,
   AfterViewInit,
   ViewEncapsulation,
+  PLATFORM_ID,
+  Inject,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -79,7 +81,10 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     zoomAnimation: true,
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit(): void {
     this.loadAgents();
@@ -123,6 +128,8 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Initialize map when Leaflet is ready
   onMapReady(map: L.Map): void {
+    if (!this.isBrowser()) return;
+
     this.map = map;
 
     setTimeout(() => {
@@ -147,7 +154,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Add agent markers to the map
   addAgentMarkers(): void {
-    if (!this.map) return;
+    if (!this.map || !this.isBrowser()) return;
 
     this.markers.clearLayers();
 
@@ -276,7 +283,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     this.showMap = !this.showMap;
     this.selectedAgent = null;
 
-    if (this.showMap) {
+    if (this.showMap && this.isBrowser()) {
       setTimeout(() => {
         if (!this.map) return;
 
@@ -332,5 +339,26 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   // Track by function for ngFor optimization
   trackByFn(index: number, agent: UKAgent): string {
     return agent.LocationCode;
+  }
+
+  // Check if running in browser
+  isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
+  }
+
+  // Only use map when in browser environment
+  initializeMap(): void {
+    if (!this.isBrowser()) return;
+
+    if (this.map) {
+      this.map.invalidateSize();
+      return;
+    }
+
+    setTimeout(() => {
+      if (this.filteredAgents().length > 0) {
+        this.addAgentMarkers();
+      }
+    }, 300);
   }
 }
