@@ -17,14 +17,20 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { Ripple } from 'primeng/ripple';
 import { Tooltip } from 'primeng/tooltip';
-import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-// Create a token for safely accessing window
+// Import the module but NOT any actual Leaflet implementation
+import { LeafletModule } from '@bluehalo/ngx-leaflet';
+
+// Safe window token
 export const WINDOW = new InjectionToken<Window>('WindowToken', {
   factory: () => {
-    const { defaultView } = inject(DOCUMENT);
-    return defaultView || ({} as Window);
+    const platformId = inject(PLATFORM_ID);
+    if (isPlatformBrowser(platformId)) {
+      const { defaultView } = inject(DOCUMENT);
+      return defaultView || ({} as Window);
+    }
+    return {} as Window;
   },
 });
 
@@ -72,11 +78,11 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   showMap = false;
   selectedAgent: UKAgent | null = null;
 
-  // Leaflet map properties
-  private map: any | null = null;
+  // Leaflet map properties - only initialized in browser
+  private map: any = null;
   private markers: any = null;
   options: any = {};
-  L: any = null;
+  L: any = null; // No direct type import to avoid SSR issues
 
   // Auto-inject services
   private readonly destroyRef = inject(DestroyRef);
@@ -85,45 +91,57 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-    // Only initialize map in browser context
-    if (this.isBrowser()) {
-      // Use dynamic import to avoid SSR issues
-      import('leaflet')
-        .then((L) => {
-          this.L = L.default || L;
-          this.markers = this.L.layerGroup();
-          this.options = {
-            layers: [
-              this.L.tileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                {
-                  maxZoom: 18,
-                  minZoom: 2,
-                  attribution:
-                    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                }
-              ),
-            ],
-            zoom: 5,
-            center: this.L.latLng(52.5, -1.9),
-            preferCanvas: true,
-            worldCopyJump: true,
-            fadeAnimation: true,
-            zoomAnimation: true,
-          };
-        })
-        .catch((error) => {
-          console.error('Failed to load Leaflet:', error);
-        });
-    }
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loadAgents();
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    // Only initialize Leaflet in browser context
+    if (this.isBrowser() && this.showMap) {
+      this.initLeaflet();
+    }
+  }
+
+  // Safe browser check that doesn't rely on window
+  isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
+  }
+
+  // Safely initialize Leaflet only in browser context
+  private async initLeaflet(): Promise<void> {
+    if (!this.isBrowser()) return;
+
+    try {
+      // Dynamic import to avoid SSR issues
+      const L = await import('leaflet');
+      this.L = L.default || L;
+      this.markers = this.L.layerGroup();
+
+      this.options = {
+        layers: [
+          this.L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+              maxZoom: 18,
+              minZoom: 2,
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            }
+          ),
+        ],
+        zoom: 5,
+        center: this.L.latLng(52.5, -1.9),
+        preferCanvas: true,
+        worldCopyJump: true,
+        fadeAnimation: true,
+        zoomAnimation: true,
+      };
+    } catch (error) {
+      console.error('Failed to load Leaflet:', error);
+    }
+  }
 
   // Load agents from JSON file
   loadAgents(): void {
@@ -141,6 +159,11 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
           this.extractCities();
           this.sortAgents();
+
+          // Initialize Leaflet after data is loaded if in browser
+          if (this.isBrowser() && this.showMap && !this.L) {
+            this.initLeaflet();
+          }
         },
         error: (error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -164,25 +187,38 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Initialize map when Leaflet is ready
   onMapReady(map: any): void {
-    if (!this.isBrowser() || !this.L) return;
+    if (!this.isBrowser()) return;
+
+    // Wait for Leaflet to be loaded
+    if (!this.L) {
+      this.initLeaflet().then(() => {
+        if (this.L) this.setupMap(map);
+      });
+    } else {
+      this.setupMap(map);
+    }
+  }
+
+  // Setup map after we're sure Leaflet is loaded
+  private setupMap(map: any): void {
+    if (!this.L) return;
 
     this.map = map;
 
     setTimeout(() => {
-      const leafletMap = this.map;
-      if (!leafletMap) return;
+      if (!this.map) return;
 
-      leafletMap.invalidateSize(true);
+      this.map.invalidateSize(true);
 
-      leafletMap.eachLayer((layer: any) => {
-        leafletMap.removeLayer(layer);
+      this.map.eachLayer((layer: any) => {
+        this.map.removeLayer(layer);
       });
 
       this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(leafletMap);
+      }).addTo(this.map);
 
       this.addAgentMarkers();
     }, 500);
@@ -194,12 +230,22 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
     this.markers.clearLayers();
 
+    // Create custom FontAwesome marker icon without background or borders
+    const markerIcon = this.L.divIcon({
+      html: '<i class="fas fa-map-marker-alt"></i>',
+      className: 'marker-icon',
+      iconSize: [30, 42],
+      iconAnchor: [15, 42], // Bottom center of the icon
+      popupAnchor: [0, -42], // Center above the icon
+    });
+
     this.filteredAgents().forEach((agent) => {
       if (!agent.Latitude || !agent.Longitude) return;
 
       const marker = this.L.marker([agent.Latitude, agent.Longitude], {
         title: agent.LocationName,
         riseOnHover: true,
+        icon: markerIcon,
       }).bindPopup(this.createPopupContent(agent));
 
       marker.on('click', () => {
@@ -224,10 +270,49 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
           this.map.fitBounds(bounds, { padding: [50, 50] });
         }
       } catch (error) {
-        this.map.setView([52.5, -1.9], 6);
+        if (this.map) {
+          this.map.setView([52.5, -1.9], 6);
+        }
         console.error('Error fitting map bounds:', error);
       }
     }
+  }
+
+  // Toggle between list and map views
+  toggleMapView(): void {
+    this.showMap = !this.showMap;
+    this.selectedAgent = null;
+
+    if (this.showMap && this.isBrowser()) {
+      // Initialize Leaflet if not already done
+      if (!this.L) {
+        this.initLeaflet().then(() => {
+          if (this.map) {
+            this.refreshMap();
+          }
+        });
+      } else {
+        this.refreshMap();
+      }
+    }
+  }
+
+  // Helper to refresh the map
+  private refreshMap(): void {
+    setTimeout(() => {
+      if (!this.map || !this.L) return;
+
+      this.map.invalidateSize(true);
+
+      this.map.eachLayer((layer: any) => {
+        if (this.L && layer instanceof this.L.TileLayer) {
+          return;
+        }
+        this.map.removeLayer(layer);
+      });
+
+      this.addAgentMarkers();
+    }, 800);
   }
 
   // Create HTML for marker popups
@@ -314,30 +399,6 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Toggle between list and map views
-  toggleMapView(): void {
-    this.showMap = !this.showMap;
-    this.selectedAgent = null;
-
-    if (this.showMap && this.isBrowser()) {
-      setTimeout(() => {
-        if (!this.map || !this.L) return;
-
-        const leafletMap = this.map;
-        leafletMap.invalidateSize(true);
-
-        leafletMap.eachLayer((layer: any) => {
-          if (layer instanceof this.L.TileLayer) {
-            return;
-          }
-          leafletMap.removeLayer(layer);
-        });
-
-        this.addAgentMarkers();
-      }, 800);
-    }
-  }
-
   // Format address for display
   formatAddress(agent: UKAgent): string {
     const parts = [
@@ -386,17 +447,21 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     return agent.LocationCode;
   }
 
-  // Check if running in browser - using injection token pattern
-  isBrowser(): boolean {
-    return (
-      isPlatformBrowser(this.platformId) && typeof this.window !== 'undefined'
-    );
-  }
-
-  // Only use map when in browser environment
+  // Only initialize map when in browser environment
   initializeMap(): void {
     if (!this.isBrowser()) return;
-    if (!this.L) return;
+
+    // Initialize Leaflet if needed
+    if (!this.L) {
+      this.initLeaflet().then(() => {
+        if (this.map) {
+          this.map.invalidateSize();
+        } else if (this.filteredAgents().length > 0) {
+          setTimeout(() => this.addAgentMarkers(), 300);
+        }
+      });
+      return;
+    }
 
     if (this.map) {
       this.map.invalidateSize();

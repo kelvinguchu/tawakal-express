@@ -1,4 +1,8 @@
-@import 'leaflet/dist/leaflet.css';
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@media screen {
+  @import 'leaflet/dist/leaflet.css';
+}
+
 
 /* Ensure the map container has proper display */
 :host ::ng-deep .leaflet-container {
@@ -26,12 +30,36 @@
 :host ::ng-deep .leaflet-popup-pane { z-index: 70; }
 :host ::ng-deep .leaflet-control { z-index: 80; }
 
+/* Remove default Leaflet styles */
+:host ::ng-deep .leaflet-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Custom marker styles */
+.marker-icon {
+  color: #3b82f6; /* Tawakal blue */
+  font-size: 32px !important;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Add bounce animation on hover */
+.leaflet-marker-icon:hover .fas {
+  animation: bounce 0.5s ease infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
 /* Popup styles */
 .leaflet-popup-content { min-width: 200px; }
 .popup-content h3 { 
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 1rem;
+  color: #3b82f6;
 }
 .popup-content p { 
   margin-bottom: 0.5rem;
@@ -44,5 +72,4 @@
 .overflow-y-auto::-webkit-scrollbar-thumb { background: #c1c1c1; }
 
 /* Simple interaction styles */
-.custom-marker-icon { color: #3b82f6; }
 h4 { cursor: pointer; }
