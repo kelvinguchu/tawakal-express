@@ -9,6 +9,7 @@ import {
   InjectionToken,
   DestroyRef,
   inject,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser, DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -67,16 +68,16 @@ interface UKAgent {
   encapsulation: ViewEncapsulation.None,
 })
 export class UkagentsComponent implements OnInit, AfterViewInit {
-  // Component state
+  // Component state using signals for more reactive updates
   agents = signal<UKAgent[]>([]);
   filteredAgents = signal<UKAgent[]>([]);
+  selectedAgent = signal<UKAgent | null>(null);
   searchTerm = '';
   selectedCity = '';
   sortField: 'LocationName' | 'City' = 'City';
   sortDirection: 'asc' | 'desc' = 'asc';
   cities: string[] = [];
   showMap = false;
-  selectedAgent: UKAgent | null = null;
 
   // Leaflet map properties - only initialized in browser
   private map: any = null;
@@ -87,6 +88,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   // Auto-inject services
   private readonly destroyRef = inject(DestroyRef);
   private readonly window = inject(WINDOW);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   constructor(
     private http: HttpClient,
@@ -282,7 +284,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   // Toggle between list and map views
   toggleMapView(): void {
     this.showMap = !this.showMap;
-    this.selectedAgent = null;
+    this.selectedAgent.set(null);
 
     if (this.showMap && this.isBrowser()) {
       // Initialize Leaflet if not already done
@@ -388,12 +390,13 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     this.sortAgents();
   }
 
-  // Reset all filters and search
+  // Clear filters and selected agent
   clearFilters(): void {
     this.searchTerm = '';
     this.selectedCity = '';
     this.filteredAgents.set(this.agents());
     this.sortAgents();
+    this.selectedAgent.set(null);
 
     if (this.showMap && this.map && this.isBrowser()) {
       this.addAgentMarkers();
@@ -414,7 +417,9 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Handle agent selection and map centering
   viewAgentDetails(agent: UKAgent): void {
-    this.selectedAgent = agent;
+    // Use the signal's set method for proper change detection
+    this.selectedAgent.set(agent);
+    this.cdr.detectChanges();
 
     if (this.showMap && this.map && this.isBrowser()) {
       this.map.setView([agent.Latitude, agent.Longitude], 16);
