@@ -246,8 +246,9 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
         title: agent.LocationName,
         riseOnHover: true,
         icon: markerIcon,
-      }).bindPopup(this.createPopupContent(agent));
+      });
 
+      // Add click handler to show the agent details in the sidebar instead of popup
       marker.on('click', () => {
         this.viewAgentDetails(agent);
       });
@@ -417,15 +418,6 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
     if (this.showMap && this.map && this.isBrowser()) {
       this.map.setView([agent.Latitude, agent.Longitude], 16);
-
-      this.markers.eachLayer((layer: any) => {
-        const marker = layer;
-        const latLng = marker.getLatLng();
-
-        if (latLng.lat === agent.Latitude && latLng.lng === agent.Longitude) {
-          marker.openPopup();
-        }
-      });
     }
   }
 
