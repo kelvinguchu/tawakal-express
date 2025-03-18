@@ -1,6 +1,6 @@
 @import 'leaflet/dist/leaflet.css';
 
-/* map container  */
+/* Ensure the map container has proper display */
 :host ::ng-deep .leaflet-container {
   height: 100%;
   width: 100%;
@@ -12,82 +12,37 @@
   bottom: 0;
 }
 
-/* dynamic height classes */
+/* Fix for dynamic height classes */
 [class*='h-['] {
   position: relative;
 }
 
-/* Leaflet panes/layers z-index */
-:host ::ng-deep .leaflet-map-pane {
-  z-index: 2;
-}
-
-:host ::ng-deep .leaflet-tile-pane {
-  z-index: 20;
-}
-
-:host ::ng-deep .leaflet-overlay-pane {
-  z-index: 40;
-}
-
-:host ::ng-deep .leaflet-shadow-pane {
-  z-index: 50;
-}
-
-:host ::ng-deep .leaflet-marker-pane {
-  z-index: 60;
-}
-
-:host ::ng-deep .leaflet-popup-pane {
-  z-index: 70;
-}
-
-:host ::ng-deep .leaflet-control {
-  z-index: 80;
-}
+/* Fix Leaflet panes/layers z-index */
+:host ::ng-deep .leaflet-map-pane { z-index: 2; }
+:host ::ng-deep .leaflet-tile-pane { z-index: 20; }
+:host ::ng-deep .leaflet-overlay-pane { z-index: 40; }
+:host ::ng-deep .leaflet-shadow-pane { z-index: 50; }
+:host ::ng-deep .leaflet-marker-pane { z-index: 60; }
+:host ::ng-deep .leaflet-popup-pane { z-index: 70; }
+:host ::ng-deep .leaflet-control { z-index: 80; }
 
 /* Popup styles */
-.leaflet-popup-content {
-  min-width: 200px;
-}
-
-.popup-content h3 {
+.leaflet-popup-content { min-width: 200px; }
+.popup-content h3 { 
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 1rem;
 }
-
-.popup-content p {
+.popup-content p { 
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
 }
 
-/* Custom marker styles */
-.custom-marker-icon {
-  color: #3b82f6;
-  text-align: center;
-}
+/* Minimal scrollbar styles */
+.overflow-y-auto::-webkit-scrollbar { width: 6px; }
+.overflow-y-auto::-webkit-scrollbar-track { background: #f1f1f1; }
+.overflow-y-auto::-webkit-scrollbar-thumb { background: #c1c1c1; }
 
-/* location name clickable */
-h4 {
-  cursor: pointer;
-}
-
-/* list scrollbar */
-.overflow-y-auto::-webkit-scrollbar {
-  width: 6px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 10px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
-}
+/* Simple interaction styles */
+.custom-marker-icon { color: #3b82f6; }
+h4 { cursor: pointer; }

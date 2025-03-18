@@ -14,7 +14,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { Ripple } from 'primeng/ripple';
 import { Tooltip } from 'primeng/tooltip';
-import * as L from 'leaflet';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 
 // UK Agent data structure
@@ -62,29 +61,40 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   selectedAgent: UKAgent | null = null;
 
   // Leaflet map properties
-  private map: L.Map | null = null;
-  private markers: L.LayerGroup = L.layerGroup();
-  options = {
-    layers: [
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        minZoom: 2,
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }),
-    ],
-    zoom: 5,
-    center: L.latLng(52.5, -1.9),
-    preferCanvas: true,
-    worldCopyJump: true,
-    fadeAnimation: true,
-    zoomAnimation: true,
-  };
+  private map: any | null = null;
+  private markers: any = null;
+  options: any = {};
+  L: any = null;
 
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) {
+    // Initialize Leaflet only in browser
+    if (isPlatformBrowser(this.platformId)) {
+      // Dynamically import Leaflet only in browser environment
+      import('leaflet').then((L) => {
+        this.L = L;
+        this.markers = L.layerGroup();
+        this.options = {
+          layers: [
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 18,
+              minZoom: 2,
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            }),
+          ],
+          zoom: 5,
+          center: L.latLng(52.5, -1.9),
+          preferCanvas: true,
+          worldCopyJump: true,
+          fadeAnimation: true,
+          zoomAnimation: true,
+        };
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.loadAgents();
@@ -127,8 +137,9 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   }
 
   // Initialize map when Leaflet is ready
-  onMapReady(map: L.Map): void {
+  onMapReady(map: any): void {
     if (!this.isBrowser()) return;
+    if (!this.L) return;
 
     this.map = map;
 
@@ -138,11 +149,11 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
       leafletMap.invalidateSize(true);
 
-      leafletMap.eachLayer((layer) => {
+      leafletMap.eachLayer((layer: any) => {
         leafletMap.removeLayer(layer);
       });
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -154,14 +165,15 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Add agent markers to the map
   addAgentMarkers(): void {
-    if (!this.map || !this.isBrowser()) return;
+    if (!this.isBrowser()) return;
+    if (!this.map || !this.L) return;
 
     this.markers.clearLayers();
 
     this.filteredAgents().forEach((agent) => {
       if (!agent.Latitude || !agent.Longitude) return;
 
-      const marker = L.marker([agent.Latitude, agent.Longitude], {
+      const marker = this.L.marker([agent.Latitude, agent.Longitude], {
         title: agent.LocationName,
         riseOnHover: true,
       }).bindPopup(this.createPopupContent(agent));
@@ -180,11 +192,11 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
         const points = this.filteredAgents()
           .filter((agent) => agent.Latitude && agent.Longitude)
           .map(
-            (agent) => [agent.Latitude, agent.Longitude] as L.LatLngExpression
+            (agent) => [agent.Latitude, agent.Longitude] as [number, number]
           );
 
         if (points.length > 0) {
-          const bounds = L.latLngBounds(points);
+          const bounds = this.L.latLngBounds(points);
           this.map.fitBounds(bounds, { padding: [50, 50] });
         }
       } catch (error) {
@@ -233,7 +245,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     this.filteredAgents.set(filtered);
     this.sortAgents();
 
-    if (this.showMap && this.map) {
+    if (this.showMap && this.map && this.isBrowser()) {
       this.addAgentMarkers();
     }
   }
@@ -273,7 +285,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     this.filteredAgents.set(this.agents());
     this.sortAgents();
 
-    if (this.showMap && this.map) {
+    if (this.showMap && this.map && this.isBrowser()) {
       this.addAgentMarkers();
     }
   }
@@ -285,15 +297,16 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
     if (this.showMap && this.isBrowser()) {
       setTimeout(() => {
-        if (!this.map) return;
+        if (!this.map || !this.L) return;
 
         const leafletMap = this.map;
         leafletMap.invalidateSize(true);
 
-        leafletMap.eachLayer((layer) => {
-          if (!(layer instanceof L.TileLayer)) {
-            leafletMap.removeLayer(layer);
+        leafletMap.eachLayer((layer: any) => {
+          if (layer instanceof this.L.TileLayer) {
+            return;
           }
+          leafletMap.removeLayer(layer);
         });
 
         this.addAgentMarkers();
@@ -317,11 +330,11 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   viewAgentDetails(agent: UKAgent): void {
     this.selectedAgent = agent;
 
-    if (this.showMap && this.map) {
+    if (this.showMap && this.map && this.isBrowser()) {
       this.map.setView([agent.Latitude, agent.Longitude], 16);
 
-      this.markers.eachLayer((layer: L.Layer) => {
-        const marker = layer as L.Marker;
+      this.markers.eachLayer((layer: any) => {
+        const marker = layer;
         const latLng = marker.getLatLng();
 
         if (latLng.lat === agent.Latitude && latLng.lng === agent.Longitude) {
@@ -349,6 +362,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   // Only use map when in browser environment
   initializeMap(): void {
     if (!this.isBrowser()) return;
+    if (!this.L) return;
 
     if (this.map) {
       this.map.invalidateSize();
