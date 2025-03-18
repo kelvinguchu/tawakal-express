@@ -3,7 +3,24 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
-import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { SizeProp, IconProp } from '@fortawesome/fontawesome-svg-core';
+
+// Dropdown item interface
+interface DropdownItem {
+  label: string;
+  routerLink: string;
+  icon: IconProp;
+}
+
+// Navigation item interface
+interface NavItem {
+  label: string;
+  routerLink: string;
+  isExternal?: boolean;
+  fragment?: string;
+  hasDropdown?: boolean;
+  dropdownItems?: DropdownItem[];
+}
 
 @Component({
   selector: 'app-footer',
@@ -43,15 +60,34 @@ export class FooterComponent implements OnInit {
     { label: 'Business Payment Solutions', id: 'business-payments' },
   ];
 
-  // Quick links for footer
-  quickLinks = [
+  // Quick links for footer with updated agents dropdown
+  quickLinks: NavItem[] = [
     { label: 'Home', routerLink: '/' },
     { label: 'About Us', routerLink: '/about' },
     { label: 'Services', routerLink: '/', fragment: 'features-and-services' },
-    { label: 'Agents', routerLink: '/agents' },
+    {
+      label: 'Agents',
+      routerLink: '/agents',
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          label: 'View Agents',
+          routerLink: '/agents',
+          icon: ['fas', 'search-location'] as IconProp,
+        },
+        {
+          label: 'Become An Agent',
+          routerLink: '/agents/apply',
+          icon: ['fas', 'handshake'] as IconProp,
+        },
+      ],
+    },
     { label: 'Careers', routerLink: '/careers' },
     { label: 'Contact', routerLink: '/contact' },
   ];
+
+  // Track whether dropdowns are expanded
+  expandedDropdowns: { [key: string]: boolean } = {};
 
   constructor(private router: Router) {}
 
@@ -69,5 +105,20 @@ export class FooterComponent implements OnInit {
           }
         }, 300);
       });
+  }
+
+  // Method to toggle a dropdown
+  toggleDropdown(label: string): void {
+    this.expandedDropdowns[label] = !this.expandedDropdowns[label];
+  }
+
+  // Check if a dropdown is expanded
+  isDropdownExpanded(label: string): boolean {
+    return this.expandedDropdowns[label] === true;
+  }
+
+  // Navigate to a route
+  navigateToRoute(route: string, fragment?: string): void {
+    this.router.navigate([route], { fragment: fragment });
   }
 }
