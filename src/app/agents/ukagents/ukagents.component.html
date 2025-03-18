@@ -156,10 +156,6 @@
                 <fa-icon [icon]="['fas', 'phone']" class="text-tawakal-blue mt-0.5 mr-1.5 sm:mr-2 w-3 sm:w-4"></fa-icon>
                 <span>{{ selectedAgent()?.PhoneNumber }}</span>
               </div>
-              <div *ngIf="selectedAgent()?.Email" class="flex items-start mt-1">
-                <fa-icon [icon]="['fas', 'envelope']" class="text-tawakal-green mt-0.5 mr-1.5 sm:mr-2 w-3 sm:w-4"></fa-icon>
-                <span class="break-all">{{ selectedAgent()?.Email }}</span>
-              </div>
             </div>
             <div class="flex gap-1.5 sm:gap-2">
               <a 
@@ -223,12 +219,6 @@
             <div class="flex items-start">
               <fa-icon [icon]="['fas', 'phone']" class="text-tawakal-blue mt-0.5 mr-2 sm:mr-3 w-3 sm:w-4 flex-shrink-0"></fa-icon>
               <div class="text-gray-700 break-all">{{ agent.PhoneNumber }}</div>
-            </div>
-            
-            <!-- Email -->
-            <div *ngIf="agent.Email" class="flex items-start">
-              <fa-icon [icon]="['fas', 'envelope']" class="text-tawakal-green mt-0.5 mr-2 sm:mr-3 w-3 sm:w-4 flex-shrink-0"></fa-icon>
-              <div class="text-gray-700 break-all">{{ agent.Email }}</div>
             </div>
           </div>
           

@@ -66,6 +66,9 @@ import {
   faCode,
   faDirections,
   faUser,
+  faArrowDown,
+  faHandPointer,
+  faSearchLocation,
 } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 
@@ -140,7 +143,10 @@ export class FontAwesomeIconsModule {
       faDirections,
       faUser,
       faApple,
-      faGooglePlay
+      faGooglePlay,
+      faArrowDown,
+      faHandPointer,
+      faSearchLocation
     );
   }
 }

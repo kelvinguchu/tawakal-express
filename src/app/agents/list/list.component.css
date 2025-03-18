@@ -36,6 +36,16 @@
   }
 }
 
+/* Animation for spinning decorative elements */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Text effects */
 .text-transparent {
   background-size: 200% auto;
@@ -209,4 +219,47 @@ select:focus {
   a[href^="tel:"]:hover {
     transform: none !important;
   }
+}
+
+/* Gradient border effect on hover */
+.gradient-border-hover {
+  position: relative;
+  z-index: 0;
+}
+
+.gradient-border-hover::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -2px;
+  border-radius: 0.5rem;
+  background: linear-gradient(to right, #4acb68, #3b82f6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border-hover:hover::before {
+  opacity: 1;
+}
+
+/* Animation for the decorative handshake icons */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Text 2xs size utility */
+.text-2xs {
+  font-size: 0.625rem;
 }

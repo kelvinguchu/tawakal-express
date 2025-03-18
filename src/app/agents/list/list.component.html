@@ -2,44 +2,48 @@
   <div class="container mx-auto px-4 mt-12 md:mt-8 md:px-6 lg:px-8">
     <!-- Page header -->
     <div class="text-center mb-8 md:mb-12">
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3">
+      <div class="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-tawakal-green/10 to-tawakal-blue/10 rounded-full mb-2 sm:mb-3 md:mb-4 backdrop-blur-sm border border-white/30">
+        <p class="bg-gradient-to-r from-[#4acb68] to-[#3b82f6] text-transparent bg-clip-text font-medium text-xs sm:text-sm flex items-center justify-center">
+          <fa-icon [icon]="['fas', 'globe']" class="mr-1.5 sm:mr-2 h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#4acb68]"></fa-icon>
+          Global Network
+        </p>
+      </div>
+      
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 relative">
         Our <span class="text-[#4acb68]">Agent </span> <span class="text-[#3b82f6]">Network</span>
+        <div class="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 md:w-24 h-1 bg-gradient-to-r from-[#4acb68]/40 to-[#3b82f6]/40 rounded-full"></div>
       </h1>
-      <p class="text-gray-600 max-w-3xl mx-auto px-4 text-sm md:text-base">
+      <p class="text-gray-600 max-w-3xl mx-auto px-4 text-sm md:text-base mt-6">
         Find Tawakal Express agents across the globe.
       </p>
     </div>
 
-    <!-- Region selection container -->
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        <!-- Somalia Card -->
-        <div 
-          class="relative group rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-[#4acb68]/80"
-          (click)="goToSomaliaAgents()"
-          pRipple
-        >
+    <!-- DESKTOP: Region selection container (hidden on mobile) -->
+    <div class="hidden md:block max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 gap-8">
+        <!-- Somalia Card (Desktop) -->
+        <div class="relative group rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
           <!-- Image Container with fixed height -->
-          <div class="h-52 md:h-64 lg:h-72 overflow-hidden">
+          <div class="h-64 lg:h-72 overflow-hidden">
             <img 
               [ngSrc]="'/images/somalia.webp'" 
               alt="Somalia" 
-              class="w-full h-full object-cover brightness-[0.85]"
+              class="w-full h-full object-cover brightness-[0.85] group-hover:scale-105 transition-transform duration-500"
               width="500" 
               height="280"
               priority
             />
           </div>
           
-          <!-- Location Marker -->
-          <div class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md z-10">
-            <fa-icon [icon]="['fas', 'map-marker-alt']" class="text-[#4acb68]"></fa-icon>
-          </div>
-          
           <!-- Card Content -->
           <div class="absolute inset-0 flex flex-col justify-end">
             <!-- Content with gradient background -->
             <div class="p-4 pb-5 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+              <!-- Location Marker -->
+              <div class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md z-10 transform group-hover:rotate-12 transition-transform duration-300">
+                <fa-icon [icon]="['fas', 'map-marker-alt']" class="text-[#4acb68]"></fa-icon>
+              </div>
+              
               <!-- Description above title -->
               <p class="text-white/90 text-sm mb-3 max-w-[90%]">
                 Find Tawakal Express agents throughout Somalia for sending money to your loved ones.
@@ -56,44 +60,62 @@
                     Extensive agent network
                   </div>
                 </div>
-                
-                <!-- View agents link -->
-                <span class="inline-flex items-center text-[#4acb68] font-medium text-sm px-3 py-1.5 bg-white/90 rounded-full hover:bg-white transition-colors duration-300">
-                  View agents
-                  <fa-icon [icon]="['fas', 'arrow-right']" class="ml-2"></fa-icon>
-                </span>
               </div>
             </div>
           </div>
+          
+          <!-- Hover buttons (shown on hover) -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 space-x-4">
+            <button 
+              (click)="goToSomaliaAgents()" 
+              class="group relative inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-[#4acb68] to-[#3b82f6] text-white rounded-md text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:scale-105"
+              pRipple
+            >
+              <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="relative flex items-center">
+                <fa-icon [icon]="['fas', 'search-location']" class="mr-2"></fa-icon>
+                <span>View Agents</span>
+                <fa-icon [icon]="['fas', 'arrow-right']" class="ml-2 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
+              </div>
+            </button>
+            
+            <button 
+              (click)="goToApply()" 
+              class="group relative inline-flex items-center px-5 py-2.5 bg-white text-[#4acb68] rounded-md text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:scale-105 border border-[#4acb68]/30"
+              pRipple
+            >
+              <div class="absolute inset-0 bg-[#4acb68]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="relative flex items-center">
+                <fa-icon [icon]="['fas', 'handshake']" class="mr-2"></fa-icon>
+                <span>Become an Agent</span>
+              </div>
+            </button>
+          </div>
         </div>
 
-        <!-- UK Card -->
-        <div 
-          class="relative group rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-[#3b82f6]/80"
-          (click)="goToUKAgents()"
-          pRipple
-        >
+        <!-- UK Card (Desktop) -->
+        <div class="relative group rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
           <!-- Image Container with fixed height -->
-          <div class="h-52 md:h-64 lg:h-72 overflow-hidden">
+          <div class="h-64 lg:h-72 overflow-hidden">
             <img 
               [ngSrc]="'/images/uk.webp'" 
               alt="United Kingdom" 
-              class="w-full h-full object-cover brightness-[0.85]"
+              class="w-full h-full object-cover brightness-[0.85] group-hover:scale-105 transition-transform duration-500"
               width="500" 
               height="280"
               priority
             />
           </div>
           
-          <!-- Location Marker -->
-          <div class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md z-10">
-            <fa-icon [icon]="['fas', 'map-marker-alt']" class="text-[#3b82f6]"></fa-icon>
-          </div>
-          
           <!-- Card Content -->
           <div class="absolute inset-0 flex flex-col justify-end">
             <!-- Content with gradient background -->
             <div class="p-4 pb-5 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+              <!-- Location Marker -->
+              <div class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md z-10 transform group-hover:rotate-12 transition-transform duration-300">
+                <fa-icon [icon]="['fas', 'map-marker-alt']" class="text-[#3b82f6]"></fa-icon>
+              </div>
+              
               <!-- Description above title -->
               <p class="text-white/90 text-sm mb-3 max-w-[90%]">
                 Find Tawakal Express agents throughout the UK with detailed location information and map view.
@@ -110,36 +132,175 @@
                     Interactive map locations
                   </div>
                 </div>
-                
-                <!-- View agents link -->
-                <span class="inline-flex items-center text-[#3b82f6] font-medium text-sm px-3 py-1.5 bg-white/90 rounded-full hover:bg-white transition-colors duration-300">
-                  View agents
-                  <fa-icon [icon]="['fas', 'arrow-right']" class="ml-2"></fa-icon>
-                </span>
               </div>
+            </div>
+          </div>
+          
+          <!-- Hover buttons (shown on hover) -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 space-x-4">
+            <button 
+              (click)="goToUKAgents()" 
+              class="group relative inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-[#3b82f6] to-[#4acb68] text-white rounded-md text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:scale-105"
+              pRipple
+            >
+              <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="relative flex items-center">
+                <fa-icon [icon]="['fas', 'search-location']" class="mr-2"></fa-icon>
+                <span>View Agents</span>
+                <fa-icon [icon]="['fas', 'arrow-right']" class="ml-2 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
+              </div>
+            </button>
+            
+            <button 
+              (click)="goToApply()" 
+              class="group relative inline-flex items-center px-5 py-2.5 bg-white text-[#3b82f6] rounded-md text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:scale-105 border border-[#3b82f6]/30"
+              pRipple
+            >
+              <div class="absolute inset-0 bg-[#3b82f6]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="relative flex items-center">
+                <fa-icon [icon]="['fas', 'handshake']" class="mr-2"></fa-icon>
+                <span>Become an Agent</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE: Different card design (hidden on desktop) -->
+    <div class="md:hidden max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 gap-6">
+        <!-- Somalia Card (Mobile) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <!-- Top image container -->
+          <div class="relative h-32 overflow-hidden">
+            <img 
+              [ngSrc]="'/images/somalia.webp'" 
+              alt="Somalia" 
+              class="w-full h-full object-cover"
+              width="500" 
+              height="150"
+              priority
+            />
+            <!-- Overlay with gradient -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
+            <!-- Location badge -->
+            <div class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+              <fa-icon [icon]="['fas', 'map-marker-alt']" class="text-[#4acb68]"></fa-icon>
+            </div>
+            <!-- Country name -->
+            <div class="absolute top-3 left-3">
+              <h3 class="text-xl font-bold text-white drop-shadow-md">Somalia</h3>
+            </div>
+          </div>
+          
+          <!-- Content -->
+          <div class="p-3 sm:p-4">
+            <p class="text-gray-700 text-sm mb-4">
+              Find Tawakal Express agents throughout Somalia for sending money to your loved ones.
+            </p>
+            
+            <div class="flex items-center text-xs text-gray-600 mb-4">
+              <fa-icon [icon]="['fas', 'users']" class="mr-2 text-[#4acb68]"></fa-icon>
+              Extensive agent network
+            </div>
+            
+            <!-- Action buttons -->
+            <div class="flex gap-2">
+              <button 
+                (click)="goToSomaliaAgents()" 
+                class="flex-1 relative inline-flex items-center justify-center py-2.5 px-3 bg-gradient-to-r from-[#4acb68] to-[#3b82f6] text-white rounded-lg text-xs font-medium shadow-md overflow-hidden"
+                pRipple
+              >
+                <div class="flex items-center">
+                  <fa-icon [icon]="['fas', 'search-location']" class="mr-1.5"></fa-icon>
+                  <span>View Agents</span>
+                </div>
+              </button>
+              
+              <button 
+                (click)="goToApply()" 
+                class="flex-1 relative inline-flex items-center justify-center py-2.5 px-3 bg-white text-[#4acb68] rounded-lg text-xs font-medium shadow-md overflow-hidden border border-[#4acb68]/30"
+                pRipple
+              >
+                <div class="flex items-center">
+                  <fa-icon [icon]="['fas', 'handshake']" class="mr-1.5"></fa-icon>
+                  <span>Become Agent</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- UK Card (Mobile) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <!-- Top image container -->
+          <div class="relative h-32 overflow-hidden">
+            <img 
+              [ngSrc]="'/images/uk.webp'" 
+              alt="United Kingdom" 
+              class="w-full h-full object-cover"
+              width="500" 
+              height="150"
+              priority
+            />
+            <!-- Overlay with gradient -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
+            <!-- Location badge -->
+            <div class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+              <fa-icon [icon]="['fas', 'map-marker-alt']" class="text-[#3b82f6]"></fa-icon>
+            </div>
+            <!-- Country name -->
+            <div class="absolute top-3 left-3">
+              <h3 class="text-xl font-bold text-white drop-shadow-md">UK</h3>
+            </div>
+          </div>
+          
+          <!-- Content -->
+          <div class="p-3 sm:p-4">
+            <p class="text-gray-700 text-sm mb-4">
+              Find Tawakal Express agents throughout the UK with detailed location information and map view.
+            </p>
+            
+            <div class="flex items-center text-xs text-gray-600 mb-4">
+              <fa-icon [icon]="['fas', 'map-marker-alt']" class="mr-2 text-[#3b82f6]"></fa-icon>
+              Interactive map locations
+            </div>
+            
+            <!-- Action buttons -->
+            <div class="flex gap-2">
+              <button 
+                (click)="goToUKAgents()" 
+                class="flex-1 relative inline-flex items-center justify-center py-2.5 px-3 bg-gradient-to-r from-[#3b82f6] to-[#4acb68] text-white rounded-lg text-xs font-medium shadow-md overflow-hidden"
+                pRipple
+              >
+                <div class="flex items-center">
+                  <fa-icon [icon]="['fas', 'search-location']" class="mr-1.5"></fa-icon>
+                  <span>View Agents</span>
+                </div>
+              </button>
+              
+              <button 
+                (click)="goToApply()" 
+                class="flex-1 relative inline-flex items-center justify-center py-2.5 px-3 bg-white text-[#3b82f6] rounded-lg text-xs font-medium shadow-md overflow-hidden border border-[#3b82f6]/30"
+                pRipple
+              >
+                <div class="flex items-center">
+                  <fa-icon [icon]="['fas', 'handshake']" class="mr-1.5"></fa-icon>
+                  <span>Become Agent</span>
+                </div>
+              </button>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Coming soon regions -->
-      <div class="mt-8 md:mt-12 text-center">
-        <div class="inline-flex items-center justify-center px-4 py-2.5 bg-gray-50 rounded-full shadow-sm">
-          <fa-icon [icon]="['fas', 'globe']" class="text-[#4acb68] mr-2"></fa-icon>
-          <span class="text-gray-700 font-medium text-sm">More regions coming soon</span>
-        </div>
-        
-        <!-- Become an agent button -->
-        <div class="mt-8">
-          <button 
-            (click)="goToApply()" 
-            class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#4acb68] to-[#3b82f6] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-1"
-            pRipple
-          >
-            <fa-icon [icon]="['fas', 'handshake']" class="mr-2"></fa-icon>
-            Become an Agent
-          </button>
-        </div>
+    <!-- Coming soon regions -->
+    <div class="mt-10 md:mt-12 text-center">
+      <div class="inline-flex items-center justify-center px-4 py-2.5 bg-gray-50 rounded-full shadow-sm">
+        <fa-icon [icon]="['fas', 'globe']" class="text-[#4acb68] mr-2"></fa-icon>
+        <span class="text-gray-700 font-medium text-sm">More regions coming soon</span>
       </div>
     </div>
   </div>
