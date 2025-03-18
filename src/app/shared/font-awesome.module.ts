@@ -69,6 +69,9 @@ import {
   faArrowDown,
   faHandPointer,
   faSearchLocation,
+  faGraduationCap,
+  faRocket,
+  faHeadset,
 } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 
@@ -146,7 +149,10 @@ export class FontAwesomeIconsModule {
       faGooglePlay,
       faArrowDown,
       faHandPointer,
-      faSearchLocation
+      faSearchLocation,
+      faGraduationCap,
+      faRocket,
+      faHeadset
     );
   }
 }

@@ -2,344 +2,370 @@
   <div class="container mx-auto px-4 sm:px-6 md:px-8 mt-12 md:mt-8 lg:px-8">
     <!-- Page header -->
     <div class="text-center mb-6 sm:mb-8 md:mb-10">
-    <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2 sm:mb-3">
+      <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2 sm:mb-3">
         Become <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">An Agent</span>
-    </h1>
+      </h1>
       <p class="text-gray-600 max-w-3xl mx-auto px-3 sm:px-4 text-xs sm:text-sm md:text-base">
         Fill all the fields.
       </p>
     </div>
 
-    <div class="max-w-3xl mx-auto">
-      <!-- Success message after form submission -->
-      <div *ngIf="submitted" class="bg-white rounded-xl shadow-md p-6 md:p-8 mb-8 text-center">
-        <div class="mb-4">
-          <fa-icon [icon]="['fas', 'check-circle']" class="text-[#4acb68] text-5xl mb-4"></fa-icon>
-          <h2 class="text-2xl font-bold text-gray-800 mb-2">Application Submitted</h2>
-          <p class="text-gray-600 mb-6">
-            Thank you for your interest in becoming a Tawakal Express agent. We've received your application and will contact you shortly.
-          </p>
-          <button 
-            (click)="resetForm()" 
-            class="px-4 py-2 bg-[#4acb68] text-white rounded-lg hover:bg-[#4acb68]/90 transition-colors"
-            pRipple
-          >
-            Submit Another Application
-          </button>
+    <!-- Main content - Two-column layout for desktop, stacked for mobile -->
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Benefits Section now comes first on mobile -->
+      <div class="lg:w-1/2 order-2 lg:order-2">
+        <!-- Benefits Grid -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">Benefits of Becoming an Agent</h3>
+          
+          <p class="text-gray-700 text-sm mb-6">Becoming a Tawakal Express agent offers you a unique opportunity to expand your business, generate additional income, and provide essential services to your community.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div *ngFor="let benefit of agentBenefits" class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mr-3">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-sm" [ngClass]="benefit.color">
+                    <fa-icon [icon]="benefit.icon" class="text-lg"></fa-icon>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800 mb-1">{{benefit.title}}</h4>
+                  <p class="text-gray-600 text-sm">{{benefit.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Application form -->
-      <form 
-        *ngIf="!submitted" 
-        [formGroup]="applicationForm" 
-        (ngSubmit)="onSubmit()" 
-        class="bg-white rounded-xl shadow-md overflow-hidden"
-      >
-        <!-- Error messages -->
-        <div *ngIf="formErrors.length > 0" class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
-          <div class="flex items-center">
-            <fa-icon [icon]="['fas', 'exclamation-circle']" class="text-red-500 mr-3"></fa-icon>
-            <span class="text-red-700">Please correct the following errors:</span>
-          </div>
-          <ul class="mt-2 ml-6 list-disc text-red-700 text-sm">
-            <li *ngFor="let error of formErrors">{{ error }}</li>
-          </ul>
-        </div>
-
-        <!-- Form sections -->
-        <div class="p-6 md:p-8 border-b border-gray-200">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-            <fa-icon [icon]="['fas', 'globe']" class="text-[#3b82f6] mr-3"></fa-icon>
-            Country Information
-          </h2>
-          
-          <!-- Country selection -->
-          <div class="mb-6">
-            <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Your Country <span class="text-red-500">*</span></label>
-            <select 
-              id="country" 
-              formControlName="country"
-              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
-              [class.border-red-500]="applicationForm.get('country')?.invalid && applicationForm.get('country')?.touched"
+      <!-- Form Column now comes second on mobile -->
+      <div class="lg:w-1/2 order-1 lg:order-1">
+        <!-- Success message after form submission -->
+        <div *ngIf="submitted" class="bg-white rounded-xl shadow-md p-6 md:p-8 mb-8 text-center">
+          <div class="mb-4">
+            <fa-icon [icon]="['fas', 'check-circle']" class="text-[#4acb68] text-5xl mb-4"></fa-icon>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Application Submitted</h2>
+            <p class="text-gray-600 mb-6">
+              Thank you for your interest in becoming a Tawakal Express agent. We've received your application and will contact you shortly.
+            </p>
+            <button 
+              (click)="resetForm()" 
+              class="px-4 py-2 bg-gradient-to-r from-[#4acb68] to-[#3b82f6] text-white rounded-lg hover:shadow-md transition-all duration-200"
+              pRipple
             >
-              <option value="">Select your country</option>
-              <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
-            </select>
-            <div *ngIf="applicationForm.get('country')?.invalid && applicationForm.get('country')?.touched" class="text-red-500 text-xs mt-1">
-              Please select your country
-            </div>
-          </div>
-          
-          <!-- Business location question -->
-          <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Do you have a business location? <span class="text-red-500">*</span></label>
-            <div class="flex space-x-4">
-              <label class="inline-flex items-center">
-                <input 
-                  type="radio" 
-                  formControlName="hasBusinessLocation" 
-                  value="yes" 
-                  class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
-                >
-                <span class="ml-2 text-gray-700">Yes</span>
-              </label>
-              <label class="inline-flex items-center">
-                <input 
-                  type="radio" 
-                  formControlName="hasBusinessLocation" 
-                  value="no" 
-                  class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
-                >
-                <span class="ml-2 text-gray-700">No</span>
-              </label>
-            </div>
-            <div *ngIf="applicationForm.get('hasBusinessLocation')?.invalid && applicationForm.get('hasBusinessLocation')?.touched" class="text-red-500 text-xs mt-1">
-              Please select an option
-            </div>
-          </div>
-          
-          <!-- Computer and internet question -->
-          <div class="mb-2">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Do you have a computer with internet connection? <span class="text-red-500">*</span></label>
-            <div class="flex space-x-4">
-              <label class="inline-flex items-center">
-                <input 
-                  type="radio" 
-                  formControlName="hasComputer" 
-                  value="yes" 
-                  class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
-                >
-                <span class="ml-2 text-gray-700">Yes</span>
-              </label>
-              <label class="inline-flex items-center">
-                <input 
-                  type="radio" 
-                  formControlName="hasComputer" 
-                  value="no" 
-                  class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
-                >
-                <span class="ml-2 text-gray-700">No</span>
-              </label>
-            </div>
-            <div *ngIf="applicationForm.get('hasComputer')?.invalid && applicationForm.get('hasComputer')?.touched" class="text-red-500 text-xs mt-1">
-              Please select an option
-            </div>
+              Submit Another Application
+            </button>
           </div>
         </div>
 
-        <!-- Personal Information -->
-        <div class="p-6 md:p-8 border-b border-gray-200" formGroupName="personalInfo">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-            <fa-icon [icon]="['fas', 'user']" class="text-[#3b82f6] mr-3"></fa-icon>
-            Personal Information
-          </h2>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name <span class="text-red-500">*</span></label>
-              <input 
-                type="text" 
-                id="firstName" 
-                formControlName="firstName" 
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
-                [class.border-red-500]="applicationForm.get('personalInfo.firstName')?.invalid && applicationForm.get('personalInfo.firstName')?.touched"
-              >
-              <div *ngIf="applicationForm.get('personalInfo.firstName')?.invalid && applicationForm.get('personalInfo.firstName')?.touched" class="text-red-500 text-xs mt-1">
-                First name is required
-              </div>
+        <!-- Application form -->
+        <form 
+          *ngIf="!submitted" 
+          [formGroup]="applicationForm" 
+          (ngSubmit)="onSubmit()" 
+          class="bg-white rounded-xl shadow-md overflow-hidden"
+        >
+          <!-- Error messages -->
+          <div *ngIf="formErrors.length > 0" class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+            <div class="flex items-center">
+              <fa-icon [icon]="['fas', 'exclamation-circle']" class="text-red-500 mr-3"></fa-icon>
+              <span class="text-red-700">Please correct the following errors:</span>
             </div>
-            
-            <div>
-              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name <span class="text-red-500">*</span></label>
-              <input 
-                type="text" 
-                id="lastName" 
-                formControlName="lastName" 
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
-                [class.border-red-500]="applicationForm.get('personalInfo.lastName')?.invalid && applicationForm.get('personalInfo.lastName')?.touched"
-              >
-              <div *ngIf="applicationForm.get('personalInfo.lastName')?.invalid && applicationForm.get('personalInfo.lastName')?.touched" class="text-red-500 text-xs mt-1">
-                Last name is required
-              </div>
-            </div>
+            <ul class="mt-2 ml-6 list-disc text-red-700 text-sm">
+              <li *ngFor="let error of formErrors">{{ error }}</li>
+            </ul>
           </div>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone <span class="text-red-500">*</span></label>
-              <input 
-                type="tel" 
-                id="phone" 
-                formControlName="phone" 
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
-                [class.border-red-500]="applicationForm.get('personalInfo.phone')?.invalid && applicationForm.get('personalInfo.phone')?.touched"
-                placeholder="+1 234 567 8900"
-              >
-              <div *ngIf="applicationForm.get('personalInfo.phone')?.invalid && applicationForm.get('personalInfo.phone')?.touched" class="text-red-500 text-xs mt-1">
-                Please enter a valid phone number
-              </div>
-            </div>
-            
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
-              <input 
-                type="email" 
-                id="email" 
-                formControlName="email" 
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
-                [class.border-red-500]="applicationForm.get('personalInfo.email')?.invalid && applicationForm.get('personalInfo.email')?.touched"
-                placeholder="your@email.com"
-              >
-              <div *ngIf="applicationForm.get('personalInfo.email')?.invalid && applicationForm.get('personalInfo.email')?.touched" class="text-red-500 text-xs mt-1">
-                Please enter a valid email address
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Business Information -->
-        <div *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes'" class="p-6 md:p-8" formGroupName="businessInfo">
-          <div class="mb-8">
-            <h3 class="text-xl md:text-2xl font-bold flex items-center">
-              <fa-icon [icon]="['fas', 'building']" class="mr-2 text-primary"></fa-icon>
+          <!-- Form sections -->
+          <div class="p-5 md:p-6 border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+              <fa-icon [icon]="['fas', 'globe']" class="text-[#3b82f6] mr-3"></fa-icon>
+              Country Information
+            </h2>
+            
+            <!-- Country selection -->
+            <div class="mb-6">
+              <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Your Country <span class="text-red-500">*</span></label>
+              <select 
+                id="country" 
+                formControlName="country"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
+                [class.border-red-500]="applicationForm.get('country')?.invalid && applicationForm.get('country')?.touched"
+              >
+                <option value="">Select your country</option>
+                <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+              </select>
+              <div *ngIf="applicationForm.get('country')?.invalid && applicationForm.get('country')?.touched" class="text-red-500 text-xs mt-1">
+                Please select your country
+              </div>
+            </div>
+            
+            <!-- Business location question -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Do you have a business location? <span class="text-red-500">*</span></label>
+              <div class="flex space-x-4">
+                <label class="inline-flex items-center">
+                  <input 
+                    type="radio" 
+                    formControlName="hasBusinessLocation" 
+                    value="yes" 
+                    class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
+                  >
+                  <span class="ml-2 text-gray-700">Yes</span>
+                </label>
+                <label class="inline-flex items-center">
+                  <input 
+                    type="radio" 
+                    formControlName="hasBusinessLocation" 
+                    value="no" 
+                    class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
+                  >
+                  <span class="ml-2 text-gray-700">No</span>
+                </label>
+              </div>
+              <div *ngIf="applicationForm.get('hasBusinessLocation')?.invalid && applicationForm.get('hasBusinessLocation')?.touched" class="text-red-500 text-xs mt-1">
+                Please select an option
+              </div>
+            </div>
+            
+            <!-- Computer and internet question -->
+            <div class="mb-2">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Do you have a computer with internet connection? <span class="text-red-500">*</span></label>
+              <div class="flex space-x-4">
+                <label class="inline-flex items-center">
+                  <input 
+                    type="radio" 
+                    formControlName="hasComputer" 
+                    value="yes" 
+                    class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
+                  >
+                  <span class="ml-2 text-gray-700">Yes</span>
+                </label>
+                <label class="inline-flex items-center">
+                  <input 
+                    type="radio" 
+                    formControlName="hasComputer" 
+                    value="no" 
+                    class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
+                  >
+                  <span class="ml-2 text-gray-700">No</span>
+                </label>
+              </div>
+              <div *ngIf="applicationForm.get('hasComputer')?.invalid && applicationForm.get('hasComputer')?.touched" class="text-red-500 text-xs mt-1">
+                Please select an option
+              </div>
+            </div>
+          </div>
+
+          <!-- Personal Information -->
+          <div class="p-5 md:p-6 border-b border-gray-200" formGroupName="personalInfo">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+              <fa-icon [icon]="['fas', 'user']" class="text-[#3b82f6] mr-3"></fa-icon>
+              Personal Information
+            </h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name <span class="text-red-500">*</span></label>
+                <input 
+                  type="text" 
+                  id="firstName" 
+                  formControlName="firstName" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
+                  [class.border-red-500]="applicationForm.get('personalInfo.firstName')?.invalid && applicationForm.get('personalInfo.firstName')?.touched"
+                >
+                <div *ngIf="applicationForm.get('personalInfo.firstName')?.invalid && applicationForm.get('personalInfo.firstName')?.touched" class="text-red-500 text-xs mt-1">
+                  First name is required
+                </div>
+              </div>
+              
+              <div>
+                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name <span class="text-red-500">*</span></label>
+                <input 
+                  type="text" 
+                  id="lastName" 
+                  formControlName="lastName" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
+                  [class.border-red-500]="applicationForm.get('personalInfo.lastName')?.invalid && applicationForm.get('personalInfo.lastName')?.touched"
+                >
+                <div *ngIf="applicationForm.get('personalInfo.lastName')?.invalid && applicationForm.get('personalInfo.lastName')?.touched" class="text-red-500 text-xs mt-1">
+                  Last name is required
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone <span class="text-red-500">*</span></label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  formControlName="phone" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
+                  [class.border-red-500]="applicationForm.get('personalInfo.phone')?.invalid && applicationForm.get('personalInfo.phone')?.touched"
+                  placeholder="+1 234 567 8900"
+                >
+                <div *ngIf="applicationForm.get('personalInfo.phone')?.invalid && applicationForm.get('personalInfo.phone')?.touched" class="text-red-500 text-xs mt-1">
+                  Please enter a valid phone number
+                </div>
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  formControlName="email" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#4acb68] focus:border-[#4acb68]"
+                  [class.border-red-500]="applicationForm.get('personalInfo.email')?.invalid && applicationForm.get('personalInfo.email')?.touched"
+                  placeholder="your@email.com"
+                >
+                <div *ngIf="applicationForm.get('personalInfo.email')?.invalid && applicationForm.get('personalInfo.email')?.touched" class="text-red-500 text-xs mt-1">
+                  Please enter a valid email address
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Business Information -->
+          <div *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes'" class="p-5 md:p-6 border-b border-gray-200" formGroupName="businessInfo">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+              <fa-icon [icon]="['fas', 'building']" class="text-[#3b82f6] mr-3"></fa-icon>
               Business Information
-            </h3>
-            <p class="text-gray-600">Tell us about your business location</p>
-          </div>
+            </h2>
 
-          <!-- Company Name -->
-          <div class="mb-5">
-            <label for="companyName" class="block text-sm font-medium text-gray-700 mb-1">
-              Company Name <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              id="companyName"
-              formControlName="companyName"
-              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.companyName')?.invalid && applicationForm.get('businessInfo.companyName')?.touched }"
-            />
-            <div
-              *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.companyName')?.invalid && applicationForm.get('businessInfo.companyName')?.touched"
-              class="text-red-600 text-sm mt-1 flex items-center"
-            >
-              <fa-icon [icon]="['fas', 'exclamation-circle']" class="mr-1"></fa-icon>
-              Company name is required
-            </div>
-          </div>
-
-          <!-- Street Address -->
-          <div class="mb-5">
-            <label for="streetAddress" class="block text-sm font-medium text-gray-700 mb-1">
-              Street Address <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              id="streetAddress"
-              formControlName="streetAddress"
-              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.streetAddress')?.invalid && applicationForm.get('businessInfo.streetAddress')?.touched }"
-            />
-            <div
-              *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.streetAddress')?.invalid && applicationForm.get('businessInfo.streetAddress')?.touched"
-              class="text-red-600 text-sm mt-1 flex items-center"
-            >
-              <fa-icon [icon]="['fas', 'exclamation-circle']" class="mr-1"></fa-icon>
-              Street address is required
-            </div>
-          </div>
-
-          <!-- City and Zip Code in one row -->
-          <div class="flex flex-col md:flex-row gap-4 mb-5">
-            <!-- City -->
-            <div class="flex-1">
-              <label for="city" class="block text-sm font-medium text-gray-700 mb-1">
-                City <span class="text-red-600">*</span>
+            <!-- Company Name -->
+            <div class="mb-4">
+              <label for="companyName" class="block text-sm font-medium text-gray-700 mb-1">
+                Company Name <span class="text-red-600">*</span>
               </label>
               <input
                 type="text"
-                id="city"
-                formControlName="city"
-                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.city')?.invalid && applicationForm.get('businessInfo.city')?.touched }"
+                id="companyName"
+                formControlName="companyName"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#4acb68]"
+                [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.companyName')?.invalid && applicationForm.get('businessInfo.companyName')?.touched }"
               />
               <div
-                *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.city')?.invalid && applicationForm.get('businessInfo.city')?.touched"
-                class="text-red-600 text-sm mt-1 flex items-center"
+                *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.companyName')?.invalid && applicationForm.get('businessInfo.companyName')?.touched"
+                class="text-red-600 text-xs mt-1"
               >
-                <fa-icon [icon]="['fas', 'exclamation-circle']" class="mr-1"></fa-icon>
-                City is required
+                Company name is required
               </div>
             </div>
 
-            <!-- Zip Code -->
-            <div class="flex-1">
-              <label for="zipCode" class="block text-sm font-medium text-gray-700 mb-1">
-                Zip/Postal Code <span class="text-red-600">*</span>
+            <!-- Street Address -->
+            <div class="mb-4">
+              <label for="streetAddress" class="block text-sm font-medium text-gray-700 mb-1">
+                Street Address <span class="text-red-600">*</span>
               </label>
               <input
                 type="text"
-                id="zipCode"
-                formControlName="zipCode"
-                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.zipCode')?.invalid && applicationForm.get('businessInfo.zipCode')?.touched }"
+                id="streetAddress"
+                formControlName="streetAddress"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#4acb68]"
+                [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.streetAddress')?.invalid && applicationForm.get('businessInfo.streetAddress')?.touched }"
               />
               <div
-                *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.zipCode')?.invalid && applicationForm.get('businessInfo.zipCode')?.touched"
-                class="text-red-600 text-sm mt-1 flex items-center"
+                *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.streetAddress')?.invalid && applicationForm.get('businessInfo.streetAddress')?.touched"
+                class="text-red-600 text-xs mt-1"
               >
-                <fa-icon [icon]="['fas', 'exclamation-circle']" class="mr-1"></fa-icon>
-                Zip code is required
+                Street address is required
+              </div>
+            </div>
+
+            <!-- City and Zip Code in one row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <!-- City -->
+              <div>
+                <label for="city" class="block text-sm font-medium text-gray-700 mb-1">
+                  City <span class="text-red-600">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="city"
+                  formControlName="city"
+                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#4acb68]"
+                  [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.city')?.invalid && applicationForm.get('businessInfo.city')?.touched }"
+                />
+                <div
+                  *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.city')?.invalid && applicationForm.get('businessInfo.city')?.touched"
+                  class="text-red-600 text-xs mt-1"
+                >
+                  City is required
+                </div>
+              </div>
+
+              <!-- Zip Code -->
+              <div>
+                <label for="zipCode" class="block text-sm font-medium text-gray-700 mb-1">
+                  Zip/Postal Code <span class="text-red-600">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="zipCode"
+                  formControlName="zipCode"
+                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#4acb68]"
+                  [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.zipCode')?.invalid && applicationForm.get('businessInfo.zipCode')?.touched }"
+                />
+                <div
+                  *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.zipCode')?.invalid && applicationForm.get('businessInfo.zipCode')?.touched"
+                  class="text-red-600 text-xs mt-1"
+                >
+                  Zip code is required
+                </div>
+              </div>
+            </div>
+
+            <!-- Business Phone -->
+            <div>
+              <label for="businessPhone" class="block text-sm font-medium text-gray-700 mb-1">
+                Business Phone <span class="text-red-600">*</span>
+              </label>
+              <input
+                type="tel"
+                id="businessPhone"
+                formControlName="businessPhone"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#4acb68]"
+                [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.businessPhone')?.invalid && applicationForm.get('businessInfo.businessPhone')?.touched }"
+                placeholder="+1 123 456 7890"
+              />
+              <div
+                *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.businessPhone')?.invalid && applicationForm.get('businessInfo.businessPhone')?.touched"
+                class="text-red-600 text-xs mt-1"
+              >
+                <span *ngIf="applicationForm.get('businessInfo.businessPhone')?.errors?.['required']">
+                  Business phone is required
+                </span>
+                <span *ngIf="applicationForm.get('businessInfo.businessPhone')?.errors?.['pattern']">
+                  Please enter a valid phone number
+                </span>
               </div>
             </div>
           </div>
 
-          <!-- Business Phone -->
-          <div class="mb-5">
-            <label for="businessPhone" class="block text-sm font-medium text-gray-700 mb-1">
-              Business Phone <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="tel"
-              id="businessPhone"
-              formControlName="businessPhone"
-              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              [ngClass]="{ 'border-red-500': applicationForm.get('businessInfo.businessPhone')?.invalid && applicationForm.get('businessInfo.businessPhone')?.touched }"
-              placeholder="+1 123 456 7890"
-            />
-            <div
-              *ngIf="applicationForm.get('hasBusinessLocation')?.value === 'yes' && applicationForm.get('businessInfo.businessPhone')?.invalid && applicationForm.get('businessInfo.businessPhone')?.touched"
-              class="text-red-600 text-sm mt-1 flex items-center"
-            >
-              <fa-icon [icon]="['fas', 'exclamation-circle']" class="mr-1"></fa-icon>
-              <span *ngIf="applicationForm.get('businessInfo.businessPhone')?.errors?.['required']">
-                Business phone is required
-              </span>
-              <span *ngIf="applicationForm.get('businessInfo.businessPhone')?.errors?.['pattern']">
-                Please enter a valid phone number
-              </span>
+          <!-- Submit button - fixed spacing and updated with proper Tawakal colors/gradient -->
+          <div class="p-5 md:p-6 bg-gray-50">
+            <div class="flex justify-end">
+              <button 
+                type="submit" 
+                class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed"
+                [disabled]="submitting"
+                pRipple
+              >
+                <span *ngIf="!submitting" class="flex items-center justify-center">
+                  <fa-icon [icon]="['fas', 'paper-plane']" class="mr-2"></fa-icon>
+                  Submit Application
+                </span>
+                <span *ngIf="submitting" class="flex items-center justify-center">
+                  <fa-icon [icon]="['fas', 'circle']" class="animate-spin mr-2"></fa-icon>
+                  Submitting...
+                </span>
+              </button>
             </div>
           </div>
-        </div>
-
-        <!-- Submit button -->
-        <div class="p-6 md:p-8">
-          <button 
-            type="submit" 
-            class="w-full sm:w-auto sm:float-right px-6 py-3 bg-gradient-to-r from-[#4acb68] to-[#3b82f6] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed"
-            [disabled]="submitting"
-            pRipple
-          >
-            <span *ngIf="!submitting">Submit Application</span>
-            <span *ngIf="submitting" class="flex items-center justify-center">
-              <fa-icon [icon]="['fas', 'circle']" class="animate-spin mr-2"></fa-icon>
-              Submitting...
-            </span>
-          </button>
-          <div class="clearfix"></div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </section>

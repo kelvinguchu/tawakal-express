@@ -11,9 +11,24 @@ import { HttpClient } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { Ripple } from 'primeng/ripple';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface Country {
   name: string;
+}
+
+interface AgentBenefit {
+  title: string;
+  description: string;
+  icon: IconProp;
+  color: string;
+}
+
+interface AgentPhase {
+  number: number;
+  title: string;
+  description: string;
+  icon: IconProp;
 }
 
 @Component({
@@ -36,6 +51,83 @@ export class ApplyComponent implements OnInit {
   submitting = false;
   submitted = false;
   formErrors: string[] = [];
+
+  // Benefits of becoming an agent
+  agentBenefits: AgentBenefit[] = [
+    {
+      title: 'Additional Income',
+      description:
+        'Earn competitive commissions on every transaction you process, creating a reliable source of additional income for your business.',
+      icon: ['fas', 'money-bill-wave'],
+      color: 'text-tawakal-green',
+    },
+    {
+      title: 'Increased Foot Traffic',
+      description:
+        'Attract new customers to your business who come for money transfer services and may purchase your other products or services.',
+      icon: ['fas', 'users'],
+      color: 'text-tawakal-blue',
+    },
+    {
+      title: 'Simple Technology',
+      description:
+        'Access our user-friendly platform that requires minimal training and technical knowledge to operate efficiently.',
+      icon: ['fas', 'mobile-screen'],
+      color: 'text-[#9e5a63]',
+    },
+    {
+      title: 'Dedicated Support',
+      description:
+        'Receive personalized support from our team, including marketing materials, technical assistance, and business guidance.',
+      icon: ['fas', 'headset'],
+      color: 'text-amber-500',
+    },
+    {
+      title: 'Global Network',
+      description:
+        'Join our extensive international network, connecting you to customers and opportunities across the globe.',
+      icon: ['fas', 'globe'],
+      color: 'text-tawakal-blue',
+    },
+    {
+      title: 'Community Service',
+      description:
+        'Provide an essential service that helps families stay connected financially across international borders.',
+      icon: ['fas', 'hand-holding-heart'],
+      color: 'text-tawakal-green',
+    },
+  ];
+
+  // Phases of becoming an agent
+  agentPhases: AgentPhase[] = [
+    {
+      number: 1,
+      title: 'Application',
+      description:
+        'Complete and submit the application form with your business information.',
+      icon: ['fas', 'paper-plane'],
+    },
+    {
+      number: 2,
+      title: 'Verification',
+      description:
+        'Our team will review your application and verify your business details.',
+      icon: ['fas', 'check-circle'],
+    },
+    {
+      number: 3,
+      title: 'Training',
+      description:
+        'Receive comprehensive training on our systems and processes.',
+      icon: ['fas', 'graduation-cap'],
+    },
+    {
+      number: 4,
+      title: 'Launch',
+      description: 'Start offering Tawakal Express services to your customers.',
+      icon: ['fas', 'rocket'],
+    },
+  ];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.applicationForm = this.fb.group({
