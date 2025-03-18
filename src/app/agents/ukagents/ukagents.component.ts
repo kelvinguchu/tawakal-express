@@ -6,8 +6,11 @@ import {
   ViewEncapsulation,
   PLATFORM_ID,
   Inject,
+  InjectionToken,
+  DestroyRef,
+  inject,
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser, DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -15,6 +18,15 @@ import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { Ripple } from 'primeng/ripple';
 import { Tooltip } from 'primeng/tooltip';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+// Create a token for safely accessing window
+export const WINDOW = new InjectionToken<Window>('WindowToken', {
+  factory: () => {
+    const { defaultView } = inject(DOCUMENT);
+    return defaultView || ({} as Window);
+  },
+});
 
 // UK Agent data structure
 interface UKAgent {
@@ -66,33 +78,44 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   options: any = {};
   L: any = null;
 
+  // Auto-inject services
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly window = inject(WINDOW);
+
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    // Initialize Leaflet only in browser
-    if (isPlatformBrowser(this.platformId)) {
-      // Dynamically import Leaflet only in browser environment
-      import('leaflet').then((L) => {
-        this.L = L;
-        this.markers = L.layerGroup();
-        this.options = {
-          layers: [
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              maxZoom: 18,
-              minZoom: 2,
-              attribution:
-                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            }),
-          ],
-          zoom: 5,
-          center: L.latLng(52.5, -1.9),
-          preferCanvas: true,
-          worldCopyJump: true,
-          fadeAnimation: true,
-          zoomAnimation: true,
-        };
-      });
+    // Only initialize map in browser context
+    if (this.isBrowser()) {
+      // Use dynamic import to avoid SSR issues
+      import('leaflet')
+        .then((L) => {
+          this.L = L.default || L;
+          this.markers = this.L.layerGroup();
+          this.options = {
+            layers: [
+              this.L.tileLayer(
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                  maxZoom: 18,
+                  minZoom: 2,
+                  attribution:
+                    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                }
+              ),
+            ],
+            zoom: 5,
+            center: this.L.latLng(52.5, -1.9),
+            preferCanvas: true,
+            worldCopyJump: true,
+            fadeAnimation: true,
+            zoomAnimation: true,
+          };
+        })
+        .catch((error) => {
+          console.error('Failed to load Leaflet:', error);
+        });
     }
   }
 
@@ -104,42 +127,44 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Load agents from JSON file
   loadAgents(): void {
-    this.http.get<UKAgent[]>('/data/uk-agents-location.json').subscribe({
-      next: (data) => {
-        const validAgents = data.filter(
-          (agent) => agent && agent.LocationName && agent.LocationCode
-        );
+    this.http
+      .get<UKAgent[]>('/data/uk-agents-location.json')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (data) => {
+          const validAgents = data.filter(
+            (agent) => agent && agent.LocationName && agent.LocationCode
+          );
 
-        this.agents.set(validAgents);
-        this.filteredAgents.set(validAgents);
+          this.agents.set(validAgents);
+          this.filteredAgents.set(validAgents);
 
-        this.extractCities();
-        this.sortAgents();
-      },
-      error: (error: HttpErrorResponse) => {
-        if (error.status === 404) {
-          this.agents.set([]);
-          this.filteredAgents.set([]);
-          console.error(
-            'UK agents data file not found. Please check if the file exists at the specified path.'
-          );
-        } else if (error.status === 0) {
-          console.error(
-            'Network error occurred while loading UK agents. Please check your connection.'
-          );
-        } else {
-          console.error(
-            `Error ${error.status} loading UK agents: ${error.message}`
-          );
-        }
-      },
-    });
+          this.extractCities();
+          this.sortAgents();
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            this.agents.set([]);
+            this.filteredAgents.set([]);
+            console.error(
+              'UK agents data file not found. Please check if the file exists at the specified path.'
+            );
+          } else if (error.status === 0) {
+            console.error(
+              'Network error occurred while loading UK agents. Please check your connection.'
+            );
+          } else {
+            console.error(
+              `Error ${error.status} loading UK agents: ${error.message}`
+            );
+          }
+        },
+      });
   }
 
   // Initialize map when Leaflet is ready
   onMapReady(map: any): void {
-    if (!this.isBrowser()) return;
-    if (!this.L) return;
+    if (!this.isBrowser() || !this.L) return;
 
     this.map = map;
 
@@ -165,8 +190,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Add agent markers to the map
   addAgentMarkers(): void {
-    if (!this.isBrowser()) return;
-    if (!this.map || !this.L) return;
+    if (!this.isBrowser() || !this.map || !this.L) return;
 
     this.markers.clearLayers();
 
@@ -208,8 +232,6 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Create HTML for marker popups
   createPopupContent(agent: UKAgent): string {
-    if (!this.isBrowser()) return '';
-
     return `
       <div class="popup-content">
         <h3 class="font-bold">${agent.LocationName}</h3>
@@ -346,9 +368,16 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Get URL for directions
+  // Get directions using window-safe approach
+  getDirections(agent: UKAgent): void {
+    if (!this.isBrowser()) return;
+
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${agent.Latitude},${agent.Longitude}`;
+    this.window.open?.(url, '_blank');
+  }
+
+  // Get Google Maps URL for directions
   getGoogleMapsUrl(agent: UKAgent): string {
-    if (!this.isBrowser()) return '';
     return `https://www.google.com/maps/search/?api=1&query=${agent.Latitude},${agent.Longitude}`;
   }
 
@@ -357,9 +386,11 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     return agent.LocationCode;
   }
 
-  // Check if running in browser
+  // Check if running in browser - using injection token pattern
   isBrowser(): boolean {
-    return isPlatformBrowser(this.platformId);
+    return (
+      isPlatformBrowser(this.platformId) && typeof this.window !== 'undefined'
+    );
   }
 
   // Only use map when in browser environment

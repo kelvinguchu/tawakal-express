@@ -128,59 +128,61 @@
       </div>
     </div>
 
-    <!-- Map view with browser check -->
-    <ng-container *ngIf="showMap">
-      <ng-container *ngIf="isBrowser(); else ssrFallback">
-        <div class="map-container h-[600px] relative overflow-hidden rounded-lg shadow-md">
+    <!-- Map View Container -->
+    <div *ngIf="showMap && agents().length > 0" class="mb-4 sm:mb-6">
+      <div class="bg-white rounded-xl shadow-md border border-gray-100 p-3 sm:p-4 overflow-hidden">
+        <!-- Leaflet Map (full width) -->
+        <div class="relative h-[350px] sm:h-[400px] md:h-[500px] rounded-lg overflow-hidden">
           <div 
-            class="h-full w-full"
+            id="leaflet-map"
             leaflet
             [leafletOptions]="options"
             (leafletMapReady)="onMapReady($event)"
-            style="z-index: 0;">
-          </div>
+            style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; z-index: 0;"
+          ></div>
           
-          <!-- Selected agent info overlay -->
-          <div *ngIf="selectedAgent" class="absolute top-4 right-4 p-4 bg-white rounded-lg shadow-lg max-w-xs z-10">
-            <button (click)="selectedAgent = null" class="absolute top-1 right-1 text-gray-500 hover:text-gray-700 p-1">
+          <!-- Selected agent info overlay (shown when an agent is clicked) -->
+          <div *ngIf="selectedAgent" class="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 p-3 sm:p-4 max-w-[90%] sm:max-w-md bg-white/95 backdrop-blur-sm rounded-lg shadow-lg">
+            <button 
+              (click)="selectedAgent = null" 
+              class="absolute top-1 right-1 sm:top-2 sm:right-2 text-gray-500 hover:text-gray-700 text-xs sm:text-sm"
+            >
               <fa-icon [icon]="['fas', 'times']"></fa-icon>
             </button>
-            <div class="pt-2">
-              <h4 class="font-bold text-lg mb-1">{{selectedAgent.LocationName}}</h4>
-              <p class="text-gray-800 text-sm mb-2">{{formatAddress(selectedAgent)}}</p>
-              <p class="text-gray-700 text-sm mb-2"><fa-icon [icon]="['fas', 'phone']" class="mr-2 text-tawakal-blue"></fa-icon>{{selectedAgent.PhoneNumber}}</p>
-              
-              <div class="flex space-x-2 mt-3">
-                <a 
-                  *ngIf="selectedAgent.PhoneNumber" 
-                  [href]="'tel:' + selectedAgent.PhoneNumber" 
-                  class="flex-1 bg-green-500 text-white text-xs py-2 px-3 rounded flex items-center justify-center"
-                >
-                  <fa-icon [icon]="['fas', 'phone']" class="mr-1"></fa-icon>
-                  Call
-                </a>
-                <a 
-                  [href]="getGoogleMapsUrl(selectedAgent)" 
-                  target="_blank" 
-                  class="flex-1 bg-blue-500 text-white text-xs py-2 px-3 rounded flex items-center justify-center"
-                >
-                  <fa-icon [icon]="['fas', 'map-marker-alt']" class="mr-1"></fa-icon>
-                  Directions
-                </a>
+            <h3 class="font-bold text-sm sm:text-base mb-1.5 sm:mb-2 pr-4">{{ selectedAgent.LocationName }}</h3>
+            <p class="mb-1.5 sm:mb-2 text-xs sm:text-sm text-gray-700">{{ formatAddress(selectedAgent) }}</p>
+            <div class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">
+              <div class="flex items-start">
+                <fa-icon [icon]="['fas', 'phone']" class="text-tawakal-blue mt-0.5 mr-1.5 sm:mr-2 w-3 sm:w-4"></fa-icon>
+                <span>{{ selectedAgent.PhoneNumber }}</span>
               </div>
+              <div *ngIf="selectedAgent.Email" class="flex items-start mt-1">
+                <fa-icon [icon]="['fas', 'envelope']" class="text-tawakal-green mt-0.5 mr-1.5 sm:mr-2 w-3 sm:w-4"></fa-icon>
+                <span class="break-all">{{ selectedAgent.Email }}</span>
+              </div>
+            </div>
+            <div class="flex gap-1.5 sm:gap-2">
+              <a 
+                [href]="'tel:' + selectedAgent.PhoneNumber" 
+                class="flex-1 inline-flex items-center justify-center px-2 sm:px-3 py-1.5 sm:py-2 text-2xs sm:text-xs bg-tawakal-blue text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <fa-icon [icon]="['fas', 'phone']" class="mr-1 sm:mr-2"></fa-icon>
+                Call
+              </a>
+              <a 
+                [href]="getGoogleMapsUrl(selectedAgent)" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 inline-flex items-center justify-center px-2 sm:px-3 py-1.5 sm:py-2 text-2xs sm:text-xs bg-gradient-to-r from-tawakal-blue to-[#9e5a63] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <fa-icon [icon]="['fas', 'map-marker-alt']" class="mr-1 sm:mr-2"></fa-icon>
+                Directions
+              </a>
             </div>
           </div>
         </div>
-      </ng-container>
-      
-      <!-- SSR placeholder -->
-      <ng-template #ssrFallback>
-        <div class="p-8 text-center bg-gray-100 rounded-lg">
-          <p>Map loading...</p>
-          <p class="text-sm text-gray-500">The map will be displayed when the page is fully loaded.</p>
-        </div>
-      </ng-template>
-    </ng-container>
+      </div>
+    </div>
 
     <!-- Agents list view -->
     <div *ngIf="!showMap && agents().length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
