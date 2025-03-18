@@ -208,6 +208,8 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Create HTML for marker popups
   createPopupContent(agent: UKAgent): string {
+    if (!this.isBrowser()) return '';
+
     return `
       <div class="popup-content">
         <h3 class="font-bold">${agent.LocationName}</h3>
@@ -346,6 +348,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Get URL for directions
   getGoogleMapsUrl(agent: UKAgent): string {
+    if (!this.isBrowser()) return '';
     return `https://www.google.com/maps/search/?api=1&query=${agent.Latitude},${agent.Longitude}`;
   }
 
