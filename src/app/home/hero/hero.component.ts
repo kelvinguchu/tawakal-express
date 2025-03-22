@@ -127,7 +127,7 @@ export class HeroComponent implements AfterViewInit {
   // Mock transfer data
   transferAmount = 'KES 5,000';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: Object) {}
 
   ngAfterViewInit() {
     this.initCard3DEffect();

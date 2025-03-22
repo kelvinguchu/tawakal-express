@@ -24,7 +24,6 @@ interface ContactFormData {
     FontAwesomeIconsModule,
   ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css',
 })
 export class ContactComponent {
   @ViewChild('contactForm') contactForm!: NgForm;

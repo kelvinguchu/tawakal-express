@@ -12,7 +12,7 @@ import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
   styleUrl: './cta.component.css',
 })
 export class CtaComponent {
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   navigateToContact() {
     this.router.navigate(['/contact']);

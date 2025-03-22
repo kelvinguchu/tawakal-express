@@ -71,7 +71,7 @@ export class NavbarComponent {
     { label: 'Careers', routerLink: '/careers' },
   ];
 
-  constructor(private router: Router) {
+  constructor(private readonly router: Router) {
     // Close menu on navigation
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

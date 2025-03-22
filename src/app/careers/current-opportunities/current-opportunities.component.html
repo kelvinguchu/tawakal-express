@@ -30,34 +30,41 @@
         <div *ngIf="!isSubmitted">
           <!-- Email input -->
           <div class="mb-4 sm:mb-5">
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+            <label for="email-alert" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
                 <fa-icon [icon]="['fas', 'envelope']" class="text-sm"></fa-icon>
               </span>
               <input
-                id="email"
+                id="email-alert"
                 type="email"
                 [(ngModel)]="email"
                 placeholder="Your email address"
                 class="w-full pl-10 pr-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-tawakal-green focus:border-tawakal-green"
                 [ngClass]="{'border-red-500': isError && !email}"
+                aria-required="true"
+                aria-invalid="isError && !email"
               />
             </div>
-            <p *ngIf="isError && !email" class="mt-1 text-red-500 text-xs">Please enter your email address</p>
+            <p *ngIf="isError && !email" class="mt-1 text-red-500 text-xs" id="email-error">Please enter your email address</p>
           </div>
           
           <!-- Job categories -->
           <div class="mb-4 sm:mb-5">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Job Categories (select at least one)</label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <div *ngFor="let category of jobCategories" 
+            <label id="job-categories-label" class="block text-sm font-medium text-gray-700 mb-2">Job Categories (select at least one)</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" role="group" aria-labelledby="job-categories-label">
+              <div *ngFor="let category of jobCategories; let i = index" 
                    class="flex items-center p-2 border rounded-lg cursor-pointer transition-colors"
                    [ngClass]="{
                      'border-tawakal-green bg-tawakal-green/5': selectedCategories.includes(category.name),
                      'border-gray-200 hover:border-tawakal-green/30': !selectedCategories.includes(category.name)
                    }"
-                   (click)="toggleCategory(category.name)">
+                   (click)="toggleCategory(category.name)"
+                   (keydown)="toggleCategory(category.name, $event)"
+                   [attr.aria-checked]="selectedCategories.includes(category.name)"
+                   role="checkbox"
+                   [id]="'job-category-' + i"
+                   tabindex="0">
                 <div class="flex-shrink-0">
                   <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-md flex items-center justify-center"
                        [ngClass]="{

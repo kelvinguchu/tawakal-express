@@ -102,14 +102,15 @@
             
             <!-- Business location question -->
             <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">Do you have a business location? <span class="text-red-500">*</span></label>
-              <div class="flex space-x-4">
+              <label class="block text-sm font-medium text-gray-700 mb-2" id="business-location-label">Do you have a business location? <span class="text-red-500">*</span></label>
+              <div class="flex space-x-4" role="radiogroup" aria-labelledby="business-location-label">
                 <label class="inline-flex items-center">
                   <input 
                     type="radio" 
                     formControlName="hasBusinessLocation" 
                     value="yes" 
                     class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
+                    id="business-location-yes"
                   >
                   <span class="ml-2 text-gray-700">Yes</span>
                 </label>
@@ -119,6 +120,7 @@
                     formControlName="hasBusinessLocation" 
                     value="no" 
                     class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
+                    id="business-location-no"
                   >
                   <span class="ml-2 text-gray-700">No</span>
                 </label>
@@ -130,14 +132,15 @@
             
             <!-- Computer and internet question -->
             <div class="mb-2">
-              <label class="block text-sm font-medium text-gray-700 mb-2">Do you have a computer with internet connection? <span class="text-red-500">*</span></label>
-              <div class="flex space-x-4">
+              <label class="block text-sm font-medium text-gray-700 mb-2" id="computer-internet-label">Do you have a computer with internet connection? <span class="text-red-500">*</span></label>
+              <div class="flex space-x-4" role="radiogroup" aria-labelledby="computer-internet-label">
                 <label class="inline-flex items-center">
                   <input 
                     type="radio" 
                     formControlName="hasComputer" 
                     value="yes" 
                     class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
+                    id="computer-yes"
                   >
                   <span class="ml-2 text-gray-700">Yes</span>
                 </label>
@@ -147,6 +150,7 @@
                     formControlName="hasComputer" 
                     value="no" 
                     class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
+                    id="computer-no"
                   >
                   <span class="ml-2 text-gray-700">No</span>
                 </label>

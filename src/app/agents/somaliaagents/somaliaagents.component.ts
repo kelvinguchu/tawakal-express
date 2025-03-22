@@ -27,7 +27,6 @@ interface SomaliaAgent {
     Tooltip,
   ],
   templateUrl: './somaliaagents.component.html',
-  styleUrl: './somaliaagents.component.css',
 })
 export class SomaliaagentsComponent implements OnInit {
   // Agent data state
@@ -39,13 +38,13 @@ export class SomaliaagentsComponent implements OnInit {
   selectedCity = '';
 
   // Sort state
-  sortField: 'locationName' | 'city' = 'city';
+  sortField: 'city' = 'city';
   sortDirection: 'asc' | 'desc' = 'asc';
 
   // Unique cities for filter dropdown
   cities: string[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   ngOnInit(): void {
     this.loadAgents();
@@ -71,7 +70,9 @@ export class SomaliaagentsComponent implements OnInit {
   // Extract unique cities for the dropdown filter
   extractCities(): void {
     const uniqueCities = [...new Set(this.agents().map((agent) => agent.city))];
-    this.cities = uniqueCities.sort();
+    // Sort the cities alphabetically in a separate statement
+    this.cities = [...uniqueCities];
+    this.cities.sort((a, b) => a.localeCompare(b));
   }
 
   // Filter agents based on search term and selected city
@@ -112,7 +113,7 @@ export class SomaliaagentsComponent implements OnInit {
   }
 
   // Toggle sort field and direction
-  toggleSort(field: 'locationName' | 'city'): void {
+  toggleSort(field: 'city'): void {
     if (this.sortField === field) {
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
     } else {
@@ -127,7 +128,10 @@ export class SomaliaagentsComponent implements OnInit {
   clearFilters(): void {
     this.searchTerm = '';
     this.selectedCity = '';
-    this.filteredAgents.set(this.agents());
+    // Reset to original data, then sort
+    this.filteredAgents.set([...this.agents()]);
+    this.sortField = 'city';
+    this.sortDirection = 'asc';
     this.sortAgents();
   }
 

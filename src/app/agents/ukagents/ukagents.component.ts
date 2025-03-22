@@ -91,8 +91,8 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   private readonly cdr = inject(ChangeDetectorRef);
 
   constructor(
-    private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private readonly http: HttpClient,
+    @Inject(PLATFORM_ID) private readonly platformId: Object
   ) {}
 
   ngOnInit(): void {
@@ -153,7 +153,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (data) => {
           const validAgents = data.filter(
-            (agent) => agent && agent.LocationName && agent.LocationCode
+            (agent) => agent?.LocationName && agent?.LocationCode
           );
 
           this.agents.set(validAgents);
@@ -333,7 +333,8 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
   // Extract unique cities for filter dropdown
   extractCities(): void {
     const uniqueCities = [...new Set(this.agents().map((agent) => agent.City))];
-    this.cities = uniqueCities.sort();
+    this.cities = [...uniqueCities];
+    this.cities.sort((a, b) => a.localeCompare(b));
   }
 
   // Filter agents by search term and city

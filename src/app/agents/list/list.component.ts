@@ -19,7 +19,7 @@ import { Ripple } from 'primeng/ripple';
   styleUrl: './list.component.css',
 })
 export class ListComponent {
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   // Navigate to Somalia agents page
   goToSomaliaAgents(): void {

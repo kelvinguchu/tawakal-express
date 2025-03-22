@@ -35,7 +35,6 @@ interface ItemsData {
     NgOptimizedImage,
   ],
   templateUrl: './products-and-partners.component.html',
-  styleUrls: ['./products-and-partners.component.css'],
 })
 export class ProductsAndPartnersComponent {
   // Active tab and item state
@@ -102,13 +101,17 @@ export class ProductsAndPartnersComponent {
 
   // Helper method to get tab button classes
   getTabClasses(tab: string): string {
-    return this.activeTab === tab
-      ? `bg-gradient-to-r ${
-          tab === 'products'
-            ? 'from-tawakal-green to-tawakal-blue'
-            : 'from-tawakal-blue to-tawakal-red'
-        } text-white shadow-md`
-      : 'text-zinc-700 hover:bg-white/50 hover:text-zinc-900';
+    if (this.activeTab === tab) {
+      // Extract gradient determination to a separate statement
+      const gradientClasses =
+        tab === 'products'
+          ? 'from-tawakal-green to-tawakal-blue'
+          : 'from-tawakal-blue to-tawakal-red';
+
+      return `bg-gradient-to-r ${gradientClasses} text-white shadow-md`;
+    }
+
+    return 'text-zinc-700 hover:bg-white/50 hover:text-zinc-900';
   }
 
   // Helper method to get item button classes

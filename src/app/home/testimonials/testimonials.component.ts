@@ -134,7 +134,7 @@ export class TestimonialsComponent implements OnInit {
     },
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: Object) {}
 
   ngOnInit(): void {
     // Only access window if in browser environment

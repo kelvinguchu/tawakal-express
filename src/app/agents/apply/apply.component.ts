@@ -43,7 +43,6 @@ interface AgentPhase {
     Ripple,
   ],
   templateUrl: './apply.component.html',
-  styleUrl: './apply.component.css',
 })
 export class ApplyComponent implements OnInit {
   applicationForm: FormGroup;
@@ -129,7 +128,10 @@ export class ApplyComponent implements OnInit {
     },
   ];
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly http: HttpClient
+  ) {
     this.applicationForm = this.fb.group({
       country: ['', Validators.required],
       hasBusinessLocation: ['', Validators.required],
@@ -213,7 +215,7 @@ export class ApplyComponent implements OnInit {
     this.http.get<any>('/data/world-countries.json').subscribe({
       next: (data) => {
         // Extract country names from GeoJSON format
-        if (data && data.features) {
+        if (data?.features) {
           this.countries = data.features
             .map((feature: any) => feature.properties.name)
             .sort();

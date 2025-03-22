@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
-import { NgOptimizedImage } from '@angular/common';
 
 interface TimelineEvent {
   year: string;
@@ -12,7 +11,7 @@ interface TimelineEvent {
   icon: string;
   color: string;
   image: string;
-  imageAlt: string;
+  alt: string;
 }
 
 interface Partner {
@@ -110,7 +109,7 @@ export class StoryComponent {
       icon: 'faBuilding',
       color: 'from-tawakal-green to-tawakal-green',
       image: '/images/somalia.webp',
-      imageAlt: 'Somalia office opening',
+      alt: 'Somalia office opening',
     },
     {
       year: '2010',
@@ -120,7 +119,7 @@ export class StoryComponent {
       icon: 'faGlobe',
       color: 'from-tawakal-blue to-tawakal-blue',
       image: '/images/globe.webp',
-      imageAlt: 'Global expansion map',
+      alt: 'Global expansion map',
     },
     {
       year: '2015',
@@ -130,7 +129,7 @@ export class StoryComponent {
       icon: 'faMobileScreen',
       color: 'from-tawakal-blue to-tawakal-green',
       image: '/images/iphone-macbook.webp',
-      imageAlt: 'Digital platforms launch',
+      alt: 'Digital platforms launch',
     },
     {
       year: '2020',
@@ -140,7 +139,7 @@ export class StoryComponent {
       icon: 'faAward',
       color: 'from-tawakal-green to-tawakal-blue',
       image: '/images/dollars.webp',
-      imageAlt: 'Award ceremony',
+      alt: 'Award ceremony',
     },
   ];
 

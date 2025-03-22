@@ -7,7 +7,6 @@ import { FooterComponent } from './layout/footer/footer.component';
   selector: 'app-root',
   imports: [RouterOutlet, NavbarComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'tawakal-express';

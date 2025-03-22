@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -33,9 +33,8 @@ interface NavItem {
     NgOptimizedImage,
   ],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css'],
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
   // Icon sizes
   smallIconSize: SizeProp = 'sm';
   mediumIconSize: SizeProp = 'lg';
@@ -89,9 +88,7 @@ export class FooterComponent implements OnInit {
   // Track whether dropdowns are expanded
   expandedDropdowns: { [key: string]: boolean } = {};
 
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {}
+  constructor(private readonly router: Router) {}
 
   // Method to navigate to the features-and-services section
   navigateToService(serviceId: string): void {

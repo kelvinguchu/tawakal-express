@@ -25,7 +25,6 @@ interface JobCategory {
     Ripple,
   ],
   templateUrl: './current-opportunities.component.html',
-  styleUrl: './current-opportunities.component.css',
 })
 export class CurrentOpportunitiesComponent {
   // Form state
@@ -83,7 +82,18 @@ export class CurrentOpportunitiesComponent {
   ];
 
   // Toggle job category selection
-  toggleCategory(category: string): void {
+  toggleCategory(category: string, event?: KeyboardEvent): void {
+    // If keyboard event is present, only toggle on Space or Enter
+    if (event && event.type === 'keydown') {
+      if (event.key !== ' ' && event.key !== 'Enter') {
+        return;
+      }
+      // Prevent scrolling on space key
+      if (event.key === ' ') {
+        event.preventDefault();
+      }
+    }
+
     const index = this.selectedCategories.indexOf(category);
     if (index === -1) {
       this.selectedCategories.push(category);

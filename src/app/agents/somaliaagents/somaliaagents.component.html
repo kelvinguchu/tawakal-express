@@ -57,19 +57,6 @@
         <div class="flex flex-wrap gap-1.5 sm:gap-2 sort-buttons">
           <button 
             pRipple
-            (click)="toggleSort('locationName')" 
-            class="flex items-center px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-            [ngClass]="{'bg-tawakal-green/10 border-tawakal-green/30 text-tawakal-green': sortField === 'locationName'}"
-          >
-            <span>Name</span>
-            <fa-icon 
-              [icon]="sortField === 'locationName' && sortDirection === 'asc' ? ['fas', 'sort-alpha-down'] : ['fas', 'sort-alpha-up']" 
-              class="ml-1 sm:ml-2 text-xs sm:text-sm"
-            ></fa-icon>
-          </button>
-          
-          <button 
-            pRipple
             (click)="toggleSort('city')" 
             class="flex items-center px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
             [ngClass]="{'bg-tawakal-green/10 border-tawakal-green/30 text-tawakal-green': sortField === 'city'}"
