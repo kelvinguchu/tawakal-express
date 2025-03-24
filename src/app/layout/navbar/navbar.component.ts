@@ -57,7 +57,7 @@ export class NavbarComponent {
       hasDropdown: true,
       dropdownItems: [
         {
-          label: 'View Agents',
+          label: 'Find Agents',
           routerLink: '/agents',
           icon: ['fas', 'search-location'] as IconProp,
         },

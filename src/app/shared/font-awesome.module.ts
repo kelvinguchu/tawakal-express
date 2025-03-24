@@ -72,6 +72,7 @@ import {
   faGraduationCap,
   faRocket,
   faHeadset,
+  faList,
 } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 
@@ -152,7 +153,8 @@ export class FontAwesomeIconsModule {
       faSearchLocation,
       faGraduationCap,
       faRocket,
-      faHeadset
+      faHeadset,
+      faList
     );
   }
 }
