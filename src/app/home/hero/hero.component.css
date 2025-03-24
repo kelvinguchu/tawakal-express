@@ -65,6 +65,11 @@
   to { transform: rotate(360deg); }
 }
 
+@keyframes spin-slow-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
 @keyframes pulse-slow {
   0% {
     opacity: 0.4;
@@ -101,6 +106,7 @@
   animation: shimmer 3s infinite linear;
 }
 .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+.animate-spin-slow-reverse { animation: spin-slow-reverse 12s linear infinite; }
 .animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
 
 /* Country tag hover effect */

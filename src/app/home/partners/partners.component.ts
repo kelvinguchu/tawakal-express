@@ -1,3 +1,4 @@
+// This component is not used in the app, so it can be removed, or used in the future
 import { Component } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

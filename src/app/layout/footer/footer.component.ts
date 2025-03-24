@@ -52,10 +52,10 @@ export class FooterComponent {
   // Services for footer - updated to match the services in features-and-services component
   serviceItems = [
     { label: 'Mobile Money Transfer', id: 'mobile-money' },
-    { label: 'Individual Payment', id: 'individual-payment' },
-    { label: 'Foreign Currency Exchange', id: 'currency-exchange' },
-    { label: 'Humanitarian Money Transfer', id: 'humanitarian' },
-    { label: 'Mpesa Services', id: 'mpesa' },
+    { label: 'Mobile Wallet Transfer', id: 'mobile-wallet' },
+    { label: 'Bank Transfer', id: 'bank-transfer' },
+    { label: 'Cash Pickup', id: 'cash-pickup' },
+    { label: 'Humanitarian Money Transfer (HMT)', id: 'humanitarian' },
     { label: 'Business Payment Solutions', id: 'business-payments' },
   ];
 

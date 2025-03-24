@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
@@ -8,12 +8,7 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink,
-    FontAwesomeModule,
-    FontAwesomeIconsModule,
-  ],
+  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
 })
@@ -36,65 +31,36 @@ export class AboutComponent {
 
   // Countries with direct branches
   branchCountries = [
-    'Australia',
-    'Canada',
-    'Djibouti',
-    'Ethiopia',
-    'Kenya',
-    'Norway',
-    'Somalia',
-    'South Sudan',
-    'Sudan',
-    'Sweden',
-    'UAE',
-    'Uganda',
-    'UK',
-    'USA',
+    { name: 'Australia', flag: 'au' },
+    { name: 'Canada', flag: 'ca' },
+    { name: 'Djibouti', flag: 'dj' },
+    { name: 'Ethiopia', flag: 'et' },
+    { name: 'Kenya', flag: 'ke' },
+    { name: 'Norway', flag: 'no' },
+    { name: 'Somalia', flag: 'so' },
+    { name: 'South Sudan', flag: 'ss' },
+    { name: 'Sudan', flag: 'sd' },
+    { name: 'Sweden', flag: 'se' },
+    { name: 'UAE', flag: 'ae' },
+    { name: 'Uganda', flag: 'ug' },
+    { name: 'UK', flag: 'gb' },
+    { name: 'USA', flag: 'us' },
   ];
 
   // Partner countries
   partnerCountries = [
-    'Bangladesh',
-    'Egypt',
-    'India',
-    'Indonesia',
-    'Jordan',
-    'Kuwait',
-    'Lebanon',
-    'Morocco',
-    'Nepal',
-    'Pakistan',
-    'Philippines',
-    'Sri Lanka',
-  ];
-
-  // Service features
-  features = [
-    {
-      title: 'Global Reach',
-      description:
-        'Send money to over 50 countries worldwide with competitive exchange rates',
-      icon: 'faGlobe',
-      color: 'tawakal-blue',
-    },
-    {
-      title: 'Fast Transfers',
-      description: 'Most transfers arrive within minutes, not days',
-      icon: 'faClock',
-      color: 'tawakal-green',
-    },
-    {
-      title: 'Secure & Reliable',
-      description: 'Bank-level security with 24/7 transaction monitoring',
-      icon: 'faShieldHalved',
-      color: 'tawakal-red',
-    },
-    {
-      title: 'Low Fees',
-      description: 'Transparent pricing with no hidden charges',
-      icon: 'faMoneyBill',
-      color: 'emerald-500',
-    },
+    { name: 'Bangladesh', flag: 'bd' },
+    { name: 'Egypt', flag: 'eg' },
+    { name: 'India', flag: 'in' },
+    { name: 'Indonesia', flag: 'id' },
+    { name: 'Jordan', flag: 'jo' },
+    { name: 'Kuwait', flag: 'kw' },
+    { name: 'Lebanon', flag: 'lb' },
+    { name: 'Morocco', flag: 'ma' },
+    { name: 'Nepal', flag: 'np' },
+    { name: 'Pakistan', flag: 'pk' },
+    { name: 'Philippines', flag: 'ph' },
+    { name: 'Sri Lanka', flag: 'lk' },
   ];
 
   // Core values data

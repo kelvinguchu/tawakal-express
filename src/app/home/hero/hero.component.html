@@ -1,4 +1,4 @@
-<section class="bg-[#f8faf8] min-h-screen pt-16 relative overflow-hidden flex items-center">
+<section class="bg-[#f8faf8] min-h-screen relative overflow-hidden flex items-center">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full py-4">
     <div class="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
       <!-- Left column content -->
@@ -6,7 +6,9 @@
         <!-- Background gradients -->
         <div class="absolute -left-20 -top-20 w-64 h-64 bg-gradient-to-br from-tawakal-green/10 to-tawakal-blue/5 rounded-full blur-3xl"></div>
         <div class="absolute -left-10 bottom-10 w-40 h-40 bg-gradient-to-tr from-tawakal-blue/5 to-[#9e5a63]/10 rounded-full blur-2xl"></div>
-        
+
+
+        <div class="mt-6">
         <!-- Trust badge -->
         <div class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-tawakal-green text-xs sm:text-sm mb-4 sm:mb-6 shadow-sm hover:shadow transition-transform duration-300 animate-slideFromLeft">
           <div class="relative">
@@ -17,79 +19,32 @@
         
         <!-- Headline -->
         <div class="mb-4 sm:mb-8 relative animate-slideFromLeft" style="animation-delay: 0.2s;">
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight">International</h1>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-tawakal-green leading-tight">money transfers</h1>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-            <span class="text-black">made </span> 
-            <span class="bg-gradient-to-r from-tawakal-blue to-tawakal-red text-transparent bg-clip-text">simple</span>
-          </h1>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight">Experience Seamless</h1>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-tawakal-green leading-tight">Remittance</h1>
         </div>
         
         <!-- Description -->
         <div class="relative mb-4 sm:mb-8 animate-slideFromLeft" style="animation-delay: 0.3s;">
           <p class="text-gray-600 text-sm sm:text-base md:text-lg">
-            Send money to family and friends across 
+            Your Trusted Partner for Secure and Reliable Money Transfers Worldwide.
             <span class="relative inline-block">
-              <span class="text-tawakal-blue font-medium">over 50 countries</span>
+              <span class="text-tawakal-blue font-medium">Transfer with Confidence:</span>
             </span><br class="hidden sm:block">
-            from Somalia to Kenya, UAE, UK, USA and more with low fees
-            and fast delivery.
+            Low Fees, Fast Delivery, and Superior Exchange Rates.
           </p>
         </div>
         
-        <!-- CTA buttons -->
-        <div class="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 animate-slideFromLeft" style="animation-delay: 0.4s;">
-          <a pRipple routerLink="/contact" class="group relative inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white rounded-md text-sm sm:text-base font-medium shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+        <!-- CTA button -->
+        <div class="flex flex-wrap mb-6 sm:mb-8 animate-slideFromLeft" style="animation-delay: 0.4s;">
+          <a pRipple routerLink="/contact" class="group relative inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-tawakal-green to-tawakal-blue text-white rounded-md text-sm sm:text-base font-medium shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
             <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div class="relative flex items-center">
-              <span>Get Started</span>
-              <fa-icon [icon]="['fas', 'arrow-right']" [size]="smallIconSize" class="ml-1 sm:ml-2 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
-            </div>
-          </a>
-          
-          <a pRipple routerLink="/agents" class="group relative inline-flex items-center px-3 sm:px-6 py-2 sm:py-3 bg-white/80 backdrop-blur-sm text-gray-700 rounded-md text-sm sm:text-base font-medium border border-tawakal-blue/20 hover:bg-tawakal-blue/5 hover:border-tawakal-blue/30 transition-all duration-300 overflow-hidden whitespace-nowrap shadow-sm hover:shadow-md">
-            <div class="relative flex items-center">
-              <fa-icon [icon]="['fas', 'location-dot']" [size]="smallIconSize" class="mr-1 sm:mr-2 text-tawakal-blue"></fa-icon>
-              Find agents
-              <fa-icon [icon]="['fas', 'arrow-right']" [size]="smallIconSize" class="ml-1 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
+              <span>Get In Touch</span>
+              <fa-icon [icon]="['fas', 'arrow-right']" [size]="smallIconSize" class="ml-2 sm:ml-3 transform group-hover:translate-x-1 transition-all duration-300"></fa-icon>
             </div>
           </a>
         </div>
-        
-        <!-- Countries list -->
-        <div class="animate-slideFromRight" style="animation-delay: 0.5s;">
-          <div class="flex items-center text-xs sm:text-sm text-gray-500 mb-2">
-            <div class="relative">
-              <fa-icon [icon]="['fas', 'globe']" class="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 text-tawakal-blue/70"></fa-icon>
-            </div>
-            Available in over 50 countries including:
-          </div>
-          <div class="flex flex-wrap gap-1 sm:gap-2">
-            <ng-container *ngFor="let country of countries">
-              <span class="country-tag px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm rounded-full transition-colors duration-300 hover:shadow-sm cursor-pointer"
-                    [ngClass]="country.highlight ? 
-                      'bg-green-100 text-tawakal-green hover:bg-green-200' : 
-                      'bg-gray-100 text-gray-600 hover:bg-gray-200'">
-                {{ country.name }}
-              </span>
-            </ng-container>
-            <span class="country-tag px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm rounded-full bg-gray-100/50 text-gray-500 border border-dashed border-gray-300 hover:bg-gray-100 transition-colors duration-300 hover:shadow-sm cursor-pointer">
-              <span class="text-tawakal-blue">+45</span> more
-            </span>
-          </div>
-        </div>
-        
-        <!-- Trust indicators -->
-        <div class="mt-4 sm:mt-8 flex items-center space-x-2 sm:space-x-4 animate-slideFromRight" style="animation-delay: 0.6s;">
-          <ng-container *ngFor="let indicator of trustIndicators; let i = index">
-            <div class="flex items-center text-xs text-gray-500">
-              <fa-icon [icon]="['fas', getIconName(indicator.icon)]" [size]="smallIconSize" [ngClass]="[indicator.color]" class="mr-0.5 sm:mr-1"></fa-icon>
-              <span class="ml-1">{{ indicator.text }}</span>
-            </div>
-            <!-- Divider -->
-            <div *ngIf="i < trustIndicators.length - 1" class="h-3 sm:h-4 w-px bg-gray-300"></div>
-          </ng-container>
-        </div>
+      </div>
       </div>
       
       <!-- Right column visualization -->
@@ -123,127 +78,137 @@
             </div>
           </div>
           
-          <!-- 3D card with mouse tracking -->
-          <div #card3dContainer class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 card-3d-container">
-            <!-- Card with 3D effect -->
-            <div class="card-3d w-64 sm:w-72 md:w-80 h-40 sm:h-44 md:h-48 rounded-2xl shadow-2xl bg-gradient-to-br from-tawakal-green to-tawakal-blue p-4 sm:p-5 md:p-6 text-white relative overflow-hidden transform transition-transform duration-700 hover:scale-105">
-              <!-- Holographic overlay -->
-              <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-white/20 holographic-effect"></div>
-              
+          <!-- Services Showcase -->
+          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-full max-w-md">
+            <div class="text-center mb-4 sm:mb-6 animate-fadeIn">
+              <div class="relative inline-block">
+                <h3 class="text-sm sm:text-base md:text-lg font-semibold relative">
+                  <span class="bg-gradient-to-r from-tawakal-green to-tawakal-blue text-transparent bg-clip-text">Services Available</span>
+                  <span class="absolute -right-6 top-0">
+                    <fa-icon [icon]="['fas', 'check-circle']" class="text-tawakal-green/30 text-sm sm:text-base animate-pulse"></fa-icon>
+                  </span>
+                </h3>
+                <!-- Creative underline -->
+                <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-tawakal-green/30 to-transparent mt-0.5"></div>
+                <!-- Decorative elements -->
+                <div class="absolute -left-4 -bottom-1 w-1.5 h-1.5 rounded-full bg-tawakal-green/40"></div>
+                <div class="absolute -right-4 -bottom-1 w-1.5 h-1.5 rounded-full bg-tawakal-blue/40"></div>
+              </div>
+            </div>
+            
+            <!-- Floating currency indicators -->
+            <div class="absolute -left-6 -top-8 animate-float" style="animation-duration: 8s; animation-delay: 0.5s;">
+              <div class="w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-tawakal-green/10 backdrop-blur-sm">
+                <fa-icon [icon]="['fas', 'dollar-sign']" [size]="smallIconSize" class="text-tawakal-green/70"></fa-icon>
+              </div>
+            </div>
+            <div class="absolute -right-4 top-12 animate-float" style="animation-duration: 7s; animation-delay: 1.2s;">
+              <div class="w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-tawakal-blue/10 backdrop-blur-sm">
+                <fa-icon [icon]="['fas', 'pound-sign']" [size]="smallIconSize" class="text-tawakal-blue/70"></fa-icon>
+              </div>
+            </div>
+            <div class="absolute left-4 -bottom-10 animate-float" style="animation-duration: 9s; animation-delay: 0.7s;">
+              <div class="w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-[#9e5a63]/10 backdrop-blur-sm">
+                <fa-icon [icon]="['fas', 'euro-sign']" [size]="smallIconSize" class="text-[#9e5a63]/70"></fa-icon>
+              </div>
+            </div>
+            
+            <!-- Service cards -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <!-- Wallet Money -->
+              <div class="service-card group relative bg-gradient-to-br from-tawakal-green/90 to-tawakal-blue/90 rounded-xl shadow-lg p-3 sm:p-4 text-white transform transition-all duration-500 hover:scale-105 hover:shadow-xl animate-slideUp" style="animation-delay: 0.1s;">
+                <div class="absolute inset-0 bg-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <fa-icon [icon]="['fas', 'credit-card']" [size]="mediumIconSize" class="text-white"></fa-icon>
+                  </div>
+                  <h4 class="text-sm sm:text-base font-semibold mb-1">Wallet Money</h4>
+                  <p class="text-xs sm:text-sm text-white/80">Fast digital transfers to any e-wallet</p>
+                </div>
               <!-- Animated particles -->
-              <div class="particles-container absolute inset-0 overflow-hidden">
-                <div *ngFor="let particle of particles" class="particle"></div>
+                <div class="absolute top-0 right-0 w-2 h-2 bg-white/40 rounded-full animate-ping" style="animation-delay: 0.5s;"></div>
+                <!-- Subtle icon in background -->
+                <div class="absolute bottom-2 right-2 opacity-10 transform rotate-12">
+                  <fa-icon [icon]="['fas', 'credit-card']" [size]="mediumIconSize" class="text-white w-8 h-8 sm:w-10 sm:h-10"></fa-icon>
+                </div>
               </div>
               
-              <!-- Card content -->
+              <!-- Mobile Money -->
+              <div class="service-card group relative bg-gradient-to-br from-tawakal-blue/90 to-[#9e5a63]/90 rounded-xl shadow-lg p-3 sm:p-4 text-white transform transition-all duration-500 hover:scale-105 hover:shadow-xl animate-slideUp" style="animation-delay: 0.2s;">
+                <div class="absolute inset-0 bg-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div class="relative z-10">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <div class="text-sm sm:text-base font-medium">Tawakal Express</div>
-                    <div class="text-lg sm:text-xl font-bold">Premium Card</div>
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <fa-icon [icon]="['fas', 'mobile-screen']" [size]="mediumIconSize" class="text-white"></fa-icon>
                   </div>
-                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
-                    <img [ngSrc]="'/icons/etawakal-icon.svg'" alt="Logo" class="w-6 h-6 sm:w-8 sm:h-8 object-contain" width="32" height="32">
+                  <h4 class="text-sm sm:text-base font-semibold mb-1">Mobile Money</h4>
+                  <p class="text-xs sm:text-sm text-white/80">Send directly to mobile payment systems</p>
+                </div>
+                <div class="absolute top-0 right-0 w-2 h-2 bg-white/40 rounded-full animate-ping" style="animation-delay: 1s;"></div>
+                <!-- Subtle icon in background -->
+                <div class="absolute bottom-2 right-2 opacity-10 transform -rotate-12">
+                  <fa-icon [icon]="['fas', 'mobile-screen']" [size]="mediumIconSize" class="text-white w-8 h-8 sm:w-10 sm:h-10"></fa-icon>
                   </div>
                 </div>
                 
-                <!-- Card chip -->
-                <div class="mt-3 sm:mt-4 flex items-center">
-                  <div class="relative">
-                    <img [ngSrc]="'/icons/card-chip.svg'" alt="Chip" class="w-8 h-6 sm:w-10 sm:h-8 object-contain" width="40" height="32">
-                    <div class="absolute inset-0 chip-glow"></div>
+              <!-- Bank Transfer -->
+              <div class="service-card group relative bg-gradient-to-br from-[#9e5a63]/90 to-tawakal-green/90 rounded-xl shadow-lg p-3 sm:p-4 text-white transform transition-all duration-500 hover:scale-105 hover:shadow-xl animate-slideUp" style="animation-delay: 0.3s;">
+                <div class="absolute inset-0 bg-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <fa-icon [icon]="['fas', 'building']" [size]="mediumIconSize" class="text-white"></fa-icon>
                   </div>
-                  <div class="ml-2 text-[10px] sm:text-xs opacity-80">Secure Chip</div>
+                  <h4 class="text-sm sm:text-base font-semibold mb-1">Bank Transfer</h4>
+                  <p class="text-xs sm:text-sm text-white/80">Secure deposits to bank accounts</p>
+                </div>
+                <div class="absolute bottom-0 left-0 w-2 h-2 bg-white/40 rounded-full animate-ping" style="animation-delay: 1.5s;"></div>
+                <!-- Subtle icon in background -->
+                <div class="absolute bottom-2 right-2 opacity-10 transform rotate-12">
+                  <fa-icon [icon]="['fas', 'building']" [size]="mediumIconSize" class="text-white w-8 h-8 sm:w-10 sm:h-10"></fa-icon>
+                </div>
                 </div>
                 
-                <div class="mt-3 sm:mt-4">
-                  <div class="text-[10px] sm:text-xs opacity-80">Card Number</div>
-                  <div class="text-sm sm:text-base tracking-widest typewriter-text">**** **** **** 4289</div>
-                </div>
-                
-                <div class="mt-3 sm:mt-4 flex justify-between items-end">
-                  <div>
-                    <div class="text-[10px] sm:text-xs opacity-80">Expires</div>
-                    <div class="text-xs sm:text-sm font-medium">09/25</div>
+              <!-- Cash Pickup -->
+              <div class="service-card group relative bg-gradient-to-br from-tawakal-blue/90 to-tawakal-green/90 rounded-xl shadow-lg p-3 sm:p-4 text-white transform transition-all duration-500 hover:scale-105 hover:shadow-xl animate-slideUp" style="animation-delay: 0.4s;">
+                <div class="absolute inset-0 bg-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <fa-icon [icon]="['fas', 'hand-holding-dollar']" [size]="mediumIconSize" class="text-white"></fa-icon>
                   </div>
-                  <div class="text-[10px] sm:text-xs opacity-80">
-                    <div>GLOBAL</div>
-                    <div>TRANSFER</div>
+                  <h4 class="text-sm sm:text-base font-semibold mb-1">Cash Pickup</h4>
+                  <p class="text-xs sm:text-sm text-white/80">Collect cash at any agent location</p>
                   </div>
+                <div class="absolute bottom-0 left-0 w-2 h-2 bg-white/40 rounded-full animate-ping" style="animation-delay: 2s;"></div>
+                <!-- Subtle icon in background -->
+                <div class="absolute bottom-2 right-2 opacity-10 transform -rotate-12">
+                  <fa-icon [icon]="['fas', 'hand-holding-dollar']" [size]="mediumIconSize" class="text-white w-8 h-8 sm:w-10 sm:h-10"></fa-icon>
                 </div>
               </div>
             </div>
             
-            <!-- Card shadow -->
-            <div class="card-reflection w-64 sm:w-72 md:w-80 h-8 sm:h-10 md:h-12 mt-2 rounded-2xl bg-gradient-to-b from-black/20 to-transparent blur-md transform scale-90"></div>
+            <!-- Connected services circle -->
+            <div class="absolute -z-10 w-52 h-52 sm:w-64 sm:h-64 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-tawakal-green/20 animate-spin-slow"></div>
+            <div class="absolute -z-10 w-60 h-60 sm:w-72 sm:h-72 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-tawakal-blue/20 animate-spin-slow-reverse"></div>
+            
+            <!-- Central hub - Removed distracting center icon -->
+            <div class="absolute z-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <!-- Connection lines only, no hub circle -->
+              <ng-container *ngFor="let i of [0, 1, 2, 3]">
+                <div class="absolute w-24 sm:w-28 md:w-32 h-0.5 bg-gradient-to-r from-tawakal-green/20 to-transparent origin-left animate-pulse-slow"
+                     [style.transform]="'rotate(' + (i * 90) + 'deg)'"
+                     [style.animation-delay]="(i * 0.2) + 's'"></div>
+              </ng-container>
+            </div>
           </div>
           
-          <!-- Exchange rate cards -->
-          <ng-container *ngFor="let rate of exchangeRates; let i = index">
-            <div [ngClass]="i === 0 ? 'absolute top-10 -left-10 z-10 transform rotate-3' : 'absolute bottom-20 -right-5 z-10 transform -rotate-3'" 
-                 class="animate-float" 
-                 [style.animation-duration]="rate.duration" 
-                 [style.animation-delay]="rate.delay || '0s'">
-              <div class="bg-white/70 backdrop-blur-lg rounded-xl shadow-lg p-2 sm:p-3 border border-white/50 hover:shadow-xl transition-all duration-300 group">
-                <div class="flex items-center space-x-3">
-                  <div [ngClass]="'w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-' + rate.color + '-100 to-' + rate.color + '-200 flex items-center justify-center text-' + rate.color + '-500 relative group-hover:shadow-md transition-all duration-300'">
-                    <fa-icon [icon]="['fas', getIconName(rate.icon)]" [size]="rateIconSize" class="font-bold"></fa-icon>
-                    <!-- Ripple effect -->
-                    <div [ngClass]="'absolute inset-0 rounded-full bg-' + rate.color + '-400/30 animate-ripple'" [style.animation-delay]="rate.delay || '0s'"></div>
-                  </div>
-                  <div>
-                    <div class="text-[10px] sm:text-xs font-medium text-gray-500">{{ rate.from }}/{{ rate.to }} Exchange</div>
-                    <div class="flex items-center">
-                      <div class="text-sm sm:text-base font-bold">{{ rate.rate }}</div>
-                      <div class="ml-2 px-1 sm:px-1.5 py-0.5 bg-green-100/80 backdrop-blur-sm text-green-600 text-[10px] sm:text-xs rounded-md flex items-center">
-                        <fa-icon [icon]="['fas', 'arrow-up']" class="w-3 h-3 mr-0.5"></fa-icon>
-                        {{ rate.change }}%
-                      </div>
-                    </div>
-                    <!-- Mini chart -->
-                    <div class="mt-1 h-5 sm:h-6 w-full">
-                      <svg viewBox="0 0 100 20" class="w-full h-full">
-                        <path [attr.d]="i === 0 ? 'M0,10 Q10,9 20,15 T40,10 T60,12 T80,8 T100,10' : 'M0,15 Q20,5 40,10 T60,5 T80,10 T100,5'" 
-                              [attr.stroke]="i === 0 ? '#22c55e' : '#3b82f6'" 
-                              stroke-width="1.5" 
-                              fill="none" 
-                              class="animate-draw-chart" 
-                              [style.animation-delay]="rate.delay || '0s'"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <!-- Connected devices illustration -->
+          <div class="absolute bottom-5 right-5 animate-float" style="animation-duration: 6s;">
+            <div class="bg-white/70 backdrop-blur-lg rounded-full h-12 w-12 sm:h-14 sm:w-14 flex items-center justify-center shadow-lg border border-white/50 group hover:scale-110 transition-all duration-300">
+              <fa-icon [icon]="['fas', 'globe']" [size]="mediumIconSize" class="text-tawakal-green"></fa-icon>
+              <div class="absolute h-full w-full rounded-full bg-tawakal-green/20 animate-ping" style="animation-duration: 3s;"></div>
             </div>
-          </ng-container>
-          
-          <!-- Transfer notification -->
-          <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 z-30 animate-float" style="animation-duration: 6s; animation-delay: 1s;">
-            <div class="bg-white/70 backdrop-blur-lg rounded-xl shadow-xl p-3 sm:p-4 border border-white/50 w-56 sm:w-64 notification-card hover:shadow-2xl transition-all duration-300 group">
-              <div class="flex items-start">
-                <div class="w-7 h-7 sm:w-8 p-2 sm:h-8 rounded-full bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center text-red-500 mr-2 sm:mr-3 relative group-hover:shadow-md transition-all duration-300">
-                  <fa-icon [icon]="['fas', 'check']" class="w-3 h-3 sm:w-4 sm:h-4"></fa-icon>
-                  <div class="absolute top-0 right-0 w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
-                </div>
-                <div>
-                  <div class="flex items-center">
-                    <div class="text-xs sm:text-sm font-semibold text-gray-800">Transfer Complete</div>
-                    <div class="ml-1 sm:ml-2 px-1 sm:px-1.5 py-0.5 bg-gray-100/80 backdrop-blur-sm text-gray-500 text-[10px] sm:text-xs rounded-md">now</div>
-                  </div>
-                  <div class="text-[10px] sm:text-xs text-gray-500 mt-1">Your transfer of <span class="font-medium text-tawakal-green">KES 5,000</span> to <span class="font-medium">Ahmed</span> was successful!</div>
-                  
-                  <!-- Progress tracker -->
-                  <div class="mt-2 sm:mt-3">
-                    <div class="flex justify-between text-[10px] sm:text-xs text-gray-400 mb-1">
-                      <span>Sent</span>
-                      <span>Received</span>
-                    </div>
-                    <div class="h-1 sm:h-1.5 w-full bg-gray-100/80 backdrop-blur-sm rounded-full overflow-hidden">
-                      <div class="h-full bg-gradient-to-r from-tawakal-green to-tawakal-blue rounded-full w-full animate-progress"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <!-- Small notification badge -->
+            <div class="absolute -top-1 -right-1 bg-tawakal-blue text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+              <fa-icon [icon]="['fas', 'check']" [size]="'xs'" class="text-white"></fa-icon>
             </div>
           </div>
         </div>

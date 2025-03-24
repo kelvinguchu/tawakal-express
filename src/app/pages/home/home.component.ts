@@ -4,7 +4,6 @@ import { HeroComponent } from '../../home/hero/hero.component';
 import { AboutComponent } from '../../home/about/about.component';
 import { ProductsAndPartnersComponent } from '../../home/products-and-partners/products-and-partners.component';
 import { TestimonialsComponent } from '../../home/testimonials/testimonials.component';
-import { PartnersComponent } from '../../home/partners/partners.component';
 import { FeaturesAndServicesComponent } from '../../home/features-and-services/features-and-services.component';
 @Component({
   selector: 'app-home',
@@ -15,7 +14,6 @@ import { FeaturesAndServicesComponent } from '../../home/features-and-services/f
     AboutComponent,
     ProductsAndPartnersComponent,
     TestimonialsComponent,
-    PartnersComponent,
     FeaturesAndServicesComponent,
   ],
   template: `
@@ -24,7 +22,6 @@ import { FeaturesAndServicesComponent } from '../../home/features-and-services/f
     <app-about></app-about>
     <app-products-and-partners></app-products-and-partners>
     <app-testimonials></app-testimonials>
-    <app-partners></app-partners>
   `,
   styles: ``,
 })
