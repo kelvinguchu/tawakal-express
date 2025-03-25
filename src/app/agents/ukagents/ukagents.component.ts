@@ -19,8 +19,6 @@ import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { Ripple } from 'primeng/ripple';
 import { Tooltip } from 'primeng/tooltip';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
-// Import the module but NOT any actual Leaflet implementation
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 
 // Safe window token
@@ -232,7 +230,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
     this.markers.clearLayers();
 
-    // Create custom FontAwesome marker icon without background or borders
+    // Create custom FontAwesome marker icon 
     const markerIcon = this.L.divIcon({
       html: '<i class="fas fa-map-marker-alt"></i>',
       className: 'marker-icon',
@@ -250,7 +248,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
         icon: markerIcon,
       });
 
-      // Add click handler to show the agent details in the sidebar instead of popup
+      // Add click handler to show the agent details
       marker.on('click', () => {
         this.viewAgentDetails(agent);
       });
@@ -318,7 +316,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     }, 800);
   }
 
-  // Create HTML for marker popups
+  // HTML for marker popups
   createPopupContent(agent: UKAgent): string {
     return `
       <div class="popup-content">
@@ -404,7 +402,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Format address for display
+  // address for display
   formatAddress(agent: UKAgent): string {
     const parts = [
       agent['Apt,Unit'],
@@ -418,7 +416,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
   // Handle agent selection and map centering
   viewAgentDetails(agent: UKAgent): void {
-    // Use the signal's set method for proper change detection
+    // signal set method for proper change detection
     this.selectedAgent.set(agent);
     this.cdr.detectChanges();
 

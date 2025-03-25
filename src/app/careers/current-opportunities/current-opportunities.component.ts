@@ -109,7 +109,7 @@ export class CurrentOpportunitiesComponent {
       return;
     }
 
-    // In a real implementation, this would call an API to save the job alert
+    // to be done: send the form data to the server
     console.log('Job alert submitted:', {
       email: this.email,
       categories: this.selectedCategories,

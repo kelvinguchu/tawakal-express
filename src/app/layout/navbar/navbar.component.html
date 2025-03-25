@@ -78,12 +78,12 @@
         </a>
       </div>
 
-      <!-- Mobile menu toggle button with properly sized icon -->
+      <!-- Mobile menu toggle button -->
       <div class="flex md:hidden items-center">
         <button pRipple (click)="toggleMenu()" type="button" class="inline-flex items-center justify-center p-1.5 rounded-md text-gray-700 hover:text-tawakal-blue hover:bg-white/40 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tawakal-blue transition-colors duration-200 relative overflow-hidden group" aria-controls="mobile-menu" [attr.aria-expanded]="isMenuOpen">
           <span class="absolute inset-0 bg-gradient-to-r from-tawakal-green/5 to-tawakal-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           <span class="sr-only">Toggle navigation menu</span>
-          <!-- Menu icon states with increased size -->
+          <!-- Menu icon states -->
           <fa-icon *ngIf="!isMenuOpen" [icon]="['fas', 'bars']" [size]="mediumIconSize" class="transition-transform duration-300 relative z-10"></fa-icon>
           <fa-icon *ngIf="isMenuOpen" [icon]="['fas', 'times']" [size]="mediumIconSize" class="transition-transform duration-300 relative z-10"></fa-icon>
         </button>

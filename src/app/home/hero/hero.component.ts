@@ -22,7 +22,7 @@ import { SizeProp } from '@fortawesome/fontawesome-svg-core';
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css'],
 })
-export class HeroComponent implements AfterViewInit {
+export class HeroComponent {
   // Icon sizes configuration
   smallIconSize: SizeProp = 'sm';
   mediumIconSize: SizeProp = 'lg';
@@ -37,7 +37,5 @@ export class HeroComponent implements AfterViewInit {
 
   constructor(@Inject(PLATFORM_ID) private readonly platformId: Object) {}
 
-  ngAfterViewInit() {
-    // No initialization needed after removing 3D card and particles
-  }
+
 }

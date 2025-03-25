@@ -70,7 +70,7 @@ export class SomaliaagentsComponent implements OnInit {
   // Extract unique cities for the dropdown filter
   extractCities(): void {
     const uniqueCities = [...new Set(this.agents().map((agent) => agent.city))];
-    // Sort the cities alphabetically in a separate statement
+    // Sort the cities alphabetically 
     this.cities = [...uniqueCities];
     this.cities.sort((a, b) => a.localeCompare(b));
   }

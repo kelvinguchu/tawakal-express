@@ -49,7 +49,7 @@ export class FooterComponent {
 
   currentYear: number = new Date().getFullYear();
 
-  // Services for footer - updated to match the services in features-and-services component
+  // Services for footer
   serviceItems = [
     { label: 'Mobile Money Transfer', id: 'mobile-money' },
     { label: 'Mobile Wallet Transfer', id: 'mobile-wallet' },
@@ -59,7 +59,7 @@ export class FooterComponent {
     { label: 'Business Payment Solutions', id: 'business-payments' },
   ];
 
-  // Quick links for footer with updated agents dropdown
+  // Quick links for footer
   quickLinks: NavItem[] = [
     { label: 'Home', routerLink: '/' },
     { label: 'About Us', routerLink: '/about' },

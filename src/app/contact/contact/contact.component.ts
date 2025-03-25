@@ -53,7 +53,7 @@ export class ContactComponent {
   isSuccess: boolean = false;
   isError: boolean = false;
 
-  // FAQ items with icons
+  // FAQ items 
   faqItems = [
     {
       question: 'How do I send money with Tawakal Express?',
@@ -105,7 +105,7 @@ export class ContactComponent {
 
     // Simulate API call
     setTimeout(() => {
-      // In a real application, you would call an API service here
+      // to be done: send the form data to the server
       console.log('Form submitted:', this.contactData);
 
       this.isLoading = false;

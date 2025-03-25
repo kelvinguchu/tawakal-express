@@ -16,12 +16,12 @@
   bottom: 0;
 }
 
-/* Fix for dynamic height classes */
+/* for dynamic height classes */
 [class*='h-['] {
   position: relative;
 }
 
-/* Fix Leaflet panes/layers z-index */
+/* Leaflet panes/layers z-index */
 :host ::ng-deep .leaflet-map-pane { z-index: 2; }
 :host ::ng-deep .leaflet-tile-pane { z-index: 20; }
 :host ::ng-deep .leaflet-overlay-pane { z-index: 40; }
@@ -66,10 +66,10 @@
   font-size: 0.875rem;
 }
 
-/* Minimal scrollbar styles */
+/* scrollbar styles */
 .overflow-y-auto::-webkit-scrollbar { width: 6px; }
 .overflow-y-auto::-webkit-scrollbar-track { background: #f1f1f1; }
 .overflow-y-auto::-webkit-scrollbar-thumb { background: #c1c1c1; }
 
-/* Simple interaction styles */
+/* interaction styles */
 h4 { cursor: pointer; }

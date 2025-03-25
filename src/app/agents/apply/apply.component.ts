@@ -244,7 +244,7 @@ export class ApplyComponent implements OnInit {
     setTimeout(() => {
       this.submitting = false;
       this.submitted = true;
-      // In a real application, you would send the form data to a server here
+      // to be done: send the form data to the server
       console.log('Form data:', this.applicationForm.value);
     }, 1500);
   }
