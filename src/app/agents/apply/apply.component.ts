@@ -7,11 +7,12 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { Ripple } from 'primeng/ripple';
-import { AGENT_BENEFITS, AGENT_PHASES } from './apply.data';
+import { AgentDataService } from './apply.data';
+import { AgentBenefit, AgentPhase } from './apply.model';
 
 @Component({
   selector: 'app-apply',
@@ -22,8 +23,10 @@ import { AGENT_BENEFITS, AGENT_PHASES } from './apply.data';
     ReactiveFormsModule,
     FontAwesomeModule,
     FontAwesomeIconsModule,
+    HttpClientModule,
     Ripple,
   ],
+  providers: [AgentDataService],
   templateUrl: './apply.component.html',
 })
 export class ApplyComponent implements OnInit {
@@ -33,13 +36,18 @@ export class ApplyComponent implements OnInit {
   submitted = false;
   formErrors: string[] = [];
 
-  // Benefits and phases data from external files
-  agentBenefits = AGENT_BENEFITS;
-  agentPhases = AGENT_PHASES;
+  // Benefits and phases data
+  agentBenefits: AgentBenefit[] = [];
+  agentPhases: AgentPhase[] = [];
+  loadingBenefits = true;
+  loadingPhases = true;
+  benefitsError = false;
+  phasesError = false;
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private readonly agentDataService: AgentDataService
   ) {
     this.applicationForm = this.fb.group({
       country: ['', Validators.required],
@@ -73,6 +81,8 @@ export class ApplyComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCountries();
+    this.loadAgentBenefits();
+    this.loadAgentPhases();
 
     // Initialize business validation based on current hasBusinessLocation value
     const hasBusinessLocationValue = this.applicationForm.get(
@@ -81,6 +91,44 @@ export class ApplyComponent implements OnInit {
     if (hasBusinessLocationValue) {
       this.updateBusinessInfoValidation(hasBusinessLocationValue);
     }
+  }
+
+  /**
+   * Loads agent benefits from JSON file
+   */
+  loadAgentBenefits(): void {
+    this.agentDataService.getAgentBenefits().subscribe({
+      next: (benefits) => {
+        this.agentBenefits = benefits;
+        this.loadingBenefits = false;
+      },
+      error: () => {
+        this.benefitsError = true;
+        this.loadingBenefits = false;
+        this.formErrors.push(
+          'Could not load agent benefits. Please try again later.'
+        );
+      },
+    });
+  }
+
+  /**
+   * Loads agent phases from JSON file
+   */
+  loadAgentPhases(): void {
+    this.agentDataService.getAgentPhases().subscribe({
+      next: (phases) => {
+        this.agentPhases = phases;
+        this.loadingPhases = false;
+      },
+      error: () => {
+        this.phasesError = true;
+        this.loadingPhases = false;
+        this.formErrors.push(
+          'Could not load agent phases. Please try again later.'
+        );
+      },
+    });
   }
 
   // Update business info validation based on hasBusinessLocation value

@@ -63,12 +63,10 @@
 
             <!-- Dropdown link -->
             <li *ngIf="link.hasDropdown" class="mb-1">
-              <div 
+              <button 
                 (click)="toggleDropdown(link.label)"
                 (keydown)="$event.key === 'Enter' || $event.key === ' ' ? toggleDropdown(link.label) : null"
-                class="text-gray-600 hover:text-tawakal-blue transition-colors duration-200 text-sm flex items-center justify-between cursor-pointer"
-                tabindex="0"
-                role="button"
+                class="w-full text-left text-gray-600 hover:text-tawakal-blue transition-colors duration-200 text-sm flex items-center justify-between cursor-pointer border-none bg-transparent p-0"
                 [attr.aria-expanded]="isDropdownExpanded(link.label)"
                 [attr.aria-controls]="'dropdown-' + link.label"
               >
@@ -81,7 +79,7 @@
                   class="ml-1.5 text-xs transform transition-transform duration-300"
                   [ngClass]="{'rotate-180': isDropdownExpanded(link.label)}"
                 ></fa-icon>
-              </div>
+              </button>
               
               <!-- Dropdown menu -->
               <div 

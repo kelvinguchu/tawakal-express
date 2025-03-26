@@ -1,0 +1,16 @@
+[
+  { "name": "Australia", "flag": "au" },
+  { "name": "Canada", "flag": "ca" },
+  { "name": "Djibouti", "flag": "dj" },
+  { "name": "Ethiopia", "flag": "et" },
+  { "name": "Kenya", "flag": "ke" },
+  { "name": "Norway", "flag": "no" },
+  { "name": "Somalia", "flag": "so" },
+  { "name": "South Sudan", "flag": "ss" },
+  { "name": "Sudan", "flag": "sd" },
+  { "name": "Sweden", "flag": "se" },
+  { "name": "UAE", "flag": "ae" },
+  { "name": "Uganda", "flag": "ug" },
+  { "name": "UK", "flag": "gb" },
+  { "name": "USA", "flag": "us" }
+] 

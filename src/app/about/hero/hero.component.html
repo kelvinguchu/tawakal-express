@@ -70,59 +70,83 @@
           </div>
           
           <div class="grid grid-cols-2 gap-3 sm:gap-4">
-            <ng-container *ngFor="let value of companyValues">
-              <div class="relative bg-white/90 rounded-xl shadow-sm border border-gray-100 overflow-hidden value-card">
-                <div class="h-1" 
-                     [ngClass]="{
-                       'bg-tawakal-blue': value.color === 'blue',
-                       'bg-tawakal-green': value.color === 'green',
-                       'bg-[#f59e0b]': value.color === 'gold',
-                       'bg-[#d24935]': value.color === 'red'
-                     }"></div>
-
+            <!-- Loading state -->
+            <ng-container *ngIf="loading">
+              <div *ngFor="let i of [1, 2, 3, 4, 5, 6]" class="relative bg-white/90 rounded-xl shadow-sm border border-gray-100 overflow-hidden value-card">
+                <div class="h-1 bg-gray-200 animate-pulse"></div>
                 <div class="p-3 sm:p-4">
                   <div class="flex flex-col items-center text-center">
                     <div class="mb-2 sm:mb-3">
-                      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center" 
-                           [ngClass]="{
-                             'bg-tawakal-blue/10': value.color === 'blue',
-                             'bg-tawakal-green/10': value.color === 'green',
-                             'bg-[#f59e0b]/10': value.color === 'gold',
-                             'bg-[#d24935]/10': value.color === 'red'
-                           }">
-                        <fa-icon [icon]="['fas', getIconName(value.icon)]" 
-                                [size]="smallIconSize" 
-                                class="block sm:hidden"
-                                [ngClass]="{
-                                  'text-tawakal-blue': value.color === 'blue',
-                                  'text-tawakal-green': value.color === 'green',
-                                  'text-[#f59e0b]': value.color === 'gold',
-                                  'text-[#d24935]': value.color === 'red'
-                                }"></fa-icon>
-                        <fa-icon [icon]="['fas', getIconName(value.icon)]" 
-                                [size]="valueIconSize"
-                                class="hidden sm:block"
-                                [ngClass]="{
-                                  'text-tawakal-blue': value.color === 'blue',
-                                  'text-tawakal-green': value.color === 'green',
-                                  'text-[#f59e0b]': value.color === 'gold',
-                                  'text-[#d24935]': value.color === 'red'
-                                }"></fa-icon>
-                      </div>
+                      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-200 animate-pulse"></div>
                     </div>
-                    <h3 class="text-xs sm:text-sm font-bold"
-                        [ngClass]="{
-                          'text-tawakal-blue': value.color === 'blue',
-                          'text-tawakal-green': value.color === 'green',
-                          'text-[#f59e0b]': value.color === 'gold',
-                          'text-[#d24935]': value.color === 'red',
-                          'text-gray-800': !value.color
-                        }">
-                      {{ value.title }}
-                    </h3>
+                    <div class="h-4 w-20 bg-gray-200 rounded animate-pulse"></div>
                   </div>
                 </div>
               </div>
+            </ng-container>
+            
+            <!-- Error state -->
+            <div *ngIf="error" class="col-span-2 p-4 text-center">
+              <fa-icon [icon]="['fas', 'exclamation-circle']" class="text-red-500 text-3xl mb-2"></fa-icon>
+              <p class="text-sm text-gray-700">Could not load company values. Please try again later.</p>
+            </div>
+            
+            <!-- Values loaded successfully -->
+            <ng-container *ngIf="!loading && !error">
+              <ng-container *ngFor="let value of companyValues">
+                <div class="relative bg-white/90 rounded-xl shadow-sm border border-gray-100 overflow-hidden value-card">
+                  <div class="h-1" 
+                       [ngClass]="{
+                         'bg-tawakal-blue': value.color === 'blue',
+                         'bg-tawakal-green': value.color === 'green',
+                         'bg-[#f59e0b]': value.color === 'gold',
+                         'bg-[#d24935]': value.color === 'red'
+                       }"></div>
+
+                  <div class="p-3 sm:p-4">
+                    <div class="flex flex-col items-center text-center">
+                      <div class="mb-2 sm:mb-3">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center" 
+                             [ngClass]="{
+                               'bg-tawakal-blue/10': value.color === 'blue',
+                               'bg-tawakal-green/10': value.color === 'green',
+                               'bg-[#f59e0b]/10': value.color === 'gold',
+                               'bg-[#d24935]/10': value.color === 'red'
+                             }">
+                          <fa-icon [icon]="['fas', getIconName(value.icon)]" 
+                                  [size]="smallIconSize" 
+                                  class="block sm:hidden"
+                                  [ngClass]="{
+                                    'text-tawakal-blue': value.color === 'blue',
+                                    'text-tawakal-green': value.color === 'green',
+                                    'text-[#f59e0b]': value.color === 'gold',
+                                    'text-[#d24935]': value.color === 'red'
+                                  }"></fa-icon>
+                          <fa-icon [icon]="['fas', getIconName(value.icon)]" 
+                                  [size]="valueIconSize"
+                                  class="hidden sm:block"
+                                  [ngClass]="{
+                                    'text-tawakal-blue': value.color === 'blue',
+                                    'text-tawakal-green': value.color === 'green',
+                                    'text-[#f59e0b]': value.color === 'gold',
+                                    'text-[#d24935]': value.color === 'red'
+                                  }"></fa-icon>
+                        </div>
+                      </div>
+                      <h3 class="text-xs sm:text-sm font-bold"
+                          [ngClass]="{
+                            'text-tawakal-blue': value.color === 'blue',
+                            'text-tawakal-green': value.color === 'green',
+                            'text-[#f59e0b]': value.color === 'gold',
+                            'text-[#d24935]': value.color === 'red',
+                            'text-gray-800': !value.color
+                          }">
+                        {{ value.title }}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
             </ng-container>
           </div>
           

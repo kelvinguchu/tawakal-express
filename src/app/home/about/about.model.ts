@@ -2,7 +2,7 @@
  * Interface for core values data
  */
 export interface CoreValue {
-  icon: string;
+  icon: string[] | string;
   title: string;
   description: string;
   color: string;

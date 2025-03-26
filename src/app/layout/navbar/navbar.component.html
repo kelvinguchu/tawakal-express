@@ -119,13 +119,11 @@
         <!-- Dropdown nav item for mobile -->
         <div *ngIf="item.hasDropdown">
           <!-- Main dropdown trigger -->
-          <div 
+          <button 
             (click)="toggleMobileDropdown()"
             (keydown)="$event.key === 'Enter' || $event.key === ' ' ? toggleMobileDropdown() : null"
-            class="px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 relative overflow-hidden cursor-pointer"
+            class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 relative overflow-hidden cursor-pointer border-none bg-transparent"
             [ngClass]="{'text-tawakal-blue': isMobileDropdownOpen}"
-            tabindex="0"
-            role="button"
             [attr.aria-expanded]="isMobileDropdownOpen"
             [attr.aria-controls]="'mobile-dropdown'"
           >
@@ -140,7 +138,7 @@
                 [ngClass]="{'rotate-180': isMobileDropdownOpen}"
               ></fa-icon>
             </div>
-          </div>
+          </button>
           
           <!-- Mobile dropdown content -->
           <div 
@@ -149,12 +147,10 @@
             id="mobile-dropdown"
           >
             <ng-container *ngFor="let subItem of item.dropdownItems">
-              <div 
+              <button 
                 (click)="navigateTo(subItem.routerLink)"
                 (keydown)="$event.key === 'Enter' || $event.key === ' ' ? navigateTo(subItem.routerLink) : null"
-                class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-tawakal-blue transition-all duration-200 cursor-pointer group"
-                tabindex="0"
-                role="button"
+                class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-tawakal-blue transition-all duration-200 cursor-pointer group border-none bg-transparent"
               >
                 <div class="flex items-center">
                   <fa-icon 
@@ -165,7 +161,7 @@
                     {{subItem.label}}
                   </span>
                 </div>
-              </div>
+              </button>
             </ng-container>
           </div>
         </div>

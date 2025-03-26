@@ -1,49 +1,29 @@
 import { CompanyValue } from './hero.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
 /**
- * Company values data for the hero component
+ * Service to load company values data
  */
-export const COMPANY_VALUES: CompanyValue[] = [
-  {
-    icon: 'faHandshake',
-    title: 'Trust & Reliability',
-    description:
-      'We build trust through consistent, reliable service and transparent operations, ensuring our customers can depend on us for their financial needs.',
-    color: 'blue',
-  },
-  {
-    icon: 'faShieldHalved',
-    title: 'Security & Compliance',
-    description:
-      'We prioritize the security of every transaction and adhere to the highest regulatory standards to protect our customers and their money.',
-    color: 'green',
-  },
-  {
-    icon: 'faBolt',
-    title: 'Speed & Efficiency',
-    description:
-      'We understand the urgency of money transfers and strive to deliver fast, efficient service without compromising on quality or security.',
-    color: 'gold',
-  },
-  {
-    icon: 'faUsers',
-    title: 'Community Focus',
-    description:
-      "We're deeply connected to the communities we serve and committed to making a positive impact through our services and community initiatives.",
-    color: 'red',
-  },
-  {
-    icon: 'faGlobe',
-    title: 'Global Perspective',
-    description:
-      'We embrace diversity and maintain a global outlook, adapting our services to meet the unique needs of customers across different regions and cultures.',
-    color: 'blue',
-  },
-  {
-    icon: 'faHeart',
-    title: 'Customer-Centric',
-    description:
-      'We put our customers at the heart of everything we do, listening to their needs and continuously improving our services to exceed their expectations.',
-    color: 'green',
-  },
-];
+@Injectable({
+  providedIn: 'root',
+})
+export class CompanyValuesService {
+  private readonly dataUrl = '/data/company-values.json';
+
+  constructor(private http: HttpClient) {}
+
+  /**
+   * Fetches company values from JSON file
+   */
+  getCompanyValues(): Observable<CompanyValue[]> {
+    return this.http.get<CompanyValue[]>(this.dataUrl).pipe(
+      catchError((error) => {
+        console.error('Error loading company values:', error);
+        return of([]);
+      })
+    );
+  }
+}

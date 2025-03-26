@@ -22,16 +22,37 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+      <!-- Loading state -->
+      <div *ngIf="loadingCoreValues" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div *ngFor="let i of [1, 2, 3, 4, 5, 6]" class="relative backdrop-blur-md bg-white/90 rounded-2xl shadow-lg overflow-hidden border border-white/50 p-4 sm:p-6 md:p-8">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gray-200 animate-pulse"></div>
+          
+          <!-- Loading skeleton -->
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-200 animate-pulse mb-4 sm:mb-6"></div>
+          <div class="h-6 bg-gray-200 animate-pulse w-1/2 mb-2 sm:mb-3 rounded"></div>
+          <div class="h-4 bg-gray-200 animate-pulse w-full mb-2 rounded"></div>
+          <div class="h-4 bg-gray-200 animate-pulse w-5/6 mb-2 rounded"></div>
+          <div class="h-4 bg-gray-200 animate-pulse w-4/5 rounded"></div>
+        </div>
+      </div>
+
+      <!-- Error state -->
+      <div *ngIf="coreValuesError && !loadingCoreValues" class="p-6 text-center bg-red-50 rounded-lg mb-8">
+        <fa-icon [icon]="['fas', 'exclamation-circle']" class="text-red-500 text-2xl mb-2"></fa-icon>
+        <p class="text-gray-700">Could not load our core values. Please try again later.</p>
+      </div>
+
+      <!-- Core Values Grid -->
+      <div *ngIf="!loadingCoreValues && !coreValuesError" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         <!-- Core Values Cards -->
         <div *ngFor="let value of coreValues; let i = index" 
              class="relative backdrop-blur-md bg-white/90 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-white/50 hover:-translate-y-1">
           <!-- Gradient accent line - Using template for each color -->
           <ng-container [ngSwitch]="value.color">
-            <div *ngSwitchCase="'blue'" class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-tawakal-blue to-tawakal-blue/70"></div>
-            <div *ngSwitchCase="'green'" class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-tawakal-green to-tawakal-green/70"></div>
-            <div *ngSwitchCase="'gold'" class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#f59e0b] to-[#f59e0b]/70"></div>
-            <div *ngSwitchCase="'red'" class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#d24935] to-[#d24935]/70"></div>
+            <div *ngSwitchCase="'text-tawakal-blue'" class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-tawakal-blue to-tawakal-blue/70"></div>
+            <div *ngSwitchCase="'text-tawakal-green'" class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-tawakal-green to-tawakal-green/70"></div>
+            <div *ngSwitchCase="'text-amber-500'" class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-amber-500/70"></div>
+            <div *ngSwitchCase="'text-red-500'" class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-red-500/70"></div>
             <div *ngSwitchDefault class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-tawakal-blue to-tawakal-blue/70"></div>
           </ng-container>
 
@@ -45,9 +66,9 @@
           <div class="absolute inset-0 opacity-10 rounded-xl" 
                [ngStyle]="{
                  'background': 'radial-gradient(circle at 50% 0%, ' + 
-                 (value.color === 'blue' ? '#0075be' : 
-                  value.color === 'green' ? '#2fb457' : 
-                  value.color === 'gold' ? '#f59e0b' : 
+                 (value.color === 'text-tawakal-blue' ? '#0075be' : 
+                  value.color === 'text-tawakal-green' ? '#2fb457' : 
+                  value.color === 'text-amber-500' ? '#f59e0b' : 
                   '#d24935') + ', transparent 70%)'
                }"></div>
 
@@ -55,30 +76,25 @@
             <!-- Icon -->
             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300"
                  [ngClass]="{
-                   'bg-tawakal-blue/10': value.color === 'blue',
-                   'bg-tawakal-green/10': value.color === 'green',
-                   'bg-[#f59e0b]/10': value.color === 'gold',
-                   'bg-[#d24935]/10': value.color === 'red',
+                   'bg-tawakal-blue/10': value.color === 'text-tawakal-blue',
+                   'bg-tawakal-green/10': value.color === 'text-tawakal-green',
+                   'bg-amber-100': value.color === 'text-amber-500',
+                   'bg-red-100': value.color === 'text-red-500',
                    'rotate-3': i % 2 === 0,
                    '-rotate-3': i % 2 !== 0
                  }">
-              <fa-icon [icon]="['fas', getIconName(value.icon)]" 
+              <fa-icon [icon]="getIconProp(value.icon)" 
                       [size]="valueIconSize"
-                      [ngClass]="{
-                        'text-tawakal-blue': value.color === 'blue',
-                        'text-tawakal-green': value.color === 'green',
-                        'text-[#f59e0b]': value.color === 'gold',
-                        'text-[#d24935]': value.color === 'red'
-                      }"></fa-icon>
+                      [ngClass]="value.color"></fa-icon>
             </div>
 
             <!-- Title -->
             <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 transition-colors duration-300"
                 [ngClass]="{
-                  'group-hover:text-tawakal-blue': value.color === 'blue',
-                  'group-hover:text-tawakal-green': value.color === 'green',
-                  'group-hover:text-[#f59e0b]': value.color === 'gold',
-                  'group-hover:text-[#d24935]': value.color === 'red'
+                  'group-hover:text-tawakal-blue': value.color === 'text-tawakal-blue',
+                  'group-hover:text-tawakal-green': value.color === 'text-tawakal-green',
+                  'group-hover:text-amber-500': value.color === 'text-amber-500',
+                  'group-hover:text-red-500': value.color === 'text-red-500'
                 }">
               {{ value.title }}
             </h3>
@@ -92,24 +108,24 @@
             <div class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 flex space-x-1">
               <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full"
                    [ngClass]="{
-                     'bg-tawakal-blue/10': value.color === 'blue',
-                     'bg-tawakal-green/10': value.color === 'green',
-                     'bg-[#f59e0b]/10': value.color === 'gold',
-                     'bg-[#d24935]/10': value.color === 'red'
+                     'bg-tawakal-blue/10': value.color === 'text-tawakal-blue',
+                     'bg-tawakal-green/10': value.color === 'text-tawakal-green',
+                     'bg-amber-100': value.color === 'text-amber-500',
+                     'bg-red-100': value.color === 'text-red-500'
                    }"></div>
               <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full opacity-70"
                    [ngClass]="{
-                     'bg-tawakal-blue/10': value.color === 'blue',
-                     'bg-tawakal-green/10': value.color === 'green',
-                     'bg-[#f59e0b]/10': value.color === 'gold',
-                     'bg-[#d24935]/10': value.color === 'red'
+                     'bg-tawakal-blue/10': value.color === 'text-tawakal-blue',
+                     'bg-tawakal-green/10': value.color === 'text-tawakal-green',
+                     'bg-amber-100': value.color === 'text-amber-500',
+                     'bg-red-100': value.color === 'text-red-500'
                    }"></div>
               <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full opacity-40"
                    [ngClass]="{
-                     'bg-tawakal-blue/10': value.color === 'blue',
-                     'bg-tawakal-green/10': value.color === 'green',
-                     'bg-[#f59e0b]/10': value.color === 'gold',
-                     'bg-[#d24935]/10': value.color === 'red'
+                     'bg-tawakal-blue/10': value.color === 'text-tawakal-blue',
+                     'bg-tawakal-green/10': value.color === 'text-tawakal-green',
+                     'bg-amber-100': value.color === 'text-amber-500',
+                     'bg-red-100': value.color === 'text-red-500'
                    }"></div>
             </div>
           </div>
@@ -147,7 +163,21 @@
               Branches & Agents
             </h4>
             <p class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">Our direct presence spans across continents, ensuring reliable service wherever you are.</p>
-            <div class="flex flex-wrap gap-1.5 sm:gap-2">
+            
+            <!-- Loading state -->
+            <div *ngIf="loadingBranchCountries" class="flex flex-wrap gap-1.5 sm:gap-2">
+              <span *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8]" 
+                    class="px-2 sm:px-3 py-1 h-6 text-xs rounded-full bg-gray-100 animate-pulse w-20 border border-gray-200">
+              </span>
+            </div>
+            
+            <!-- Error state -->
+            <div *ngIf="branchCountriesError && !loadingBranchCountries" class="p-2 text-center bg-red-50 rounded-lg">
+              <p class="text-xs text-gray-700">Could not load branch countries.</p>
+            </div>
+            
+            <!-- Branch countries loaded successfully -->
+            <div *ngIf="!loadingBranchCountries && !branchCountriesError" class="flex flex-wrap gap-1.5 sm:gap-2">
               <span *ngFor="let country of branchCountries" 
                     class="px-2 sm:px-3 py-1 text-xs rounded-full bg-tawakal-green/5 text-gray-600 border border-tawakal-green/10 hover:bg-tawakal-green/10 transition-colors duration-200 cursor-default flex items-center">
                 <span class="w-4 h-3 mr-1.5 rounded-sm overflow-hidden flex-shrink-0 border border-gray-200">
@@ -174,7 +204,21 @@
               Partner Countries
             </h4>
             <p class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">Our strategic partnerships extend our reach to even more countries around the world.</p>
-            <div class="flex flex-wrap gap-1.5 sm:gap-2">
+            
+            <!-- Loading state -->
+            <div *ngIf="loadingPartnerCountries" class="flex flex-wrap gap-1.5 sm:gap-2">
+              <span *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8]" 
+                    class="px-2 sm:px-3 py-1 h-6 text-xs rounded-full bg-gray-100 animate-pulse w-20 border border-gray-200">
+              </span>
+            </div>
+            
+            <!-- Error state -->
+            <div *ngIf="partnerCountriesError && !loadingPartnerCountries" class="p-2 text-center bg-red-50 rounded-lg">
+              <p class="text-xs text-gray-700">Could not load partner countries.</p>
+            </div>
+            
+            <!-- Partner countries loaded successfully -->
+            <div *ngIf="!loadingPartnerCountries && !partnerCountriesError" class="flex flex-wrap gap-1.5 sm:gap-2">
               <span *ngFor="let country of partnerCountries" 
                     class="px-2 sm:px-3 py-1 text-xs rounded-full bg-tawakal-blue/5 text-gray-600 border border-tawakal-blue/10 hover:bg-tawakal-blue/10 transition-colors duration-200 cursor-default flex items-center">
                 <span class="w-4 h-3 mr-1.5 rounded-sm overflow-hidden flex-shrink-0 border border-gray-200">

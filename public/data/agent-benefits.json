@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Additional Income",
+    "description": "Earn competitive commissions on every transaction you process, creating a reliable source of additional income for your business.",
+    "icon": ["fas", "money-bill-wave"],
+    "color": "text-tawakal-green"
+  },
+  {
+    "title": "Increased Foot Traffic",
+    "description": "Attract new customers to your business who come for money transfer services and may purchase your other products or services.",
+    "icon": ["fas", "users"],
+    "color": "text-tawakal-blue"
+  },
+  {
+    "title": "Simple Technology",
+    "description": "Access our user-friendly platform that requires minimal training and technical knowledge to operate efficiently.",
+    "icon": ["fas", "mobile-screen"],
+    "color": "text-[#9e5a63]"
+  },
+  {
+    "title": "Dedicated Support",
+    "description": "Receive personalized support from our team, including marketing materials, technical assistance, and business guidance.",
+    "icon": ["fas", "headset"],
+    "color": "text-amber-500"
+  },
+  {
+    "title": "Global Network",
+    "description": "Join our extensive international network, connecting you to customers and opportunities across the globe.",
+    "icon": ["fas", "globe"],
+    "color": "text-tawakal-blue"
+  },
+  {
+    "title": "Community Service",
+    "description": "Provide an essential service that helps families stay connected financially across international borders.",
+    "icon": ["fas", "hand-holding-heart"],
+    "color": "text-tawakal-green"
+  }
+] 

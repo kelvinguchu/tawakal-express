@@ -20,7 +20,30 @@
           
           <p class="text-gray-700 text-sm mb-6">Becoming a Tawakal Express agent offers you a unique opportunity to expand your business, generate additional income, and provide essential services to your community.</p>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <!-- Loading state -->
+          <div *ngIf="loadingBenefits" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div *ngFor="let i of [1, 2, 3, 4, 5, 6]" class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mr-3">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 animate-pulse"></div>
+                </div>
+                <div class="flex-1">
+                  <div class="h-4 bg-gray-200 rounded w-2/3 mb-2 animate-pulse"></div>
+                  <div class="h-3 bg-gray-200 rounded w-full mb-1 animate-pulse"></div>
+                  <div class="h-3 bg-gray-200 rounded w-5/6 animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error state -->
+          <div *ngIf="benefitsError" class="p-4 text-center bg-red-50 rounded-lg mb-6">
+            <fa-icon [icon]="['fas', 'exclamation-circle']" class="text-red-500 text-xl mb-2"></fa-icon>
+            <p class="text-sm text-gray-700">Could not load agent benefits. Please try again later.</p>
+          </div>
+          
+          <!-- Benefits loaded successfully -->
+          <div *ngIf="!loadingBenefits && !benefitsError" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div *ngFor="let benefit of agentBenefits" class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
               <div class="flex items-start">
                 <div class="flex-shrink-0 mr-3">
@@ -32,6 +55,49 @@
                   <h4 class="font-semibold text-gray-800 mb-1">{{benefit.title}}</h4>
                   <p class="text-gray-600 text-sm">{{benefit.description}}</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Application Process Timeline -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">Application Process</h3>
+
+          <!-- Loading state -->
+          <div *ngIf="loadingPhases" class="space-y-8 mb-6">
+            <div *ngFor="let i of [1, 2, 3, 4]" class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 animate-pulse"></div>
+              </div>
+              <div class="flex-1">
+                <div class="h-5 bg-gray-200 rounded w-1/4 mb-3 animate-pulse"></div>
+                <div class="h-3 bg-gray-200 rounded w-full mb-1 animate-pulse"></div>
+                <div class="h-3 bg-gray-200 rounded w-5/6 animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error state -->
+          <div *ngIf="phasesError" class="p-4 text-center bg-red-50 rounded-lg mb-6">
+            <fa-icon [icon]="['fas', 'exclamation-circle']" class="text-red-500 text-xl mb-2"></fa-icon>
+            <p class="text-sm text-gray-700">Could not load application process details. Please try again later.</p>
+          </div>
+          
+          <!-- Phases loaded successfully -->
+          <div *ngIf="!loadingPhases && !phasesError" class="space-y-8 mb-6">
+            <div *ngFor="let phase of agentPhases" class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <div class="w-10 h-10 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center shadow-sm">
+                  <span class="text-sm font-medium">{{phase.number}}</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-gray-800 mb-1 flex items-center">
+                  {{phase.title}}
+                  <fa-icon [icon]="phase.icon" class="ml-2 text-primary-500 text-sm"></fa-icon>
+                </h4>
+                <p class="text-gray-600">{{phase.description}}</p>
               </div>
             </div>
           </div>
