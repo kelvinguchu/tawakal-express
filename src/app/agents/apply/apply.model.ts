@@ -11,16 +11,6 @@ export interface AgentBenefit {
 }
 
 /**
- * Interface for agent application phases
- */
-export interface AgentPhase {
-  number: number;
-  title: string;
-  description: string;
-  icon: IconProp;
-}
-
-/**
  * Country interface
  */
 export interface Country {

@@ -1,4 +1,4 @@
-import { AgentBenefit, AgentPhase } from './apply.model';
+import { AgentBenefit } from './apply.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -12,7 +12,6 @@ import { Injectable } from '@angular/core';
 })
 export class AgentDataService {
   private readonly benefitsUrl = '/data/agent-benefits.json';
-  private readonly phasesUrl = '/data/agent-phases.json';
 
   constructor(private readonly http: HttpClient) {}
 
@@ -23,18 +22,6 @@ export class AgentDataService {
     return this.http.get<AgentBenefit[]>(this.benefitsUrl).pipe(
       catchError((error) => {
         console.error('Error loading agent benefits:', error);
-        return of([]);
-      })
-    );
-  }
-
-  /**
-   * Fetches agent application phases from JSON file
-   */
-  getAgentPhases(): Observable<AgentPhase[]> {
-    return this.http.get<AgentPhase[]>(this.phasesUrl).pipe(
-      catchError((error) => {
-        console.error('Error loading agent phases:', error);
         return of([]);
       })
     );

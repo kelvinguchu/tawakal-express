@@ -59,49 +59,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Application Process Timeline -->
-        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">Application Process</h3>
-
-          <!-- Loading state -->
-          <div *ngIf="loadingPhases" class="space-y-8 mb-6">
-            <div *ngFor="let i of [1, 2, 3, 4]" class="flex items-start">
-              <div class="flex-shrink-0 mr-4">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 animate-pulse"></div>
-              </div>
-              <div class="flex-1">
-                <div class="h-5 bg-gray-200 rounded w-1/4 mb-3 animate-pulse"></div>
-                <div class="h-3 bg-gray-200 rounded w-full mb-1 animate-pulse"></div>
-                <div class="h-3 bg-gray-200 rounded w-5/6 animate-pulse"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Error state -->
-          <div *ngIf="phasesError" class="p-4 text-center bg-red-50 rounded-lg mb-6">
-            <fa-icon [icon]="['fas', 'exclamation-circle']" class="text-red-500 text-xl mb-2"></fa-icon>
-            <p class="text-sm text-gray-700">Could not load application process details. Please try again later.</p>
-          </div>
-          
-          <!-- Phases loaded successfully -->
-          <div *ngIf="!loadingPhases && !phasesError" class="space-y-8 mb-6">
-            <div *ngFor="let phase of agentPhases" class="flex items-start">
-              <div class="flex-shrink-0 mr-4">
-                <div class="w-10 h-10 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center shadow-sm">
-                  <span class="text-sm font-medium">{{phase.number}}</span>
-                </div>
-              </div>
-              <div>
-                <h4 class="text-lg font-semibold text-gray-800 mb-1 flex items-center">
-                  {{phase.title}}
-                  <fa-icon [icon]="phase.icon" class="ml-2 text-primary-500 text-sm"></fa-icon>
-                </h4>
-                <p class="text-gray-600">{{phase.description}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Form Column -->
@@ -168,25 +125,27 @@
             
             <!-- Business location question -->
             <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2" id="business-location-label">Do you have a business location? <span class="text-red-500">*</span></label>
+              <p class="block text-sm font-medium text-gray-700 mb-2" id="business-location-label">Do you have a business location? <span class="text-red-500">*</span></p>
               <div class="flex space-x-4" role="radiogroup" aria-labelledby="business-location-label">
-                <label class="inline-flex items-center">
+                <label class="inline-flex items-center" for="business-location-yes">
                   <input 
                     type="radio" 
                     formControlName="hasBusinessLocation" 
                     value="yes" 
                     class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
                     id="business-location-yes"
+                    name="hasBusinessLocation"
                   >
                   <span class="ml-2 text-gray-700">Yes</span>
                 </label>
-                <label class="inline-flex items-center">
+                <label class="inline-flex items-center" for="business-location-no">
                   <input 
                     type="radio" 
                     formControlName="hasBusinessLocation" 
                     value="no" 
                     class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
                     id="business-location-no"
+                    name="hasBusinessLocation"
                   >
                   <span class="ml-2 text-gray-700">No</span>
                 </label>
@@ -198,7 +157,7 @@
             
             <!-- Computer and internet question -->
             <div class="mb-2">
-              <label class="block text-sm font-medium text-gray-700 mb-2" id="computer-internet-label">Do you have a computer with internet connection? <span class="text-red-500">*</span></label>
+              <p class="block text-sm font-medium text-gray-700 mb-2" id="computer-internet-label">Do you have a computer with internet connection? <span class="text-red-500">*</span></p>
               <div class="flex space-x-4" role="radiogroup" aria-labelledby="computer-internet-label">
                 <label class="inline-flex items-center" for="computer-yes">
                   <input 

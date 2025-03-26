@@ -12,7 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { Ripple } from 'primeng/ripple';
 import { AgentDataService } from './apply.data';
-import { AgentBenefit, AgentPhase } from './apply.model';
+import { AgentBenefit } from './apply.model';
 
 @Component({
   selector: 'app-apply',
@@ -36,13 +36,10 @@ export class ApplyComponent implements OnInit {
   submitted = false;
   formErrors: string[] = [];
 
-  // Benefits and phases data
+  // Benefits data
   agentBenefits: AgentBenefit[] = [];
-  agentPhases: AgentPhase[] = [];
   loadingBenefits = true;
-  loadingPhases = true;
   benefitsError = false;
-  phasesError = false;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -82,7 +79,6 @@ export class ApplyComponent implements OnInit {
   ngOnInit(): void {
     this.loadCountries();
     this.loadAgentBenefits();
-    this.loadAgentPhases();
 
     // Initialize business validation based on current hasBusinessLocation value
     const hasBusinessLocationValue = this.applicationForm.get(
@@ -107,25 +103,6 @@ export class ApplyComponent implements OnInit {
         this.loadingBenefits = false;
         this.formErrors.push(
           'Could not load agent benefits. Please try again later.'
-        );
-      },
-    });
-  }
-
-  /**
-   * Loads agent phases from JSON file
-   */
-  loadAgentPhases(): void {
-    this.agentDataService.getAgentPhases().subscribe({
-      next: (phases) => {
-        this.agentPhases = phases;
-        this.loadingPhases = false;
-      },
-      error: () => {
-        this.phasesError = true;
-        this.loadingPhases = false;
-        this.formErrors.push(
-          'Could not load agent phases. Please try again later.'
         );
       },
     });
