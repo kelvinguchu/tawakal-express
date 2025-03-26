@@ -2,7 +2,6 @@
 @import "tailwindcss";
 
 /* Tailwind CSS v4 theme configuration */
-/* //NOSONAR */
 @theme {
   /* Tawakal custom colors */
   --color-tawakal-green: #2fb457;
