@@ -44,7 +44,7 @@ export class AboutComponent implements OnInit {
   branchCountriesError = false;
   partnerCountriesError = false;
 
-  constructor(private aboutDataService: AboutDataService) {}
+  constructor(private readonly aboutDataService: AboutDataService) {}
 
   ngOnInit(): void {
     this.loadCoreValues();

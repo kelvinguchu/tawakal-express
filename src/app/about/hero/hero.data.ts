@@ -13,7 +13,7 @@ import { Injectable } from '@angular/core';
 export class CompanyValuesService {
   private readonly dataUrl = '/data/company-values.json';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   /**
    * Fetches company values from JSON file

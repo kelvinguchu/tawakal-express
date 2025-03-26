@@ -15,7 +15,7 @@ export class AboutDataService {
   private readonly branchCountriesUrl = '/data/branch-countries.json';
   private readonly partnerCountriesUrl = '/data/partner-countries.json';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   /**
    * Fetches company core values from JSON file

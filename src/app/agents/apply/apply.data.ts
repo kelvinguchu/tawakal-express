@@ -14,7 +14,7 @@ export class AgentDataService {
   private readonly benefitsUrl = '/data/agent-benefits.json';
   private readonly phasesUrl = '/data/agent-phases.json';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   /**
    * Fetches agent benefits from JSON file
