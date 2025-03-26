@@ -39,11 +39,12 @@
                 id="email-alert"
                 type="email"
                 [(ngModel)]="email"
+                name="email"
                 placeholder="Your email address"
                 class="w-full pl-10 pr-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-tawakal-green focus:border-tawakal-green"
                 [ngClass]="{'border-red-500': isError && !email}"
                 aria-required="true"
-                aria-invalid="isError && !email"
+                [attr.aria-invalid]="(isError && !email) ? 'true' : 'false'"
               />
             </div>
             <p *ngIf="isError && !email" class="mt-1 text-red-500 text-xs" id="email-error">Please enter your email address</p>
@@ -51,38 +52,45 @@
           
           <!-- Job categories -->
           <div class="mb-4 sm:mb-5">
-            <label id="job-categories-label" class="block text-sm font-medium text-gray-700 mb-2">Job Categories (select at least one)</label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" role="group" aria-labelledby="job-categories-label">
-              <div *ngFor="let category of jobCategories; let i = index" 
-                   class="flex items-center p-2 border rounded-lg cursor-pointer transition-colors"
-                   [ngClass]="{
-                     'border-tawakal-green bg-tawakal-green/5': selectedCategories.includes(category.name),
-                     'border-gray-200 hover:border-tawakal-green/30': !selectedCategories.includes(category.name)
-                   }"
-                   (click)="toggleCategory(category.name)"
-                   (keydown)="toggleCategory(category.name, $event)"
-                   [attr.aria-checked]="selectedCategories.includes(category.name)"
-                   role="checkbox"
-                   [id]="'job-category-' + i"
-                   tabindex="0">
-                <div class="flex-shrink-0">
-                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-md flex items-center justify-center"
-                       [ngClass]="{
-                         'bg-tawakal-green/20 text-tawakal-green': selectedCategories.includes(category.name),
-                         'bg-gray-100 text-gray-500': !selectedCategories.includes(category.name)
-                       }">
-                    <fa-icon [icon]="['fas', category.icon]" [size]="'sm'" class="sm:text-base"></fa-icon>
-                  </div>
-                </div>
-                <div class="ml-2 sm:ml-3 flex-1">
-                  <span class="text-xs sm:text-sm font-medium">{{ category.name }}</span>
-                  <p class="text-xs text-gray-500 mt-0.5 line-clamp-2">{{ category.description }}</p>
-                </div>
-                <div *ngIf="selectedCategories.includes(category.name)" class="ml-1 sm:ml-2 text-tawakal-green">
-                  <fa-icon [icon]="['fas', 'check-circle']" [size]="'sm'" class="sm:text-base"></fa-icon>
+            <fieldset>
+              <legend class="block text-sm font-medium text-gray-700 mb-2">Job Categories (select at least one)</legend>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div *ngFor="let category of jobCategories; let i = index">
+                  <input
+                    type="checkbox"
+                    [id]="'job-category-' + i"
+                    [name]="'job-category-' + i"
+                    [checked]="selectedCategories.includes(category.name)"
+                    (change)="toggleCategory(category.name)"
+                    class="sr-only"
+                  />
+                  <label
+                    [for]="'job-category-' + i"
+                    class="flex items-center p-2 border rounded-lg cursor-pointer transition-colors"
+                    [ngClass]="{
+                      'border-tawakal-green bg-tawakal-green/5': selectedCategories.includes(category.name),
+                      'border-gray-200 hover:border-tawakal-green/30': !selectedCategories.includes(category.name)
+                    }">
+                    <div class="flex-shrink-0">
+                      <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-md flex items-center justify-center"
+                           [ngClass]="{
+                             'bg-tawakal-green/20 text-tawakal-green': selectedCategories.includes(category.name),
+                             'bg-gray-100 text-gray-500': !selectedCategories.includes(category.name)
+                           }">
+                        <fa-icon [icon]="['fas', category.icon]" [size]="'sm'" class="sm:text-base"></fa-icon>
+                      </div>
+                    </div>
+                    <div class="ml-2 sm:ml-3 flex-1">
+                      <span class="text-xs sm:text-sm font-medium">{{ category.name }}</span>
+                      <p class="text-xs text-gray-500 mt-0.5 line-clamp-2">{{ category.description }}</p>
+                    </div>
+                    <div *ngIf="selectedCategories.includes(category.name)" class="ml-1 sm:ml-2 text-tawakal-green">
+                      <fa-icon [icon]="['fas', 'check-circle']" [size]="'sm'" class="sm:text-base"></fa-icon>
+                    </div>
+                  </label>
                 </div>
               </div>
-            </div>
+            </fieldset>
             <p *ngIf="isError && selectedCategories.length === 0" class="mt-1 text-red-500 text-xs">Please select at least one job category</p>
           </div>
           

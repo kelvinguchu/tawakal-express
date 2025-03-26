@@ -134,23 +134,25 @@
             <div class="mb-2">
               <label class="block text-sm font-medium text-gray-700 mb-2" id="computer-internet-label">Do you have a computer with internet connection? <span class="text-red-500">*</span></label>
               <div class="flex space-x-4" role="radiogroup" aria-labelledby="computer-internet-label">
-                <label class="inline-flex items-center">
+                <label class="inline-flex items-center" for="computer-yes">
                   <input 
                     type="radio" 
                     formControlName="hasComputer" 
                     value="yes" 
                     class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
                     id="computer-yes"
+                    name="hasComputer"
                   >
                   <span class="ml-2 text-gray-700">Yes</span>
                 </label>
-                <label class="inline-flex items-center">
+                <label class="inline-flex items-center" for="computer-no">
                   <input 
                     type="radio" 
                     formControlName="hasComputer" 
                     value="no" 
                     class="h-4 w-4 text-[#4acb68] focus:ring-[#4acb68]"
                     id="computer-no"
+                    name="hasComputer"
                   >
                   <span class="ml-2 text-gray-700">No</span>
                 </label>

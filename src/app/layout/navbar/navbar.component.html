@@ -121,8 +121,13 @@
           <!-- Main dropdown trigger -->
           <div 
             (click)="toggleMobileDropdown()"
+            (keydown)="$event.key === 'Enter' || $event.key === ' ' ? toggleMobileDropdown() : null"
             class="px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tawakal-blue hover:bg-white/40 transition-all duration-200 relative overflow-hidden cursor-pointer"
             [ngClass]="{'text-tawakal-blue': isMobileDropdownOpen}"
+            tabindex="0"
+            role="button"
+            [attr.aria-expanded]="isMobileDropdownOpen"
+            [attr.aria-controls]="'mobile-dropdown'"
           >
             <div class="flex items-center justify-between">
               <div class="flex items-center">
@@ -137,15 +142,19 @@
             </div>
           </div>
           
-          <!-- Mobile dropdown submenu -->
+          <!-- Mobile dropdown content -->
           <div 
-            class="pl-4 overflow-hidden transition-all duration-300 origin-top" 
-            [ngClass]="{'max-h-0 opacity-0': !isMobileDropdownOpen, 'max-h-40 opacity-100 mt-1 mb-2': isMobileDropdownOpen}"
+            *ngIf="isMobileDropdownOpen" 
+            class="px-4 py-2 space-y-1 bg-white/70 backdrop-blur-sm rounded-md mt-1"
+            id="mobile-dropdown"
           >
             <ng-container *ngFor="let subItem of item.dropdownItems">
               <div 
                 (click)="navigateTo(subItem.routerLink)"
+                (keydown)="$event.key === 'Enter' || $event.key === ' ' ? navigateTo(subItem.routerLink) : null"
                 class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-tawakal-blue transition-all duration-200 cursor-pointer group"
+                tabindex="0"
+                role="button"
               >
                 <div class="flex items-center">
                   <fa-icon 

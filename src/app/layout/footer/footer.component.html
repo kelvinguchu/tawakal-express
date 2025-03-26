@@ -65,7 +65,12 @@
             <li *ngIf="link.hasDropdown" class="mb-1">
               <div 
                 (click)="toggleDropdown(link.label)"
+                (keydown)="$event.key === 'Enter' || $event.key === ' ' ? toggleDropdown(link.label) : null"
                 class="text-gray-600 hover:text-tawakal-blue transition-colors duration-200 text-sm flex items-center justify-between cursor-pointer"
+                tabindex="0"
+                role="button"
+                [attr.aria-expanded]="isDropdownExpanded(link.label)"
+                [attr.aria-controls]="'dropdown-' + link.label"
               >
                 <div class="flex items-center group">
                   <div class="w-1.5 h-1.5 rounded-full bg-tawakal-green/50 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -81,6 +86,7 @@
               <!-- Dropdown menu -->
               <div 
                 class="pl-3 sm:pl-4 overflow-hidden transition-all duration-300 mt-1 sm:mt-2"
+                [id]="'dropdown-' + link.label"
                 [ngClass]="{'max-h-0 opacity-0': !isDropdownExpanded(link.label), 'max-h-24 opacity-100': isDropdownExpanded(link.label)}"
               >
                 <ul class="space-y-2 ml-1 sm:ml-2 border-l-2 border-tawakal-green/20 pl-2">

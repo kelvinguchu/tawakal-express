@@ -1,8 +1,5 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
-import {
-  CommonModule,
-  isPlatformBrowser,
-} from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Ripple } from 'primeng/ripple';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

@@ -38,8 +38,8 @@ export class SomaliaagentsComponent implements OnInit {
   selectedCity = '';
 
   // Sort state
-  sortField: 'city' = 'city';
-  sortDirection: 'asc' | 'desc' = 'asc';
+  sortField = 'city' as const;
+  sortDirection = 'asc' as 'asc' | 'desc';
 
   // Unique cities for filter dropdown
   cities: string[] = [];
@@ -70,7 +70,7 @@ export class SomaliaagentsComponent implements OnInit {
   // Extract unique cities for the dropdown filter
   extractCities(): void {
     const uniqueCities = [...new Set(this.agents().map((agent) => agent.city))];
-    // Sort the cities alphabetically 
+    // Sort the cities alphabetically
     this.cities = [...uniqueCities];
     this.cities.sort((a, b) => a.localeCompare(b));
   }
