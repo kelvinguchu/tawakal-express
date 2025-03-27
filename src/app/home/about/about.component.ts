@@ -5,17 +5,11 @@ import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { AboutDataService } from './about.data';
 import { CoreValue, Country } from './about.model';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [
-    CommonModule,
-    FontAwesomeModule,
-    FontAwesomeIconsModule,
-    HttpClientModule,
-  ],
+  imports: [CommonModule, FontAwesomeModule, FontAwesomeIconsModule],
   providers: [AboutDataService],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',

@@ -7,7 +7,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { Ripple } from 'primeng/ripple';
@@ -23,7 +23,6 @@ import { AgentBenefit } from './apply.model';
     ReactiveFormsModule,
     FontAwesomeModule,
     FontAwesomeIconsModule,
-    HttpClientModule,
     Ripple,
   ],
   providers: [AgentDataService],

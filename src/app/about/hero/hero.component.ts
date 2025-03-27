@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeIconsModule } from '../../shared/font-awesome.module';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { CompanyValuesService } from './hero.data';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CompanyValue } from './hero.model';
 
 @Component({
@@ -16,7 +16,6 @@ import { CompanyValue } from './hero.model';
     RouterModule,
     FontAwesomeModule,
     FontAwesomeIconsModule,
-    HttpClientModule,
   ],
   providers: [CompanyValuesService],
   templateUrl: './hero.component.html',

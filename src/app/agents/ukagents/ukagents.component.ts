@@ -27,7 +27,7 @@ export const WINDOW = new InjectionToken<Window>('WindowToken', {
     const platformId = inject(PLATFORM_ID);
     if (isPlatformBrowser(platformId)) {
       const { defaultView } = inject(DOCUMENT);
-      return defaultView || ({} as Window);
+      return defaultView ?? ({} as Window);
     }
     return {} as Window;
   },
@@ -116,7 +116,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
     try {
       // Dynamic import to avoid SSR issues
       const L = await import('leaflet');
-      this.L = L.default || L;
+      this.L = L.default ?? L;
       this.markers = this.L.layerGroup();
 
       this.options = {
@@ -230,7 +230,7 @@ export class UkagentsComponent implements OnInit, AfterViewInit {
 
     this.markers.clearLayers();
 
-    // Create custom FontAwesome marker icon 
+    // Create custom FontAwesome marker icon
     const markerIcon = this.L.divIcon({
       html: '<i class="fas fa-map-marker-alt"></i>',
       className: 'marker-icon',
